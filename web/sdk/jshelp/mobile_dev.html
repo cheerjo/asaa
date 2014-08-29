@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="content-language" content="en">
+  <meta name="product" content="js-api-arcgis">
+  <meta name="subject" content="DEVELOPER,WEB,WEB APPLICATIONS,MOBILE">
+  <meta name="sub_category" content="JavaScript API">
+  <meta name="search-collection" content="help">
+  <meta name="search-category" content="help-api">
+  <meta name="version" content="arcgis-3.3">
+  <meta name="content_type" content="Help Topic"> <!-- options: Help Topic, API Reference, Sample OR Tutorial -->
+  <meta name="last-modified" content="2013-03-10"> <!-- sub 1:  put in date docs were generated -->
+
+  <link rel="stylesheet" href="../styles/jsdoc.css">
+  <link rel="stylesheet" href="../styles/homepage.css">
+  <link rel="stylesheet" href="../styles/grid.css">
+  <link rel="stylesheet" href="../styles/tree.css">
+  <link rel="stylesheet" href="../prettify/prettify.css">
+  <title>
+    Guide | ArcGIS API for JavaScript 
+  </title>
+</head>
+  
+<body>
+<div id="nav">
+  <div class="container_12">
+    <div class="grid_12">
+      <h2 class="grid_6">
+        <a id="homelink" href="../">
+          ArcGIS API for JavaScript
+        </a>
+      </h2>
+      <div>
+        <a target="_blank" href="http://www.esri.com">
+          <img style="float:right;padding: 0 10px 0 0;" src="../graphics/logo-esri.png">
+        </a>
+      </div>
+    </div>
+    <div class="grid_12 bottom-border">
+      <div class="nav-menu">
+
+        <ul id="nav-menu">
+          <li class="menu-item">
+            <a id ="tutorials" href="../jstutorials/">Tutorials</a>
+          </li>
+          <li class="menu-item">
+            <span id ="concepts" class="selected">Concepts</a>
+          </li>
+          <li class="menu-item">
+            <a id="samples" href="../jssamples/">Samples</a>
+          </li>
+          <li class="menu-item">
+            <a id= "api" href="../jsapi/">API Reference</span>
+          </li>
+          <li class="menu-item">
+            <a id="forums" target="_blank" href="http://forums.arcgis.com/forums/15-ArcGIS-API-for-JavaScript">Forum</a>
+          </li>
+          <!--li class="menu-item">
+            <a id="devs" href="http://developers.arcgis.com/">All Developer Resources</a>
+          </li-->
+        </ul>
+
+        <!--<div id="search">
+          <form id="searchForm" method="get" action="http://resources.arcgis.com/content/search-result">
+            <input type="text" id="searchKeyWord" name="searchKeyWord" size="30" placeholder="Search the Resource Center" class="searchKeyWordSelected">
+            <input name="searchButton" id="searchButton" type="submit" value="">
+            <input type="hidden" name="sourceURL" value="http://help.arcgis.com/en/webapi/javascript/">
+            <input type="hidden" name="sourceProductName" value="Search the Resource Center">
+            <input type="hidden" name="searchTaxonomy" value="Resource Centers/ArcGIS Desktop/Documentation/General">
+            <input type="hidden" name="searchProduct" value="ArcGIS Server 10.0">
+            <input type="hidden" name="searchRC" value="All">
+          </form>
+        </div>-->
+
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div> <!-- end nav bar -->
+
+<div class="container_12">
+  <div class="grid_3 contentWrapper">
+    <div id="toggleToc">
+      <img src="../graphics/tochide.gif"> Hide Table of Contents
+    </div>
+    <div id="apiToc"><div class="treeDiv" id="tree" style="top: 35px; left: 0px;">
+  <div id="treeRoot" ondragstart="return false" onselectstart="return false">
+    <div class="treeNode">
+      <a class="treeUnselected" href="." onclick="clickAnchor(this)">ArcGIS JavaScript API Overview</a>
+    </div>
+    <div class="treeNode">
+      <a class="treeUnselected" href="whats_new.html" onclick="clickAnchor(this)">What's New in Version 3.3</a>
+    </div>
+    <!-- About the API-->
+    <div class="treeNode">
+      <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif"/>
+      <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">About the API</span>
+      <div class="treeSubnodesHidden">
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_accessapi.html" onclick="clickAnchor(this)">Get the API</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_compactbuild.html" onclick="clickAnchor(this)">Compact build</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="localization.html" onclick="clickAnchor(this)">Localization</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="css.html" onclick="clickAnchor(this)">Required CSS</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="supported_browsers.html" onclick="clickAnchor(this)">Supported Browsers</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="community.html" onclick="clickAnchor(this)">Community</a>
+        </div>
+        <!--Working with Dojo-->
+        <div class="treeNode">
+          <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+          <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+            Dojo
+          </span>
+          <div class="treeSubnodesHidden">
+            <div class="treeNode">
+              <a class="treeUnselected" href="inside_dojo.html" onclick="clickAnchor(this)">Working with Dojo</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="inside_dojoversion.html" onclick="clickAnchor(this)">Get Dojo</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="inside_dojodijits.html" onclick="clickAnchor(this)">Dojo dijits</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="inside_dojo_amd.html" onclick="clickAnchor(this)">Dojo and AMD</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="inside_dojohelp.html" onclick="clickAnchor(this)">Additional resources</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="why_dojo.html" onclick="clickAnchor(this)">Why Dojo?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End About the API-->
+    <!--Getting Started-->
+    <div class="treeNode">
+      <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+      <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+        Getting Started
+      </span>
+      <div class="treeSubnodesHidden">
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_gettingstarted.html" onclick="clickAnchor(this)">Overview</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_devenv.html" onclick="clickAnchor(this)">Setting up a development environment</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="../jstutorials/intro_firstmap.html" onclick="clickAnchor(this)">Build your first application</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="../jstutorials/intro_agstemplate.html" onclick="clickAnchor(this)">Build a web map based application
+          </a>
+        </div>
+      </div>
+    </div>
+    <!--Inside the API-->
+    <div class="treeNode">
+      <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+      <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+        Working with the API
+      </span>
+      <div class="treeSubnodesHidden">
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_defaults.html" onclick="clickAnchor(this)">Default API configurations</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_esri_request.html" onclick="clickAnchor(this)">Retrieve data from a web server</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_navigation.html" onclick="clickAnchor(this)">Map navigation</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_events.html" onclick="clickAnchor(this)">Events</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_extents.html" onclick="clickAnchor(this)">Setting Extents</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_editing.html" onclick="clickAnchor(this)">Editing</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_temporal.html" onclick="clickAnchor(this)">Time aware data</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_firsttask.html" onclick="clickAnchor(this)">Adding a task</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_querytask.html" onclick="clickAnchor(this)">Using QueryTask</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_custom_layers.html" onclick="clickAnchor(this)">Creating custom layer types</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_javascript_classes.html" onclick="clickAnchor(this)">Writing a class</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_custom_dijit.html" onclick="clickAnchor(this)">Writing a custom widget</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="intro_webmap.html" onclick="clickAnchor(this)">Web maps</a>
+        </div>
+        <!-- graphics -->
+        <div class="treeNode">
+          <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif"/>
+          <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">Graphics and feature layers</span>
+          <div class="treeSubnodesHidden">
+            <div class="treeNode">
+              <a class="treeUnselected" href="inside_graphics.html" onclick="clickAnchor(this)">Graphics overview</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="inside_feature_layers.html" onclick="clickAnchor(this)">Feature layer overview</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="inside_renderers.html" onclick="clickAnchor(this)">Symbols and renderers</a>
+            </div>
+          </div>
+        </div>
+        <!--info window-->
+        <div class="treeNode">
+          <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+          <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+            Popups and Info Windows
+          </span>
+          <div class="treeSubnodesHidden">
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_infowindow.html" onclick="clickAnchor(this)">Info window overview</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_formatinfowindow.html" onclick="clickAnchor(this)">Format info window content</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_customize.html" onclick="clickAnchor(this)">Customize info windows</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_agspopup.html" onclick="clickAnchor(this)">Popup overview</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_popuptemplate.html" onclick="clickAnchor(this)">Format popup content</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_customizepopup.html" onclick="clickAnchor(this)">Customize popup</a>
+            </div>
+          </div>
+        </div>
+        <!--routing book-->
+        <div class="treeNode">
+          <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+          <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+            Using the RouteTask
+          </span>
+          <div class="treeSubnodesHidden">
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_route_overview.html" onclick="clickAnchor(this)">Routing overview</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_route_routetask.html" onclick="clickAnchor(this)">Working with the route task</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_route_stop_seq.html" onclick="clickAnchor(this)">Optimize the route</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_route_directions.html" onclick="clickAnchor(this)">Driving directions</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_route_time_windows.html" onclick="clickAnchor(this)">Routing with time windows</a>
+            </div>
+          </div>
+        </div>
+        <!--end routing book-->
+        <!--geoprocessing book-->
+        <div class="treeNode">
+          <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+          <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+            Using the Geoprocessor
+          </span>
+          <div class="treeSubnodesHidden">
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_gp_overview.html" onclick="clickAnchor(this)">Geoprocessing overview</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_gp_creating.html" onclick="clickAnchor(this)">Creating the geoprocessor</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_gp_parameters.html" onclick="clickAnchor(this)">Geoprocessor parameters</a>
+            </div>
+            <div class="treeNode">
+              <a class="treeUnselected" href="intro_gp_running.html" onclick="clickAnchor(this)">Geoprocessing results</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end book-->
+    <!-- Mobile -->
+    <div class="treeNode">
+      <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+      <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">Mobile</span>
+      <div class="treeSubnodesHidden">
+        <div class="treeNode">
+          <a class="treeUnselected" href="mobile_dev.html" onclick="clickAnchor(this)">Getting Started Mobile Tutorial</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="mobile_viewport.html" onclick="clickAnchor(this)">Viewport Settings</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="mobile_hardware.html" onclick="clickAnchor(this)">Feature Detection and Browser Sniffing</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="mobile_orientation.html" onclick="clickAnchor(this)">Device Orientation</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="mobile_geolocation.html" onclick="clickAnchor(this)">Geolocation</a>
+        </div>
+        <!-- <div class="treeNode"> <img src="../graphics/treenodeplus.gif" class="treeLinkImage" onclick="expandCollapse(this.parentNode)"/> <span style="cursor: pointer;" onclick="expandCollapse(this.parentNode)">HTML5</span> <div class="treeSubnodesHidden"> <div class="treeNode"> <img src="../graphics/treenodedot.gif" class="treeNoLinkImage"> <a href="jshelp/mobile_touch.htm" class="treeUnselected" onclick="clickAnchor(this)">Touch Events</a> </div> <div class="treeNode"> <img src="../graphics/treenodedot.gif" class="treeNoLinkImage"> <a href="jshelp/mobile_geolocation.htm" class="treeUnselected" onclick="clickAnchor(this)">Geolocation</a> </div> <div class="treeNode"> <img src="../graphics/treenodedot.gif" class="treeNoLinkImage"> <a href="jshelp/mobile_offline.htm" class="treeUnselected" onclick="clickAnchor(this)">Offline</a> </div> <div class="treeNode"> <img src="../graphics/treenodedot.gif" class="treeNoLinkImage"> <a href="jshelp/mobile_storage.htm" class="treeUnselected" onclick="clickAnchor(this)">Web Storage</a> </div> </div> </div> -->
+        <!-- <div class="treeNode"> <img src="../graphics/treenodedot.gif" class="treeNoLinkImage"> <a href="jshelp/mobile_hybrid.htm" class="treeUnselected" onclick="clickAnchor(this)">Hybrid Applications</a> </div> -->
+        <div class="treeNode">
+          <a class="treeUnselected" href="mobile_frameworks.html" onclick="clickAnchor(this)">Frameworks</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="mobile_references.html" onclick="clickAnchor(this)">References</a>
+        </div>
+      </div>
+    </div>
+    <!-- end book -->
+    <!--Recommendations-->
+    <div class="treeNode">
+      <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+      <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+        Recommendations
+      </span>
+      <div class="treeSubnodesHidden">
+        <div class="treeNode">
+          <a class="treeUnselected" href="limits_for_graphics.html" onclick="clickAnchor(this)">Determining limits for map graphics</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="best_practices_feature_layers.html" onclick="clickAnchor(this)">Feature layer best practices</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_guidelines.html" onclick="clickAnchor(this)">Coding guidelines</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_faq.html" onclick="clickAnchor(this)">Frequently asked questions</a>
+        </div>
+      </div>
+    </div>
+    <!--end book-->
+    <!-- Layout book -->
+    <div class="treeNode">
+      <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+      <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+        Application Layouts
+      </span>
+      <div class="treeSubnodesHidden">
+        <div class="treeNode">
+          <a class="treeUnselected" href="inside_dojoLayouts.html" onclick="clickAnchor(this)">Dojo layouts</a>
+        </div>
+      </div>
+    </div>
+    <!--End layout book -->
+    <!--Working with ArcGIS Server Services-->
+    <div class="treeNode">
+      <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+      <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+        ArcGIS Server Services
+      </span>
+      <div class="treeSubnodesHidden">
+        <div class="treeNode">
+          <a class="treeUnselected" href="ags_overview.html" onclick="clickAnchor(this)">Overview</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="ags_rest.html" onclick="clickAnchor(this)">Services directory and the REST API</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="ags_secureservices.html" onclick="clickAnchor(this)">Working with secure resources</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="ags_proxy.html" onclick="clickAnchor(this)">Using the proxy page</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="ref_coordsystems.html" onclick="clickAnchor(this)">Coordinate system IDs</a>
+        </div>
+      </div>
+    </div>
+    <!--end book-->
+    <!--What's new -->
+    <div class="treeNode">
+      <img class="treeLinkImage" onclick="expandCollapse(this.parentNode)" src="../graphics/treenodeplus.gif">
+      <span onclick="expandCollapse(this.parentNode)" style="cursor: pointer;">
+        What's New archive
+      </span>
+      <div class="treeSubnodesHidden">
+        <div class="treeNode">
+          <a class="treeUnselected" href="migration_30.html" onclick="clickAnchor(this)">Migrating to 3.0</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="migration_20.html" onclick="clickAnchor(this)">Migrating to 2.0</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v32.html" onclick="clickAnchor(this)">What's New in Version 3.2</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v31.html" onclick="clickAnchor(this)">What's New in Version 3.1</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v30.html" onclick="clickAnchor(this)">What's New in Version 3.0</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v28.html" onclick="clickAnchor(this)">What's New in Version 2.8</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v27.html" onclick="clickAnchor(this)">What's New in Version 2.7</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v26.html" onclick="clickAnchor(this)">What's New in Version 2.6</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v25.html" onclick="clickAnchor(this)">What's New in Version 2.5</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v24.html" onclick="clickAnchor(this)">What's New in Version 2.4</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v23.html" onclick="clickAnchor(this)">What's New in Version 2.3</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v22.html" onclick="clickAnchor(this)">What's New in Version 2.2</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v21.html" onclick="clickAnchor(this)">What's New in Version 2.1</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v20.html" onclick="clickAnchor(this)">What's New in Version 2.0</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v16.html" onclick="clickAnchor(this)">What's New in Version 1.6</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v15.html" onclick="clickAnchor(this)">What's New in Version 1.5</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v14.html" onclick="clickAnchor(this)">What's New in Version 1.4</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v13.html" onclick="clickAnchor(this)">What's New in Version 1.3</a>
+        </div>
+        <div class="treeNode">
+          <a class="treeUnselected" href="new_v12.html" onclick="clickAnchor(this)">What's New in Version 1.2</a>
+        </div>
+      </div>
+    </div>
+    <!--end book-->
+    <!-- Book template <div class="treeNode"> <img src="../graphics/treenodeplus.gif" class="treeLinkImage" onclick="expandCollapse(this.parentNode)"/> <span style="cursor: pointer;" onclick="expandCollapse(this.parentNode)">Layers</span> <div class="treeSubnodesHidden"> <div class="treeNode"><img src="../graphics/treenodedot.gif" class="treeNoLinkImage"/><a href="http://skrzat/axlguide/jsdoc/class_style.cfm?theClass=ArcGISTiledMapServiceLayer" class="treeUnselected" onclick="clickAnchor(this)">ArcGISTiledMapServiceLayer</a></div> </div> </div>-->
+    <!--end book-->
+  </div>
+</div>
+<!-- pretty printed via http://prettydiff.com/?m=beautify&html --></div> <!-- sub 2:  Conceptual help TOC -->
+  </div>
+  <div class="grid_9 contentWrapper">
+    <div id="topicPane"><div id="pageBanner">Mobile Template</div>
+
+<div id="nstext">
+
+<!--***START TEXT - DO NOT WRITE ABOVE THIS LINE***-->
+
+<p>The following tutorial uses the <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/jshelp/#inside_compactbuild" target="_blank">compact</a> build of the ArcGIS API for JavaScript to build an application that displays a basemap from <a href="http://www.arcgis.com" target="_blank">ArcGIS.com</a>.</p>
+
+<ol>
+<li><b>Target Devices and Orientations</b>
+<p>
+	<p>This template targets the iPhone and iPad in both portrait and landscape orientations.  It uses the Dojo Mobile <a href="http://dojotoolkit.org/features/mobile" target="_blank">framework</a> and includes the Dojo Heading <a href="http://dojotoolkit.org/reference-guide/1.7/dojox/mobile/Heading.html" target="_blank">widget</a>.</p>
+	<p></p>
+	<img src="../jshelp/images/iphone_p.png" />
+	<img src="../jshelp/images/iphone_l.png" /><br />
+	<img src="../jshelp/images/ipad_p.png" />
+	<img src="../jshelp/images/ipad_l.png" />
+</p>
+</li>
+
+<li><b>Meta Tags</b>
+<p>
+The meta tag properties <code>viewport</code>, <code>apple-mobile-web-app-capable</code>, and <code>apple-mobile-web-app-status-bar-style</code> contain several useful properties when building mobile friendly web applications.
+<div class="detailSample" style="border-radius:5px; margin-right:6px; padding:2px; word-wrap:break-word;">
+<pre class="prettyprint" style="border:none;">
+&lt;!doctype html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=7,IE=9"&gt;
+  &lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
+  &lt;meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"&gt;
+</pre>
+</div>
+</p>
+</li>
+
+<li><b>Reference the compact build of the ArcGIS API for JavaScript</b>
+<p>
+To begin working with the ArcGIS API for JavaScript, add the following script and style sheet tags inside the <code>&lt;head&gt;</code> element of your HTML page:
+<div class="detailSample" style="border-radius:5px; margin-right:6px; padding:2px; word-wrap:break-word;">
+<pre class="prettyprint" style="border:none;">
+  &lt;script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3compact">&lt;/script&gt;
+  &lt;link rel="stylesheet" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/esri/css/esri.css" /&gt;
+  &lt;!-- css used to customize the UI of the application --&gt;
+  &lt;link rel="stylesheet" href="css/main.css" /&gt;
+</pre>
+</div>
+</p>
+<p>
+The <code>&lt;script&gt;</code> tag uses the ArcGIS API for JavaScript from a Content Delivery Network(CDN) provided by Esri. When new versions of the API are released, upgrades are done by updating the version number in the URL to the API. The esri.css file is also required to use the API. For more info on esri.css, refer to the <a href="../jshelp/css.html">required CSS page</a>.
+</p>
+</li>
+
+
+<li><b>Initialization</b>
+<p>
+We first must declare several variables related to storing dimensions of the application and the target device being used.  We will use the values to adjust the dimensions of the map to fill the viewport in both orientations (landscape and portrait).
+<div class="detailSample" style="border-radius:5px; margin-right:6px; padding:2px; word-wrap:break-word;">
+<pre class="prettyprint" style="border:none;">
+&lt;script&gt;
+ dojo.require("esri.map");
+
+ // physical height of the browser screen
+ var clientHeight;
+ // used to hold a new MediaQueryList object representing the parsed results of the specified media query string
+ var isPortrait;
+ // determine if the device is an iPad or iPhone
+ var isiPad;
+ var isiPhone;
+ // store the height of the <a href="http://developer.apple.com/library/safari/#documentation/appleapplications/reference/safariwebcontent/usingtheviewport/usingtheviewport.html" target="_blank">status bar</a>
+ var statusBarHeight = 20;
+ // Using Dojo's geometry module, we can get the position and size of an element.  
+ // We use dojo.position to get the height (h) of Dojo's heading widget.  This value
+ // will be used to resize the map's height and fill empty space in the viewport when
+ // the device's orientation has changed
+ var headerGeom;
+ var map;
+ 
+ ...
+&lt;/script&gt;
+</pre>
+</div>
+</p>
+
+<p>
+The map <code><a href="../jsapi/map.html#resize" target="_blank">resize()</a></code> and <code><a href="../jsapi/map.html#reposition" target="_blank">reposition()</a></code> methods are useful for updating the size and position on the map. This tutorial uses Dojo's <a href="http://dojotoolkit.org/reference-guide/1.7/dojox/mobile/Heading.html" target="_blank">header</a> widget.  The header represents a navigation bar, which usually appears at the top of the viewport.  Therefore, we need to use a few additional properties to adjust the map size when the device's orientation changes.</p>
+<p>
+We can probe the <code>userAgent</code> property of the <code>navigator</code> object to detect the device type.  <code>window.matchMedia</code> can be used to perform a media query and determine the device's current orientation (landscape or portrait).  Dojo's geomtery module can be used to get the size of the device's status bar.  Please refer to Apple's <a href="http://developer.apple.com/library/safari/#documentation/appleapplications/reference/safariwebcontent/usingtheviewport/usingtheviewport.html" target="_blank">documentation</a> for exact dimension of UI components.
+</p>
+<p>
+<div class="detailSample" style="border-radius:5px; margin-right:6px; padding:2px; word-wrap:break-word;">
+<pre class="prettyprint" style="border:none;">
+ function init(has, geom) {
+   // is the device in portrait or landscape orientation
+   isPortrait = window.matchMedia("(orientation: portrait)").matches;
+   // is the user on an iPad or iPhone
+   isiPad = navigator.userAgent.match(/iPad/i);
+   isiPhone = navigator.userAgent.match(/iPhone/i);
+   // get the position of the header displacement from the top of the device's window (essentially the size of the statusBar)
+   headerGeom = geom.position(dojo.byId("header"));
+   statusBarHeight = headerGeom.h/2;
+   // get the viewport size
+   clientHeight = document.body.clientHeight;
+   // initialize the map
+   initMap();
+ }
+</pre>
+</div>
+</p>
+</li>
+
+
+<li><b>Initialize the map</b>
+<p>
+The <code>map</code> is created the same way regardless of the platform being targeted.
+</p>
+<p>
+<div class="detailSample" style="border-radius:5px; margin-right:6px; padding:2px; word-wrap:break-word;">
+<pre class="prettyprint" style="border:none;">
+ function initMap() {
+   // onorientationchange doesn't always fire in a timely manner in Android so check for both orientationchange and resize
+   var supportsOrientationChange = "onorientationchange" in window, orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+   window.addEventListener(orientationEvent, function() {
+     orientationChanged();
+   }, false);
+
+   var initExtent = new esri.geometry.Extent({
+     "xmin": -13763480.95,
+     "ymin": 3676831.10,
+     "xmax": -12662787.74,
+     "ymax": 4410626.57,
+     "spatialReference": {
+       "wkid": 102100
+     }
+   });
+   map = new esri.Map("map", {
+     wrapAround180: true,
+     extent: initExtent,
+     slider: false
+   });
+   dojo.connect(map, "onLoad", mapLoadHandler);
+   var tiledMapServiceLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer");
+   map.addLayer(tiledMapServiceLayer);
+ }
+</pre>
+</div>
+</p>
+</li>
+
+<li><b>Determining device orientation</b>
+<p>
+After the map loads, adjust the map's height to fill the empty space created by the device's status bar. For each device the values will be different.
+</p>
+<div class="detailSample" style="border-radius:5px; margin-right:6px; padding:2px; word-wrap:break-word;">
+<pre class="prettyprint" style="border:none;">
+ function mapLoadHandler(map) {
+   // check orientation
+   if (isiPhone) {
+     // set the map's height to the height of the viewport (viewable area) plus the status bar height
+     dojo.byId("map").style.height = (clientHeight + statusBarHeight) + "px";
+   }
+   if (isiPad != null) {
+     addjustMapHeight();
+   }
+   map.resize();
+   map.reposition();
+ }
+ 
+ function addjustMapHeight() {
+   dojo.byId("map").style.height = (window.innerHeight - headerGeom.h) + "px";
+ }
+</pre>
+</div>
+</li>
+
+<li><b>Handling changes in device orientation</b>
+<p>
+<code>orientationChanged()</code> handles the device orientation changes.  It resizes the map depending on the device type and orientation, and hides the address bar when in portait mode.
+</p>
+<div class="detailSample" style="border-radius:5px; margin-right:6px; padding:2px; word-wrap:break-word;">
+<pre class="prettyprint" style="border:none;">
+ function orientationChanged() {
+   hideAddressBar();
+   if (isiPhone != null) {
+     // iPhone
+     if (isPortrait) {
+       // portrait ----> landscape mode
+       addjustMapHeight();
+       isPortrait = false;
+     } else {
+       // landscape ----> portrait mode
+       dojo.byId("map").style.height = (window.innerHeight + statusBarHeight) + "px";
+       isPortrait = true;
+     }
+   } else if (isiPad != null) {
+     // iPad
+     addjustMapHeight();
+   }
+   if (map) {
+     map.resize();
+     map.reposition();
+   }
+ }
+
+ /**
+  * Screen real estate is precious on mobile devices.
+  * In order to reclaim some screen space, the address bar at the top of browsers can be hidden.  
+  * JavaScript can be used to automatically scroll the page.
+  */
+ function hideAddressBar() {
+   // set a timeout
+   setTimeout(function () {
+     // hide the address bar!
+     window.scrollTo(0, 1);
+   }, 0);
+ }		
+</pre>
+</div>
+
+
+</ol>
+
+<p>
+You can view this application on your iPhone or iPad <a href="../samples/mobile_template/index.html" target="_blank">here</a>.
+</p>
+<p>
+The source code for this sample can be found <a href="../samples/mobile_template/mobile_template.zip" target="_blank">here</a>.
+</p>
+
+</div>
+
+
+<!--***END TEXT - DO NOT WRITE BELOW THIS LINE***-->
+</div>
+<div id="wh_footer" class="footnote" align="center" >
+   Please visit the <a href="http://support.esri.com/en/feedback" target="_blank">Feedback</a> page to comment or give suggestions.<br>
+   Copyright &copy; Environmental Systems Research Institute, Inc.
+</div>
+</div> <!-- sub 3:  main content for a page -->
+  </div>
+</div> <!-- end main content -->
+
+<!-- TOC script -->
+<script src="../scripts/tree.js"></script>
+
+<script src="../prettify/prettify.js"></script>
+<script>
+  var dojoConfig = {
+    packages: [{
+      "name": "js",
+      "location": location.pathname.replace(/\/[^/]+$/, "/") + "../scripts"
+    }]
+  };
+</script>
+<script src="//serverapi.arcgisonline.com/jsapi/arcgis/3.3compact/"></script>
+<script src="../scripts/esri-main-concepts.js"></script>
+ <!-- sub 4:  add script to redirect old hash based URLs to static pages -->
+</body>
+</html>

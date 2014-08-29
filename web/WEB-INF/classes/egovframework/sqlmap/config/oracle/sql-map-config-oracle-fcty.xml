@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig> 
+	<sqlMap resource="egovframework/sqlmap/estam/app/fcty/ehqkScnImg/EhqkScnImg_SQL.xml" />
+	<sqlMap resource="egovframework/sqlmap/estam/app/fcty/fctyImg/FctyImg_SQL.xml" />
+	<sqlMap resource="egovframework/sqlmap/estam/app/fcty/fctyMgr/FctyMgr_SQL.xml" />
+	<sqlMap resource="egovframework/sqlmap/estam/app/fcty/rcc/Rcc_SQL.xml" />
+	<sqlMap resource="egovframework/sqlmap/estam/app/fcty/fctyAddInfo/FctyAddInfo_SQL.xml"/>
+	<sqlMap resource="egovframework/sqlmap/estam/app/fcty/fctyMgrUsr/FctyMgrUsr_SQL.xml"/>
+    <sqlMap resource="egovframework/sqlmap/estam/app/fcty/ehqkScn/EhqkScn_SQL.xml" />
+    <sqlMap resource="egovframework/sqlmap/estam/app/fcty/fctyStatSens/FctyStatSens_SQL.xml" />
+</sqlMapConfig>
+ 

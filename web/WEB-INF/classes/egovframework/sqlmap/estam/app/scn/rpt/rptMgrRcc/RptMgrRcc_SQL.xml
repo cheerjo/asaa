@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptMgrRcc">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptMgrRccSerarchVO" type="estam.app.scn.rpt.service.RptMgrRccDefaultVO"/>
+	
+	<resultMap id="rptMgrRcc" class="estam.app.scn.rpt.service.RptMgrRccVO">
+		<result property="rccId" column="RCC_ID" columnIndex="1"/>
+		<result property="iptDt" column="IPT_DT" columnIndex="2"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="3"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="4"/>
+		<result property="rccCmpy" column="RCC_CMPY" columnIndex="5"/>
+		<result property="rccMdl" column="RCC_MDL" columnIndex="6"/>
+		<result property="rccSrlNo" column="RCC_SRL_NO" columnIndex="7"/>
+		<result property="rccWrry" column="RCC_WRRY" columnIndex="8"/>
+		<result property="rccWfmt" column="RCC_WFMT" columnIndex="9"/>
+		<result property="rccPotl" column="RCC_POTL" columnIndex="10"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="11"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="12"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="13"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="14"/>
+	</resultMap>
+	
+	<insert id="rptMgrRccDAO.insertRptMgrRcc_S">
+		<![CDATA[
+			INSERT INTO RPT_MGR_RCC 
+				( RCC_ID
+				  , IPT_DT
+				  , CON_DA_GBCD
+				  , FCTY_CD
+				  , RCC_CMPY
+				  , RCC_MDL
+				  , RCC_SRL_NO
+				  , RCC_WRRY
+				  , RCC_WFMT
+				  , RCC_POTL
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #rccId#
+				  , #iptDt#
+				  , #conDaGbcd#
+				  , #fctyCd#
+				  , #rccCmpy#
+				  , #rccMdl#
+				  , #rccSrlNo#
+				  , #rccWrry#
+				  , #rccWfmt#
+				  , #rccPotl#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptMgrRccDAO.updateRptMgrRcc_S">
+		<![CDATA[
+			UPDATE RPT_MGR_RCC
+			SET RCC_ID=#rccId#
+				, IPT_DT=#iptDt#
+				, CON_DA_GBCD=#conDaGbcd#
+				, FCTY_CD=#fctyCd#
+				, RCC_CMPY=#rccCmpy#
+				, RCC_MDL=#rccMdl#
+				, RCC_SRL_NO=#rccSrlNo#
+				, RCC_WRRY=#rccWrry#
+				, RCC_WFMT=#rccWfmt#
+				, RCC_POTL=#rccPotl#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE RCC_ID=#rccId#
+								AND IPT_DT=#iptDt#
+				]]>
+	</update>
+	
+	<delete id="rptMgrRccDAO.deleteRptMgrRcc_S">
+		<![CDATA[
+			DELETE FROM RPT_MGR_RCC 
+						WHERE RCC_ID=#rccId#
+								AND IPT_DT=#iptDt#
+				]]>
+	</delete>
+	
+	<select id="rptMgrRccDAO.selectRptMgrRcc_S" resultMap="rptMgrRcc">
+		<![CDATA[
+			SELECT
+				RCC_ID
+				, IPT_DT
+				, CON_DA_GBCD
+				, FCTY_CD
+				, RCC_CMPY
+				, RCC_MDL
+				, RCC_SRL_NO
+				, RCC_WRRY
+				, RCC_WFMT
+				, RCC_POTL
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_MGR_RCC
+						WHERE RCC_ID=#rccId#
+								AND IPT_DT=#iptDt#
+				]]>
+	</select>
+	
+	<select id="rptMgrRccDAO.selectRptMgrRccList_D" parameterClass="rptMgrRccSerarchVO" resultClass="egovMap">
+  		<![CDATA[
+  			SELECT
+								RCC_ID
+								, IPT_DT
+								, CON_DA_GBCD
+								, FCTY_CD
+								, RCC_CMPY
+								, RCC_MDL
+								, RCC_SRL_NO
+								, RCC_WRRY
+								, RCC_WFMT
+								, RCC_POTL
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_MGR_RCC
+				WHERE 1=1
+				  AND IPT_DT = #iptDt#
+			      AND FCTY_CD=#fctyCd#
+			      AND CON_DA_GBCD=#conDaGbcd# 
+			      ORDER BY RCC_ID ASC
+	 
+	]]>
+	</select>	
+	<select id="rptMgrRccDAO.selectRptMgrRccListTotCnt_S" parameterClass="rptMgrRccSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_MGR_RCC
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				RCC_ID = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				IPT_DT LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

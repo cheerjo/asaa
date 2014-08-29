@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptFrstRcc">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptFrstRccSerarchVO" type="estam.app.scn.rpt.service.RptFrstRccDefaultVO"/>
+	
+	<resultMap id="rptFrstRcc" class="estam.app.scn.rpt.service.RptFrstRccVO">
+		<result property="iptDt" column="IPT_DT" columnIndex="1"/>
+		<result property="ehqkRccId" column="EHQK_RCC_ID" columnIndex="2"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="3"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="4"/>
+		<result property="rccQst11yn" column="RCC_QST1_1YN" columnIndex="5"/>
+		<result property="rccQst12yn" column="RCC_QST1_2YN" columnIndex="6"/>
+		<result property="rccQst21yn" column="RCC_QST2_1YN" columnIndex="7"/>
+		<result property="rccQst22yn" column="RCC_QST2_2YN" columnIndex="8"/>
+		<result property="rccQst31yn" column="RCC_QST3_1YN" columnIndex="9"/>
+		<result property="rccQst32yn" column="RCC_QST3_2YN" columnIndex="10"/>
+		<result property="rccQst41yn" column="RCC_QST4_1YN" columnIndex="11"/>
+		<result property="rccQst42yn" column="RCC_QST4_2YN" columnIndex="12"/>
+		<result property="rccQst43yn" column="RCC_QST4_3YN" columnIndex="13"/>
+		<result property="rccQst51yn" column="RCC_QST5_1YN" columnIndex="14"/>
+		<result property="rccQst52yn" column="RCC_QST5_2YN" columnIndex="15"/>
+		<result property="rccQst53yn" column="RCC_QST5_3YN" columnIndex="16"/>
+		<result property="rccQst61yn" column="RCC_QST6_1YN" columnIndex="17"/>
+		<result property="rccQst62yn" column="RCC_QST6_2YN" columnIndex="18"/>
+		<result property="rccQst7Yn" column="RCC_QST7_YN" columnIndex="19"/>
+		<result property="rccQst8Yn" column="RCC_QST8_YN" columnIndex="20"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="21"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="22"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="23"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="24"/>
+	</resultMap>
+	
+	<insert id="rptFrstRccDAO.insertRptFrstRcc_S">
+		<![CDATA[
+			INSERT INTO RPT_FRST_RCC 
+				( IPT_DT
+				  , EHQK_RCC_ID
+				  , FCTY_CD
+				  , CON_DA_GBCD
+				  , RCC_QST1_1YN
+				  , RCC_QST1_2YN
+				  , RCC_QST2_1YN
+				  , RCC_QST2_2YN
+				  , RCC_QST3_1YN
+				  , RCC_QST3_2YN
+				  , RCC_QST4_1YN
+				  , RCC_QST4_2YN
+				  , RCC_QST4_3YN
+				  , RCC_QST5_1YN
+				  , RCC_QST5_2YN
+				  , RCC_QST5_3YN
+				  , RCC_QST6_1YN
+				  , RCC_QST6_2YN
+				  , RCC_QST7_YN
+				  , RCC_QST8_YN
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #iptDt#
+				  , #ehqkRccId#
+				  , #fctyCd#
+				  , #conDaGbcd#
+				  , #rccQst11yn#
+				  , #rccQst12yn#
+				  , #rccQst21yn#
+				  , #rccQst22yn#
+				  , #rccQst31yn#
+				  , #rccQst32yn#
+				  , #rccQst41yn#
+				  , #rccQst42yn#
+				  , #rccQst43yn#
+				  , #rccQst51yn#
+				  , #rccQst52yn#
+				  , #rccQst53yn#
+				  , #rccQst61yn#
+				  , #rccQst62yn#
+				  , #rccQst7Yn#
+				  , #rccQst8Yn#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptFrstRccDAO.updateRptFrstRcc_S">
+		<![CDATA[
+			UPDATE RPT_FRST_RCC
+			SET IPT_DT=#iptDt#
+				, EHQK_RCC_ID=#ehqkRccId#
+				, FCTY_CD=#fctyCd#
+				, CON_DA_GBCD=#conDaGbcd#
+				, RCC_QST1_1YN=#rccQst11yn#
+				, RCC_QST1_2YN=#rccQst12yn#
+				, RCC_QST2_1YN=#rccQst21yn#
+				, RCC_QST2_2YN=#rccQst22yn#
+				, RCC_QST3_1YN=#rccQst31yn#
+				, RCC_QST3_2YN=#rccQst32yn#
+				, RCC_QST4_1YN=#rccQst41yn#
+				, RCC_QST4_2YN=#rccQst42yn#
+				, RCC_QST4_3YN=#rccQst43yn#
+				, RCC_QST5_1YN=#rccQst51yn#
+				, RCC_QST5_2YN=#rccQst52yn#
+				, RCC_QST5_3YN=#rccQst53yn#
+				, RCC_QST6_1YN=#rccQst61yn#
+				, RCC_QST6_2YN=#rccQst62yn#
+				, RCC_QST7_YN=#rccQst7Yn#
+				, RCC_QST8_YN=#rccQst8Yn#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE IPT_DT=#iptDt#
+								AND EHQK_RCC_ID=#ehqkRccId#
+				]]>
+	</update>
+	
+	<delete id="rptFrstRccDAO.deleteRptFrstRcc_S">
+		<![CDATA[
+			DELETE FROM RPT_FRST_RCC 
+						WHERE IPT_DT=#iptDt#
+								AND EHQK_RCC_ID=#ehqkRccId#
+				]]>
+	</delete>
+	
+	<select id="rptFrstRccDAO.selectRptFrstRcc_S" resultMap="rptFrstRcc">
+		<![CDATA[
+			SELECT
+				IPT_DT
+				, EHQK_RCC_ID
+				, FCTY_CD
+				, CON_DA_GBCD
+				, RCC_QST1_1YN
+				, RCC_QST1_2YN
+				, RCC_QST2_1YN
+				, RCC_QST2_2YN
+				, RCC_QST3_1YN
+				, RCC_QST3_2YN
+				, RCC_QST4_1YN
+				, RCC_QST4_2YN
+				, RCC_QST4_3YN
+				, RCC_QST5_1YN
+				, RCC_QST5_2YN
+				, RCC_QST5_3YN
+				, RCC_QST6_1YN
+				, RCC_QST6_2YN
+				, RCC_QST7_YN
+				, RCC_QST8_YN
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_FRST_RCC
+						WHERE IPT_DT=#iptDt#
+								AND EHQK_RCC_ID=#ehqkRccId#
+				]]>
+	</select>
+	
+	<select id="rptFrstRccDAO.selectRptFrstRccList_D" parameterClass="rptFrstRccSerarchVO" resultClass="egovMap">
+ 
+				SELECT
+								IPT_DT
+								, EHQK_RCC_ID
+								, FCTY_CD
+								, CON_DA_GBCD
+								, RCC_QST1_1YN
+								, RCC_QST1_2YN
+								, RCC_QST2_1YN
+								, RCC_QST2_2YN
+								, RCC_QST3_1YN
+								, RCC_QST3_2YN
+								, RCC_QST4_1YN
+								, RCC_QST4_2YN
+								, RCC_QST4_3YN
+								, RCC_QST5_1YN
+								, RCC_QST5_2YN
+								, RCC_QST5_3YN
+								, RCC_QST6_1YN
+								, RCC_QST6_2YN
+								, RCC_QST7_YN
+								, RCC_QST8_YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_FRST_RCC
+					 	WHERE  IPT_DT= (SELECT MAX(IPT_DT) 
+								         FROM CON_OBS_META
+								        WHERE 1=1 
+									      AND CON_DA_GBCD=#conDaGbcd#
+									      AND GVMT_CD=#gvmtCd#
+									      AND FCTY_CD = #fctyCd#)
+				      AND CON_DA_GBCD=#conDaGbcd#
+				      AND GVMT_CD=#gvmtCd#
+					  AND FCTY_CD=#fctyCd#
+					ORDER BY 
+						IPT_DT DESC
+							, EHQK_RCC_ID DESC 
+	 
+	</select>	
+	<select id="rptFrstRccDAO.selectRptFrstRccListTotCnt_S" parameterClass="rptFrstRccSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_FRST_RCC
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				IPT_DT = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				EHQK_RCC_ID LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="//js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="//js.arcgis.com/3.7/js/esri/css/esri.css">
+    <style>
+      html, body, #map {
+        height: 100%; width: 100%; margin: 0; padding: 0; 
+      }
+      #classList {
+        word-break: break-all;
+        padding: 1em;
+      }
+    </style>
+
+    <script src="//js.arcgis.com/3.7/"></script>
+    <script>
+      var map;
+    
+      require([
+        "esri/request",
+        "dojo/_base/array",
+        "dojo/dom",
+        "esri/IdentityManager",
+        "dojo/domReady!"
+      ], function(
+        esriRequest, arrayUtils, dom
+      ) {
+        var url = "http://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/JSAPI/FeatureServer/main/query";
+        var req = esriRequest({
+          url: url,
+          content: {
+            f: "json",
+            where: "1=1",
+            returnGeometry: false,
+            outFields: "*"
+          },
+          callbackParamName: "callback"
+        })
+        req.then(
+          function(results) {
+            console.log("results", results);
+            var classes = results.features;
+            // if all class are to be included, can use arrayUtils.map
+            //
+            // var classArray = arrayUtils.map(classes, function(c) {
+            //   return "\"" + c.attributes.package + "." + c.attributes.class_name + "\"";
+            // });
+            // 
+            // since some need to be left out, use forEach and ignore stuff
+            // var ignore = ["esri.dijit.analysis", "LabelClass", "esri.arcgis.utils"];
+            var ignore = ["LabelClass", "esri.arcgis.utils", "InfographicsOptions.Item"];
+            var classArray = [];
+            arrayUtils.forEach(classes, function(c) {
+              var pa = c.attributes.package;
+              var cl = c.attributes.class_name;
+              if ( arrayUtils.indexOf(ignore, cl) == -1 && arrayUtils.indexOf(ignore, pa) == -1 ) {
+                classArray.push("\"" + pa + "." + cl + "\"");
+              } else {
+                console.log("ignoring", pa, cl);
+              }
+            });
+
+            // put class list in a format that can be copied into a .js file
+            // ideally, this would be done with python instead of JS + copy/paste
+            dom.byId("classList").innerHTML = "var classList = [" + classArray.join(",") + "];";
+          },
+          function(error) {
+            console.log("error", error);
+          }
+        );
+        console.log("sent request...");
+      });
+    </script>
+  </head>
+  <body class="claro">
+    <div id="classList"></div>
+  </body>
+</html>

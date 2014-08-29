@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>PopupCmmCode</xh:title>
+		<xh:link href="../../style/sample/style.css" media="all" rel="stylesheet" type="text/css"/>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="cyberlhs" name="author"/>
+		<xh:meta content="13. 8. 7 오후 9:44" name="date"/>
+		<xh:meta content="2.0.0.201304021017" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xf:jsoninstance id="instance">
+  			<![CDATA[{root : {EXRIAERRMSG : ""}}]]>
+</xf:jsoninstance>
+			<xf:instance id="requestData">
+				<root>
+					<reqSymCommCdVO>
+						<commCd/>
+						<commNm/>
+						<commInfo/>
+						<inptUsrId/>
+						<updtDt/>
+						<updtUsrId/>
+						<inptDt/>
+					</reqSymCommCdVO>
+					<searchVO>
+						<searchCondition/>
+						<pageIndex/>
+						<lastIndex/>
+						<firstIndex/>
+						<searchUseYn/>
+						<pageSize/>
+						<searchKeyword/>
+						<recordCountPerPage/>
+						<pageUnit/>
+						<searchCdNm/>
+					</searchVO>
+				</root>
+			</xf:instance>
+			<xf:instance id="responseData">
+				<root>
+					<resSymCommCdVO>
+						<row>
+							<commCd/>
+							<commNm/>
+							<commInfo/>
+							<inptUsrId/>
+							<updtDt/>
+							<updtUsrId/>
+							<inptDt/>
+						</row>
+					</resSymCommCdVO>
+					<resSymCommCdList>
+						<row>
+							<commCd/>
+							<commNm/>
+							<inptUsrId/>
+							<commInfo/>
+							<updtDt/>
+							<updtUsrId/>
+							<inptDt/>
+						</row>
+					</resSymCommCdList>
+				</root>
+			</xf:instance>
+			<xf:instance id="resMessage">
+				<root>
+					<message/>
+				</root>
+			</xf:instance>
+			<xf:instance id="reqMethod">
+				<root>
+					<method/>
+				</root>
+			</xf:instance>
+		</xf:model>
+		<xh:script src="../../js/stdCmn.js"/>
+		<xh:script src="../../js/stdUtil.js"/>
+		<xh:script page="PopupCmmCode" src="PopupCmmCode.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:550;width:500;left:0;top:0;">
+		<ev:listener event="onload" handler="page.onLoad" hasReturn="false"/>
+		<xr:label id="lblSubTitle03" style="height:36;text-align:left;width:481;font-size:12;left:10;border-width:0;top:10;"
+				z-index="0" tabindex="0" class="lbl_subtitle" outerClass="lbl_subtitle_outer">
+			<xr:text>코드정보</xr:text>
+		</xr:label>
+		<xr:group id="grp3" style="height:465;width:481;left:10;top:46;" z-index="1" tabindex="0">
+			<xr:label id="lblSerchArea1" style="height:35;width:461;left:10;top:10;" z-index="0"
+					tabindex="0" outerClass="lbl_srcharea_outer">
+				<xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblOrgnClsfCd_copy_1" style="height:20;width:81;left:20;border-width:0;top:18;"
+					z-index="1" tabindex="0" class="lbl_srch" outerClass="lbl_srch_outer">
+				<xr:text>코드명</xr:text>
+			</xr:label>
+			<xr:input id="ipb4" style="height:20;width:241;left:110;top:18;" z-index="2" class="ipt_srch"
+					outerClass="ipt_srch_outer" type="text"/>
+			<xr:button id="btnSrch" style="height:24;width:77;left:360;top:16;" z-index="3"
+					tabindex="0" class="btn_srch" outerClass="btn_srch_outer">
+				<xr:text>조회</xr:text>
+				<ev:listener event="onclick" handler="page.onClick_btnSrch" hasReturn="false"/>
+			</xr:button>
+			<xr:gridex id="grxSymCommCd" style="height:406;width:461;left:10;top:45;" z-index="4"
+					tabindex="0">
+				<xr:cfg editing="2" sorted="false" sorting="false"/>
+				<xr:gridheader>
+					<xr:cols>
+						<xr:colsrow style="height:20;">
+							<xr:headcol id="ghcSeq" style="text-align:center;width:50;" class="ghc">
+								<xr:text>No</xr:text>
+							</xr:headcol>
+							<xr:headcol id="ghcCheck" style="text-align:center;width:37;" colspan="1" rowspan="1"
+								  class="ghc">
+								<xr:text>선택</xr:text>
+							</xr:headcol>
+							<xr:headcol id="ghcCommCd" style="text-align:center;width:109;" colspan="1"
+								  rowspan="1" class="ghc">
+								<xr:text>코드</xr:text>
+							</xr:headcol>
+							<xr:headcol id="ghcCommNm" style="text-align:center;width:244;" colspan="1"
+								  rowspan="1" class="ghc">
+								<xr:text>코드명</xr:text>
+							</xr:headcol>
+						</xr:colsrow>
+					</xr:cols>
+				</xr:gridheader>
+				<xr:gridbody>
+					<xr:cols>
+						<xr:colsrow style="height:20;">
+							<xr:bodycol id="gbcSeq" style="width:50;" colid="ghcSeq" type="Text"/>
+							<xr:bodycol id="gbcCheck" style="text-align:center;width:37;" datasetcol=""
+								  datasetid="dstSymCommCdList" colid="ghcCheck" type="Text"/>
+							<xr:bodycol id="gbcCommCd" style="width:109;" datasetcol="" datasetid="dstSymCommCdList"
+								  colid="ghcCommCd" type="Text"/>
+							<xr:bodycol id="gbcCommNm" style="width:244;" datasetcol="" datasetid="dstSymCommCdList"
+								  colid="ghcCommNm" type="Text"/>
+						</xr:colsrow>
+					</xr:cols>
+					<xr:rows/>
+				</xr:gridbody>
+				<xr:gridtoolbar/>
+				<xr:panel/>
+			</xr:gridex>
+		</xr:group>
+		<xr:button id="btnClose" style="height:20;width:54;left:250;top:518;" z-index="2"
+				tabindex="0" class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>닫기</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnClose" hasReturn="false"/>
+		</xr:button>
+		<xr:button id="btnConform" style="height:20;width:54;left:170;top:518;" z-index="3"
+				tabindex="0" class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>확인</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnConform" hasReturn="false"/>
+		</xr:button>
+	</xh:body>
+</xh:html>

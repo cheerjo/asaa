@@ -1,0 +1,207 @@
+<xf:model xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ht="http://www.w3.org/TR/html5" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://www.exria.org/exria" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:wf="http://www.w3.org/TR/web-forms-2" defaultinstance="instance" xmlns:xl="http://www.w3.org/1999/xlink"><xr:submission id="smsSymCommCdList" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symCommCd/SymCommCdListEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymCommCdVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:request-ref ref="/root/searchVO" instanceid="requestData"></xr:request-ref>
+<xr:response-ref ref="/root/resSymCommCdList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/paginationInfo" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymCommCdSave" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symCommCd/saveSymCommCdEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymCommCdVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/resSymCommCdList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/paginationInfo" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymCommCdDel" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symCommCd/deleteSymCommCdEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymCommCdVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/resSymCommCdList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/paginationInfo" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymCommCdRead" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symCommCd/selectSymCommCdEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymCommCdVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/resSymCommCdVO" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/paginationInfo" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:dataset id="dstSymCommCdList" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[/root/resSymCommCdList/row]]></xr:query>
+<xr:autocrud><xr:table prefix="T@83" name="dstSymCommCdListTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns><xr:column sourceName="commCd" name="commCd"></xr:column>
+<xr:column sourceName="commNm" name="commNm"></xr:column>
+<xr:column sourceName="commDtlCd" name="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm" name="commDtlNm"></xr:column>
+<xr:column sourceName="commInfo" name="commInfo"></xr:column>
+<xr:column sourceName="useYn" name="useYn"></xr:column>
+<xr:column sourceName="inptUsrId" name="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd" name="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt" name="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId" name="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt" name="inptDt"></xr:column>
+</xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns><xr:column sourceName="commCd"></xr:column>
+<xr:column sourceName="commNm"></xr:column>
+<xr:column sourceName="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm"></xr:column>
+<xr:column sourceName="commInfo"></xr:column>
+<xr:column sourceName="useYn"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xr:dataset id="dstReqSymCommCdVO" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>requestData</xr:connectioninfo>
+<xr:query><![CDATA[/root/reqSymCommCdVO]]></xr:query>
+<xr:autocrud><xr:table prefix="T@18" name="dstReqSymCommCdVOTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns><xr:column sourceName="commCd" name="commCd"></xr:column>
+<xr:column sourceName="commNm" name="commNm"></xr:column>
+<xr:column sourceName="commDtlCd" name="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm" name="commDtlNm"></xr:column>
+<xr:column sourceName="commInfo" name="commInfo"></xr:column>
+<xr:column sourceName="useYn" name="useYn"></xr:column>
+<xr:column sourceName="inptUsrId" name="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd" name="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt" name="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId" name="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt" name="inptDt"></xr:column>
+</xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns><xr:column sourceName="commCd"></xr:column>
+<xr:column sourceName="commNm"></xr:column>
+<xr:column sourceName="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm"></xr:column>
+<xr:column sourceName="commInfo"></xr:column>
+<xr:column sourceName="useYn"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xr:dataset id="dstResSymCommCdVO" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[/root/resSymCommCdVO/row]]></xr:query>
+<xr:autocrud><xr:table prefix="T@89" name="dstResSymCommCdVOTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns><xr:column sourceName="commCd" name="commCd"></xr:column>
+<xr:column sourceName="commNm" name="commNm"></xr:column>
+<xr:column sourceName="commDtlCd" name="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm" name="commDtlNm"></xr:column>
+<xr:column sourceName="commInfo" name="commInfo"></xr:column>
+<xr:column sourceName="useYn" name="useYn"></xr:column>
+<xr:column sourceName="inptUsrId" name="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd" name="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt" name="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId" name="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt" name="inptDt"></xr:column>
+</xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns><xr:column sourceName="commCd"></xr:column>
+<xr:column sourceName="commNm"></xr:column>
+<xr:column sourceName="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm"></xr:column>
+<xr:column sourceName="commInfo"></xr:column>
+<xr:column sourceName="useYn"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xf:jsoninstance id="instance"><![CDATA[{root : {EXRIAERRMSG : ""}}]]></xf:jsoninstance>
+<xf:jsoninstance id="requestData"><![CDATA[{
+					root : {
+						reqSymCommCdVO : {
+							commCd : "",
+							commNm : "",
+							commDtlCd : "",
+							commDtlNm : "",
+							commInfo : "",
+							useYn : "",
+							inptUsrId : "",
+							commDtlOrd : "",
+							updtDt : "",
+							updtUsrId : "",
+							inptDt : ""
+						},
+						searchVO : {
+							searchCondition : "",
+							pageIndex : "",
+							lastIndex : "",
+							firstIndex : "",
+							searchUseYn : "",
+							pageSize : "",
+							searchKeyword : "",
+							recordCountPerPage : "",
+							pageUnit : "",
+							searchGubun : "",
+							srhComName : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="responseData"><![CDATA[{
+					root : {
+						resSymCommCdVO : {
+							row : [
+								{
+									commCd : "",
+									commNm : "",
+									commDtlCd : "",
+									commDtlNm : "",
+									commInfo : "",
+									useYn : "",
+									inptUsrId : "",
+									commDtlOrd : "",
+									updtDt : "",
+									updtUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						resSymCommCdList : {
+							row : [
+								{
+									commCd : "",
+									commNm : "",
+									commDtlCd : "",
+									commDtlNm : "",
+									commInfo : "",
+									useYn : "",
+									inptUsrId : "",
+									commDtlOrd : "",
+									updtDt : "",
+									updtUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						paginationInfo : {
+							row : [
+								{
+									totalRecordCount : "",
+									pageSize : "",
+									recordCountPerPage : "",
+									currentPageNo : ""
+								}
+							]
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="resMessage"><![CDATA[{
+					root : {
+						message : {
+							procMsg : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="reqMethod"><![CDATA[{
+					root : {
+						method : ""
+					}
+				}]]></xf:jsoninstance>
+</xf:model>

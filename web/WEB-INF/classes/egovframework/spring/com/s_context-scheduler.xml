@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+ 
+<!-- 실제 실행 될 태스크 --> 
+<bean id="runTask" class="estam.app.com.rev.EvntRevAjaxController.RunTask" /> 
+
+<!-- 실제스케줄링될 태스크(세터주입될)와 JOB을정의한 클래스등록 --> 
+<bean name="mmaJob" class="org.springframework.scheduling.quartz.JobDetailBean"> 
+	<!-- JOB을 정의 --> 
+	<property name="jobClass" value="estam.app.com.rev.EvntRevAjaxController.QuartzJob" /> 
+	<!-- 실제스케줄링될 JOB--> 
+	<property name="jobDataAsMap"> 
+	<map> 
+		<entry key="runTask" value-ref="runTask" /> 
+	</map> 
+	</property> 
+</bean> 
+	
+<!-- 
+위에서 정의한 JobDetailBean을 이용하여 스케줄링되는 JOB을 등록하는 방법이외,JOB을 등록하는 다른 방법 
+MethodInvokingJobDetailFactoryBean을 이용하는 간단한 방법, 스케줄링될 클래스와 메소드 정의 
+
+<bean id="mmaJob" 
+class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+<property name="targetObject" ref="runTask" /> 
+<property name="targetMethod" value="mywork" /> 
+</bean> 
+--> 
+
+<!-- Simple Trigger, run every 1 seconds --> 
+<bean id="onjTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean"> 
+	<!-- 실행할 JOB --> 
+	<property name="jobDetail" ref="mmaJob" /> 
+	<!-- 1초에 한번씩 --> 
+	<property name="repeatInterval" value="1000" /> 
+	<!-- 최초 시작시 1초후에 start --> 
+	<property name="startDelay" value="1000" />  
+</bean> 
+
+<!-- 유닉스의 cron tab처럼 설정, 1초마다 --> 
+<bean id="cronTrigger"  class="org.springframework.scheduling.quartz.CronTriggerBean">  
+	<property name="jobDetail" ref="mmaJob" /> 
+	<property name="cronExpression" value="0/1 * * * * ?" />  
+</bean> 
+
+<!-- job 과 trigger 함께 기술 --> 
+<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> 
+	<property name="jobDetails"> 
+		<list> 
+			<ref bean="mmaJob" /> 
+		</list> 
+	</property> 
+
+	<property name="triggers"> 
+		<list> 
+			<ref bean="cronTrigger" /> <!-- cronTrigger로 바꿔보라 --> 
+		</list> 
+	</property> 
+</bean>  
+	
+</beans>

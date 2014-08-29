@@ -1,0 +1,204 @@
+<xf:model xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ht="http://www.w3.org/TR/html5" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://www.exria.org/exria" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:wf="http://www.w3.org/TR/web-forms-2" defaultinstance="instance" xmlns:xl="http://www.w3.org/1999/xlink"><xr:submission id="smsSysUserList" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symUser/SymUserListEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/searchVO" instanceid="requestData"></xr:request-ref>
+<xr:response-ref ref="/root/resSymUserList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/privGrpList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/grxPrivGrpList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/paginationInfo" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSelectComboList" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symUser/selectComboListEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:response-ref ref="/root/privGrpList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/grxPrivGrpList" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSysUserSave" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symUser/saveSymUserEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymUserVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/searchVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/resSymUserList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/privGrpList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/grxPrivGrpList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/paginationInfo" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSysUserDel" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symUser/deleteSymUserEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymUserVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSysUserRead" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symUser/selectSymUserEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymUserVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/resSymUserVO" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:dataset id="dstResSymUserList" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[/root/resSymUserList/row]]></xr:query>
+<xr:autocrud><xr:table prefix="T@94" name="dstResSymUserListTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns><xr:column sourceName="userId" name="userId"></xr:column>
+<xr:column sourceName="privGrpNo" name="privGrpNo"></xr:column>
+<xr:column sourceName="userNm" name="userNm"></xr:column>
+<xr:column sourceName="orgYn" name="orgYn"></xr:column>
+<xr:column sourceName="inptUsrId" name="inptUsrId"></xr:column>
+<xr:column sourceName="telNo" name="telNo"></xr:column>
+<xr:column sourceName="usrEmail" name="usrEmail"></xr:column>
+<xr:column sourceName="inptDt" name="inptDt"></xr:column>
+<xr:column sourceName="delDt" name="delDt"></xr:column>
+<xr:column sourceName="useObjt" name="useObjt"></xr:column>
+<xr:column sourceName="updtDt" name="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId" name="updtUsrId"></xr:column>
+<xr:column sourceName="orgNm" name="orgNm"></xr:column>
+<xr:column sourceName="usrPswd" name="usrPswd"></xr:column>
+<xr:column sourceName="mblNo" name="mblNo"></xr:column>
+</xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns><xr:column sourceName="userId"></xr:column>
+<xr:column sourceName="privGrpNo"></xr:column>
+<xr:column sourceName="userNm"></xr:column>
+<xr:column sourceName="orgYn"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="telNo"></xr:column>
+<xr:column sourceName="usrEmail"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+<xr:column sourceName="delDt"></xr:column>
+<xr:column sourceName="useObjt"></xr:column>
+<xr:column sourceName="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId"></xr:column>
+<xr:column sourceName="orgNm"></xr:column>
+<xr:column sourceName="usrPswd"></xr:column>
+<xr:column sourceName="mblNo"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xr:dataset id="dstResSymUserVo" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[/root/resSymUserVO/row]]></xr:query>
+<xr:autocrud></xr:autocrud>
+<xr:columns><xr:column sourceName="userId"></xr:column>
+<xr:column sourceName="privGrpNo"></xr:column>
+<xr:column sourceName="userNm"></xr:column>
+<xr:column sourceName="orgYn"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="telNo"></xr:column>
+<xr:column sourceName="usrEmail"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+<xr:column sourceName="delDt"></xr:column>
+<xr:column sourceName="useObjt"></xr:column>
+<xr:column sourceName="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId"></xr:column>
+<xr:column sourceName="orgNm"></xr:column>
+<xr:column sourceName="usrPswd"></xr:column>
+<xr:column sourceName="mblNo"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xf:jsoninstance id="instance"><![CDATA[{root : {EXRIAERRMSG : ""}}]]></xf:jsoninstance>
+<xf:jsoninstance id="requestData"><![CDATA[{
+					root : {
+						reqSymUserVO : {
+							userId : "",
+							privGrpNo : "",
+							userNm : "",
+							orgYn : "",
+							inptUsrId : "",
+							telNo : "",
+							usrEmail : "",
+							inptDt : "",
+							delDt : "",
+							useObjt : "",
+							updtDt : "",
+							updtUsrId : "",
+							orgNm : "",
+							usrPswd : "",
+							mblNo : ""
+						},
+						searchVO : {
+							searchCondition : "",
+							pageIndex : "",
+							lastIndex : "",
+							firstIndex : "",
+							searchUseYn : "",
+							pageSize : "",
+							searchKeyword : "",
+							recordCountPerPage : "",
+							pageUnit : "",
+							searchGubun : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="responseData"><![CDATA[{
+					root : {
+						resSymUserList : {
+							row : [
+								{
+									userId : "",
+									privGrpNo : "",
+									userNm : "",
+									orgYn : "",
+									inptUsrId : "",
+									telNo : "",
+									usrEmail : "",
+									inptDt : "",
+									delDt : "",
+									useObjt : "",
+									updtDt : "",
+									updtUsrId : "",
+									orgNm : "",
+									usrPswd : "",
+									mblNo : ""
+								}
+							]
+						},
+						privGrpList : {
+							row : [
+								{
+									privGrpNo : "",
+									privGrpNm : ""
+								}
+							]
+						},
+						grxPrivGrpList : {
+							row : [
+								{
+									privGrpNo : "",
+									privGrpNm : ""
+								}
+							]
+						},
+						resSymUserVO : {
+							row : [
+								{
+									userId : "",
+									privGrpNo : "",
+									userNm : "",
+									orgYn : "",
+									inptUsrId : "",
+									telNo : "",
+									usrEmail : "",
+									inptDt : "",
+									delDt : "",
+									useObjt : "",
+									updtDt : "",
+									updtUsrId : "",
+									orgNm : "",
+									usrPswd : "",
+									mblNo : ""
+								}
+							]
+						},
+						paginationInfo : {
+							row : [
+								{
+									totalRecordCount : "",
+									pageSize : "",
+									recordCountPerPage : "",
+									currentPageNo : ""
+								}
+							]
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="resMessage"><![CDATA[{
+					root : {
+						message : {
+							procMsg : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="reqMethod"><![CDATA[{
+					root : {
+						method : ""
+					}
+				}]]></xf:jsoninstance>
+</xf:model>

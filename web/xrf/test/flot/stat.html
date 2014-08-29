@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ESTAM UI Demos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="assets/bootstrap/css/bootstrap-responsive.css"
+	rel="stylesheet">
+<link href="assets/css/prettify.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+    <script src="assets/js/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+
+
+	<div class="container">
+
+		<!-- Docs nav
+    ================================================== -->
+		<div class="row">
+			<!--
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#waveforms1"><i class="icon-chevron-right"></i> 지진 파형 1</a></li>
+          <li><a href="#waveforms2"><i class="icon-chevron-right"></i> 지진 파형 2</a></li>
+          <li><a href="#waveforms3"><i class="icon-chevron-right"></i> 지진 파형 3</a></li>
+        </ul>
+      </div>
+      <div class="span9">
+      -->
+			<div class="span10">
+
+				<section id="chart1">
+					<div class="page-header">
+						<h1>Demo1</h1>
+					</div>
+
+					<div id="stat-container"></div>
+
+					<div class="stat-table-container">
+						<table id="stat-table">
+							<tr>
+								<th>Total</th>
+							</tr>
+							<tr>
+								<th>ML ≥ 3.0</th>
+							</tr>
+							<tr>
+								<th>Felt eq.</th>
+							</tr>
+						</table>
+					</div>
+
+
+				</section>
+
+				<section id="chart2">
+					<div class="page-header">
+						<h1>Demo2</h1>
+					</div>
+
+					<div id="stat-container2"></div>
+
+
+				</section>
+
+				<section id="chart3">
+					<div class="page-header">
+						<h1>Demo3</h1>
+					</div>
+
+					<div id="stat-container3"></div>
+
+
+				</section>
+
+				<section id="chart4">
+					<div class="page-header">
+						<h1>Demo4</h1>
+					</div>
+
+					<div class="stat-container4-wrapper">
+						<div id="stat-container4"></div>
+						<div class="desc">
+							총 <span class="total"></span>회
+						</div>
+					</div>
+
+
+				</section>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!--[if IE]>
+  <script src="assets/js/FlashCanvas/bin/flashcanvas.js"></script>
+  <![endif]-->
+	<script src="assets/js/jquery-1.8.1.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/Flotr2/flotr2.min.js"></script>
+	<script src="assets/js/prettify.js"></script>
+	<script>
+		window.prettyPrint && prettyPrint();
+
+		(function($) {
+
+			/*
+			 * 3. 지진 통계
+			 */
+			// 연도별 발생추이
+			(function() {
+
+				var data = parent.page.getData();
+
+				var data1 = data.data1;
+				var data2 = data.data2;
+				var data3 = data.data3;
+				debugger;
+				var container = document.getElementById('stat-container'), graph, i, len, xTicks = [];
+
+				len = data1.length;
+
+				for (i = 0; i < len; i++) {
+					xTicks.push(data1[i][0]);
+				}
+
+				var xTicksFn = function(n) {
+					return (n + '').substring(2);
+				};
+
+				graph = Flotr.draw(container, [ {
+					data : data1
+				}, {
+					data : data2,
+					markers : {
+						show : true,
+						position : 'ct',
+						stacked : true
+					}
+				}, {
+					data : data3,
+					lines : {
+						show : true
+					},
+					bars : {
+						show : false
+					},
+					points : {
+						show : true,
+						fillColor : null
+					}
+				} ], {
+					title : '연도별 발생추이',
+					bars : {
+						show : true,
+						stacked : false,
+						barWidth : 0.6,
+						lineWidth : 1,
+						shadowSize : 0
+					},
+					grid : {
+						verticalLines : false,
+						horizontalLines : true
+					},
+					xaxis : {
+						min : xTicks[0] - 1,
+						max : xTicks[xTicks.length - 1] + 1,
+						ticks : xTicks,
+						tickFormatter : xTicksFn
+					}
+				});
+
+				var table = $('#stat-table'), trs = table.find('tr'), totalTr = trs
+						.eq(0), mlTr = trs.eq(1), feltTr = trs.eq(2), tds = '';
+
+				$(data1).each(function(i, value) {
+					tds += '<td>' + value[1] + '</td>';
+				});
+
+				mlTr.append(tds);
+
+				tds = '';
+
+				$(data2).each(function(i, value) {
+					tds += '<td>' + value[1] + '</td>';
+				});
+
+				totalTr.append(tds);
+
+				tds = '';
+
+				$(data3).each(function(i, value) {
+					tds += '<td>' + value[1] + '</td>';
+				});
+
+				feltTr.append(tds);
+
+				table.show();
+
+			}());
+
+			// 지역별 발생 추이
+			(function() {
+				var pdata = parent.page.getData1();
+				var locs = pdata.locs;
+				var data = pdata.data;
+debugger;
+				var container = document.getElementById('stat-container2'), graph, i, len, xTicks = [], yTicks = [
+						0, 10, 20, 30, 40, 50 ];
+
+				len = data.length;
+
+				for (i = 0; i < len; i++) {
+					xTicks.push(data[i][0]);
+				}
+
+				var xTicksFn = function(n) {
+					return locs[+n];
+				};
+
+				graph = Flotr.draw(container, [ {
+					data : data
+				} ], {
+					title : '지역별 발생추이',
+					bars : {
+						show : true,
+						stacked : false,
+						barWidth : 0.6,
+						lineWidth : 1,
+						shadowSize : 0
+					},
+					grid : {
+						verticalLines : false,
+						horizontalLines : true
+					},
+					xaxis : {
+						min : xTicks[0] - 1,
+						max : xTicks[xTicks.length - 1] + 1,
+						ticks : xTicks,
+						tickFormatter : xTicksFn
+					},
+					yaxis : {
+						min : yTicks[0],
+						max : yTicks[yTicks.length - 1],
+						ticks : yTicks
+					}
+				});
+
+			}());
+
+			// 도별 발생추이
+			(function() {
+			  var pdata = parent.page.getData2();
+				var locs = pdata.locs;
+
+				var data = pdata.data;
+
+				var container = document.getElementById('stat-container3'), graph, i, len, xTicks = [], yTicks = [
+						0, 10, 20, 30, 40, 50 ];
+
+				len = data.length;
+
+				for (i = 0; i < len; i++) {
+					xTicks.push(data[i][0]);
+				}
+
+				var xTicksFn = function(n) {
+					return locs[+n];
+				};
+
+				graph = Flotr.draw(container, [ {
+					data : data
+				} ], {
+					title : '도별 발생추이',
+					bars : {
+						show : true,
+						stacked : false,
+						barWidth : 0.6,
+						lineWidth : 1,
+						shadowSize : 0
+					},
+					grid : {
+						verticalLines : false,
+						horizontalLines : true
+					},
+					xaxis : {
+						min : xTicks[0] - 1,
+						max : xTicks[xTicks.length - 1] + 1,
+						ticks : xTicks,
+						tickFormatter : xTicksFn
+					},
+					yaxis : {
+						min : yTicks[0],
+						max : yTicks[yTicks.length - 1],
+						ticks : yTicks
+					}
+				});
+
+			}());
+
+			// 해역별 발생추이
+			(function() {
+			  var pdata = parent.page.getData3();
+				var locs = pdata.locs;
+
+				var data1 = [pdata.data[0]];
+			  var data2 = [pdata.data[1]];
+			  var data3 = [pdata.data[2]];
+			  var container = document.getElementById('stat-container4');
+
+
+				$('.stat-container4-wrapper').find('.total').text(
+						data1[0][1] + data2[0][1] + data3[0][1]);
+
+				var i = 0;
+
+				var labelFn = function(total, value) {
+					return '<span style="display:inline-block; margin-right:15px; padding-top:5px;">'
+							+ locs[i++] + ' ' + value + '</span>';
+				};
+
+				graph = Flotr.draw(container, [ {
+					data : data1
+				}, {
+					data : data2
+				}, {
+					data : data3
+				} ], {
+					title : '해역별 발생추이',
+					grid : {
+						verticalLines : false,
+						horizontalLines : false
+					},
+					xaxis : {
+						showLabels : false
+					},
+					yaxis : {
+						showLabels : false
+					},
+					pie : {
+						show : true,
+						explode : 6,
+						labelFormatter : labelFn
+					}
+				});
+
+			}());
+
+		}(jQuery));
+	</script>
+
+</body>
+</html>

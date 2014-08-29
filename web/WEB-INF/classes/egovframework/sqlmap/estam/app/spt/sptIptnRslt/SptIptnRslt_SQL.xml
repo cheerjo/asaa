@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SptIptnRslt">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="sptIptnRsltSerarchVO" type="estam.app.spt.service.SptIptnRsltDefaultVO"/>
+	<typeAlias  alias="sptIptnRsltVO" type="estam.app.spt.service.SptIptnRsltVO"/>
+	<typeAlias  alias="sptIptnEtcVO" type="estam.app.spt.service.SptIptnEtcVO"/>
+	
+	<resultMap id="sptIptnRslt" class="estam.app.spt.service.SptIptnRsltVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="sptIptnDt" column="SPT_IPTN_DT" columnIndex="2"/>
+		<result property="sptIptnOtn" column="SPT_IPTN_OTN" columnIndex="3"/>
+		<result property="sptIptnReqtDt" column="SPT_IPTN_REQT_DT" columnIndex="4"/>
+		<result property="sptIptnRsltDt" column="SPT_IPTN_RSLT_DT" columnIndex="5"/>
+		<result property="sptIptnNm" column="SPT_IPTN_NM" columnIndex="6"/>
+		<result property="sptIptnDept" column="SPT_IPTN_DEPT" columnIndex="7"/>
+		<result property="sptIptnPotn" column="SPT_IPTN_POTN" columnIndex="8"/>
+		<result property="sptIptnTel" column="SPT_IPTN_TEL" columnIndex="9"/>
+		<result property="ehqkScnCnt" column="EHQK_SCN_CNT" columnIndex="10"/>
+		<result property="rccCnt" column="RCC_CNT" columnIndex="11"/>
+		<result property="sptIptnRsltYn" column="SPT_IPTN_RSLT_YN" columnIndex="12"/>
+		<result property="fctyTotCtnt" column="FCTY_TOT_CTNT" columnIndex="13"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="14"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="15"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="16"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="17"/>
+
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="18"/>
+		<result property="fctyKndCd" column="FCTY_KND_CD" columnIndex="19"/>
+		<result property="fctyAreaCd" column="FCTY_AREA_CD" columnIndex="20"/>
+		<result property="fctyNm" column="FCTY_NM" columnIndex="21"/>
+		<result property="mgrSlfDept" column="MGR_SLF_DEPT" columnIndex="22"/>
+		<result property="mgrSlfUsrNm" column="MGR_SLF_USR_NM" columnIndex="23"/>
+        <result property="mgrUsrTel" column="MGR_SLF_USR_TEL" columnIndex="24"/>
+        <result property="istlDept" column="ISTL_DEPT" columnIndex="25"/>
+        <result property="istlUsrNm" column="ISTL_USR_NM" columnIndex="26"/>
+        <result property="istlUsrTel" column="ISTL_USR_TEL" columnIndex="27"/>
+        <result property="spprDept" column="SPPR_DEPT" columnIndex="28"/>
+        <result property="spprUsrNm" column="SPPR_USR_NM" columnIndex="29"/>
+        <result property="spprUsrTel" column="SPPR_USR_TEL" columnIndex="30"/>
+        <result property="fctyKndNm" column="FCTY_KND_NM" columnIndex="31"/>
+        <result property="fctyAreaNm" column="FCTY_AREA_NM" columnIndex="32"/>
+        <result property="fctyCplnDt" column="FCTY_CPLN_DT" columnIndex="33"/>
+        
+        <result property="fctyFlorScl" column="FCTY_FLOR_SCL" columnIndex="34"/>
+        <result property="fctyRofHt" column="FCTY_ROF_HT" columnIndex="35"/>
+        <result property="fctyHt" column="FCTY_HT" columnIndex="36"/>
+        <result property="fctyStblDt" column="FCTY_STBL_DT" columnIndex="37"/>
+        <result property="fctyCtatDt" column="FCTY_CTAT_DT" columnIndex="38"/>
+        <result property="fctyStAddr" column="FCTY_ST_ADDR" columnIndex="39"/>
+        <result property="fctyEdAddr" column="FCTY_ED_ADDR" columnIndex="40"/>
+        <result property="sptIptnFlsv" column="SPT_IPTN_FLSV" columnIndex="41"/>
+        <result property="sptIptnFlnm" column="SPT_IPTN_FLNM" columnIndex="42"/>
+	</resultMap>
+	
+    <resultMap id="sptIptnRsltView" class="estam.app.spt.service.SptIptnRsltVO">
+        <result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+        <result property="gvmtCd" column="GVMT_CD" columnIndex="3"/>
+        <result property="fctyNm" column="FCTY_NM" columnIndex="3"/>
+        <result property="fctyFlorScl" column="FCTY_FLOR_SCL" columnIndex="4"/>
+        <result property="fctyRofHt" column="FCTY_ROF_HT" columnIndex="35"/>
+        <result property="fctyHt" column="FCTY_HT" columnIndex="5"/>
+        <result property="fctyStblDt" column="FCTY_STBL_DT" columnIndex="6"/>
+        <result property="fctyCtatDt" column="FCTY_CTAT_DT" columnIndex="7"/>
+        <result property="fctyStAddr" column="FCTY_ST_ADDR" columnIndex="8"/>
+        <result property="fctyEdAddr" column="FCTY_ED_ADDR" columnIndex="9"/>
+        <result property="mgrSlfDept" column="MGR_SLF_DEPT" columnIndex="10"/>
+        <result property="mgrSlfUsrNm" column="MGR_SLF_USR_NM" columnIndex="11"/>
+        <result property="mgrUsrTel" column="MGR_SLF_USR_TEL" columnIndex="12"/>
+        <result property="istlDept" column="ISTL_DEPT" columnIndex="13"/>
+        <result property="istlUsrNm" column="ISTL_USR_NM" columnIndex="14"/>
+        <result property="istlUsrTel" column="ISTL_USR_TEL" columnIndex="15"/>
+        <result property="spprDept" column="SPPR_DEPT" columnIndex="16"/>
+        <result property="spprUsrNm" column="SPPR_USR_NM" columnIndex="17"/>
+        <result property="spprUsrTel" column="SPPR_USR_TEL" columnIndex="18"/>
+        <result property="fctyCplnDt" column="FCTY_CPLN_DT" columnIndex="19"/>        
+    </resultMap>
+    
+	<insert id="sptIptnRsltDAO.insertSptIptnRslt_S">
+		<![CDATA[
+			INSERT INTO SPT_IPTN_RSLT 
+				( FCTY_CD
+				  , SPT_IPTN_DT
+				  , SPT_IPTN_OTN
+				  , SPT_IPTN_REQT_DT
+				  , SPT_IPTN_RSLT_DT
+				  , SPT_IPTN_NM
+				  , SPT_IPTN_DEPT
+				  , SPT_IPTN_POTN
+				  , SPT_IPTN_TEL
+				  , EHQK_SCN_CNT
+				  , RCC_CNT
+				  , SPT_IPTN_RSLT_YN
+				  , FCTY_TOT_CTNT
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #sptIptnDt#
+				  , #sptIptnOtn#
+				  , #sptIptnReqtDt#
+				  , #sptIptnRsltDt#
+				  , #sptIptnNm#
+				  , #sptIptnDept#
+				  , #sptIptnPotn#
+				  , #sptIptnTel#
+				  , #ehqkScnCnt#
+				  , #rccCnt#
+				  , #sptIptnRsltYn#
+				  , #fctyTotCtnt#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="sptIptnRsltDAO.updateSptIptnRslt_S">
+		<![CDATA[
+			UPDATE SPT_IPTN_RSLT
+			SET FCTY_CD=#fctyCd#
+				, SPT_IPTN_DT=#sptIptnDt#
+				, SPT_IPTN_OTN=#sptIptnOtn#
+				, SPT_IPTN_REQT_DT=#sptIptnReqtDt#
+				, SPT_IPTN_RSLT_DT=#sptIptnRsltDt#
+				, SPT_IPTN_NM=#sptIptnNm#
+				, SPT_IPTN_DEPT=#sptIptnDept#
+				, SPT_IPTN_POTN=#sptIptnPotn#
+				, SPT_IPTN_TEL=#sptIptnTel#
+				, EHQK_SCN_CNT=#ehqkScnCnt#
+				, RCC_CNT=#rccCnt#
+				, SPT_IPTN_RSLT_YN=#sptIptnRsltYn#
+				, FCTY_TOT_CTNT=#fctyTotCtnt#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND SPT_IPTN_DT=#sptIptnDt#
+				]]>
+	</update>
+	
+	<delete id="sptIptnRsltDAO.deleteSptIptnRslt_S">
+		<![CDATA[
+			DELETE FROM SPT_IPTN_RSLT 
+						WHERE FCTY_CD=#fctyCd#
+								AND SPT_IPTN_DT=#sptIptnDt#
+				]]>
+	</delete>
+	
+	<select id="sptIptnRsltDAO.selectSptIptnRslt_S" parameterClass="sptIptnRsltSerarchVO" resultMap="sptIptnRsltView">
+			 SELECT MGR.FCTY_CD,
+			       MGR.GVMT_CD,
+			       FCTY_NM,
+			       FCTY_FLOR_SCL,
+			       FCTY_ROF_HT,
+			       FCTY_HT,
+			       FCTY_STBL_DT,
+			       FCTY_CTAT_DT,
+			       FCTY_CPLN_DT,
+			       FCTY_ST_ADDR,
+			       FCTY_ED_ADDR ,
+			       MGR_SLF_DEPT ,
+			       MGR_SLF_USR_NM ,
+			       MGR_SLF_USR_TEL ,
+			       ISTL_DEPT ,
+			       ISTL_USR_NM ,
+			       ISTL_USR_TEL ,
+			       SPPR_DEPT ,
+			       SPPR_USR_NM ,
+			       SPPR_USR_TEL
+			FROM   FCTY_MGR MGR,
+			       FCTY_MGR_USR USR,
+			       FCTY_ADD_INFO INFO 
+			WHERE  MGR.FCTY_CD = USR.FCTY_CD
+			AND    MGR.GVMT_CD = USR.GVMT_CD
+			AND    MGR.FCTY_CD = INFO.FCTY_CD
+			AND    MGR.GVMT_CD = INFO.GVMT_CD
+			AND    MGR.FCTY_CD = #fctyCd#
+            AND    MGR.GVMT_CD = #gvmtCd#			
+	</select>
+	
+	<select id="sptIptnRsltDAO.selectSptIptnRsltList_D" parameterClass="sptIptnRsltSerarchVO" resultClass="egovMap">
+                SELECT SPT.FCTY_CD 
+                       , SPT.GVMT_CD 
+                       , FCTY_KND_CD  
+                       , FCTY_KND_NM 
+                       , FCTY_AREA_CD 
+                       , (SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE COMM_CD = 'ITEM_008' AND COMM_DTL_CD = FCTY_AREA_CD) AS FCTY_AREA_NM 
+                       , FCTY_NM 
+                       , FCTY_CPLN_DT 
+                       , SPT_IPTN_REQT_DT  
+                       , SPT_IPTN_DT  
+                       , SPT_IPTN_RSLT_DT 
+                       , SPT_IPTN_RSLT_YN                         
+                       , MGR_SLF_DEPT 
+                       , MGR_SLF_USR_NM 
+                       , MGR_SLF_USR_TEL 
+                       , ISTL_DEPT                         
+                       , ISTL_USR_NM 
+                       , ISTL_USR_TEL 
+                       , SPPR_DEPT                          
+                       , SPPR_USR_NM 
+                       , SPPR_USR_TEL  
+                       , SPT_IPTN_FLSV
+                       , SPT_IPTN_FLNM     
+                FROM   (SELECT SPT.FCTY_CD , 
+                               SPT.GVMT_CD ,
+                               FCTY_KND_CD ,
+                               (SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE COMM_CD = 'ITEM_011' AND COMM_DTL_CD = FCTY.FCTY_KND_CD) AS FCTY_KND_NM,
+                               (SELECT SPT_IPTN_FLSV FROM SPT_IPTN_RSLT_FL WHERE FCTY_CD = SPT.FCTY_CD AND GVMT_CD = SPT.GVMT_CD AND SPT_IPTN_DT = SPT.SPT_IPTN_DT) AS SPT_IPTN_FLSV,
+                               (SELECT SPT_IPTN_FLNM FROM SPT_IPTN_RSLT_FL WHERE FCTY_CD = SPT.FCTY_CD AND GVMT_CD = SPT.GVMT_CD AND SPT_IPTN_DT = SPT.SPT_IPTN_DT) AS SPT_IPTN_FLNM,                                                              
+                               SUBSTR(FCTY_AREA_CD,0,2) AS FCTY_AREA_CD,
+                               FCTY_NM ,
+                               (SELECT FCTY_CPLN_DT
+                                FROM   FCTY_ADD_INFO
+                                WHERE  SPT.FCTY_CD = FCTY_CD
+                                AND    SPT.GVMT_CD = GVMT_CD) AS FCTY_CPLN_DT,
+                               SPT_IPTN_REQT_DT ,
+                               SPT_IPTN_DT ,
+                               SPT_IPTN_RSLT_DT ,
+                               SPT_IPTN_RSLT_YN
+                        FROM   SPT_IPTN_RSLT SPT,
+                               FCTY_MGR FCTY
+                        WHERE  SPT.FCTY_CD = FCTY.FCTY_CD
+                        AND    SPT.GVMT_CD = FCTY.GVMT_CD 
+	                <isNotEmpty prepend="AND" property="fctyAreaCd" >
+	                    FCTY_AREA_CD LIKE  #fctyAreaCd# || '%'
+	                </isNotEmpty>
+	                <isNotEmpty prepend="AND" property="fctyKndCd" >
+	                    FCTY_KND_CD = #fctyKndCd#
+	                </isNotEmpty>
+                    <isNotEmpty prepend="AND" property="sptIptnRsltYn" >
+                        SPT_IPTN_RSLT_YN = #sptIptnRsltYn#
+                    </isNotEmpty>
+                    <isNotEmpty prepend="AND" property="sptIptnSDt">
+                        SPT_IPTN_DT BETWEEN #sptIptnSDt# AND #sptIptnEDt#
+                    </isNotEmpty>                                       	                
+				        ) SPT ,
+				       FCTY_MGR_USR USR
+				WHERE  SPT.FCTY_CD = USR.FCTY_CD
+				AND    SPT.GVMT_CD = USR.GVMT_CD
+                <isNotEmpty prepend="AND" property="fctyCplnSDt">
+                    FCTY_CPLN_DT BETWEEN #fctyCplnSDt# AND #fctyCplnEDt#
+                </isNotEmpty>				
+				ORDER BY 
+					FCTY_CD DESC
+						, SPT_IPTN_DT DESC
+	</select>	
+	<select id="sptIptnRsltDAO.selectSptIptnRsltListTotCnt_S" parameterClass="sptIptnRsltSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+            FROM   (SELECT SPT.FCTY_CD ,
+                           SPT.GVMT_CD ,
+                           FCTY_KND_CD ,
+                           FCTY_AREA_CD ,
+                           FCTY_NM ,
+                           (SELECT FCTY_CPLN_DT
+                            FROM   FCTY_ADD_INFO
+                            WHERE  SPT.FCTY_CD = FCTY_CD
+                            AND    SPT.GVMT_CD = GVMT_CD) AS FCTY_CPLN_DT,
+                           SPT_IPTN_REQT_DT ,
+                           SPT_IPTN_DT ,
+                           SPT_IPTN_RSLT_DT ,
+                           SPT_IPTN_RSLT_YN
+                    FROM   SPT_IPTN_RSLT SPT,
+                           FCTY_MGR FCTY
+                    WHERE  SPT.FCTY_CD = FCTY.FCTY_CD
+                    AND    SPT.GVMT_CD = FCTY.GVMT_CD 
+                <isEqual prepend="AND" property="searchCondition" compareValue="0">
+                    FCTY_CD = #searchKeyword#
+                </isEqual>
+                <isEqual prepend="AND" property="searchCondition" compareValue="1">
+                    SPT_IPTN_DT LIKE '%' || #searchKeyword# || '%'
+                </isEqual>                  
+                    ) SPT ,
+                   FCTY_MGR_USR USR
+            WHERE  SPT.FCTY_CD = USR.FCTY_CD
+            AND    SPT.GVMT_CD = USR.GVMT_CD
+	</select>
+	
+	<select id="sptIptnRsltDAO.selectSptIptnFlorMaxSeq" parameterClass="java.util.HashMap" resultClass="String">
+		SELECT TO_NUMBER(NVL(MAX(B.SPT_IPTN_FLOR_SEQ),0)) + 1
+		  FROM SPT_IPTN_FLOR B
+		 WHERE 1=1
+		   AND B.FCTY_CD = #fctyCd#
+		   AND B.GVMT_CD = #gvmtCd#
+		   AND B.SPT_IPTN_DT = #sptIptnDt#
+	</select>
+
+
+	<insert id="sptIptnRsltDAO.updateSptIptnFlor" parameterClass="java.util.HashMap">
+		INSERT INTO SPT_IPTN_FLOR (
+		   FCTY_CD, 
+		   SPT_IPTN_DT, 
+		   SPT_IPTN_FLOR_SEQ, 
+		   GVMT_CD, 
+		   SPT_IPTN_FLOR_SZ, 
+		   SPT_IPTN_FLOR_FLNM, 
+		   SPT_IPTN_FLOR_FLSV, 
+		   INPT_USR_ID, 
+		   INPT_DT, 
+		   UPDT_USR_ID, 
+		   UPDT_DT) 
+		VALUES ( #fctyCd#, 
+			#sptIptnDt#, 
+			#maxSeq#,
+		    #gvmtCd#, 
+		    #file_size#, 
+		    #file_svr_name#,
+		    #file_svr_path#, 
+		    '', 
+		    sysdate,
+		    '', 
+		    sysdate
+		    )
+	</insert>
+	
+	<select id="sptIptnRsltDAO.selectSptIptnEtcMaxSeq" parameterClass="java.util.HashMap" resultClass="String">
+		SELECT TO_NUMBER(NVL(MAX(B.SPT_IPTN_ETC_SEQ),0)) + 1
+		  FROM SPT_IPTN_ETC B
+		 WHERE 1=1
+		   AND B.FCTY_CD = #fctyCd#
+		   AND B.GVMT_CD = #gvmtCd#
+		   AND B.SPT_IPTN_DT = #sptIptnDt#
+	</select>
+
+
+	<insert id="sptIptnRsltDAO.updateSptIptnEtc" parameterClass="java.util.HashMap">
+		INSERT INTO SPT_IPTN_ETC (
+		   FCTY_CD, 
+		   SPT_IPTN_DT, 
+		   SPT_IPTN_ETC_SEQ, 
+		   GVMT_CD, 
+		   SPT_IPTN_ETC_FS_SZ, 
+		   SPT_IPTN_ETC_FLNM, 
+		   SPT_IPTN_ETC_FLSV,
+		   SPT_IPTN_ETC_TITL, 
+		   INPT_USR_ID, 
+		   INPT_DT, 
+		   UPDT_USR_ID, 
+		   UPDT_DT) 
+		VALUES ( #fctyCd#, 
+			#sptIptnDt#, 
+			#maxSeq#,
+		    #gvmtCd#, 
+		    #file_size#, 
+		    #file_svr_name#,
+		    #file_svr_path#,
+		    #file_name#,  
+		    '', 
+		    sysdate,
+		    '', 
+		    sysdate
+		    )
+	</insert>
+	
+	<select id="sptIptnRsltDAO.selectSptIptnEtcList" parameterClass="sptIptnEtcVO" resultClass="egovMap">
+		SELECT SPT_IPTN_ETC_SEQ,
+		       SPT_IPTN_ETC_TITL,
+		       SPT_IPTN_ETC_FS_SZ,
+		       SPT_IPTN_ETC_FLNM,
+		       SPT_IPTN_ETC_FLSV       
+		FROM   SPT_IPTN_RSLT SPT,
+		       SPT_IPTN_ETC RCC
+		WHERE  1=1
+		AND    SPT.FCTY_CD = RCC.FCTY_CD
+		AND    SPT.GVMT_CD = RCC.GVMT_CD
+		AND    SPT.SPT_IPTN_DT = RCC.SPT_IPTN_DT
+		AND    SPT.FCTY_CD = #fctyCd#
+		AND    SPT.GVMT_CD =#gvmtCd# 
+      <isNotEmpty prepend="AND" property="sptIptnDt">
+          SPT.SPT_IPTN_DT = #sptIptnDt#
+      </isNotEmpty>	
+	</select>
+	
+	<delete id="sptIptnRsltDAO.deleteSptIptnFlor" parameterClass="sptIptnRsltSerarchVO">
+		DELETE FROM SPT_IPTN_FLOR
+		 WHERE FCTY_CD = #fctyCd#
+		   AND GVMT_CD = #gvmtCd#
+		   AND SPT_IPTN_DT = #sptIptnDt#
+		   AND SPT_IPTN_FLOR_SEQ = #seq#
+	</delete>
+	
+	<delete id="sptIptnRsltDAO.deleteSptIptnEtc" parameterClass="sptIptnRsltSerarchVO">
+		DELETE FROM SPT_IPTN_ETC
+		 WHERE FCTY_CD = #fctyCd#
+		   AND GVMT_CD = #gvmtCd#
+		   AND SPT_IPTN_DT = #sptIptnDt#
+		   AND SPT_IPTN_ETC_SEQ = #seq#
+	</delete>
+                
+</sqlMap>

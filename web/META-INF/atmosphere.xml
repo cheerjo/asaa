@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<atmosphere-handlers>
+       <!--  <atmosphere-handler context-root="/atmosphere/*"
+                        class-name="org.atmosphere.handler.ReflectorServletProcessor"> 
+        <property name="servletClassName"
+                        value="estam.app.com.rev.WaveRevAjaxController" /> 
+   <property name="servletClassName"
+                        value="estam.app.com.atmosphere.resolvers.AtmosphereArgumentResolver" /> 
+                <applicationConfig>
+                        <param-name>org.atmosphere.jersey.servlet-mapping</param-name>
+                        <param-value></param-value>
+                </applicationConfig>-->
+    </atmosphere-handler>  
+</atmosphere-handlers>
+

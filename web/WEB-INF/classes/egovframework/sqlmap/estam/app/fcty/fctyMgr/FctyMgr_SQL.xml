@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FctyMgr">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="fctyMgrSerarchVO" type="estam.app.fcty.service.FctyMgrDefaultVO"/>
+	<typeAlias  alias="vfctyMgrSerarchVO" type="estam.app.main.service.FctyMgrInfoVO"/> 
+
+	<resultMap id="fctyMgr" class="estam.app.fcty.service.FctyMgrVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="2"/>
+		<result property="fctyNm" column="FCTY_NM" columnIndex="3"/>
+		<result property="fctyEsmtStdt" column="FCTY_ESMT_STDT" columnIndex="4"/>
+		<result property="fctyEsmtEddt" column="FCTY_ESMT_EDDT" columnIndex="5"/>
+		<result property="fctyAreaCd" column="FCTY_AREA_CD" columnIndex="6"/>
+		<result property="fctyStAddr" column="FCTY_ST_ADDR" columnIndex="7"/>
+		<result property="fctyEdAddr" column="FCTY_ED_ADDR" columnIndex="8"/>
+		<result property="fctyLon" column="FCTY_LON" columnIndex="9"/>
+		<result property="fctyKndCd" column="FCTY_KND_CD" columnIndex="10"/>
+		<result property="fctyLat" column="FCTY_LAT" columnIndex="11"/>
+		<result property="fctyAttc" column="FCTY_ATTC" columnIndex="12"/>
+		<result property="fctyGrndHt" column="FCTY_GRND_HT" columnIndex="13"/>
+		<result property="fctyUgrdHt" column="FCTY_UGRD_HT" columnIndex="14"/>
+		<result property="fctyBasc" column="FCTY_BASC" columnIndex="15"/>
+		<result property="fctyGrndCd" column="FCTY_GRND_CD" columnIndex="16"/>
+		<result property="fctyHolcYn" column="FCTY_HOLC_YN" columnIndex="17"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="18"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="19"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="20"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="21"/>
+		<result property="seisCd" column="SEIS_CD" columnIndex="22"/>
+		
+		<result property="fctyAreaNm" column="FCTY_AREA_NM" columnIndex="23"/>
+		<result property="FctyUseYn" column="FCTY_USE_YN" columnIndex="24"/>
+	</resultMap>
+ 
+	<resultMap id="fctyMgrInfoVO" class="estam.app.main.service.FctyMgrInfoVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="2"/>
+		<result property="fctyNm" column="FCTY_NM" columnIndex="3"/>
+		<result property="fctyEsmtStdt" column="FCTY_ESMT_STDT" columnIndex="4"/>
+		<result property="fctyEsmtEddt" column="FCTY_ESMT_EDDT" columnIndex="5"/>
+		<result property="fctyAreaCd" column="FCTY_AREA_CD" columnIndex="6"/>
+		<result property="fctyStAddr" column="FCTY_ST_ADDR" columnIndex="7"/>
+		<result property="fctyEdAddr" column="FCTY_ED_ADDR" columnIndex="8"/>
+		<result property="fctyKndCd" column="FCTY_KND_CD" columnIndex="9"/>
+		<result property="fctyLon" column="FCTY_LON" columnIndex="10"/>
+		<result property="fctyLat" column="FCTY_LAT" columnIndex="11"/>
+		<result property="fctyAttc" column="FCTY_ATTC" columnIndex="12"/>
+		<result property="fctyGrndHt" column="FCTY_GRND_HT" columnIndex="13"/>
+		<result property="fctyUgrdHt" column="FCTY_UGRD_HT" columnIndex="14"/>
+		<result property="fctyBasc" column="FCTY_BASC" columnIndex="15"/>
+		<result property="fctyGrndCd" column="FCTY_GRND_CD" columnIndex="16"/>
+		<result property="fctyHolcYn" column="FCTY_HOLC_YN" columnIndex="17"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="18"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="19"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="20"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="21"/>
+		<result property="seisCd" column="SEIS_CD" columnIndex="22"/>
+		<result property="fctyImgUrl" column="FCTY_IMG_URL" columnIndex="23"/>
+		
+	</resultMap>
+	
+	<insert id="fctyMgrDAO.insertFctyMgr_S">
+		<![CDATA[
+			INSERT INTO FCTY_MGR 
+				( FCTY_CD
+				  , GVMT_CD
+				  , FCTY_NM
+				  , FCTY_ESMT_STDT
+				  , FCTY_ESMT_EDDT
+				  , FCTY_AREA_CD
+				  , FCTY_ST_ADDR
+				  , FCTY_ED_ADDR
+				  , FCTY_KND_CD
+				  , FCTY_LON
+				  , FCTY_LAT
+				  , FCTY_ATTC
+				  , FCTY_GRND_HT
+				  , FCTY_UGRD_HT
+				  , FCTY_BASC
+				  , FCTY_GRND_CD
+				  , FCTY_HOLC_YN
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT
+				  , SEIS_CD )
+			VALUES ( #fctyCd#
+				  , #gvmtCd#
+				  , #fctyNm#
+				  , #fctyEsmtStdt#
+				  , #fctyEsmtEddt#
+				  , #fctyAreaCd#
+				  , #fctyStAddr#
+				  , #fctyEdAddr#
+				  , #fctyKndCd#
+				  , #fctyLon#
+				  , #fctyLat#
+				  , #fctyAttc#
+				  , #fctyGrndHt#
+				  , #fctyUgrdHt#
+				  , #fctyBasc#
+				  , #fctyGrndCd#
+				  , #fctyHolcYn#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt#
+				  , #seisCd# )
+		]]>
+	</insert>
+	
+	<update id="fctyMgrDAO.updateFctyMgr_S">
+		<![CDATA[
+			UPDATE FCTY_MGR
+			SET FCTY_CD=#fctyCd#
+				, GVMT_CD=#gvmtCd#
+				, FCTY_NM=#fctyNm#
+				, FCTY_ESMT_STDT=#fctyEsmtStdt#
+				, FCTY_ESMT_EDDT=#fctyEsmtEddt#
+				, FCTY_AREA_CD=#fctyAreaCd#
+				, FCTY_ST_ADDR=#fctyStAddr#
+				, FCTY_ED_ADDR=#fctyEdAddr#
+				, FCTY_KND_CD=#fctyKndCd#
+				, FCTY_LON=#fctyLon#
+				, FCTY_LAT=#fctyLat#
+				, FCTY_ATTC=#fctyAttc#
+				, FCTY_GRND_HT=#fctyGrndHt#
+				, FCTY_UGRD_HT=#fctyUgrdHt#
+				, FCTY_BASC=#fctyBasc#
+				, FCTY_GRND_CD=#fctyGrndCd#
+				, FCTY_HOLC_YN=#fctyHolcYn#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+				, SEIS_CD=#seisCd#
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</update>
+	
+	<delete id="fctyMgrDAO.deleteFctyMgr_S">
+		<![CDATA[
+			DELETE FROM FCTY_MGR 
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</delete>
+	
+	<select id="fctyMgrDAO.selectFctyMgr_S" resultMap="fctyMgr">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, GVMT_CD
+				, FCTY_NM
+				, FCTY_ESMT_STDT
+				, FCTY_ESMT_EDDT
+				, FCTY_AREA_CD
+				, (SELECT MAX(COMM_DTL_NM_FIRST)|| ' ' ||MAX(COMM_DTL_NM_SECOND)
+                    FROM (SELECT AA.COMM_DTL_NM AS COMM_DTL_NM_FIRST, ''  AS COMM_DTL_NM_SECOND
+							FROM SYM_COMM_CD_DTL AA 
+							WHERE AA.COMM_CD = 'ITEM_008' AND  AA.COMM_DTL_CD = ( SELECT SUBSTR(FCTY_AREA_CD,1,2) 
+							                                                        FROM FCTY_MGR
+																				   WHERE FCTY_CD=#fctyCd#
+																					 AND GVMT_CD =#gvmtCd#)
+							UNION
+							SELECT '' AS COMM_DTL_NM_FIRST, BB.COMM_DTL_NM  AS COMM_DTL_NM_SECOND
+							FROM SYM_COMM_CD_DTL BB 
+							WHERE BB.ITEM01 = 'ITEM_008'   
+							AND (BB.COMM_CD || BB.COMM_DTL_CD) = (SELECT FCTY_AREA_CD 
+			                                                        FROM FCTY_MGR
+																   WHERE FCTY_CD=#fctyCd#
+																	 AND GVMT_CD =#gvmtCd#))) AS FCTY_ST_ADDR				  
+				, FCTY_ED_ADDR
+				, FCTY_KND_CD
+				, FCTY_LON
+				, FCTY_LAT
+				, FCTY_ATTC
+				, FCTY_GRND_HT
+				, FCTY_UGRD_HT
+				, FCTY_BASC
+				, FCTY_GRND_CD
+				, FCTY_HOLC_YN
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+				, SEIS_CD
+				, '' FCTY_AREA_NM
+				, '' FCTY_USE_YN
+			FROM FCTY_MGR A
+			WHERE FCTY_CD=#fctyCd#
+			  AND GVMT_CD = #gvmtCd#
+				]]>
+	</select>
+	
+	<select id="fctyMgrDAO.selectFctyMgrList_D" parameterClass="fctyMgrSerarchVO" resultMap="fctyMgr">
+	       SELECT * FROM (
+			    SELECT FCTY_CD
+					   , GVMT_CD
+					   , FCTY_NM
+					   , FCTY_ESMT_STDT
+					   , FCTY_ESMT_EDDT
+					   , FCTY_AREA_CD
+					   , ( SELECT COMM_DTL_NM
+							 FROM SYM_COMM_CD_DTL BB 
+						    WHERE BB.ITEM01 = 'ITEM_008'   
+							  AND (BB.COMM_CD || BB.COMM_DTL_CD) = FCTY_AREA_CD ) AS FCTY_AREA_NM
+					   , FCTY_ST_ADDR
+					   , FCTY_ED_ADDR
+					   , FCTY_KND_CD
+					   , FCTY_LON
+					   , FCTY_LAT
+					   , FCTY_ATTC
+					   , FCTY_GRND_HT
+					   , FCTY_UGRD_HT
+					   , FCTY_BASC
+					   , FCTY_GRND_CD
+					   , FCTY_HOLC_YN
+					   , INPT_USR_ID
+					   , INPT_DT
+					   , UPDT_USR_ID
+					   , UPDT_DT
+					   , SEIS_CD
+					   ,NVL((CASE WHEN 
+					                   (SELECT COUNT(*)  
+						                  FROM RPT_RGLR_IPTN CC
+						                 WHERE CC.IPT_DT = ( SELECT MAX(IPT_DT)   
+															   FROM RPT_FRST_RCC JJ
+															  WHERE JJ.FCTY_CD = FCTY_CD
+															    AND JJ.GVMT_CD = GVMT_CD
+																AND JJ.CON_DA_GBCD = '04' )   
+						                   AND CC.FCTY_CD= FCTY_CD
+						                   AND CC.GVMT_CD = GVMT_CD
+						                   AND CC.CON_DA_GBCD= '04') > 0
+						          THEN  
+						               (SELECT DISTINCT CASE WHEN EE.RGLR_QST1_1YN = 'Y'
+						                             AND EE.RGLR_QST1_2YN = 'Y'
+						                             AND EE.RGLR_QST1_3YN = 'Y'
+						                             AND EE.RGLR_QST1_4YN = 'Y'
+						                             AND EE.RGLR_QST2_1YN = 'Y'
+						                             AND EE.RGLR_QST2_2YN = 'Y'
+						                             AND EE.RGLR_QST2_3YN = 'Y'
+						                             AND EE.RGLR_QST2_4YN = 'Y'
+						                             AND EE.RGLR_QST3_1YN = 'Y'
+						                             AND EE.RGLR_QST3_2YN = 'Y'
+						                             AND EE.RGLR_QST4_1YN = 'Y'
+						                             AND EE.RGLR_QST4_2YN = 'Y'
+						                             AND EE.RGLR_QST4_3YN = 'Y'
+						                       THEN 'Y' ELSE 'N' END
+						                  FROM RPT_RGLR_IPTN EE
+						                 WHERE EE.IPT_DT = (SELECT MAX(IPT_DT)   
+															  FROM RPT_FRST_RCC JJ
+															 WHERE JJ.FCTY_CD = FCTY_CD
+															   AND JJ.GVMT_CD = GVMT_CD
+															   AND JJ.CON_DA_GBCD = '04' ) 
+						                   AND EE.FCTY_CD = FCTY_CD
+						                   AND EE.GVMT_CD = GVMT_CD
+						                   AND EE.CON_DA_GBCD= '04' ) 
+						          ELSE  
+						               (SELECT DISTINCT CASE WHEN GG.SCN_QST1_1YN  = 'Y'
+						                             AND GG.SCN_QST1_2YN  = 'Y'
+						                             AND GG.SCN_QST1_3YN  = 'Y'
+						                             AND GG.SCN_QST2_1YN  = 'Y'
+						                             AND GG.SCN_QST2_2YN  = 'Y'
+						                             AND GG.SCN_QST3_1YN  = 'Y'
+						                             AND GG.SCN_QST3_2YN  = 'Y'
+						                       THEN 'Y' ELSE 'N' END
+						                  FROM RPT_FRST_EHQK_SCN GG
+						                 WHERE GG.IPT_DT = (SELECT MAX(IPT_DT)   
+															  FROM RPT_FRST_RCC JJ
+															 WHERE JJ.FCTY_CD = FCTY_CD
+															   AND JJ.GVMT_CD = GVMT_CD
+															   AND JJ.CON_DA_GBCD = '03' ) 
+						                   AND GG.FCTY_CD= FCTY_CD
+						                   AND GG.GVMT_CD = GVMT_CD
+						                   AND GG.CON_DA_GBCD= '03')  
+						          END),'N') AS FCTY_USE_YN 
+				   FROM FCTY_MGR
+				  WHERE 1=1
+				<isNotEmpty prepend="AND" property="fctyAreaCd" >
+						<!--  FCTY_AREA_CD LIKE #fctyAreaCd# || '% xkwh-->
+						<!-- AreaCode의 형태는 11, 22와 같은 형식으로 전달되며, 이를 맞추기 위해 substr함수를 사용 -->
+						SUBSTR(FCTY_AREA_CD, 1, 2) = #fctyAreaCd#  
+				</isNotEmpty>
+				<isNotEmpty prepend="AND" property="fctyKndCd" >
+						FCTY_KND_CD = #fctyKndCd#  
+				</isNotEmpty>
+          ) WHERE 1=1    
+           <isNotEmpty prepend="AND" property="fctyUseYn" >
+                   FCTY_USE_YN = #fctyUseYn#  
+           </isNotEmpty>                                                    
+		  ORDER BY FCTY_CD DESC    
+	</select>	
+	<select id="fctyMgrDAO.selectFctyMgrListTotCnt_S" parameterClass="fctyMgrSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM FCTY_MGR
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				GVMT_CD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+	 
+    <!--  PGA 목록을 조회한다  실시간 PGA 처리 함 -->  
+	<select id="fctyMgrDAO.selectFctyPga_D" parameterClass="fctyMgrSerarchVO" resultClass="egovMap">
+      	     SELECT
+								  FCTY_CD
+								, GVMT_CD
+								, FCTY_NM
+								, FCTY_ESMT_STDT
+								, FCTY_ESMT_EDDT
+								, FCTY_AREA_CD
+								, FCTY_ST_ADDR
+								, FCTY_ED_ADDR
+								, FCTY_KND_CD
+								, FCTY_LON
+								, FCTY_LAT
+								, FCTY_ATTC
+								, FCTY_GRND_HT
+								, FCTY_UGRD_HT
+								, FCTY_BASC
+								, FCTY_GRND_CD
+								, FCTY_HOLC_YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+								, SEIS_CD
+						FROM FCTY_MGR
+				WHERE 1=1 
+	</select>	  
+ 
+     <!--  진도(MMI) 목록을 조회한다. MMA 값에의한 처리 필요 한지 여부 확인  -->     
+	<select id="fctyMgrDAO.selectFctyMmi_D" parameterClass="fctyMgrSerarchVO" resultClass="egovMap"> 
+				SELECT
+								FCTY_CD
+								, GVMT_CD
+								, FCTY_NM
+								, FCTY_ESMT_STDT
+								, FCTY_ESMT_EDDT
+								, FCTY_AREA_CD
+								, FCTY_ST_ADDR
+								, FCTY_ED_ADDR
+								, FCTY_KND_CD
+								, FCTY_LON
+								, FCTY_LAT
+								, FCTY_ATTC
+								, FCTY_GRND_HT
+								, FCTY_UGRD_HT
+								, FCTY_BASC
+								, FCTY_GRND_CD
+								, FCTY_HOLC_YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+								, SEIS_CD
+						FROM FCTY_MGR
+				WHERE 1=1 
+	</select>	
+ 
+    <!--  계측소 목록을 조회한다.  -->     
+	<select id="fctyMgrDAO.selectFctyGvmt_D" parameterClass="fctyMgrSerarchVO" resultClass="egovMap">
+	 			<![CDATA[
+	 			   SELECT
+	 			          AA.FCTY_NM
+						, AA.NUM
+						, AA.FCTY_DESC
+						, AA.FCTY_LON
+						, AA.FCTY_LAT
+						, AA.ICON_COLOR
+						, (AA.IMAGE_URL) AS URL01
+						, (AA.IMAGE_URL) AS URL02 
+					    , AA.IMAGE_URL 
+						, AA.FCTY_ST_ADDR
+						, AA.FCTY_ED_ADDR 
+						, AA.FCTY_CD
+						, AA.GVMT_CD
+	 			   FROM
+				       (SELECT
+								  FCTY_NM
+								, ROWNUM NUM
+								, FCTY_NM AS FCTY_DESC
+								, FCTY_LON
+								, FCTY_LAT
+								, ('R') AS ICON_COLOR
+								, '' AS URL01
+								, '' AS URL02 
+							    , ( SELECT COMM_DTL_NM
+									 FROM SYM_COMM_CD_DTL BB 
+								    WHERE BB.COMM_CD = 'ITEM_011'   
+									  AND  BB.COMM_DTL_CD  = FCTY_KND_CD ) AS IMAGE_URL 
+								, FCTY_ST_ADDR
+								, FCTY_ED_ADDR 
+								, FCTY_CD
+								, GVMT_CD
+						FROM FCTY_MGR
+				       WHERE 1=1  
+				         AND NVL(FCTY_ESMT_EDDT,'T')  = 'T') AA
+				]]>	  
+	</select>	
+	 
+    <!--  지반분류 목록을 조회한다.  -->    
+	<select id="fctyMgrDAO.selectFctyGrnd_D" parameterClass="fctyMgrSerarchVO" resultClass="egovMap">
+	       <![CDATA[
+				       SELECT
+								  FCTY_NM
+								, ROWNUM NUM
+								, FCTY_NM AS FCTY_DESC
+								, FCTY_LON
+								, FCTY_LAT
+								, ('R') AS ICON_COLOR
+								, '' AS URL01
+								, '' AS URL02 
+							    , FCTY_AREA_CD
+								, FCTY_ST_ADDR
+								, FCTY_ED_ADDR
+								, FCTY_GRND_CD
+								, FCTY_CD
+								, GVMT_CD
+						FROM FCTY_MGR
+				       WHERE 1=1  
+				         AND NVL(FCTY_GRND_CD,'T')  <> 'T'
+				]]>	         
+	</select>	 
+ 
+    <!--  이상진동감지 목록을 조회한다.  --> 
+	<select id="fctyMgrDAO.selectFctyEvnt_D" parameterClass="fctyMgrSerarchVO" resultClass="egovMap">
+			  SELECT
+				                  DD.FCTY_NM
+							    , ROWNUM NUM  
+							    , DD.FCTY_NM AS FCTY_DESC
+								, DD.FCTY_LON
+								, DD.FCTY_LAT
+								, ('R') AS ICON_COLOR
+								, '' AS URL01
+								, '' AS URL02 
+							    , AA.FCTY_STAT_SENS_TM
+							    , AA.FCTY_STAT_SENS_PGA
+							    , AA.FCTY_CD
+							    , AA.GVMT_CD 
+						FROM FCTY_STAT_SENS AA ,
+						     (
+						      SELECT  BB.FCTY_CD
+						            , BB.GVMT_CD
+ 						            , BB.FCTY_NM
+						            , BB.FCTY_LON
+						            , BB.FCTY_LAT
+                                    , BB.FCTY_KND_CD
+						            , (SELECT CC.MGR_SLF_USR_TEL 
+						                 FROM FCTY_MGR_USR CC
+						                 WHERE CC.FCTY_CD = BB.FCTY_CD
+						                 AND   CC.GVMT_CD = BB.GVMT_CD) AS FCTY_USR_TEL
+						            FROM FCTY_MGR BB
+						     ) DD
+				WHERE 1=1
+				 AND AA.FCTY_STAT_SENS_GBCD= '01'
+				 AND AA.FCTY_CD = DD.FCTY_CD
+				 AND AA.GVMT_CD = DD.GVMT_CD
+				 ORDER BY AA.FCTY_STAT_SENS_TM DESC 
+	</select>	
+    
+     <!--   시설물 종류에 따른 시설물갯수 및 기타정보  목록을 조회한다.   --> 
+	<select id="fctyMgrDAO.listFctyTypeInfo_D" parameterClass="fctyMgrSerarchVO" resultClass="egovMap">
+			SELECT
+								  FCTY_CD
+								, GVMT_CD
+								, FCTY_NM
+								, FCTY_ESMT_STDT
+								, FCTY_ESMT_EDDT
+								, FCTY_AREA_CD
+								, FCTY_ST_ADDR
+								, FCTY_ED_ADDR
+								, FCTY_KND_CD
+								, FCTY_LON
+								, FCTY_LAT
+								, FCTY_ATTC
+								, FCTY_GRND_HT
+								, FCTY_UGRD_HT
+								, FCTY_BASC
+								, FCTY_GRND_CD
+								, FCTY_HOLC_YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+								, SEIS_CD
+						FROM FCTY_MGR
+				WHERE 1=1
+	</select>
+	
+	     <!--   시설물 종류에 따른 시설물갯수 및 기타정보  목록을 조회한다.   --> 
+	<select id="fctyMgrDAO.selectFctyTotCnt_S" parameterClass="fctyMgrSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM FCTY_MGR
+			WHERE 1=1 
+			AND  ((FCTY_ESMT_EDDT > TO_CHAR(SYSDATE,'YYYYMMDD'))  OR  (FCTY_ESMT_EDDT IS NULL))
+	</select> 
+	     <!--   시설물 기본정보를 가지고 온다.   --> 
+	<select id="fctyMgrDAO.selectFctyMgrInfo_S" parameterClass="vfctyMgrSerarchVO"  resultMap="fctyMgrInfoVO">
+			SELECT
+								  FCTY_CD
+								, GVMT_CD
+								, FCTY_NM
+								, (SELECT FCTY_IMG_FLSV || FCTY_IMG_FLNM 
+								    FROM  FCTY_IMG   
+								    WHERE FCTY_IMG.FCTY_CD =  FCTY_MGR.FCTY_CD
+								    AND  FCTY_IMG.GVMT_CD  = FCTY_MGR.GVMT_CD
+								    AND FCTY_IMG.FCTY_IMG_SEQ = 1)AS FCTY_IMG_URL
+								, FCTY_ESMT_STDT
+								, FCTY_ESMT_EDDT
+								, FCTY_AREA_CD
+								, FCTY_ST_ADDR
+								, FCTY_ED_ADDR
+								, FCTY_KND_CD
+								, FCTY_LON
+								, FCTY_LAT
+								, FCTY_ATTC
+								, FCTY_GRND_HT
+								, FCTY_UGRD_HT
+								, FCTY_BASC
+								, FCTY_GRND_CD
+								, FCTY_HOLC_YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+								, SEIS_CD
+						FROM FCTY_MGR
+				WHERE 1=1
+				AND  TRIM(FCTY_CD) = #fctyCd#
+			 	AND  TRIM(GVMT_CD) = #gvmtCd#  
+	</select>
+</sqlMap>

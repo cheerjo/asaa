@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FctyMma">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="fctyMmaSerarchVO" type="estam.app.scn.mma.service.FctyMmaDefaultVO"/>
+	
+	<resultMap id="fctyMma" class="estam.app.scn.mma.service.FctyMmaVO"> 
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="2"/>
+		<result property="fctyKndCd" column="FCTY_KND_CD" columnIndex="3"/>
+		<result property="fctyKndNm" column="FCTY_KND_NM" columnIndex="4"/>
+		<result property="fctyNm" column="FCTY_NM" columnIndex="5"/>
+		<result property="fctyLon" column="FCTY_LON" columnIndex="6"/>
+		<result property="fctyLat" column="FCTY_LAT" columnIndex="7"/>
+		<result property="fctyMma" column="FCTY_MMA" columnIndex="8"/> 
+		<result property="fctyPga" column="FCTY_PGA" columnIndex="9"/> 
+	</resultMap>
+	
+	
+	<resultMap id="barRevTpPgaVO" class="estam.app.com.rev.BarRevTpPgaVO">
+		<result property="gvmtCd" column="MMA_GVMT_CD" columnIndex="1"/> 
+		<result property="mmaFctyCd" column="MMA_FCTY_CD" columnIndex="2"/>
+		<result property="fctyPga10" column="FCTY_PGA10" columnIndex="3"/>
+		<result property="fctyPga" column="FCTY_PGA" columnIndex="4"/>
+		<result property="fctyTotPga" column="FCTY_TOT_PGA" columnIndex="5"/>
+		<result property="fctyTotPga10" column="FCTY_TOT_PGA10" columnIndex="6"/> 
+		
+	</resultMap>
+	 
+	<insert id="fctyMmaDAO.insertFctyMma_S">
+		<![CDATA[
+			INSERT INTO CON_MMA_DATA 
+				( MMA_GVMT_CD
+				  )
+			VALUES ( #gvmtCd#
+				  )
+		]]>
+	</insert>
+	
+	<update id="fctyMmaDAO.updateFctyMma_S">
+		<![CDATA[
+			UPDATE FCTY_MMA
+			SET  FCTY_PGA = #fctyPga#,
+			     FCTY_MMA = #fctyMma#
+           WHERE FCTY_CD = #fctyCd#
+             AND GVMT_CD = #gvmtCd# 
+				]]>
+	</update>
+	
+	<delete id="fctyMmaDAO.deleteFctyMma_S">
+		<![CDATA[
+			DELETE FROM CON_MMA_DATA 
+						WHERE MMA_GVMT_CD=#gvmtCd# 
+							 
+				]]>
+	</delete>
+	
+	<select id="fctyMmaDAO.selectFctyMma_S" resultMap="fctyMma">
+		<![CDATA[
+			SELECT
+				  MMA_GVMT_CD 
+			FROM CON_MMA_DATA
+					  
+				]]>
+	</select>
+	
+	
+	<select id="fctyMmaDAO.selectBarRevPgaData_D" parameterClass="fctyMmaSerarchVO"  resultMap="barRevTpPgaVO">
+		<![CDATA[
+			SELECT
+				  MMA_GVMT_CD 
+			FROM CON_MMA_PGA
+						 
+				]]>
+	</select> 
+	<select id="fctyMmaDAO.selectFctyMmaList_D" parameterClass="fctyMmaSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								MMA_GVMT_CD 
+						FROM CON_MMA_DATA
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					MMA_GVMT_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					MMA_FCTY_LOC_VAL LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						MMA_GVMT_CD DESC
+							, MMA_FCTY_LOC_VAL DESC
+							, MMA_MSRD_DT DESC
+							, MMA_MSRD_SEQ DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="fctyMmaDAO.selectFctyMmaListTotCnt_S" parameterClass="fctyMmaSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CON_MMA_DATA
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				MMA_GVMT_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				MMA_FCTY_LOC_VAL LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

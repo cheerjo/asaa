@@ -1,0 +1,163 @@
+<xf:model xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ht="http://www.w3.org/TR/html5" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://www.exria.org/exria" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:wf="http://www.w3.org/TR/web-forms-2" defaultinstance="instance" xmlns:xl="http://www.w3.org/1999/xlink"><xr:submission id="smsSymMenuList" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symMenu/SymMenuListEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymMenuVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/searchVO" instanceid="requestData"></xr:request-ref>
+<xr:response-ref ref="/root/resSymMenuList" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymMenuDel" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symMenu/deleteSymMenuEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymMenuVO" instanceid="requestData"></xr:request-ref>
+</xr:submission>
+<xr:submission id="smsSymMenuSave" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symMenu/saveSymMenuEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:request-ref ref="/root/reqSymMenuVO" instanceid="requestData"></xr:request-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymMenuRead" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symMenu/selectSymMenuEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymMenuVO" instanceid="requestData"></xr:request-ref>
+<xr:response-ref ref="/root/resSymMenuVO" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:dataset id="dstResSymMenuList" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[/root/resSymMenuList/row]]></xr:query>
+<xr:autocrud><xr:table prefix="T@51" name="dstResSymMenuListTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns><xr:column sourceName="menuCd" name="menuCd"></xr:column>
+<xr:column sourceName="upMenuCd" name="upMenuCd"></xr:column>
+<xr:column sourceName="useYn" name="useYn"></xr:column>
+<xr:column sourceName="inptUsrId" name="inptUsrId"></xr:column>
+<xr:column sourceName="linkUrl" name="linkUrl"></xr:column>
+<xr:column sourceName="inptDt" name="inptDt"></xr:column>
+<xr:column sourceName="siteGbcd" name="siteGbcd"></xr:column>
+<xr:column sourceName="reMark" name="reMark"></xr:column>
+<xr:column sourceName="menuDesc" name="menuDesc"></xr:column>
+<xr:column sourceName="menuNm" name="menuNm"></xr:column>
+<xr:column sourceName="updtUsrId" name="updtUsrId"></xr:column>
+<xr:column sourceName="updtDt" name="updtDt"></xr:column>
+<xr:column sourceName="upMenuNm" name="upMenuNm"></xr:column>
+<xr:column sourceName="dplyNo" name="dplyNo"></xr:column>
+</xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns><xr:column sourceName="menuCd"></xr:column>
+<xr:column sourceName="upMenuCd"></xr:column>
+<xr:column sourceName="useYn"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="linkUrl"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+<xr:column sourceName="siteGbcd"></xr:column>
+<xr:column sourceName="reMark"></xr:column>
+<xr:column sourceName="menuDesc"></xr:column>
+<xr:column sourceName="menuNm"></xr:column>
+<xr:column sourceName="updtUsrId"></xr:column>
+<xr:column sourceName="updtDt"></xr:column>
+<xr:column sourceName="upMenuNm"></xr:column>
+<xr:column sourceName="dplyNo"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xr:dataset id="dstResSymMenuVO" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[]]></xr:query>
+<xr:autocrud><xr:table prefix="T@48" name="dstResSymMenuVOTable1"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns></xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns></xr:columns>
+</xr:dataset>
+<xr:dataset id="dstReqSymMenuVO" sourceType="instance" instanceSync="true" useoriginval="true"><xr:query><![CDATA[]]></xr:query>
+<xr:autocrud><xr:table prefix="T@31" name="dstReqSymMenuVOTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns></xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns></xr:columns>
+</xr:dataset>
+<xf:jsoninstance id="instance"><![CDATA[{root : {EXRIAERRMSG : ""}}]]></xf:jsoninstance>
+<xf:jsoninstance id="requestData"><![CDATA[{
+					root : {
+						reqSymMenuVO : {
+							menuCd : "",
+							menuNm : "",
+							upMenuCd : "",
+							upMenuNm : "",
+							useYn : "",
+							inptUsrId : "",
+							dplyNo : "",
+							linkUrl : "",
+							inptDt : "",
+							siteGbcd : "",
+							reMark : "",
+							menuDesc : "",
+							updtUsrId : "",
+							updtDt : ""
+						},
+						searchVO : {
+							searchCondition : "",
+							pageIndex : "",
+							lastIndex : "",
+							firstIndex : "",
+							searchUseYn : "",
+							pageSize : "",
+							searchKeyword : "",
+							recordCountPerPage : "",
+							pageUnit : "",
+							schMenuNm : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="responseData"><![CDATA[{
+					root : {
+						resSymMenuList : {
+							row : [
+								{
+									menuCd : "",
+									upMenuCd : "",
+									useYn : "",
+									inptUsrId : "",
+									linkUrl : "",
+									inptDt : "",
+									siteGbcd : "",
+									reMark : "",
+									menuDesc : "",
+									menuNm : "",
+									updtUsrId : "",
+									updtDt : "",
+									upMenuNm : "",
+									dplyNo : ""
+								}
+							]
+						},
+						resSymMenuVO : {
+							row : [
+								{
+									menuCd : "",
+									upMenuCd : "",
+									useYn : "",
+									inptUsrId : "",
+									linkUrl : "",
+									inptDt : "",
+									siteGbcd : "",
+									reMark : "",
+									menuDesc : "",
+									menuNm : "",
+									updtUsrId : "",
+									updtDt : "",
+									upMenuNm : ""
+								}
+							]
+						},
+						paginationInfo : {
+							row : [
+								{
+									totalRecordCount : "",
+									pageSize : "",
+									recordCountPerPage : "",
+									currentPageNo : ""
+								}
+							]
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="resMessage"><![CDATA[{
+					root : {
+						message : {
+							procMsg : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="reqMethod"><![CDATA[{
+					root : {
+						method : ""
+					}
+				}]]></xf:jsoninstance>
+</xf:model>

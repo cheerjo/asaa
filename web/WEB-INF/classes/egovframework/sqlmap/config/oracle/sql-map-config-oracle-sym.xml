@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>	 
+			
+	<sqlMap resource="egovframework/sqlmap/estam/app/sym/symMenu/SymMenu_SQL.xml" />
+	<sqlMap resource="egovframework/sqlmap/estam/app/sym/symPrivGrp/SymPrivGrp_SQL.xml" />
+	<sqlMap resource="egovframework/sqlmap/estam/app/sym/symPrivMenu/SymPrivMenu_SQL.xml" />
+	<sqlMap resource="egovframework/sqlmap/estam/app/sym/symUser/SymUser_SQL.xml" />
+
+<sqlMap resource="egovframework/sqlmap/estam/app/sym/symCommCd/SymCommCd_SQL.xml" /><sqlMap resource="egovframework/sqlmap/estam/app/sym/symCommCdDtl/SymCommCdDtl_SQL.xml" /></sqlMapConfig>

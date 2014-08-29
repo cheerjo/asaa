@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SptIptnRcc">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="sptIptnRccSerarchVO" type="estam.app.spt.service.SptIptnRccDefaultVO"/>
+	<typeAlias  alias="sptIptnRccVO" type="estam.app.spt.service.SptIptnRccVO"/>
+	
+	<resultMap id="sptIptnRcc" class="estam.app.spt.service.SptIptnRccVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="rccId" column="RCC_ID" columnIndex="2"/>
+		<result property="sptIptnDt" column="SPT_IPTN_DT" columnIndex="3"/>
+		<result property="rccCmpy" column="RCC_CMPY" columnIndex="4"/>
+		<result property="rccMdl" column="RCC_MDL" columnIndex="5"/>
+		<result property="rccIstlPos" column="RCC_ISTL_POS" columnIndex="6"/>
+		<result property="rccScnNm" column="RCC_SCN_NM" columnIndex="7"/>
+		<result property="rccAuthIntt" column="RCC_AUTH_INTT" columnIndex="8"/>
+		<result property="ehqkRccAuthDt" column="EHQK_RCC_AUTH_DT" columnIndex="9"/>
+		<result property="ehqkRccTerm" column="EHQK_RCC_TERM" columnIndex="10"/>
+		<result property="ehqkRccDeliDt" column="EHQK_RCC_DELI_DT" columnIndex="11"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="12"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="13"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="14"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="15"/>
+	</resultMap>
+	<resultMap id="sptIptnRccView" class="estam.app.spt.service.SptIptnRccVO">
+        <result property="rccId" column="RCC_ID" columnIndex="1"/>
+        <result property="rccIstlPos" column="RCC_ISTL_POS" columnIndex="2"/>
+        <result property="rccScnNm" column="RCC_SCN_NM" columnIndex="3"/>
+        <result property="rccMdl" column="RCC_MDL" columnIndex="4"/>
+        <result property="rccCmpy" column="RCC_CMPY" columnIndex="5"/>
+        <result property="rccAuthIntt" column="RCC_AUTH_INTT" columnIndex="6"/>
+        <result property="ehqkRccAuthDt" column="EHQK_RCC_AUTH_DT" columnIndex="7"/>        
+    </resultMap>
+    
+	<insert id="sptIptnRccDAO.insertSptIptnRcc_S">
+		<![CDATA[
+			INSERT INTO SPT_IPTN_RCC 
+				( FCTY_CD
+				  , RCC_ID
+				  , SPT_IPTN_DT
+				  , RCC_CMPY
+				  , RCC_MDL
+				  , RCC_ISTL_POS
+				  , RCC_SCN_NM
+				  , RCC_AUTH_INTT
+				  , EHQK_RCC_AUTH_DT
+				  , EHQK_RCC_TERM
+				  , EHQK_RCC_DELI_DT
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #rccId#
+				  , #sptIptnDt#
+				  , #rccCmpy#
+				  , #rccMdl#
+				  , #rccIstlPos#
+				  , #rccScnNm#
+				  , #rccAuthIntt#
+				  , #ehqkRccAuthDt#
+				  , #ehqkRccTerm#
+				  , #ehqkRccDeliDt#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="sptIptnRccDAO.updateSptIptnRcc_S">
+		<![CDATA[
+			UPDATE SPT_IPTN_RCC
+			SET FCTY_CD=#fctyCd#
+				, RCC_ID=#rccId#
+				, SPT_IPTN_DT=#sptIptnDt#
+				, RCC_CMPY=#rccCmpy#
+				, RCC_MDL=#rccMdl#
+				, RCC_ISTL_POS=#rccIstlPos#
+				, RCC_SCN_NM=#rccScnNm#
+				, RCC_AUTH_INTT=#rccAuthIntt#
+				, EHQK_RCC_AUTH_DT=#ehqkRccAuthDt#
+				, EHQK_RCC_TERM=#ehqkRccTerm#
+				, EHQK_RCC_DELI_DT=#ehqkRccDeliDt#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND RCC_ID=#rccId#
+								AND SPT_IPTN_DT=#sptIptnDt#
+				]]>
+	</update>
+	
+	<delete id="sptIptnRccDAO.deleteSptIptnRcc_S">
+		<![CDATA[
+			DELETE FROM SPT_IPTN_RCC 
+						WHERE FCTY_CD=#fctyCd#
+								AND RCC_ID=#rccId#
+								AND SPT_IPTN_DT=#sptIptnDt#
+				]]>
+	</delete>
+	
+	<select id="sptIptnRccDAO.selectSptIptnRcc_S" resultMap="sptIptnRcc">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, RCC_ID
+				, SPT_IPTN_DT
+				, RCC_CMPY
+				, RCC_MDL
+				, RCC_ISTL_POS
+				, RCC_SCN_NM
+				, RCC_AUTH_INTT
+				, EHQK_RCC_AUTH_DT
+				, EHQK_RCC_TERM
+				, EHQK_RCC_DELI_DT
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM SPT_IPTN_RCC
+						WHERE FCTY_CD=#fctyCd#
+								AND RCC_ID=#rccId#
+								AND SPT_IPTN_DT=#sptIptnDt#
+				]]>
+	</select>
+	
+	<select id="sptIptnRccDAO.selectSptIptnRccSearchList_S" parameterClass="sptIptnRccVO" resultMap="sptIptnRccView">
+		SELECT RCC_ID,
+		       RCC_ISTL_POS,
+		       RCC_SCN_NM,
+		       RCC_MDL,
+		       RCC_CMPY,
+		       RCC_AUTH_INTT,
+		       EHQK_RCC_AUTH_DT
+		FROM   SPT_IPTN_RSLT SPT,
+		       SPT_IPTN_RCC RCC
+		WHERE  1=1
+		AND    SPT.FCTY_CD = RCC.FCTY_CD
+		AND    SPT.GVMT_CD = RCC.GVMT_CD
+		AND    SPT.SPT_IPTN_DT = RCC.SPT_IPTN_DT
+		
+		<isNotEmpty prepend="AND" property="rccMdl">
+           	RCC.RCC_MDL LIKE '%' || #rccMdl# || '%'
+        </isNotEmpty>
+        
+    </select>
+    
+	<select id="sptIptnRccDAO.selectSptIptnRccList_D" parameterClass="sptIptnRccVO" resultMap="sptIptnRccView">
+		SELECT RCC_ID,
+		       RCC_ISTL_POS,
+		       RCC_SCN_NM,
+		       RCC_MDL,
+		       RCC_CMPY,
+		       RCC_AUTH_INTT,
+		       EHQK_RCC_AUTH_DT
+		FROM   SPT_IPTN_RSLT SPT,
+		       SPT_IPTN_RCC RCC
+		WHERE  1=1
+		AND    SPT.FCTY_CD = RCC.FCTY_CD
+		AND    SPT.GVMT_CD = RCC.GVMT_CD
+		AND    SPT.SPT_IPTN_DT = RCC.SPT_IPTN_DT
+		AND    SPT.FCTY_CD = #fctyCd#
+		AND    SPT.GVMT_CD = #gvmtCd# 
+		AND    SPT.SPT_IPTN_DT = #sptIptnDt#		
+    </select>
+    	
+	<select id="sptIptnRccDAO.selectSptIptnRccListTotCnt_S" parameterClass="sptIptnRccSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM SPT_IPTN_RCC
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				RCC_ID LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

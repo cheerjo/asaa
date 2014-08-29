@@ -1,0 +1,19 @@
+/****************************************
+ * 서울여대 ext css
+ ****************************************/
+
+/************************* 
+ * listbox
+ *************************/
+.lsbExtItem {
+  background-color:#FFFFFF;
+  border-style:solid;
+  border-color:#FFFFFF;
+  border-width:2px;
+}
+
+/* listbox 아이템_상담일정관리용 */
+.lsbExtSspItem{
+  color: #555555;
+  height: 18px;
+}

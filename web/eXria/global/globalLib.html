@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<script type="text/javascript" src="deployJavaGlobal.js" charset="utf-8"></script>
+
+<meta content="1.0.0.200902030000" name="xrf-version"></meta>
+<meta http-equiv="content-type" content="text/html+xml; charset=utf-8"></meta>
+<meta http-equiv="cache-control" content="no-cache"></meta>
+<meta http-equiv="pragma" content="no-cache"></meta>
+<meta content="eXriaSuite v1.0" name="generator"></meta>
+<meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"></meta>
+<script type="text/javascript">
+this.modelType = "XHTML";
+function doOnload() {
+  var HttpRequestFactory = {
+  msxmlNames : [
+                "MSXML2.XMLHTTP.5.0",
+          "MSXML2.XMLHTTP.4.0",
+          "MSXML2.XMLHTTP.3.0",
+          "MSXML2.XMLHTTP",
+          "Microsoft.XMLHTTP"
+          ]
+  ,
+  create : function() {
+    /* Microsoft MSXML ActiveX */
+    var voRequest = null;
+    if(window.ActiveXObject !== undefined) {
+    for(var i = 0; i < this.msxmlNames.length ; i++) {
+      if(this.msxmlNames[i] != "MSXML2.XMLHTTP.6.0") {
+      try {
+        return new ActiveXObject(this.msxmlNames[i]);
+      } catch(e) {}
+      } else {
+      try {
+        return new ActiveXObject("Microsoft.XMLHTTP");
+      } catch(e) {}
+      }
+      if(voRequest != null) { break;}
+    }
+    } else if(window.XMLHttpRequest) {
+    /* Mozilla XMLHttpRequest */
+    return new XMLHttpRequest();
+    } else {
+    /* None found */
+    return null;
+    }
+  }
+  };
+
+  var voRequest = HttpRequestFactory.create();
+  voRequest.open("GET", "/exria.js", false);
+  voRequest.send(null);
+  this.exriaResource = voRequest.responseText;
+
+  voRequest.open("GET", "/eXria/custom/eXria_CRE_Configuration.js", false);
+  voRequest.send(null);
+  this.cssResource = voRequest.responseText;
+
+  if(this.modelType != "XHTML"){
+    this.windowsRepository = {};
+    this.appletPlugin = document.getElementById("jreFrameApplet");
+    checkApplet();
+  }else {
+    setMainFrmSrc();
+  }
+}
+
+this.mainFrm = null;
+
+function getMainFrame() {
+  if(this.mainFrm != null) {
+    return this.mainFrm;
+  }
+
+  var voWindow = window;
+  var voFrm = null;
+
+  try {
+    voFrm = voWindow.document.getElementById("_eXriaGlobalLibraryMainFrame_");
+  } catch(e) {}
+
+  if(voFrm == null) {
+    var voParent = voWindow.parent;
+
+    while(voParent != voWindow) {
+      voWindow = voParent;
+      try {
+        voFrm = voWindow.document.getElementById("_eXriaGlobalLibraryMainFrame_");
+      } catch(e) {}
+      if(voFrm != null) break;
+
+      voParent = voWindow.parent;
+    }
+  }
+
+  if(voFrm == null) {
+    var voOpener = voWindow.opener;
+    var voDialogArg = voWindow.dialogArguments;
+    var voParent = null;
+
+    while (voOpener || voDialogArg) {
+      voWindow = voOpener ? voOpener : voDialogArg.window;
+
+      voParent = voWindow.parent;
+
+      while(voParent != voWindow) {
+        voWindow = voParent;
+        try {
+          voFrm = voWindow.document.getElementById("_eXriaGlobalLibraryMainFrame_");
+        } catch(e) {}
+        if(voFrm != null) break;
+
+        voParent = voWindow.parent;
+      }
+
+      if(voFrm != null) break;
+
+      voOpener = voWindow.opener;
+      voDialogArg = voWindow.dialogArguments;
+    }
+  }
+  this.mainFrm = voFrm;
+
+  return this.mainFrm;
+};
+
+//firefox에서 applet 실행이 제대로 되지 않은 상황에서 xrf 로딩하는 문제 수정
+var intervalId = -1;
+var cnt = 0;
+var MAX_RETIRY_CNT = 120;
+
+var modelIdSeq = 0;
+
+this.appletPlugin = null;
+
+function checkApplet() {
+  cnt++;
+
+  if(intervalId != -1) {
+    window.clearInterval(intervalId);
+    intervalId = -1;
+  }
+
+  this.appletPlugin = document.getElementById("jreFrameApplet");
+
+  try {
+    this.appletPlugin.getVersion();
+    setMainFrmSrc();
+  } catch(e) {
+    if(cnt == MAX_RETIRY_CNT) {
+      var voMainFrm = getMainFrame();
+      var targetWindow = null;
+
+      if(voMainFrm == null) {
+        try {
+          targetWindow = top.window;
+        } catch(e) {
+          targetWindow = window;
+        }
+      } else {
+        try {
+          targetWindow = voMainFrm.contentWindow;
+        } catch(e) {
+          targetWindow = window;
+        }
+      }
+
+      if(false) {
+        targetWindow.document.location = "";
+      } else {
+        targetWindow.document.location = "";
+      }
+    } else {
+      intervalId = window.setInterval("checkApplet()", 500);
+    }
+  }
+};
+
+//mainframe src 지정
+function setMainFrmSrc() {
+  var voFrm = getMainFrame();
+
+  if(voFrm != null) {
+    voFrm.src = "/xrf/com/mainFrame.xrf";
+  }
+};
+
+//create plugin
+function createPlugin(psId, psReferer, poWindow) {
+  var voPlugin = this.appletPlugin.createPlugin(psId, psReferer, poWindow);
+  this.windowsRepository[psId] = poWindow;
+  return voPlugin;
+};
+
+//get plugin
+function getPlugin(psId) {
+  var voPlugin = this.appletPlugin.getPlugin(psId);
+  return voPlugin;
+};
+
+
+//plugin에서 window object 참고 하고자 할 경우 콜 할 메소드
+function getWindow(psId) {
+  var voWindow = this.windowsRepository[psId];
+  return voWindow;
+};
+
+//특정 xrf가 close 될 경우 plugin에서 콜 할 메소드
+function removeWindow(psId) {
+  var voWindow = this.windowsRepository[psId];
+  if(voWindow != null) {
+    voWindow = null;
+    delete this.windowsRepository[psId];
+    this.appletPlugin.removePlugin(psId);
+  }
+};
+
+//plugin에서 javascript call 할 경우 사용할 메소드
+function jsExcuter(psId, psFunc) {
+  var voWindow = this.windowsRepository[psId];
+  var result = eval("voWindow." + psFunc);
+  return result;
+};
+
+//모델에 seq를 부여하기 위해 seq를 넘겨주는 메소드
+function getSeq(){
+  return modelIdSeq++;
+}
+document.id = "Global";
+</script>
+</head>
+<body onload="doOnload()">
+<script>
+  if(this.modelType != "XHTML") {
+    var attributes = {
+      id : "jreFrameApplet",
+      name : "jreFrameApplet",
+      codebase : window.location.protocol + "//" + window.location.host + "/eXria/applet/",
+      code : "org.exria.plugin.main.PluginMain",
+      archive : "ExriaPlugin.jar",
+      style : "position:absolute; width:1px; height:1px; float:left; left:-10000000px; top:-10000000px;"
+    };
+
+    var parameters = {
+      mayscript : "true",
+      id : "jreFrameApplet",
+      cache_archive : "ExriaPlugin.jar",
+      log_level : "DEBUG",
+      supportChunkedStream : "true"
+    };
+
+    var platform = navigator.platform.toLowerCase();
+    var args = "-XX:MaxPermSize=64m -Xms256m -Xmx256m -Dsun.jnu.encoding=utf-8 -Dfile.encoding=utf-8";
+
+    if(platform.indexOf('win') != -1) {
+      parameters.java_arguments = args;
+      parameters.java_version = "1.6+";
+      parameters.codebase_lookup = "false";
+    } else if(platform.indexOf('macintel') != -1) {
+      if(args.indexOf('-XX:MaxPermSize') != -1) {
+        args = args.replace(RegExp(/-XX:MaxPermSize[ ]*[=]+[ ]*[0-9]+[mM]+[ ]*/ig), '');
+      }
+      parameters.java_arguments = args;
+    }
+    deployJavaGlobal.runApplet(attributes, parameters, '1.6');
+  }
+</script>
+</body>
+</html>

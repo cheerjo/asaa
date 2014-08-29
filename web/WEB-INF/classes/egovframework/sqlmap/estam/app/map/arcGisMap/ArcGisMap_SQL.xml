@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ArcGisMap">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="arcGisMapSerarchVO" type="estam.app.map.arcgis.service.ArcGisMapDefaultVO"/>
+	
+	<resultMap id="arcGisMap" class="estam.app.map.arcgis.service.ArcGisMapVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="2"/>
+		<result property="fctyNm" column="FCTY_NM" columnIndex="3"/>
+		<result property="fctyEsmtStdt" column="FCTY_ESMT_STDT" columnIndex="4"/>
+		<result property="fctyEsmtEddt" column="FCTY_ESMT_EDDT" columnIndex="5"/>
+		<result property="fctyAreaCd" column="FCTY_AREA_CD" columnIndex="6"/>
+		<result property="fctyStAddr" column="FCTY_ST_ADDR" columnIndex="7"/>
+		<result property="fctyEdAddr" column="FCTY_ED_ADDR" columnIndex="8"/>
+		<result property="fctyKndCd" column="FCTY_KND_CD" columnIndex="9"/>
+		<result property="fctyLon" column="FCTY_LON" columnIndex="10"/>
+		<result property="fctyLat" column="FCTY_LAT" columnIndex="11"/>
+		<result property="fctyAttc" column="FCTY_ATTC" columnIndex="12"/>
+		<result property="fctyGrndHt" column="FCTY_GRND_HT" columnIndex="13"/>
+		<result property="fctyUgrdHt" column="FCTY_UGRD_HT" columnIndex="14"/>
+		<result property="fctyBasc" column="FCTY_BASC" columnIndex="15"/>
+		<result property="fctyGrndCd" column="FCTY_GRND_CD" columnIndex="16"/>
+		<result property="fctyHolcYn" column="FCTY_HOLC_YN" columnIndex="17"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="18"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="19"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="20"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="21"/>
+		<result property="seisCd" column="SEIS_CD" columnIndex="22"/>
+	</resultMap>
+	
+	<insert id="arcGisMapDAO.insertArcGisMap_S">
+		<![CDATA[
+			INSERT INTO FCTY_MGR 
+				( FCTY_CD
+				  , GVMT_CD
+				  , FCTY_NM
+				  , FCTY_ESMT_STDT
+				  , FCTY_ESMT_EDDT
+				  , FCTY_AREA_CD
+				  , FCTY_ST_ADDR
+				  , FCTY_ED_ADDR
+				  , FCTY_KND_CD
+				  , FCTY_LON
+				  , FCTY_LAT
+				  , FCTY_ATTC
+				  , FCTY_GRND_HT
+				  , FCTY_UGRD_HT
+				  , FCTY_BASC
+				  , FCTY_GRND_CD
+				  , FCTY_HOLC_YN
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT
+				  , SEIS_CD )
+			VALUES ( #fctyCd#
+				  , #gvmtCd#
+				  , #fctyNm#
+				  , #fctyEsmtStdt#
+				  , #fctyEsmtEddt#
+				  , #fctyAreaCd#
+				  , #fctyStAddr#
+				  , #fctyEdAddr#
+				  , #fctyKndCd#
+				  , #fctyLon#
+				  , #fctyLat#
+				  , #fctyAttc#
+				  , #fctyGrndHt#
+				  , #fctyUgrdHt#
+				  , #fctyBasc#
+				  , #fctyGrndCd#
+				  , #fctyHolcYn#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt#
+				  , #seisCd# )
+		]]>
+	</insert>
+	
+	<update id="arcGisMapDAO.updateArcGisMap_S">
+		<![CDATA[
+			UPDATE FCTY_MGR
+			SET FCTY_CD=#fctyCd#
+				, GVMT_CD=#gvmtCd#
+				, FCTY_NM=#fctyNm#
+				, FCTY_ESMT_STDT=#fctyEsmtStdt#
+				, FCTY_ESMT_EDDT=#fctyEsmtEddt#
+				, FCTY_AREA_CD=#fctyAreaCd#
+				, FCTY_ST_ADDR=#fctyStAddr#
+				, FCTY_ED_ADDR=#fctyEdAddr#
+				, FCTY_KND_CD=#fctyKndCd#
+				, FCTY_LON=#fctyLon#
+				, FCTY_LAT=#fctyLat#
+				, FCTY_ATTC=#fctyAttc#
+				, FCTY_GRND_HT=#fctyGrndHt#
+				, FCTY_UGRD_HT=#fctyUgrdHt#
+				, FCTY_BASC=#fctyBasc#
+				, FCTY_GRND_CD=#fctyGrndCd#
+				, FCTY_HOLC_YN=#fctyHolcYn#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+				, SEIS_CD=#seisCd#
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</update>
+	
+	<delete id="arcGisMapDAO.deleteArcGisMap_S">
+		<![CDATA[
+			DELETE FROM FCTY_MGR 
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</delete>
+	
+	<select id="arcGisMapDAO.selectArcGisMap_S" resultMap="arcGisMap">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, GVMT_CD
+				, FCTY_NM
+				, FCTY_ESMT_STDT
+				, FCTY_ESMT_EDDT
+				, FCTY_AREA_CD
+				, FCTY_ST_ADDR
+				, FCTY_ED_ADDR
+				, FCTY_KND_CD
+				, FCTY_LON
+				, FCTY_LAT
+				, FCTY_ATTC
+				, FCTY_GRND_HT
+				, FCTY_UGRD_HT
+				, FCTY_BASC
+				, FCTY_GRND_CD
+				, FCTY_HOLC_YN
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+				, SEIS_CD
+			FROM FCTY_MGR
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</select>
+	
+	<select id="arcGisMapDAO.selectArcGisMapList_D" parameterClass="arcGisMapSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FCTY_CD
+								, GVMT_CD
+								, FCTY_NM
+								, FCTY_ESMT_STDT
+								, FCTY_ESMT_EDDT
+								, FCTY_AREA_CD
+								, FCTY_ST_ADDR
+								, FCTY_ED_ADDR
+								, FCTY_KND_CD
+								, FCTY_LON
+								, FCTY_LAT
+								, FCTY_ATTC
+								, FCTY_GRND_HT
+								, FCTY_UGRD_HT
+								, FCTY_BASC
+								, FCTY_GRND_CD
+								, FCTY_HOLC_YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+								, SEIS_CD
+						FROM FCTY_MGR
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FCTY_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					GVMT_CD LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FCTY_CD DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="arcGisMapDAO.selectArcGisMapListTotCnt_S" parameterClass="arcGisMapSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM FCTY_MGR
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				GVMT_CD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

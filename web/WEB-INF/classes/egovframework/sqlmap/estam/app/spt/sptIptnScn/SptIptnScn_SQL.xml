@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SptIptnScn">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="sptIptnScnSerarchVO" type="estam.app.spt.service.SptIptnScnDefaultVO"/>
+	<typeAlias  alias="sptIptnScnVO" type="estam.app.spt.service.SptIptnScnVO"/>
+	
+	<resultMap id="sptIptnScn" class="estam.app.spt.service.SptIptnScnVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="ehqkScnId" column="EHQK_SCN_ID" columnIndex="2"/>
+		<result property="sptIptnDt" column="SPT_IPTN_DT" columnIndex="3"/>
+		<result property="ehqkScnCmpy" column="EHQK_SCN_CMPY" columnIndex="4"/>
+		<result property="ehqkScnMdl" column="EHQK_SCN_MDL" columnIndex="5"/>
+		<result property="ehqkScnIstlPos" column="EHQK_SCN_ISTL_POS" columnIndex="6"/>
+		<result property="ehqkScnChl" column="EHQK_SCN_CHL" columnIndex="7"/>
+		<result property="ehqkScnAuthIntt" column="EHQK_SCN_AUTH_INTT" columnIndex="8"/>
+		<result property="ehqkScnAuthDt" column="EHQK_SCN_AUTH_DT" columnIndex="9"/>
+		<result property="ehqkScnTerm" column="EHQK_SCN_TERM" columnIndex="10"/>
+		<result property="ehqkDeliDt" column="EHQK_DELI_DT" columnIndex="11"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="12"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="13"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="14"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="15"/>
+	</resultMap>
+    <resultMap id="sptIptnScnView" class="estam.app.spt.service.SptIptnScnVO">
+        <result property="ehqkScnId" column="EHQK_SCN_ID" columnIndex="1"/>
+        <result property="ehqkScnIstlPos" column="EHQK_SCN_ISTL_POS" columnIndex="2"/>
+        <result property="ehqkScnChl" column="EHQK_SCN_CHL" columnIndex="3"/>
+        <result property="ehqkScnMdl" column="EHQK_SCN_MDL" columnIndex="4"/>
+        <result property="ehqkScnCmpy" column="EHQK_SCN_CMPY" columnIndex="5"/>
+        <result property="ehqkScnAuthIntt" column="EHQK_SCN_AUTH_INTT" columnIndex="6"/>
+        <result property="ehqkScnAuthDt" column="EHQK_SCN_AUTH_DT" columnIndex="7"/>
+    </resultMap>
+    
+	<insert id="sptIptnScnDAO.insertSptIptnScn_S">
+		<![CDATA[
+			INSERT INTO SPT_IPTN_SCN 
+				( FCTY_CD
+				  , EHQK_SCN_ID
+				  , SPT_IPTN_DT
+				  , EHQK_SCN_CMPY
+				  , EHQK_SCN_MDL
+				  , EHQK_SCN_ISTL_POS
+				  , EHQK_SCN_CHL
+				  , EHQK_SCN_AUTH_INTT
+				  , EHQK_SCN_AUTH_DT
+				  , EHQK_SCN_TERM
+				  , EHQK_DELI_DT
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #ehqkScnId#
+				  , #sptIptnDt#
+				  , #ehqkScnCmpy#
+				  , #ehqkScnMdl#
+				  , #ehqkScnIstlPos#
+				  , #ehqkScnChl#
+				  , #ehqkScnAuthIntt#
+				  , #ehqkScnAuthDt#
+				  , #ehqkScnTerm#
+				  , #ehqkDeliDt#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="sptIptnScnDAO.updateSptIptnScn_S">
+		<![CDATA[
+			UPDATE SPT_IPTN_SCN
+			SET FCTY_CD=#fctyCd#
+				, EHQK_SCN_ID=#ehqkScnId#
+				, SPT_IPTN_DT=#sptIptnDt#
+				, EHQK_SCN_CMPY=#ehqkScnCmpy#
+				, EHQK_SCN_MDL=#ehqkScnMdl#
+				, EHQK_SCN_ISTL_POS=#ehqkScnIstlPos#
+				, EHQK_SCN_CHL=#ehqkScnChl#
+				, EHQK_SCN_AUTH_INTT=#ehqkScnAuthIntt#
+				, EHQK_SCN_AUTH_DT=#ehqkScnAuthDt#
+				, EHQK_SCN_TERM=#ehqkScnTerm#
+				, EHQK_DELI_DT=#ehqkDeliDt#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND EHQK_SCN_ID=#ehqkScnId#
+								AND SPT_IPTN_DT=#sptIptnDt#
+				]]>
+	</update>
+	
+	<delete id="sptIptnScnDAO.deleteSptIptnScn_S">
+		<![CDATA[
+			DELETE FROM SPT_IPTN_SCN 
+						WHERE FCTY_CD=#fctyCd#
+								AND EHQK_SCN_ID=#ehqkScnId#
+								AND SPT_IPTN_DT=#sptIptnDt#
+				]]>
+	</delete>
+	
+	<select id="sptIptnScnDAO.selectSptIptnScn_S" resultMap="sptIptnScn">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, EHQK_SCN_ID
+				, SPT_IPTN_DT
+				, EHQK_SCN_CMPY
+				, EHQK_SCN_MDL
+				, EHQK_SCN_ISTL_POS
+				, EHQK_SCN_CHL
+				, EHQK_SCN_AUTH_INTT
+				, EHQK_SCN_AUTH_DT
+				, EHQK_SCN_TERM
+				, EHQK_DELI_DT
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM SPT_IPTN_SCN
+						WHERE FCTY_CD=#fctyCd#
+								AND EHQK_SCN_ID=#ehqkScnId#
+								AND SPT_IPTN_DT=#sptIptnDt#
+				]]>
+	</select>
+	
+	<select id="sptIptnScnDAO.selectSptIptnScnList_D" parameterClass="sptIptnScnVO" resultMap="sptIptnScnView">
+			SELECT EHQK_SCN_ID,
+			       EHQK_SCN_ISTL_POS,
+			       EHQK_SCN_CHL,
+			       EHQK_SCN_MDL,
+			       EHQK_SCN_CMPY,
+			       EHQK_SCN_AUTH_INTT,
+			       EHQK_SCN_AUTH_DT
+			FROM   SPT_IPTN_RSLT SPT,
+			       SPT_IPTN_SCN SCN
+			WHERE  1=1
+			AND    SPT.FCTY_CD = SCN.FCTY_CD
+			AND    SPT.GVMT_CD = SCN.GVMT_CD
+			AND    SPT.SPT_IPTN_DT = SCN.SPT_IPTN_DT
+			<isNotEmpty prepend="AND" property="fctyCd">
+            	SPT.FCTY_CD = #fctyCd#
+        	</isNotEmpty>
+        	
+        	<isNotEmpty prepend="AND" property="gvmtCd">
+            	SPT.GVMT_CD = #gvmtCd#
+        	</isNotEmpty>
+        	
+        	<isNotEmpty prepend="AND" property="sptIptnDt">
+            	SPT.SPT_IPTN_DT = #sptIptnDt#
+        	</isNotEmpty>
+	</select>
+	
+	<select id="sptIptnScnDAO.selectSptIptnScnSearchList_S" parameterClass="sptIptnScnVO" resultMap="sptIptnScnView">
+			SELECT EHQK_SCN_ID,
+			       EHQK_SCN_ISTL_POS,
+			       EHQK_SCN_CHL,
+			       EHQK_SCN_MDL,
+			       EHQK_SCN_CMPY,
+			       EHQK_SCN_AUTH_INTT,
+			       EHQK_SCN_AUTH_DT
+			FROM   SPT_IPTN_RSLT SPT,
+			       SPT_IPTN_SCN SCN
+			WHERE  1=1
+			AND    SPT.FCTY_CD = SCN.FCTY_CD
+			AND    SPT.GVMT_CD = SCN.GVMT_CD
+			AND    SPT.SPT_IPTN_DT = SCN.SPT_IPTN_DT
+			
+			<isNotEmpty prepend="AND" property="ehqkScnMdl">
+            	SCN.EHQK_SCN_MDL LIKE '%' || #ehqkScnMdl# || '%'
+        	</isNotEmpty>
+
+	</select>
+		
+	<select id="sptIptnScnDAO.selectSptIptnScnListTotCnt_S" parameterClass="sptIptnScnSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM SPT_IPTN_SCN
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				EHQK_SCN_ID LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

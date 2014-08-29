@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ConMmaData">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="conMmaDataSerarchVO" type="estam.app.chrt.flot.service.ConMmaDataDefaultVO"/>
+	
+	<resultMap id="conMmaData" class="estam.app.chrt.flot.service.ConMmaDataVO">
+		<result property="mmaGvmtCd" column="MMA_GVMT_CD" columnIndex="1"/>
+		<result property="mmaFctyLocVal" column="MMA_FCTY_LOC_VAL" columnIndex="2"/>
+		<result property="mmaMsrdDt" column="MMA_MSRD_DT" columnIndex="3"/>
+		<result property="mmaMsrdSeq" column="MMA_MSRD_SEQ" columnIndex="4"/>
+		<result property="mmaDatetime" column="MMA_DATETIME" columnIndex="5"/>
+		<result property="mmaCrc" column="MMA_CRC" columnIndex="6"/>
+		<result property="mmaQutyFlg" column="MMA_QUTY_FLG" columnIndex="7"/>
+		<result property="mmaDataType" column="MMA_DATA_TYPE" columnIndex="8"/>
+		<result property="mmaUdWndMinVal" column="MMA_UD_WND_MIN_VAL" columnIndex="9"/>
+		<result property="mmaUdWndMaxVal" column="MMA_UD_WND_MAX_VAL" columnIndex="10"/>
+		<result property="mmaUdWndAvgVal" column="MMA_UD_WND_AVG_VAL" columnIndex="11"/>
+		<result property="mmaNsWndMinVal" column="MMA_NS_WND_MIN_VAL" columnIndex="12"/>
+		<result property="mmaNsWndMaxVal" column="MMA_NS_WND_MAX_VAL" columnIndex="13"/>
+		<result property="mmaNsWndAvgVal" column="MMA_NS_WND_AVG_VAL" columnIndex="14"/>
+		<result property="mmaEwWndMinVal" column="MMA_EW_WND_MIN_VAL" columnIndex="15"/>
+		<result property="mmaEwWndMaxVal" column="MMA_EW_WND_MAX_VAL" columnIndex="16"/>
+		<result property="mmaEwWndAvgVal" column="MMA_EW_WND_AVG_VAL" columnIndex="17"/>
+		<result property="mmaUdTruMinVal" column="MMA_UD_TRU_MIN_VAL" columnIndex="18"/>
+		<result property="mmaUdTruMaxVal" column="MMA_UD_TRU_MAX_VAL" columnIndex="19"/>
+		<result property="mmaNsTruMinVal" column="MMA_NS_TRU_MIN_VAL" columnIndex="20"/>
+		<result property="mmaNsTruMaxVal" column="MMA_NS_TRU_MAX_VAL" columnIndex="21"/>
+		<result property="mmaEwTruMinVal" column="MMA_EW_TRU_MIN_VAL" columnIndex="22"/>
+		<result property="mmaEwTruMaxVal" column="MMA_EW_TRU_MAX_VAL" columnIndex="23"/>
+		<result property="mmaUdMax" column="MMA_UD_MAX" columnIndex="24"/>
+		<result property="mmaNsMax" column="MMA_NS_MAX" columnIndex="25"/>
+		<result property="mmaEwMax" column="MMA_EW_MAX" columnIndex="26"/>
+		<result property="mmaHrtlPga" column="MMA_HRTL_PGA" columnIndex="27"/>
+		<result property="mmaTotPga" column="MMA_TOT_PGA" columnIndex="28"/>
+		<result property="mma32bUdSi" column="MMA_32B_UD_SI" columnIndex="29"/>
+		<result property="mma32bNsSi" column="MMA_32B_NS_SI" columnIndex="30"/>
+		<result property="mma32bEwSi" column="MMA_32B_EW_SI" columnIndex="31"/>
+		<result property="mmaHrtlSi" column="MMA_HRTL_SI" columnIndex="32"/>
+		<result property="mmaCrrn" column="MMA_CRRN" columnIndex="33"/>
+		<result property="mmaLocCd" column="MMA_LOC_CD" columnIndex="34"/>
+		<result property="mmaDaPort" column="MMA_DA_PORT" columnIndex="35"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="36"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="37"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="38"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="39"/>
+	</resultMap>
+	
+	<insert id="conMmaDataDAO.insertConMmaData_S">
+		<![CDATA[
+			INSERT INTO CON_MMA_DATA 
+				( MMA_GVMT_CD
+				  , MMA_FCTY_LOC_VAL
+				  , MMA_MSRD_DT
+				  , MMA_MSRD_SEQ
+				  , MMA_DATETIME
+				  , MMA_CRC
+				  , MMA_QUTY_FLG
+				  , MMA_DATA_TYPE
+				  , MMA_UD_WND_MIN_VAL
+				  , MMA_UD_WND_MAX_VAL
+				  , MMA_UD_WND_AVG_VAL
+				  , MMA_NS_WND_MIN_VAL
+				  , MMA_NS_WND_MAX_VAL
+				  , MMA_NS_WND_AVG_VAL
+				  , MMA_EW_WND_MIN_VAL
+				  , MMA_EW_WND_MAX_VAL
+				  , MMA_EW_WND_AVG_VAL
+				  , MMA_UD_TRU_MIN_VAL
+				  , MMA_UD_TRU_MAX_VAL
+				  , MMA_NS_TRU_MIN_VAL
+				  , MMA_NS_TRU_MAX_VAL
+				  , MMA_EW_TRU_MIN_VAL
+				  , MMA_EW_TRU_MAX_VAL
+				  , MMA_UD_MAX
+				  , MMA_NS_MAX
+				  , MMA_EW_MAX
+				  , MMA_HRTL_PGA
+				  , MMA_TOT_PGA
+				  , MMA_32B_UD_SI
+				  , MMA_32B_NS_SI
+				  , MMA_32B_EW_SI
+				  , MMA_HRTL_SI
+				  , MMA_CRRN
+				  , MMA_LOC_CD
+				  , MMA_DA_PORT
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #mmaGvmtCd#
+				  , #mmaFctyLocVal#
+				  , #mmaMsrdDt#
+				  , #mmaMsrdSeq#
+				  , #mmaDatetime#
+				  , #mmaCrc#
+				  , #mmaQutyFlg#
+				  , #mmaDataType#
+				  , #mmaUdWndMinVal#
+				  , #mmaUdWndMaxVal#
+				  , #mmaUdWndAvgVal#
+				  , #mmaNsWndMinVal#
+				  , #mmaNsWndMaxVal#
+				  , #mmaNsWndAvgVal#
+				  , #mmaEwWndMinVal#
+				  , #mmaEwWndMaxVal#
+				  , #mmaEwWndAvgVal#
+				  , #mmaUdTruMinVal#
+				  , #mmaUdTruMaxVal#
+				  , #mmaNsTruMinVal#
+				  , #mmaNsTruMaxVal#
+				  , #mmaEwTruMinVal#
+				  , #mmaEwTruMaxVal#
+				  , #mmaUdMax#
+				  , #mmaNsMax#
+				  , #mmaEwMax#
+				  , #mmaHrtlPga#
+				  , #mmaTotPga#
+				  , #mma32bUdSi#
+				  , #mma32bNsSi#
+				  , #mma32bEwSi#
+				  , #mmaHrtlSi#
+				  , #mmaCrrn#
+				  , #mmaLocCd#
+				  , #mmaDaPort#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="conMmaDataDAO.updateConMmaData_S">
+		<![CDATA[
+			UPDATE CON_MMA_DATA
+			SET MMA_GVMT_CD=#mmaGvmtCd#
+				, MMA_FCTY_LOC_VAL=#mmaFctyLocVal#
+				, MMA_MSRD_DT=#mmaMsrdDt#
+				, MMA_MSRD_SEQ=#mmaMsrdSeq#
+				, MMA_DATETIME=#mmaDatetime#
+				, MMA_CRC=#mmaCrc#
+				, MMA_QUTY_FLG=#mmaQutyFlg#
+				, MMA_DATA_TYPE=#mmaDataType#
+				, MMA_UD_WND_MIN_VAL=#mmaUdWndMinVal#
+				, MMA_UD_WND_MAX_VAL=#mmaUdWndMaxVal#
+				, MMA_UD_WND_AVG_VAL=#mmaUdWndAvgVal#
+				, MMA_NS_WND_MIN_VAL=#mmaNsWndMinVal#
+				, MMA_NS_WND_MAX_VAL=#mmaNsWndMaxVal#
+				, MMA_NS_WND_AVG_VAL=#mmaNsWndAvgVal#
+				, MMA_EW_WND_MIN_VAL=#mmaEwWndMinVal#
+				, MMA_EW_WND_MAX_VAL=#mmaEwWndMaxVal#
+				, MMA_EW_WND_AVG_VAL=#mmaEwWndAvgVal#
+				, MMA_UD_TRU_MIN_VAL=#mmaUdTruMinVal#
+				, MMA_UD_TRU_MAX_VAL=#mmaUdTruMaxVal#
+				, MMA_NS_TRU_MIN_VAL=#mmaNsTruMinVal#
+				, MMA_NS_TRU_MAX_VAL=#mmaNsTruMaxVal#
+				, MMA_EW_TRU_MIN_VAL=#mmaEwTruMinVal#
+				, MMA_EW_TRU_MAX_VAL=#mmaEwTruMaxVal#
+				, MMA_UD_MAX=#mmaUdMax#
+				, MMA_NS_MAX=#mmaNsMax#
+				, MMA_EW_MAX=#mmaEwMax#
+				, MMA_HRTL_PGA=#mmaHrtlPga#
+				, MMA_TOT_PGA=#mmaTotPga#
+				, MMA_32B_UD_SI=#mma32bUdSi#
+				, MMA_32B_NS_SI=#mma32bNsSi#
+				, MMA_32B_EW_SI=#mma32bEwSi#
+				, MMA_HRTL_SI=#mmaHrtlSi#
+				, MMA_CRRN=#mmaCrrn#
+				, MMA_LOC_CD=#mmaLocCd#
+				, MMA_DA_PORT=#mmaDaPort#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE MMA_GVMT_CD=#mmaGvmtCd#
+								AND MMA_FCTY_LOC_VAL=#mmaFctyLocVal#
+								AND MMA_MSRD_DT=#mmaMsrdDt#
+								AND MMA_MSRD_SEQ=#mmaMsrdSeq#
+				]]>
+	</update>
+	
+	<delete id="conMmaDataDAO.deleteConMmaData_S">
+		<![CDATA[
+			DELETE FROM CON_MMA_DATA 
+						WHERE MMA_GVMT_CD=#mmaGvmtCd#
+								AND MMA_FCTY_LOC_VAL=#mmaFctyLocVal#
+								AND MMA_MSRD_DT=#mmaMsrdDt#
+								AND MMA_MSRD_SEQ=#mmaMsrdSeq#
+				]]>
+	</delete>
+	
+	<select id="conMmaDataDAO.selectConMmaData_S" resultMap="conMmaData">
+		<![CDATA[
+			SELECT
+				MMA_GVMT_CD
+				, MMA_FCTY_LOC_VAL
+				, MMA_MSRD_DT
+				, MMA_MSRD_SEQ
+				, MMA_DATETIME
+				, MMA_CRC
+				, MMA_QUTY_FLG
+				, MMA_DATA_TYPE
+				, MMA_UD_WND_MIN_VAL
+				, MMA_UD_WND_MAX_VAL
+				, MMA_UD_WND_AVG_VAL
+				, MMA_NS_WND_MIN_VAL
+				, MMA_NS_WND_MAX_VAL
+				, MMA_NS_WND_AVG_VAL
+				, MMA_EW_WND_MIN_VAL
+				, MMA_EW_WND_MAX_VAL
+				, MMA_EW_WND_AVG_VAL
+				, MMA_UD_TRU_MIN_VAL
+				, MMA_UD_TRU_MAX_VAL
+				, MMA_NS_TRU_MIN_VAL
+				, MMA_NS_TRU_MAX_VAL
+				, MMA_EW_TRU_MIN_VAL
+				, MMA_EW_TRU_MAX_VAL
+				, MMA_UD_MAX
+				, MMA_NS_MAX
+				, MMA_EW_MAX
+				, MMA_HRTL_PGA
+				, MMA_TOT_PGA
+				, MMA_32B_UD_SI
+				, MMA_32B_NS_SI
+				, MMA_32B_EW_SI
+				, MMA_HRTL_SI
+				, MMA_CRRN
+				, MMA_LOC_CD
+				, MMA_DA_PORT
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM CON_MMA_DATA
+						WHERE MMA_GVMT_CD=#mmaGvmtCd#
+								AND MMA_FCTY_LOC_VAL=#mmaFctyLocVal#
+								AND MMA_MSRD_DT=#mmaMsrdDt#
+								AND MMA_MSRD_SEQ=#mmaMsrdSeq#
+				]]>
+	</select>
+	
+	<select id="conMmaDataDAO.selectConMmaDataList_D" parameterClass="conMmaDataSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								MMA_GVMT_CD
+								, MMA_FCTY_LOC_VAL
+								, MMA_MSRD_DT
+								, MMA_MSRD_SEQ
+								, MMA_DATETIME
+								, MMA_CRC
+								, MMA_QUTY_FLG
+								, MMA_DATA_TYPE
+								, MMA_UD_WND_MIN_VAL
+								, MMA_UD_WND_MAX_VAL
+								, MMA_UD_WND_AVG_VAL
+								, MMA_NS_WND_MIN_VAL
+								, MMA_NS_WND_MAX_VAL
+								, MMA_NS_WND_AVG_VAL
+								, MMA_EW_WND_MIN_VAL
+								, MMA_EW_WND_MAX_VAL
+								, MMA_EW_WND_AVG_VAL
+								, MMA_UD_TRU_MIN_VAL
+								, MMA_UD_TRU_MAX_VAL
+								, MMA_NS_TRU_MIN_VAL
+								, MMA_NS_TRU_MAX_VAL
+								, MMA_EW_TRU_MIN_VAL
+								, MMA_EW_TRU_MAX_VAL
+								, MMA_UD_MAX
+								, MMA_NS_MAX
+								, MMA_EW_MAX
+								, MMA_HRTL_PGA
+								, MMA_TOT_PGA
+								, MMA_32B_UD_SI
+								, MMA_32B_NS_SI
+								, MMA_32B_EW_SI
+								, MMA_HRTL_SI
+								, MMA_CRRN
+								, MMA_LOC_CD
+								, MMA_DA_PORT
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM CON_MMA_DATA
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					MMA_GVMT_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					MMA_FCTY_LOC_VAL LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						MMA_GVMT_CD DESC
+							, MMA_FCTY_LOC_VAL DESC
+							, MMA_MSRD_DT DESC
+							, MMA_MSRD_SEQ DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="conMmaDataDAO.selectConMmaDataListTotCnt_S" parameterClass="conMmaDataSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CON_MMA_DATA
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				MMA_GVMT_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				MMA_FCTY_LOC_VAL LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

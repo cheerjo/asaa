@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EhqkOcurInfo">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="ehqkOcurInfoSerarchVO" type="estam.app.scn.evnt.service.EhqkOcurInfoDefaultVO"/>
+	
+	<resultMap id="ehqkOcurInfo" class="estam.app.scn.evnt.service.EhqkOcurInfoVO">
+		<result property="ehqkReqId" column="EHQK_REQ_ID" columnIndex="1"/>
+		<result property="ehqkTranGbcd" column="EHQK_TRAN_GBCD" columnIndex="2"/> 
+		<result property="ehqkDocTpcd" column="EHQK_DOC_TPCD" columnIndex="3"/>
+		<result property="ehqkOrgTm" column="EHQK_ORG_TM" columnIndex="4"/>
+		<result property="ehqkLon" column="EHQK_LON" columnIndex="5"/>
+		<result property="ehqkLat" column="EHQK_LAT" columnIndex="6"/>
+		<result property="ehqkScal" column="EHQK_SCAL" columnIndex="7"/>
+		<result property="ehqkOrgArea" column="EHQK_ORG_AREA" columnIndex="8"/>
+		<result property="ehqkEvntSttm" column="EHQK_EVNT_STTM" columnIndex="9"/>
+		<result property="ehqkEvntEdtm" column="EHQK_EVNT_EDTM" columnIndex="10"/>
+		<result property="ehqkEvntYn" column="EHQK_EVNT_YN" columnIndex="11"/>
+		<result property="ehqkStatOtr" column="EHQK_STAT_OTR" columnIndex="12"/>
+		<result property="ehqkStatUp" column="EHQK_STAT_UP" columnIndex="13"/> 
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="14"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="15"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="16"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="17"/>
+	</resultMap>
+	
+	<insert id="ehqkOcurInfoDAO.insertEhqkOcurInfo_S">
+		<![CDATA[
+			INSERT INTO EHQK_OCUR_INFO 
+				( EHQK_REQ_ID
+				  , EHQK_TRAN_GBCD 
+				  , EHQK_DOC_TPCD
+				  , EHQK_ORG_TM
+				  , EHQK_LON
+				  , EHQK_LAT
+				  , EHQK_SCAL
+				  , EHQK_ORG_AREA
+				  , EHQK_EVNT_STTM
+				  , EHQK_EVNT_EDTM
+				  , EHQK_EVNT_YN
+				  , EHQK_STAT_OTR
+				  , EHQK_STAT_UP 
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #ehqkReqId#
+				  , #ehqkTranGbcd# 
+				  , #ehqkDocTpcd#
+				  , #ehqkOrgTm#
+				  , #ehqkLon#
+				  , #ehqkLat#
+				  , #ehqkScal#
+				  , #ehqkOrgArea#
+				  , #ehqkEvntSttm#
+				  , #ehqkEvntEdtm#
+				  , #ehqkEvntYn#
+				  , #ehqkStatOtr#
+				  , #ehqkStatUp# 
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="ehqkOcurInfoDAO.updateEhqkOcurInfo_S">
+		<![CDATA[
+			UPDATE EHQK_OCUR_INFO
+			SET EHQK_REQ_ID=#ehqkReqId#
+				, EHQK_TRAN_GBCD=#ehqkTranGbcd# 
+				, EHQK_DOC_TPCD=#ehqkDocTpcd#
+				, EHQK_ORG_TM=#ehqkOrgTm#
+				, EHQK_LON=#ehqkLon#
+				, EHQK_LAT=#ehqkLat#
+				, EHQK_SCAL=#ehqkScal#
+				, EHQK_ORG_AREA=#ehqkOrgArea#
+				, EHQK_EVNT_STTM=#ehqkEvntSttm#
+				, EHQK_EVNT_EDTM=#ehqkEvntEdtm#
+				, EHQK_EVNT_YN=#ehqkEvntYn#
+				, EHQK_STAT_OTR=#ehqkStatOtr#
+				, EHQK_STAT_UP=#ehqkStatUp# 
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE EHQK_REQ_ID=#ehqkReqId#
+								AND EHQK_TRAN_GBCD=#ehqkTranGbcd#
+				]]>
+	</update>
+	
+	<delete id="ehqkOcurInfoDAO.deleteEhqkOcurInfo_S">
+		<![CDATA[
+			DELETE FROM EHQK_OCUR_INFO 
+						WHERE EHQK_REQ_ID=#ehqkReqId#
+								AND EHQK_TRAN_GBCD=#ehqkTranGbcd#
+				]]>
+	</delete>
+	
+	<select id="ehqkOcurInfoDAO.selectEhqkOcurInfo_S" resultMap="ehqkOcurInfo">
+		<![CDATA[
+			SELECT
+				EHQK_REQ_ID
+				, EHQK_TRAN_GBCD 
+				, EHQK_DOC_TPCD
+				, EHQK_ORG_TM
+				, EHQK_LON
+				, EHQK_LAT
+				, EHQK_SCAL
+				, EHQK_ORG_AREA
+				, EHQK_EVNT_STTM
+				, EHQK_EVNT_EDTM
+				, EHQK_EVNT_YN
+				, EHQK_STAT_OTR
+				, EHQK_STAT_UP 
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM EHQK_OCUR_INFO
+						WHERE EHQK_REQ_ID=#ehqkReqId#
+								AND EHQK_TRAN_GBCD=#ehqkTranGbcd#
+				]]>
+	</select>
+	
+	<select id="ehqkOcurInfoDAO.selectEhqkOcurInfoList_D" parameterClass="ehqkOcurInfoSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								EHQK_REQ_ID
+								, EHQK_TRAN_GBCD 
+								, EHQK_DOC_TPCD
+								, EHQK_ORG_TM
+								, EHQK_LON
+								, EHQK_LAT
+								, EHQK_SCAL
+								, EHQK_ORG_AREA
+								, EHQK_EVNT_STTM
+								, EHQK_EVNT_EDTM
+								, EHQK_EVNT_YN
+								, EHQK_STAT_OTR
+								, EHQK_STAT_UP 
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM EHQK_OCUR_INFO
+				WHERE 1=1 
+					<isNotEmpty prepend="AND" property="ehqkReqId" >
+						EHQK_REQ_ID = #ehqkReqId#
+					</isNotEmpty>
+					<isNotEmpty prepend="AND" property="ehqkTranGbcd" >
+						EHQK_TRAN_GBCD =  #ehqkTranGbcd#
+					</isNotEmpty>
+					ORDER BY EHQK_ORG_TM DESC
+					   	    , EHQK_REQ_ID DESC
+							, EHQK_TRAN_GBCD DESC 
+<![CDATA[							 
+	) A WHERE ROWNUM <= 10
+)WHERE RNUM > 0
+	]]>
+	</select>	
+	<select id="ehqkOcurInfoDAO.selectEhqkOcurInfoListTotCnt_S" parameterClass="ehqkOcurInfoSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM EHQK_OCUR_INFO
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				EHQK_REQ_ID = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				EHQK_TRAN_GBCD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title></title>
+    <link rel="stylesheet" href="http://10.32.28.204:8001/js3.7/js/esri/css/esri.css">
+    <link rel="stylesheet" href="http://10.32.28.204:8001/js3.7/js/dojo/dijit/themes/claro/claro.css">
+    <style>
+      html, body, #map {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+      }
+      
+      esriScalebarLabel{font-size:13px; position:absolute; width:10%; text-align:center; color:#FF0000; font:Verdana; font-weight:bolder; height:5px;top: -1px;} 
+      esriScalebarRuler{background-color:#FFE400;width:120px;}
+      
+    </style>
+    <!-- cript type="text/javascript" src="http://10.32.28.204:8001/js/jquery/jquery-1.9.0.js" > / script -->  
+    <script src="http://10.32.28.204:8001/js3.7/init.js"></script>
+    <script>
+
+      require([
+        "esri/map", "esri/layers/FeatureLayer", "esri/layers/KMLLayer", "esri/layers/ArcGISTiledMapServiceLayer",
+        "esri/SpatialReference",
+        "esri/geometry/Point", 
+        "esri/tasks/query", "esri/tasks/QueryTask", 
+        "esri/tasks/GeometryService", "esri/tasks/BufferParameters",
+        "esri/graphic", "esri/InfoTemplate", "esri/symbols/SimpleMarkerSymbol",
+        "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", 
+        "esri/dijit/Scalebar",
+        "esri/config", "dojo/_base/Color", "dojo/dom", "dojo/domReady!", "dojo/Deferred"
+      ], function(
+        Map, FeatureLayer, KMLLayer, ArcGISTiledMapServiceLayer,
+        SpatialReference,
+        Point,
+        Query, QueryTask,
+        GeometryService, BufferParameters,
+        Graphic, InfoTemplate, SimpleMarkerSymbol,
+        SimpleLineSymbol, SimpleFillSymbol,
+        Scalebar,
+        esriConfig, Color, dom, domReady, Deferred
+      ) {
+
+        var map;
+       
+        
+        // radiusTable[mma][showing step] = radius value
+        var distanceTable = 
+        	new Array(
+   				new Array(10,  0,  0,  0,  0,  0,  0,  0,  0,  0),		// <= 1
+   				new Array(20, 10,  0,  0,  0,  0,  0,  0,  0,  0),		// <= 2
+   				new Array(30, 20, 10,  0,  0,  0,  0,  0,  0,  0),		// <= 3
+   				new Array(40, 30, 20, 10,  0,  0,  0,  0,  0,  0),		// <= 4
+   				new Array(50, 40, 30, 20, 10,  0,  0,  0,  0,  0),		// <= 5
+   				new Array(60, 50, 40, 30, 20, 10,  0,  0,  0,  0),		// <= 6
+   				new Array(70, 60, 50, 40, 30, 20, 10,  0,  0,  0),		// <= 7
+   				new Array(80, 70, 60, 50, 40, 30, 20, 10,  0,  0),		// <= 8
+   				new Array(90, 80, 70, 60, 50, 40, 30, 20, 10,  0),		// <= 9
+   				new Array(100,90, 80, 70, 60, 50, 40, 30, 20, 10)		// > 9 (over 10+)
+        	);
+
+
+        // colorTable[shows step] = color value;
+        var colorTable =
+        	new Array(
+        		new dojo.Color([143, 241, 245, 0.5]),
+        		new dojo.Color([ 85, 202, 211, 0.5]),
+        		new dojo.Color([ 48, 165, 172, 0.5]),
+        		new dojo.Color([255, 250, 255, 0.5]),
+        		new dojo.Color([226, 201,  21, 0.5]),
+        		new dojo.Color([299, 216,  92, 0.5]),
+        		new dojo.Color([243, 161,   0, 0.5]),
+        		new dojo.Color([190,  65,   1, 0.5]),
+        		new dojo.Color([254,   2,   0, 0.5]),
+        		new dojo.Color([135,   0,   0, 0.5])
+        	);
+      
+        esriConfig.defaults.io.proxyUrl = "/proxy";
+        //esriConfig.defaults.map.panDuration = 0;
+        //esriConfig.defaults.io.proxyUrl = "http://sync.arc2earth.com/s/agsProxy/";
+        esriConfig.defaults.io.alwaysUseProxy = false;
+
+        map = new Map("map", {sliderOrientation:"vertical", sliderPosition:"top-left", sliderStyle:"large", logo:false});
+        var scalebar = new esri.dijit.Scalebar({ 
+	            map: map, 
+	            scalebarUnit: "metric"
+	        }); 
+        
+        //map.spatialReference = new SpatialReference(4326);
+        map.centerAndZoom(new esri.geometry.Point(128, 36), 0);
+        
+        var featureLayer = new FeatureLayer("http://10.32.28.202:6080/arcgis/rest/services/asaa/FCTY_MMA/MapServer/0",{
+				mode: FeatureLayer.MODE_ONDEMAND,
+				infoTemplate: new InfoTemplate("Attributes", "${*}"),
+				outFields: ["FCTY_CD","FCTY_NM","FCTY_LON", "FCTY_LAT", "FCTY_MMA"],
+				visible:true
+	        });
+        //featureLayer.setDefinitionExpression("FCTY_MMA >= 1");
+                
+        var query = new Query();
+        var queryTask = new QueryTask("http://10.32.28.202:6080/arcgis/rest/services/asaa/FCTY_MMA/MapServer/0");
+        var geometryService = new GeometryService("http://10.32.28.202:6080/arcgis/rest/services/Utilities/Geometry/GeometryServer");
+
+		var MMA_COLOR_INDEX=0;
+        var MMA_LEVEL_INDEX=0;
+        
+        var feats, geos;
+ 
+        map.addLayer(new ArcGISTiledMapServiceLayer("http://10.32.28.202:6080/arcgis/rest/services/asaa/newaddr_basemap/MapServer"));
+        map.addLayer(featureLayer);
+
+		dojo.connect(map, "onLoad", drawMMA);
+		dojo.connect(map, "onClick", redrawMMA);
+
+		///////////////////////////////////////////////////////////////////////////////////////////////////
+
+		function init() {
+			feats=new Array(
+					new Array(), new Array(), new Array(), new Array(), new Array(),
+					new Array(), new Array(), new Array(), new Array(), new Array()
+				);
+			geos=new Array(
+					new Array(), new Array(), new Array(), new Array(), new Array(),
+					new Array(), new Array(), new Array(), new Array(), new Array()
+				);
+		}
+		
+		function redrawMMA() {
+			map.graphics.clear();
+			drawMMA();
+		}
+		
+		function drawMMA() {
+			init();
+			queryFeatures();
+		}
+		
+		function queryFeatures() {
+			query.outSpatialReference = map.spatialReference;
+			query.where = "FCTY_MMA > 0";
+			query.returnGeometry = true;
+			query.outFields = ["FCTY_NM", "FCTY_MMA"];
+			queryTask.execute(query, queryComplete);
+		}
+		
+		function queryComplete(featureSet) {
+			if (featureSet == null || featureSet.features.length == 0) {
+				return ;
+			}
+			
+			var resultFeatures = featureSet.features;
+			
+			for (var i=0, len=resultFeatures.length; i<len; i++) {
+				geos[resultFeatures[i].attributes['FCTY_MMA']-1].push(resultFeatures[i].geometry);
+				feats[resultFeatures[i].attributes['FCTY_MMA']-1].push(resultFeatures[i]);
+			}
+
+			makeBuffers();
+		}
+		
+		function makeBuffers() {
+
+			MMA_COLOR_INDEX = 0;
+			MMA_LEVEL_INDEX = 0;
+			
+			makeBuffer();
+		}
+		
+		function makeBuffer() {
+			if (geos[MMA_LEVEL_INDEX].length == 0) {
+				makeNextBuffer();
+				return ;
+			}
+			
+			var params = new BufferParameters();
+
+			params.geometries = geos[MMA_LEVEL_INDEX];
+			params.distances = [ distanceTable[MMA_LEVEL_INDEX][MMA_COLOR_INDEX] ];
+			params.unit = GeometryService.UNIT_KILOMETER;
+			params.bufferSpatialReference = new esri.SpatialReference({wkid:102100});
+			params.outSpatialReference = map.spatialReference;
+        	params.unionResults = true;
+        	geometryService.buffer(params, showBuffer, errBack);
+		}
+		
+		function makeNextBuffer() {
+			if (++MMA_LEVEL_INDEX >= feats.length) {
+				MMA_LEVEL_INDEX = ++MMA_COLOR_INDEX;
+				
+				if (MMA_COLOR_INDEX >= colorTable.length) {
+					return ;
+				}
+			}
+			makeBuffer();
+		}
+		
+		function errBack(err) {
+			alert (err);
+		}
+		
+		function showBuffer(geometries) {
+			var symbol = new esri.symbol.SimpleFillSymbol(
+				esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+				null,
+				colorTable [ MMA_COLOR_INDEX ]
+			);
+			
+			dojo.forEach(geometries, function(geometry) {
+			var graphic = new esri.Graphic(geometry,symbol);
+				map.graphics.add(graphic);
+			});
+			
+			makeNextBuffer();
+		}
+
+
+      });
+
+
+    </script>
+  </head>
+
+  <body class="claro">
+    <div id="map"></div>
+  </body>
+</html>

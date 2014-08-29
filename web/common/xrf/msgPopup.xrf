@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html
+    xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+    xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+  <xh:head>
+    <xh:title>msgPopup</xh:title>
+    <xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+    <xh:meta content="no-cache" http-equiv="cache-control"/>
+    <xh:meta content="no-cache" http-equiv="pragma"/>
+    <xh:meta content="eXriaSuite v1.0" name="generator"/>
+    <xh:meta content="eXria.1.0" name="version"/>
+    <xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+    <xh:meta content="JOYJ" name="author"/>
+    <xh:meta content="10. 10. 12 오전 11:15" name="date"/>
+    <xh:meta content="2.0.0.201010071411" name="xrf-version"/>
+    <xf:model defaultinstance="instance">
+      <xf:instance id="instance">
+        <root>
+          <EXRIAERRMSG/>
+        </root>
+      </xf:instance>
+    </xf:model>
+    <xh:script page="msgPopup" src="msgPopup.js" type="text/javascript"/>
+  </xh:head>
+  <xh:body style="height:220;width:400;left:0;top:0;">
+    <ev:listener event="onload" handler="page.onLoad" hasReturn="false"/>
+    <xr:img id="imgIcon" style="height:61;width:70;border-style:none;left:10;top:40;"
+        z-index="0"/>
+    <xr:label id="lblMsg" style="height:131;text-align:left;width:278;border-style:none;left:100;top:10;"
+        z-index="1">
+      <xr:text>label</xr:text>
+    </xr:label>
+    <xr:button id="btnYes" style="height:26;color:#6095BD;width:71;border-style:none;left:130;font-weight:bold;background-image:/style/tyj/img/btn_02.gif;top:170;"
+        z-index="2" langKey="UI.co.confirm" visible="false">
+      <xr:text>확 인</xr:text>
+      <ev:listener event="onclick" handler="page.onClick_btnYes" hasReturn="false"/>
+    </xr:button>
+    <xr:button id="btnNo" style="height:26;color:#6095BD;width:71;border-style:none;left:210;font-weight:bold;background-image:/style/tyj/img/btn_02.gif;top:170;"
+        z-index="3" langKey="UI.co.cancel" tabindex="0" visible="false">
+      <xr:text>아니오</xr:text>
+      <ev:listener event="onclick" handler="page.onClick_btnNo" hasReturn="false"/>
+    </xr:button>
+    <xr:button id="btnConfirm" style="height:26;color:#6095BD;width:71;border-style:none;left:166;font-weight:bold;background-image:/style/tyj/img/btn_02.gif;top:170;"
+        z-index="4" langKey="UI.co.confirm" tabindex="0">
+      <xr:text>확 인</xr:text>
+      <ev:listener event="onclick" handler="page.onClick_btnConfirm" hasReturn="false"/>
+    </xr:button>
+  </xh:body>
+</xh:html>

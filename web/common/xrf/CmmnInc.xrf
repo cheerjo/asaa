@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**********************************************************************/
+// 프로그램명 : 공통삽입소스
+// 설      명 : 공통삽입소스 eXria XRF
+// 최초작성자 : 백승호(shbaek)
+// 최초작성일 : 2012.07.24
+// 
+// 수정 이력 :
+// 
+//   수정일       수정자                수정내용
+// ==========  =========   ===============================
+// 2012.07.24    백승호               최초생성
+// 
+// Copyright ⓒ 2012 DAESANG Information Technology All rights reserved.
+/***********************************************************************/
+-->
+<xh:html
+		xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>CmmnInc</xh:title>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="shbaek" name="author"/>
+		<xh:meta content="13. 4. 12 오후 4:48" name="date"/>
+		<xh:meta content="2.0.0.201304021017" name="xrf-version"/>
+		<xf:model defaultinstance="ins_request">
+			<xr:submission id="sbm_message" action="/gnss/common/data/MessageData.js" async="false"
+			    method="post" req-charset="utf-8" req-protocol="urlencoded" req-type="" res-charset="utf-8"
+			    res-protocol="json" res-type="" waitcursor="true">
+			  <xr:response-ref add="false" instanceid="ins_response" ref="/root/messages"/>
+			</xr:submission>
+			<xr:submission id="sbm_get_http_session" action="/gnss/system/common/httpSession/getHttpSession.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="ins_request" ref="/root/refHttpSession/loginUsrId"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/refHttpSession/loginUsrNm"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/refHttpSession/loginEpno"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/refHttpSession/loginAutIdBind"/>
+			  <xr:response-ref add="false" instanceid="ins_response" ref="/root/httpSession"/>
+			</xr:submission>
+			<xr:submission id="sbm_remove_http_session" action="/gnss/system/common/httpSession/removeHttpSession.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="ins_request" ref="/root/refHttpSession/loginUsrId"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/refHttpSession/loginUsrNm"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/refHttpSession/loginEpno"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/refHttpSession/loginAutIdBind"/>
+			  <xr:response-ref add="false" instanceid="ins_response" ref="/root/httpSession"/>
+			</xr:submission>
+			<xr:submission id="sbm_get_server_date" action="/gnss/system/common/cmmnBaseData/getServerDate.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="ins_request" ref="/root/reqServerDate/format"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/reqServerDate/nodeName"/>
+			  <xr:response-ref add="false" instanceid="ins_response" ref="/root/getServerDate"/>
+			</xr:submission>
+			<xr:submission id="sbm_get_db_param_value" action="/gnss/system/common/cmmnBaseData/selectParaVal.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="ins_request" ref="/root/reqDbParamValue/reqParaId"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/reqDbParamValue/nodeName"/>
+			  <xr:response-ref add="false" instanceid="ins_response" ref="/root/getDbParamValue"/>
+			</xr:submission>
+			<xr:submission id="sbm_insert_usr_appr_his_info" action="/gnss/system/common/cmmnBaseData/insertUsrApprHisInfo.do"
+			    async="true" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="false">
+			  <xr:request-ref instanceid="ins_request" ref="/root/insertUsrApprHisInfo/usrId"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/insertUsrApprHisInfo/pgmId"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/insertUsrApprHisInfo/apprGbcd"/>
+			  <xr:request-ref instanceid="ins_request" ref="/root/insertUsrApprHisInfo/updUsrId"/>
+			  <xr:response-ref add="false" instanceid="ins_response" ref="/root/tranResult"/>
+			</xr:submission>
+			<xf:jsoninstance id="ins_request">
+  			<![CDATA[{
+					root : {
+						refHttpSession : {
+							loginUsrId : "",
+							loginUsrNm : "",
+							loginEpno : "",
+							loginAutIdBind : ""
+						},
+						reqServerDate : {
+							format : "",
+							nodeName : "getServerDate"
+						},
+						reqDbParamValue : {
+							reqParaId : "",
+							nodeName : "getDbParamValue"
+						},
+						insertUsrApprHisInfo : {
+							usrId : "",
+							pgmId : "",
+							apprGbcd : "",
+							updUsrId : ""
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="ins_response">
+  			<![CDATA[{
+					root : {
+						messages : {
+							row : [
+								{
+									id : "",
+									text : ""
+								}
+							]
+						},
+						httpSession : {
+							row : [
+								{
+									loginEpno : "",
+									loginUsrNm : "",
+									loginUsrId : "",
+									loginAutIdBind : ""
+								}
+							]
+						},
+						getServerDate : {
+							serverDate : "",
+							year : "",
+							month : "",
+							day : "",
+							hour : "",
+							minute : "",
+							second : "",
+							millisecond : ""
+						},
+						getDbParamValue : {
+							PARA_VAL : ""
+						},
+						tranResult : {
+							tranSuccess : "",
+							resultMsg : "",
+							saveCnt : "",
+							msgCode : ""
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+		</xf:model>
+		<xh:script page="CmmnInc" src="CmmnInc.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:1;width:1;left:0;top:0;">
+		<ev:listener event="onload" handler="page.onLoad" hasReturn="false"/>
+	</xh:body>
+</xh:html>

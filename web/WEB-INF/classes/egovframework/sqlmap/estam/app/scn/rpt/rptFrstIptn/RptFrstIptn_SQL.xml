@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptFrstIptn">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptFrstIptnSerarchVO" type="estam.app.scn.rpt.service.RptFrstIptnDefaultVO"/>
+	
+	<resultMap id="rptFrstIptn" class="estam.app.scn.rpt.service.RptFrstIptnVO">
+		<result property="iptDt" column="IPT_DT" columnIndex="1"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="2"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="3"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="4"/>
+		<result property="ehqkScnCnt" column="EHQK_SCN_CNT" columnIndex="5"/>
+		<result property="rccCnt" column="RCC_CNT" columnIndex="6"/>
+		<result property="frstIptnRsltCtnt" column="FRST_IPTN_RSLT_CTNT" columnIndex="7"/>
+		<result property="frstIptnMngeCtnt" column="FRST_IPTN_MNGE_CTNT" columnIndex="8"/>
+		<result property="frstIptnUsrDept" column="FRST_IPTN_USR_DEPT" columnIndex="9"/>
+		<result property="frstIptnUsrDuty" column="FRST_IPTN_USR_DUTY" columnIndex="10"/>
+		<result property="frstIptnUsrNm" column="FRST_IPTN_USR_NM" columnIndex="11"/>
+		<result property="frstIptnUsrTel" column="FRST_IPTN_USR_TEL" columnIndex="12"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="13"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="14"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="15"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="16"/>
+	</resultMap>
+	
+	<insert id="rptFrstIptnDAO.insertRptFrstIptn_S">
+		<![CDATA[
+			INSERT INTO RPT_FRST_IPTN 
+				( IPT_DT
+				  , CON_DA_GBCD
+				  , FCTY_CD
+				  , GVMT_CD
+				  , EHQK_SCN_CNT
+				  , RCC_CNT
+				  , FRST_IPTN_RSLT_CTNT
+				  , FRST_IPTN_MNGE_CTNT
+				  , FRST_IPTN_USR_DEPT
+				  , FRST_IPTN_USR_DUTY
+				  , FRST_IPTN_USR_NM
+				  , FRST_IPTN_USR_TEL
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #iptDt#
+				  , #conDaGbcd#
+				  , #fctyCd#
+				  , #gvmtCd#
+				  , #ehqkScnCnt#
+				  , #rccCnt#
+				  , #frstIptnRsltCtnt#
+				  , #frstIptnMngeCtnt#
+				  , #frstIptnUsrDept#
+				  , #frstIptnUsrDuty#
+				  , #frstIptnUsrNm#
+				  , #frstIptnUsrTel#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptFrstIptnDAO.updateRptFrstIptn_S">
+		<![CDATA[
+			UPDATE RPT_FRST_IPTN
+			SET IPT_DT=#iptDt#
+				, CON_DA_GBCD=#conDaGbcd#
+				, FCTY_CD=#fctyCd#
+				, GVMT_CD=#gvmtCd#
+				, EHQK_SCN_CNT=#ehqkScnCnt#
+				, RCC_CNT=#rccCnt#
+				, FRST_IPTN_RSLT_CTNT=#frstIptnRsltCtnt#
+				, FRST_IPTN_MNGE_CTNT=#frstIptnMngeCtnt#
+				, FRST_IPTN_USR_DEPT=#frstIptnUsrDept#
+				, FRST_IPTN_USR_DUTY=#frstIptnUsrDuty#
+				, FRST_IPTN_USR_NM=#frstIptnUsrNm#
+				, FRST_IPTN_USR_TEL=#frstIptnUsrTel#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE IPT_DT=#iptDt#
+								AND CON_DA_GBCD=#conDaGbcd#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</update>
+	
+	<delete id="rptFrstIptnDAO.deleteRptFrstIptn_S">
+		<![CDATA[
+			DELETE FROM RPT_FRST_IPTN 
+						WHERE IPT_DT=#iptDt#
+								AND CON_DA_GBCD=#conDaGbcd#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</delete>
+	
+	<select id="rptFrstIptnDAO.selectRptFrstIptn_S" resultMap="rptFrstIptn">
+		<![CDATA[
+			SELECT
+				IPT_DT
+				, CON_DA_GBCD
+				, FCTY_CD
+				, GVMT_CD
+				, EHQK_SCN_CNT
+				, RCC_CNT
+				, FRST_IPTN_RSLT_CTNT
+				, FRST_IPTN_MNGE_CTNT
+				, FRST_IPTN_USR_DEPT
+				, FRST_IPTN_USR_DUTY
+				, FRST_IPTN_USR_NM
+				, FRST_IPTN_USR_TEL
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_FRST_IPTN
+						WHERE IPT_DT= (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD=#conDaGbcd#
+										      AND GVMT_CD=#gvmtCd#
+										      AND FCTY_CD = #fctyCd#)
+								AND CON_DA_GBCD=#conDaGbcd#
+								AND GVMT_CD=#gvmtCd#
+								AND FCTY_CD=#fctyCd#
+								
+				]]>
+	</select>
+	
+	<select id="rptFrstIptnDAO.selectRptFrstIptnList_D" parameterClass="rptFrstIptnSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								IPT_DT
+								, CON_DA_GBCD
+								, FCTY_CD
+								, GVMT_CD
+								, EHQK_SCN_CNT
+								, RCC_CNT
+								, FRST_IPTN_RSLT_CTNT
+								, FRST_IPTN_MNGE_CTNT
+								, FRST_IPTN_USR_DEPT
+								, FRST_IPTN_USR_DUTY
+								, FRST_IPTN_USR_NM
+								, FRST_IPTN_USR_TEL
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_FRST_IPTN
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					IPT_DT = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					CON_DA_GBCD LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						IPT_DT DESC
+							, CON_DA_GBCD DESC
+							, FCTY_CD DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="rptFrstIptnDAO.selectRptFrstIptnListTotCnt_S" parameterClass="rptFrstIptnSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_FRST_IPTN
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				IPT_DT = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				CON_DA_GBCD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

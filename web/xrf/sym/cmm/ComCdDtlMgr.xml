@@ -1,0 +1,181 @@
+<xf:model xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ht="http://www.w3.org/TR/html5" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://www.exria.org/exria" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:wf="http://www.w3.org/TR/web-forms-2" defaultinstance="instance" xmlns:xl="http://www.w3.org/1999/xlink"><xr:submission id="smsSymCommCdDtlList" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symCommCdDtl/SymCommCdDtlListEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymCommCdDtlVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/searchVO" instanceid="requestData"></xr:request-ref>
+<xr:response-ref ref="/root/resSymCommCdDtlList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/paginationInfo" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymCommCdDtlSave" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symCommCdDtl/saveSymCommCdDtlEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymCommCdDtlVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/searchVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/paginationInfo" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/resSymCommCdDtlList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymCommCdDtlDel" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symCommCdDtl/deleteSymCommCdDtlEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymCommCdDtlVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/paginationInfo" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/resSymCommCdDtlList" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymCommCdDtlRead" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symCommCdDtl/selectSymCommCdDtlEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymCommCdDtlVO" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/resSymCommCdDtlVO" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:dataset id="dstResSymCommCdDtlList" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[/root/resSymCommCdDtlList/row]]></xr:query>
+<xr:autocrud><xr:table prefix="T@21" name="dstResSymCommCdDtlListTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns><xr:column sourceName="commCd" name="commCd"></xr:column>
+<xr:column sourceName="commNm" name="commNm"></xr:column>
+<xr:column sourceName="commDtlCd" name="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm" name="commDtlNm"></xr:column>
+<xr:column sourceName="commDtlInfo" name="commDtlInfo"></xr:column>
+<xr:column sourceName="useYn" name="useYn"></xr:column>
+<xr:column sourceName="inptUsrId" name="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd" name="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt" name="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId" name="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt" name="inptDt"></xr:column>
+</xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns><xr:column sourceName="commCd"></xr:column>
+<xr:column sourceName="commNm"></xr:column>
+<xr:column sourceName="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm"></xr:column>
+<xr:column sourceName="commDtlInfo"></xr:column>
+<xr:column sourceName="useYn"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xr:dataset id="dstReqSymCommCdDtlVO" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>requestData</xr:connectioninfo>
+<xr:query><![CDATA[/root/reqSymCommCdDtlVO]]></xr:query>
+<xr:autocrud><xr:table prefix="T@41" name="dstReqSymCommCdDtlVOTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns></xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns><xr:column sourceName="commCd"></xr:column>
+<xr:column sourceName="commNm"></xr:column>
+<xr:column sourceName="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm"></xr:column>
+<xr:column sourceName="commDtlInfo"></xr:column>
+<xr:column sourceName="useYn"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xr:dataset id="dstResSymCommCdDtlVO" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[/root/resSymCommCdDtlVO/row]]></xr:query>
+<xr:autocrud><xr:table prefix="T@53" name="dstResSymCommCdDtlVOTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns></xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns><xr:column sourceName="commCd"></xr:column>
+<xr:column sourceName="commNm"></xr:column>
+<xr:column sourceName="commDtlCd"></xr:column>
+<xr:column sourceName="commDtlNm"></xr:column>
+<xr:column sourceName="commDtlInfo"></xr:column>
+<xr:column sourceName="useYn"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="commDtlOrd"></xr:column>
+<xr:column sourceName="updtDt"></xr:column>
+<xr:column sourceName="updtUsrId"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xf:jsoninstance id="instance"><![CDATA[{root : {EXRIAERRMSG : ""}}]]></xf:jsoninstance>
+<xf:jsoninstance id="requestData"><![CDATA[{
+					root : {
+						reqSymCommCdDtlVO : {
+							commCd : "",
+							commNm : "",
+							commDtlCd : "",
+							commDtlNm : "",
+							commDtlInfo : "",
+							useYn : "",
+							inptUsrId : "",
+							commDtlOrd : "",
+							updtDt : "",
+							updtUsrId : "",
+							inptDt : ""
+						},
+						searchVO : {
+							searchCondition : "",
+							pageIndex : "",
+							lastIndex : "",
+							firstIndex : "",
+							searchUseYn : "",
+							pageSize : "",
+							searchKeyword : "",
+							recordCountPerPage : "",
+							pageUnit : "",
+							searchGubun : "",
+							srhComName : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="responseData"><![CDATA[{
+					root : {
+						resSymCommCdDtlVO : {
+							row : [
+								{
+									commCd : "",
+									commNm : "",
+									commDtlCd : "",
+									commDtlNm : "",
+									commDtlInfo : "",
+									useYn : "",
+									inptUsrId : "",
+									commDtlOrd : "",
+									updtDt : "",
+									updtUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						resSymCommCdDtlList : {
+							row : [
+								{
+									commCd : "",
+									commNm : "",
+									commDtlCd : "",
+									commDtlNm : "",
+									commDtlInfo : "",
+									useYn : "",
+									inptUsrId : "",
+									commDtlOrd : "",
+									updtDt : "",
+									updtUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						paginationInfo : {
+							row : [
+								{
+									totalRecordCount : "",
+									pageSize : "",
+									recordCountPerPage : "",
+									currentPageNo : ""
+								}
+							]
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="resMessage"><![CDATA[{
+					root : {
+						message : {
+							procMsg : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="reqMethod"><![CDATA[{
+					root : {
+						method : ""
+					}
+				}]]></xf:jsoninstance>
+</xf:model>

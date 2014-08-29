@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>ComCdMgr</xh:title>
+		<xh:link href="../../../style/sample/style.css" media="all" rel="stylesheet" type="text/css"/>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="cyberlhs" name="author"/>
+		<xh:meta content="13. 7. 23 오후 4:53" name="date"/>
+		<xh:meta content="2.0.0.201304021017" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xr:submission id="smsSymCommCdList" action="/sym/symCommCd/SymCommCdListEx.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymCommCdVO"/>
+			  <xr:request-ref instanceid="reqMethod" ref="/root/method"/>
+			  <xr:request-ref instanceid="requestData" ref="/root/searchVO"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/resSymCommCdList"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/paginationInfo"/>
+			  <xr:response-ref add="false" instanceid="resMessage" ref="/root/message"/>
+			</xr:submission>
+			<xr:submission id="smsSymCommCdSave" action="/sym/symCommCd/saveSymCommCdEx.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymCommCdVO"/>
+			  <xr:request-ref instanceid="reqMethod" ref="/root/method"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/resSymCommCdList"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/paginationInfo"/>
+			  <xr:response-ref add="false" instanceid="resMessage" ref="/root/message"/>
+			</xr:submission>
+			<xr:submission id="smsSymCommCdDel" action="/sym/symCommCd/deleteSymCommCdEx.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymCommCdVO"/>
+			  <xr:request-ref instanceid="reqMethod" ref="/root/method"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/resSymCommCdList"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/paginationInfo"/>
+			  <xr:response-ref add="false" instanceid="resMessage" ref="/root/message"/>
+			</xr:submission>
+			<xr:submission id="smsSymCommCdRead" action="/sym/symCommCd/selectSymCommCdEx.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymCommCdVO"/>
+			  <xr:request-ref instanceid="reqMethod" ref="/root/method"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/resSymCommCdVO"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/paginationInfo"/>
+			  <xr:response-ref add="false" instanceid="resMessage" ref="/root/message"/>
+			</xr:submission>
+			<xr:dataset id="dstSymCommCdList" instanceSync="true" sourceType="instance" useoriginval="true">
+			  <xr:connectioninfo>responseData</xr:connectioninfo>
+			  <xr:query><![CDATA[/root/resSymCommCdList/row]]></xr:query>
+			  <xr:autocrud>
+			    <xr:table name="dstSymCommCdListTable" prefix="T@83">
+			    	<xr:primarykeys/>
+			    	<xr:updatecolumns>
+			    		<xr:column name="commCd" sourceName="commCd"/>
+			    		<xr:column name="commNm" sourceName="commNm"/>
+			    		<xr:column name="commDtlCd" sourceName="commDtlCd"/>
+			    		<xr:column name="commDtlNm" sourceName="commDtlNm"/>
+			    		<xr:column name="commInfo" sourceName="commInfo"/>
+			    		<xr:column name="useYn" sourceName="useYn"/>
+			    		<xr:column name="inptUsrId" sourceName="inptUsrId"/>
+			    		<xr:column name="commDtlOrd" sourceName="commDtlOrd"/>
+			    		<xr:column name="updtDt" sourceName="updtDt"/>
+			    		<xr:column name="updtUsrId" sourceName="updtUsrId"/>
+			    		<xr:column name="inptDt" sourceName="inptDt"/>
+			    	</xr:updatecolumns>
+			    </xr:table>
+			  </xr:autocrud>
+			  <xr:columns>
+			    <xr:column sourceName="commCd"/>
+			    <xr:column sourceName="commNm"/>
+			    <xr:column sourceName="commDtlCd"/>
+			    <xr:column sourceName="commDtlNm"/>
+			    <xr:column sourceName="commInfo"/>
+			    <xr:column sourceName="useYn"/>
+			    <xr:column sourceName="inptUsrId"/>
+			    <xr:column sourceName="commDtlOrd"/>
+			    <xr:column sourceName="updtDt"/>
+			    <xr:column sourceName="updtUsrId"/>
+			    <xr:column sourceName="inptDt"/>
+			  </xr:columns>
+			</xr:dataset>
+			<xr:dataset id="dstReqSymCommCdVO" instanceSync="true" sourceType="instance" useoriginval="true">
+			  <xr:connectioninfo>requestData</xr:connectioninfo>
+			  <xr:query><![CDATA[/root/reqSymCommCdVO]]></xr:query>
+			  <xr:autocrud>
+			    <xr:table name="dstReqSymCommCdVOTable" prefix="T@18">
+			    	<xr:primarykeys/>
+			    	<xr:updatecolumns>
+			    		<xr:column name="commCd" sourceName="commCd"/>
+			    		<xr:column name="commNm" sourceName="commNm"/>
+			    		<xr:column name="commDtlCd" sourceName="commDtlCd"/>
+			    		<xr:column name="commDtlNm" sourceName="commDtlNm"/>
+			    		<xr:column name="commInfo" sourceName="commInfo"/>
+			    		<xr:column name="useYn" sourceName="useYn"/>
+			    		<xr:column name="inptUsrId" sourceName="inptUsrId"/>
+			    		<xr:column name="commDtlOrd" sourceName="commDtlOrd"/>
+			    		<xr:column name="updtDt" sourceName="updtDt"/>
+			    		<xr:column name="updtUsrId" sourceName="updtUsrId"/>
+			    		<xr:column name="inptDt" sourceName="inptDt"/>
+			    	</xr:updatecolumns>
+			    </xr:table>
+			  </xr:autocrud>
+			  <xr:columns>
+			    <xr:column sourceName="commCd"/>
+			    <xr:column sourceName="commNm"/>
+			    <xr:column sourceName="commDtlCd"/>
+			    <xr:column sourceName="commDtlNm"/>
+			    <xr:column sourceName="commInfo"/>
+			    <xr:column sourceName="useYn"/>
+			    <xr:column sourceName="inptUsrId"/>
+			    <xr:column sourceName="commDtlOrd"/>
+			    <xr:column sourceName="updtDt"/>
+			    <xr:column sourceName="updtUsrId"/>
+			    <xr:column sourceName="inptDt"/>
+			  </xr:columns>
+			</xr:dataset>
+			<xr:dataset id="dstResSymCommCdVO" instanceSync="true" sourceType="instance" useoriginval="true">
+			  <xr:connectioninfo>responseData</xr:connectioninfo>
+			  <xr:query><![CDATA[/root/resSymCommCdVO/row]]></xr:query>
+			  <xr:autocrud>
+			    <xr:table name="dstResSymCommCdVOTable" prefix="T@89">
+			    	<xr:primarykeys/>
+			    	<xr:updatecolumns>
+			    		<xr:column name="commCd" sourceName="commCd"/>
+			    		<xr:column name="commNm" sourceName="commNm"/>
+			    		<xr:column name="commDtlCd" sourceName="commDtlCd"/>
+			    		<xr:column name="commDtlNm" sourceName="commDtlNm"/>
+			    		<xr:column name="commInfo" sourceName="commInfo"/>
+			    		<xr:column name="useYn" sourceName="useYn"/>
+			    		<xr:column name="inptUsrId" sourceName="inptUsrId"/>
+			    		<xr:column name="commDtlOrd" sourceName="commDtlOrd"/>
+			    		<xr:column name="updtDt" sourceName="updtDt"/>
+			    		<xr:column name="updtUsrId" sourceName="updtUsrId"/>
+			    		<xr:column name="inptDt" sourceName="inptDt"/>
+			    	</xr:updatecolumns>
+			    </xr:table>
+			  </xr:autocrud>
+			  <xr:columns>
+			    <xr:column sourceName="commCd"/>
+			    <xr:column sourceName="commNm"/>
+			    <xr:column sourceName="commDtlCd"/>
+			    <xr:column sourceName="commDtlNm"/>
+			    <xr:column sourceName="commInfo"/>
+			    <xr:column sourceName="useYn"/>
+			    <xr:column sourceName="inptUsrId"/>
+			    <xr:column sourceName="commDtlOrd"/>
+			    <xr:column sourceName="updtDt"/>
+			    <xr:column sourceName="updtUsrId"/>
+			    <xr:column sourceName="inptDt"/>
+			  </xr:columns>
+			</xr:dataset>
+			<xf:jsoninstance id="instance">
+  			<![CDATA[{root : {EXRIAERRMSG : ""}}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="requestData">
+  			<![CDATA[{
+					root : {
+						reqSymCommCdVO : {
+							commCd : "",
+							commNm : "",
+							commDtlCd : "",
+							commDtlNm : "",
+							commInfo : "",
+							useYn : "",
+							inptUsrId : "",
+							commDtlOrd : "",
+							updtDt : "",
+							updtUsrId : "",
+							inptDt : ""
+						},
+						searchVO : {
+							searchCondition : "",
+							pageIndex : "",
+							lastIndex : "",
+							firstIndex : "",
+							searchUseYn : "",
+							pageSize : "",
+							searchKeyword : "",
+							recordCountPerPage : "",
+							pageUnit : "",
+							searchGubun : "",
+							srhComName : ""
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="responseData">
+  			<![CDATA[{
+					root : {
+						resSymCommCdVO : {
+							row : [
+								{
+									commCd : "",
+									commNm : "",
+									commDtlCd : "",
+									commDtlNm : "",
+									commInfo : "",
+									useYn : "",
+									inptUsrId : "",
+									commDtlOrd : "",
+									updtDt : "",
+									updtUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						resSymCommCdList : {
+							row : [
+								{
+									commCd : "",
+									commNm : "",
+									commDtlCd : "",
+									commDtlNm : "",
+									commInfo : "",
+									useYn : "",
+									inptUsrId : "",
+									commDtlOrd : "",
+									updtDt : "",
+									updtUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						paginationInfo : {
+							row : [
+								{
+									totalRecordCount : "",
+									pageSize : "",
+									recordCountPerPage : "",
+									currentPageNo : ""
+								}
+							]
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="resMessage">
+  			<![CDATA[{
+					root : {
+						message : {
+							procMsg : ""
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="reqMethod">
+  			<![CDATA[{
+					root : {
+						method : ""
+					}
+				}]]>
+</xf:jsoninstance>
+		</xf:model>
+		<xh:script src="../../../js/stdCmn.js" type="text/javascript"/>
+		<xh:script src="../../../js/stdUtil.js" type="text/javascript"/>
+		<xh:script page="ComCdMgr" src="ComCdMgr.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:735;width:1620;left:0;top:0;">
+		<ev:listener event="onload" handler="page.onLoad" hasReturn="false"/>
+		<xr:label id="lblSubTitle01" style="height:36;text-align:left;width:1601;left:10;border-width:0;top:584;"
+			  z-index="0" tabindex="0" class="lbl_subtitle" outerClass="lbl_subtitle_outer">
+			<xr:text>기본정보</xr:text>
+		</xr:label>
+		<xr:group id="grp1" style="border-bottom-width:1;height:57;width:1601;overflow:visible;border-right-width:1;border-color:#A5BACC;left:10;border-width:0;border-left-width:1;top:620;"
+			  z-index="1" tabindex="0">
+			<xr:label id="lblLine1" style="height:1;width:1611;left:0;top:0;" z-index="0" tabindex="0"
+			    outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl65" style="height:28;width:110;border-style:solid;left:0;top:1;"
+			    z-index="1" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>코드</xr:text>
+			</xr:label>
+			<xr:label id="lbl58" style="height:28;width:110;border-style:solid;left:280;top:1;"
+			    z-index="2" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>코드명</xr:text>
+			</xr:label>
+			<xr:label id="lblLine2" style="height:1;width:1611;left:0;top:28;" z-index="3"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl59" style="height:28;width:110;border-style:solid;left:0;top:29;"
+			    z-index="4" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>부가정보</xr:text>
+			</xr:label>
+			<xr:label id="lbl60" style="border-bottom-width:0;height:28;text-align:center;color:gray;width:150;border-style:solid;border-right-width:0;left:120;border-left-width:0;top:29;border-top-width:0;"
+			    z-index="5" tabindex="0" class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblLine3" style="height:1;width:1611;left:0;top:56;" z-index="6"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblLine7" style="height:1;width:1611;left:0;top:168;" z-index="7"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:input id="ipbCommNm" style="height:20;width:341;left:400;top:5;" instanceid="requestData"
+			    ref="/root/reqSymCommCdVO/commNm" z-index="8" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="false" type="text"/>
+			<xr:input id="ipbCommInfo" style="height:20;width:1471;left:120;top:33;" instanceid="requestData"
+			    ref="/root/reqSymCommCdVO/commInfo" z-index="9" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="false" type="text"/>
+			<xr:input id="ipbCommCd" style="height:20;width:150;left:120;top:5;" instanceid="requestData"
+			    ref="/root/reqSymCommCdVO/commCd" z-index="10" class="ipt_form" outerClass="ipt_form_outer"
+			    readonly="false" type="text"/>
+		</xr:group>
+		<xr:group id="grp3" style="height:571;width:1601;left:10;top:10;" z-index="2" tabindex="0">
+			<xr:label id="lblSerchArea1" style="height:35;width:1581;left:10;top:10;" z-index="0"
+			    tabindex="0" outerClass="lbl_srcharea_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblOrgnClsfCd_copy_1" style="height:20;width:60;left:20;border-width:0;top:17;"
+			    z-index="1" tabindex="0" class="lbl_srch" outerClass="lbl_srch_outer">
+			  <xr:text>코드명</xr:text>
+			</xr:label>
+			<xr:input id="ipbSearchCdNm" style="height:20;width:261;left:90;top:17;" instanceid="requestData"
+			    ref="/root/searchVO/searchKeyword" z-index="2" class="ipt_srch" type="text"/>
+			<xr:button id="btnSrch" style="height:24;width:77;left:360;top:15;" z-index="3"
+			    tabindex="0" class="btn_srch" outerClass="btn_srch_outer">
+			  <xr:text>조회</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_btnSrch" hasReturn="false"/>
+			</xr:button>
+			<xr:gridex id="grxSymCommCd" style="height:516;width:1581;left:10;top:45;" z-index="4"
+			    datasetid="dstSymCommCdList">
+			  <xr:cfg editing="2" idColumn="ghc1" sorted="false" sorting="false"/>
+			  <xr:gridheader>
+			    <xr:cols>
+			    	<xr:colsrow style="height:20;">
+			    		<xr:headcol id="ghc1" style="text-align:center;width:50;" class="ghc">
+			    			<xr:text>No</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghcCommCd" style="text-align:center;width:168;" colspan="1"
+			    			  rowspan="1" class="ghc">
+			    			<xr:text>코드</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghcCommNm" style="text-align:center;width:340;" colspan="1"
+			    			  rowspan="1" class="ghc">
+			    			<xr:text>코드명</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghcCommInfo" style="text-align:center;width:1023;" colspan="1"
+			    			  rowspan="1" class="ghc">
+			    			<xr:text>부가정보</xr:text>
+			    		</xr:headcol>
+			    	</xr:colsrow>
+			    </xr:cols>
+			  </xr:gridheader>
+			  <xr:gridbody>
+			    <xr:cols>
+			    	<xr:colsrow style="height:20;">
+			    		<xr:bodycol id="gbc1" style="text-align:center;width:50;" colid="ghc1" type="Text"/>
+			    		<xr:bodycol id="gbcCommCd" style="text-align:center;width:168;" datasetcol="commCd"
+			    			  datasetid="dstSymCommCdList" colid="ghcCommCd" type="Text"/>
+			    		<xr:bodycol id="gbc4" style="width:340;" datasetcol="commNm" datasetid="dstSymCommCdList"
+			    			  colid="ghcCommNm" type="Text"/>
+			    		<xr:bodycol id="gbc5" style="width:1023;" datasetcol="commInfo" datasetid="dstSymCommCdList"
+			    			  colid="ghcCommInfo" type="Text"/>
+			    	</xr:colsrow>
+			    </xr:cols>
+			    <xr:rows/>
+			  </xr:gridbody>
+			  <ev:listener event="onGridexDblClick" handler="page.onGridexDblClick_grxSymCommCd"
+			    	hasReturn="false"/>
+			  <xr:gridtoolbar/>
+			  <xr:panel/>
+			</xr:gridex>
+		</xr:group>
+		<xr:button id="btnInit" style="height:20;width:54;left:1413;top:592;" z-index="3"
+			  tabindex="0" class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>초기화</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnInit" hasReturn="false"/>
+		</xr:button>
+		<xr:button id="btnSave" style="height:20;width:54;left:1480;top:592;" z-index="4"
+			  tabindex="0" class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>저장</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnSave" hasReturn="false"/>
+		</xr:button>
+		<xr:button id="btnDelete" style="height:20;width:54;left:1549;top:592;" z-index="5"
+			  tabindex="0" class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>삭제</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnDelete" hasReturn="false"/>
+		</xr:button>
+	</xh:body>
+</xh:html>

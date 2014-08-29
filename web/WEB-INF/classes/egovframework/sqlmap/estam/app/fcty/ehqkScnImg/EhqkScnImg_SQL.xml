@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EhqkScnImg">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="ehqkScnImgSerarchVO" type="estam.app.fcty.service.EhqkScnImgDefaultVO"/>
+	
+	<resultMap id="ehqkScnImg" class="estam.app.fcty.service.EhqkScnImgVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="ehqkScnId" column="EHQK_SCN_ID" columnIndex="2"/>
+		<result property="ehqkScnImgSeq" column="EHQK_SCN_IMG_SEQ" columnIndex="3"/>
+		<result property="ehqkScnImgFlsv" column="EHQK_SCN_IMG_FLSV" columnIndex="4"/>
+		<result property="ehqkScnImgFlnm" column="EHQK_SCN_IMG_FLNM" columnIndex="5"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="6"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="7"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="8"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="9"/>
+	</resultMap>
+	
+	<insert id="ehqkScnImgDAO.insertEhqkScnImg_S">
+		<![CDATA[
+			INSERT INTO EHQK_SCN_IMG 
+				( FCTY_CD
+				  , EHQK_SCN_ID
+				  , EHQK_SCN_IMG_SEQ
+				  , EHQK_SCN_IMG_FLSV
+				  , EHQK_SCN_IMG_FLNM
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #ehqkScnId#
+				  , #ehqkScnImgSeq#
+				  , #ehqkScnImgFlsv#
+				  , #ehqkScnImgFlnm#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="ehqkScnImgDAO.updateEhqkScnImg_S">
+		<![CDATA[
+			UPDATE EHQK_SCN_IMG
+			SET FCTY_CD=#fctyCd#
+				, EHQK_SCN_ID=#ehqkScnId#
+				, EHQK_SCN_IMG_SEQ=#ehqkScnImgSeq#
+				, EHQK_SCN_IMG_FLSV=#ehqkScnImgFlsv#
+				, EHQK_SCN_IMG_FLNM=#ehqkScnImgFlnm#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND EHQK_SCN_ID=#ehqkScnId#
+								AND EHQK_SCN_IMG_SEQ=#ehqkScnImgSeq#
+				]]>
+	</update>
+	
+	<delete id="ehqkScnImgDAO.deleteEhqkScnImg_S">
+		<![CDATA[
+			DELETE FROM EHQK_SCN_IMG 
+						WHERE FCTY_CD=#fctyCd#
+								AND EHQK_SCN_ID=#ehqkScnId#
+								AND EHQK_SCN_IMG_SEQ=#ehqkScnImgSeq#
+				]]>
+	</delete>
+	
+	<select id="ehqkScnImgDAO.selectEhqkScnImg_S" resultMap="ehqkScnImg">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, EHQK_SCN_ID
+				, EHQK_SCN_IMG_SEQ
+				, EHQK_SCN_IMG_FLSV
+				, EHQK_SCN_IMG_FLNM
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM EHQK_SCN_IMG
+						WHERE FCTY_CD=#fctyCd#
+								AND EHQK_SCN_ID=#ehqkScnId#
+								AND EHQK_SCN_IMG_SEQ=#ehqkScnImgSeq#
+				]]>
+	</select>
+	
+	<select id="ehqkScnImgDAO.selectEhqkScnImgList_D" parameterClass="ehqkScnImgSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FCTY_CD
+								, EHQK_SCN_ID
+								, EHQK_SCN_IMG_SEQ
+								, EHQK_SCN_IMG_FLSV
+								, EHQK_SCN_IMG_FLNM
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM EHQK_SCN_IMG
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FCTY_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					EHQK_SCN_ID LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FCTY_CD DESC
+							, EHQK_SCN_ID DESC
+							, EHQK_SCN_IMG_SEQ DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="ehqkScnImgDAO.selectEhqkScnImgListTotCnt_S" parameterClass="ehqkScnImgSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM EHQK_SCN_IMG
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				EHQK_SCN_ID LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

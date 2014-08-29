@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="IddlAassRlst"> 
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="iddlAassRlstSerarchVO" type="estam.app.iddl.service.IddlAassRlstDefaultVO"/> 
+	 
+	<resultMap id="iddlAassRlst" class="estam.app.iddl.service.IddlAassRlstVO">
+	  <result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+	  <result property="iddlAassNo" column="IDDL_AASS_NO" columnIndex="2"/>
+	  <result property="rsltMaxIdrX" column="RSLT_MAX_IDR_X" columnIndex="3"/>
+	  <result property="rsltMaxIdrY" column="RSLT_MAX_IDR_Y" columnIndex="4"/>
+	  <result property="rsltOvrAccVal" column="RSLT_OVR_ACC_VAL" columnIndex="5"/>
+	  <result property="rsltOvrAccX" column="RSLT_OVR_ACC_X" columnIndex="6"/>
+	  <result property="rsltOvrAccY" column="RSLT_OVR_ACC_Y" columnIndex="7"/>
+	  <result property="rsltNatFrqMvX" column="RSLT_NAT_FRQ_MV_X" columnIndex="8"/>
+	  <result property="rsltNatFrqMvY" column="RSLT_NAT_FRQ_MV_Y" columnIndex="9"/>
+	  <result property="rsltStrFreeNatFrqX" column="RSLT_STR_FREE_NAT_FRQ_X" columnIndex="10"/>
+	  <result property="rsltStrFreeNatFrqY" column="RSLT_STR_FREE_NAT_FRQ_Y" columnIndex="11"/>
+	  <result property="sfChkMaxIdrXRslt" column="SF_CHK_MAX_IDR_X_RSLT" columnIndex="12"/>
+	  <result property="sfChkMaxIdrYRslt" column="SF_CHK_MAX_IDR_Y_RSLT" columnIndex="13"/>
+	  <result property="sfChkNatFrqMvXRslt" column="SF_CHK_NAT_FRQ_MV_X_RSLT" columnIndex="14"/>
+	  <result property="sfChkNatFrqMvYRslt" column="SF_CHK_NAT_FRQ_MV_Y_RSLT" columnIndex="15"/>
+	  <result property="sfChkStrFreeNatFrqX" column="SF_CHK_STR_FREE_NAT_FRQ_X" columnIndex="16"/>
+	  <result property="sfChkStrFreeNatFrqY" column="SF_CHK_STR_FREE_NAT_FRQ_Y" columnIndex="17"/>
+	  <result property="sfChkOvrAccXRslt" column="SF_CHK_OVR_ACC_X_RSLT" columnIndex="18"/>
+	  <result property="sfChkOvrAccYRslt" column="SF_CHK_OVR_ACC_Y_RSLT" columnIndex="19"/>
+	  <result property="dataFreeMaxDispY" column="DATA_FREE_MAX_DISP_X" columnIndex="20"/>
+	  <result property="dataFreeMaxDispX" column="DATA_FREE_MAX_DISP_Y" columnIndex="21"/>
+	  <result property="dataTopRelMaxSpedX" column="DATA_TOP_REL_MAX_SPED_X" columnIndex="22"/>
+	  <result property="dataTopRelMaxSpedY" column="DATA_TOP_REL_MAX_SPED_Y" columnIndex="23"/>
+	  <result property="dataTopRelMaxDispX" column="DATA_TOP_REL_MAX_DISP_X" columnIndex="24"/>
+	  <result property="dataTopRelMaxDispY" column="DATA_TOP_REL_MAX_DISP_Y" columnIndex="25"/>
+	  <result property="dataFreeAccX" column="DATA_FREE_ACC_X" columnIndex="26"/>
+	  <result property="dataFreeAccY" column="DATA_FREE_ACC_Y" columnIndex="27"/>
+	  <result property="dataFreeAccZ" column="DATA_FREE_ACC_Z" columnIndex="28"/>
+	  <result property="dataFreeAccHorz" column="DATA_FREE_ACC_HORZ" columnIndex="29"/>
+	  <result property="dataFreeAccSpedX" column="DATA_FREE_ACC_SPED_X" columnIndex="30"/>
+	  <result property="dataFreeAccSpedY" column="DATA_FREE_ACC_SPED_Y" columnIndex="31"/>
+	  <result property="dataFreeAccSpedZ" column="DATA_FREE_ACC_SPED_Z" columnIndex="32"/>
+	  <result property="dataFreeAccSpedHorz" column="DATA_FREE_ACC_SPED_HORZ" columnIndex="33"/>
+	  <result property="dataFreeAccDispX" column="DATA_FREE_ACC_DISP_X" columnIndex="34"/>
+	  <result property="dataFreeAccDispY" column="DATA_FREE_ACC_DISP_Y" columnIndex="35"/>
+	  <result property="dataFreeAccDispZ" column="DATA_FREE_ACC_DISP_Z" columnIndex="36"/>
+	  <result property="dataFreeAccDispHorz" column="DATA_FREE_ACC_DISP_HORZ" columnIndex="37"/>
+	  <result property="dataStrBotAccX" column="DATA_STR_BOT_ACC_X" columnIndex="38"/>
+	  <result property="dataStrBotAccY" column="DATA_STR_BOT_ACC_Y" columnIndex="39"/>
+	  <result property="dataStrBotAccZ" column="DATA_STR_BOT_ACC_Z" columnIndex="40"/>
+	  <result property="dataStrBotSpedX" column="DATA_STR_BOT_SPED_X" columnIndex="41"/>
+	  <result property="dataStrBotSpedY" column="DATA_STR_BOT_SPED_Y" columnIndex="42"/>
+	  <result property="dataStrBotDispX" column="DATA_STR_BOT_DISP_X" columnIndex="43"/>
+	  <result property="dataStrBotDispY" column="DATA_STR_BOT_DISP_Y" columnIndex="44"/>
+	  <result property="dataStrMidAccX" column="DATA_STR_MID_ACC_X" columnIndex="45"/>
+	  <result property="dataStrMidAccY1" column="DATA_STR_MID_ACC_Y1" columnIndex="46"/>
+	  <result property="dataStrMidAccY2" column="DATA_STR_MID_ACC_Y2" columnIndex="47"/>
+	  <result property="dataStrMidSpedX" column="DATA_STR_MID_SPED_X" columnIndex="48"/>
+	  <result property="dataStrMidSpedY" column="DATA_STR_MID_SPED_Y" columnIndex="49"/>
+	  <result property="dataStrMidDispX" column="DATA_STR_MID_DISP_X" columnIndex="50"/>
+	  <result property="dataStrMidDispY" column="DATA_STR_MID_DISP_Y" columnIndex="51"/>
+	  <result property="dataStrTopAccX" column="DATA_STR_TOP_ACC_X" columnIndex="52"/>
+	  <result property="dataStrTopAccY1" column="DATA_STR_TOP_ACC_Y1" columnIndex="53"/>
+	  <result property="dataStrTopAccY2" column="DATA_STR_TOP_ACC_Y2" columnIndex="54"/>
+	  <result property="dataStrTopSpedX" column="DATA_STR_TOP_SPED_X" columnIndex="55"/>
+	  <result property="dataStrTopSpedY" column="DATA_STR_TOP_SPED_Y" columnIndex="56"/>
+	  <result property="dataStrTopDispX" column="DATA_STR_TOP_DISP_X" columnIndex="57"/>
+	  <result property="dataStrTopDispY" column="DATA_STR_TOP_DISP_Y" columnIndex="58"/>
+	  <result property="dataStrFrqX" column="DATA_STR_FRQ_X" columnIndex="59"/>
+	  <result property="dataStrFrqY" column="DATA_STR_FRQ_Y" columnIndex="60"/>
+	  <result property="dataFreeFrq" column="DATA_FREE_FRQ" columnIndex="61"/>
+	  <result property="dataFreeAccDisp" column="DATA_FREE_ACC_DISP" columnIndex="62"/>
+	  <result property="inptUsrId" column="INPT_USR_ID" columnIndex="63"/>
+	  <result property="inptDt" column="INPT_DT" columnIndex="64"/>
+	  <result property="updtUsrId" column="UPDT_USR_ID" columnIndex="65"/>
+	  <result property="updtDt" column="UPDT_DT" columnIndex="66"/>
+	  <result property="gvmtCd" column="GVMT_CD" columnIndex="67"/>
+	  <result property="smfSf" column="SMF_SF" columnIndex="68"/>
+	  <result property="sefSf" column="SEF_SF" columnIndex="69"/>
+	  <result property="rcfSf" column="RCF_SF" columnIndex="70"/>
+	  <result property="rcswSf" column="RCSW_SF" columnIndex="71"/>
+	  <result property="natFrqRng" column="NAT_FRQ_RNG" columnIndex="72"/>
+	  <result property="strFreeNatFrqRng" column="STR_FREE_NAT_FRQ_RNG" columnIndex="73"/>
+	  <result property="ovrAccRng" column="OVR_ACC_RNG" columnIndex="74"/>
+	  <result property="fctyNm" column="FCTY_NM" columnIndex="75"/>
+	  <result property="fctyHt" column="FCTY_HT" columnIndex="76"/>
+	  <result property="fctyStrTycd" column="FCTY_STR_TYCD" columnIndex="77"/>
+	  
+	  <result property="moniFreeNrfy" column="MONI_FREE_NRFY" columnIndex="78"/>
+	  <result property="moniMjNrfy" column="MONI_MJ_NRFY" columnIndex="79"/>
+	  <result property="moniShotNrfy" column="MONI_SHOT_NRFY" columnIndex="80"/>
+	  
+	  <result property="iddlAassInfoSf" column="IDDL_AASS_INFO_SF" columnIndex="81"/>
+
+	</resultMap>
+	
+	<insert id="iddlAassRlstDAO.insertIddlAassRlst_S">
+		<![CDATA[
+			INSERT INTO IDDL_AASS_RLST 
+				( FCTY_CD
+				  , IDDL_AASS_NO
+				  , GVMT_CD
+				  , RSLT_MAX_IDR_X
+				  , RSLT_MAX_IDR_Y
+				  , RSLT_OVR_ACC_VAL
+				  , RSLT_OVR_ACC_X
+				  , RSLT_OVR_ACC_Y
+				  , RSLT_NAT_FRQ_MV_X
+				  , RSLT_NAT_FRQ_MV_Y
+				  , RSLT_STR_FREE_NAT_FRQ_X
+				  , RSLT_STR_FREE_NAT_FRQ_Y
+				  , SF_CHK_MAX_IDR_X_RSLT
+				  , SF_CHK_MAX_IDR_Y_RSLT
+				  , SF_CHK_NAT_FRQ_MV_X_RSLT
+				  , SF_CHK_NAT_FRQ_MV_Y_RSLT
+				  , SF_CHK_STR_FREE_NAT_FRQ_X
+				  , SF_CHK_STR_FREE_NAT_FRQ_Y
+				  , SF_CHK_OVR_ACC_X_RSLT
+				  , SF_CHK_OVR_ACC_Y_RSLT
+				  , DATA_FREE_MAX_DISP_X
+				  , DATA_FREE_MAX_DISP_Y
+				  , DATA_TOP_REL_MAX_SPED_X
+				  , DATA_TOP_REL_MAX_SPED_Y
+				  , DATA_TOP_REL_MAX_DISP_X
+				  , DATA_TOP_REL_MAX_DISP_Y
+				  , DATA_FREE_ACC_X
+				  , DATA_FREE_ACC_Y
+				  , DATA_FREE_ACC_Z
+				  , DATA_FREE_ACC_HORZ
+				  , DATA_FREE_ACC_SPED_X
+				  , DATA_FREE_ACC_SPED_Y
+				  , DATA_FREE_ACC_SPED_Z
+				  , DATA_FREE_ACC_SPED_HORZ
+				  , DATA_FREE_ACC_DISP_X
+				  , DATA_FREE_ACC_DISP_Y
+				  , DATA_FREE_ACC_DISP_Z
+				  , DATA_FREE_ACC_DISP_HORZ
+				  , DATA_STR_BOT_ACC_X
+				  , DATA_STR_BOT_ACC_Y
+				  , DATA_STR_BOT_ACC_Z
+				  , DATA_STR_BOT_SPED_X
+				  , DATA_STR_BOT_SPED_Y
+				  , DATA_STR_BOT_DISP_X
+				  , DATA_STR_BOT_DISP_Y
+				  , DATA_STR_MID_ACC_X
+				  , DATA_STR_MID_ACC_Y1
+				  , DATA_STR_MID_ACC_Y2
+				  , DATA_STR_MID_SPED_X
+				  , DATA_STR_MID_SPED_Y
+				  , DATA_STR_MID_DISP_X
+				  , DATA_STR_MID_DISP_Y
+				  , DATA_STR_TOP_ACC_X
+				  , DATA_STR_TOP_ACC_Y1
+				  , DATA_STR_TOP_ACC_Y2
+				  , DATA_STR_TOP_SPED_X
+				  , DATA_STR_TOP_SPED_Y
+				  , DATA_STR_TOP_DISP_X
+				  , DATA_STR_TOP_DISP_Y
+				  , DATA_STR_FRQ_X
+				  , DATA_STR_FRQ_Y
+				  , DATA_FREE_FRQ
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #iddlAassNo#
+				  , #gvmtCd#
+				  , #rsltMaxIdrX#
+				  , #rsltMaxIdrY#
+				  , #rsltOvrAccVal#
+				  , #rsltOvrAccX#
+				  , #rsltOvrAccY#
+				  , #rsltNatFrqMvX#
+				  , #rsltNatFrqMvY#
+				  , #rsltStrFreeNatFrqX#
+				  , #rsltStrFreeNatFrqY#
+				  , #sfChkMaxIdrXRslt#
+				  , #sfChkMaxIdrYRslt#
+				  , #sfChkNatFrqMvXRslt#
+				  , #sfChkNatFrqMvYRslt#
+				  , #sfChkStrFreeNatFrqX#
+				  , #sfChkStrFreeNatFrqY#
+				  , #sfChkOvrAccXRslt#
+				  , #sfChkOvrAccYRslt#
+				  , #dataFreeMaxDispX#
+				  , #dataFreeMaxDispY#
+				  , #dataTopRelMaxSpedX#
+				  , #dataTopRelMaxSpedY#
+				  , #dataTopRelMaxDispX#
+				  , #dataTopRelMaxDispY#
+				  , #dataFreeAccX#
+				  , #dataFreeAccY#
+				  , #dataFreeAccZ#
+				  , #dataFreeAccHorz#
+				  , #dataFreeAccSpedX#
+				  , #dataFreeAccSpedY#
+				  , #dataFreeAccSpedZ#
+				  , #dataFreeAccSpedHorz#
+				  , #dataFreeAccDispX#
+				  , #dataFreeAccDispY#
+				  , #dataFreeAccDispZ#
+				  , #dataFreeAccDispHorz#
+				  , #dataStrBotAccX#
+				  , #dataStrBotAccY#
+				  , #dataStrBotAccZ#
+				  , #dataStrBotSpedX#
+				  , #dataStrBotSpedY#
+				  , #dataStrBotDispX#
+				  , #dataStrBotDispY#
+				  , #dataStrMidAccX#
+				  , #dataStrMidAccY1#
+				  , #dataStrMidAccY2#
+				  , #dataStrMidSpedX#
+				  , #dataStrMidSpedY#
+				  , #dataStrMidDispX#
+				  , #dataStrMidDispY#
+				  , #dataStrTopAccX#
+				  , #dataStrTopAccY1#
+				  , #dataStrTopAccY2#
+				  , #dataStrTopSpedX#
+				  , #dataStrTopSpedY#
+				  , #dataStrTopDispX#
+				  , #dataStrTopDispY#
+				  , #dataStrFrqX#
+				  , #dataStrFrqY#
+				  , #dataFreeFrq#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert> 
+	
+	<update id="iddlAassRlstDAO.updateIddlAassRlst_S">
+		<![CDATA[
+			UPDATE IDDL_AASS_RLST
+			SET FCTY_CD=#fctyCd#
+				, IDDL_AASS_NO=#iddlAassNo#
+				, RSLT_MAX_IDR_X=#rsltMaxIdrX#
+				, RSLT_MAX_IDR_Y=#rsltMaxIdrY#
+				, RSLT_OVR_ACC_X=#rsltOvrAccX#
+				, RSLT_OVR_ACC_Y=#rsltOvrAccY#
+				, RSLT_NAT_FRQ_MV_X=#rsltNatFrqMvX#
+				, RSLT_NAT_FRQ_MV_Y=#rsltNatFrqMvY#
+				, RSLT_STR_FREE_NAT_FRQ_X=#rsltStrFreeNatFrqX#
+				, RSLT_STR_FREE_NAT_FRQ_Y=#rsltStrFreeNatFrqY#
+				, SF_CHK_MAX_IDR_X_RSLT=#sfChkMaxIdrXRslt#
+				, SF_CHK_MAX_IDR_Y_RSLT=#sfChkMaxIdrYRslt#
+				, SF_CHK_NAT_FRQ_MV_X_RSLT=#sfChkNatFrqMvXRslt#
+				, SF_CHK_NAT_FRQ_MV_Y_RSLT=#sfChkNatFrqMvYRslt#
+				, SF_CHK_STR_FREE_NAT_FRQ_X=#sfChkStrFreeNatFrqX#
+				, SF_CHK_STR_FREE_NAT_FRQ_Y=#sfChkStrFreeNatFrqY#
+				, SF_CHK_OVR_ACC_X_RSLT=#sfChkOvrAccXRslt#
+				, SF_CHK_OVR_ACC_Y_RSLT=#sfChkOvrAccYRslt#
+				, DATA_FREE_MAX_DISP_X=#dataFreeMaxDispX#
+				, DATA_FREE_MAX_DISP_Y=#dataFreeMaxDispY#
+				, DATA_TOP_REL_MAX_SPED_X=#dataTopRelMaxSpedX#
+				, DATA_TOP_REL_MAX_SPED_Y=#dataTopRelMaxSpedY#
+				, DATA_TOP_REL_MAX_DISP_X=#dataTopRelMaxDispX#
+				, DATA_TOP_REL_MAX_DISP_Y=#dataTopRelMaxDispY#
+				, DATA_FREE_ACC_X=#dataFreeAccX#
+				, DATA_FREE_ACC_Y=#dataFreeAccY#
+				, DATA_FREE_ACC_Z=#dataFreeAccZ#
+				, DATA_STR_BOT_ACC_X=#dataStrBotAccX#
+				, DATA_STR_BOT_ACC_Y=#dataStrBotAccY#
+				, DATA_STR_BOT_ACC_Z=#dataStrBotAccZ#
+				, DATA_STR_MID_ACC_X=#dataStrMidAccX#
+				, DATA_STR_MID_ACC_Y1=#dataStrMidAccY1#
+				, DATA_STR_MID_ACC_Y2=#dataStrMidAccY2#
+				, DATA_STR_TOP_ACC_X=#dataStrTopAccX#
+				, DATA_STR_TOP_ACC_Y1=#dataStrTopAccY1#
+				, DATA_STR_TOP_ACC_Y2=#dataStrTopAccY2#
+				, DATA_STR_FRQ_X=#dataStrFrqX#
+				, DATA_STR_FRQ_Y=#dataStrFrqY#
+				, DATA_FREE_FRQ=#dataFreeFrq#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+				]]>
+	</update>
+	
+	<delete id="iddlAassRlstDAO.deleteIddlAassRlst_S">
+		<![CDATA[
+			DELETE FROM IDDL_AASS_RLST 
+						WHERE FCTY_CD=#fctyCd#
+						AND GVMT_CD=#gvmtCd#
+						AND IDDL_AASS_NO=#iddlAassNo#
+				]]>
+	</delete>
+	
+	<select id="iddlAassRlstDAO.selectIddlAassRlst_S" resultMap="iddlAassRlst">
+		<![CDATA[
+            SELECT
+                  A.FCTY_CD FCTY_CD
+                , A.IDDL_AASS_NO IDDL_AASS_NO
+                , DECODE(ROUND(to_number(RSLT_MAX_IDR_X),2),'-1','-', null, '-', ROUND(to_number(RSLT_MAX_IDR_X),2)) RSLT_MAX_IDR_X
+                , DECODE(ROUND(to_number(RSLT_MAX_IDR_Y),2),'-1','-', null, '-',ROUND(to_number(RSLT_MAX_IDR_Y),2)) RSLT_MAX_IDR_Y
+                , DECODE(ROUND(to_number(RSLT_OVR_ACC_VAL),2),'-1','-', null, '-',ROUND(to_number(RSLT_OVR_ACC_VAL),2)) RSLT_OVR_ACC_VAL
+                , DECODE(ROUND(to_number(RSLT_OVR_ACC_X),2),'-1','-', null, '-',ROUND(to_number(RSLT_OVR_ACC_X),2)) RSLT_OVR_ACC_X
+                , DECODE(ROUND(to_number(RSLT_OVR_ACC_Y),2),'-1','-', null, '-',ROUND(to_number(RSLT_OVR_ACC_Y),2)) RSLT_OVR_ACC_Y
+                , DECODE(ROUND(to_number(RSLT_NAT_FRQ_MV_X),2),'-1','-', null, '-',ROUND(to_number(RSLT_NAT_FRQ_MV_X),2)) RSLT_NAT_FRQ_MV_X
+                , DECODE(ROUND(to_number(RSLT_NAT_FRQ_MV_Y),2),'-1','-', null, '-',ROUND(to_number(RSLT_NAT_FRQ_MV_Y),2)) RSLT_NAT_FRQ_MV_Y
+                , DECODE(ROUND(to_number(RSLT_STR_FREE_NAT_FRQ_X),2),'-1','-', null, '-',ROUND(to_number(RSLT_STR_FREE_NAT_FRQ_X),2)) RSLT_STR_FREE_NAT_FRQ_X
+                , DECODE(ROUND(to_number(RSLT_STR_FREE_NAT_FRQ_Y),2),'-1','-', null, '-',ROUND(to_number(RSLT_STR_FREE_NAT_FRQ_Y),2)) RSLT_STR_FREE_NAT_FRQ_Y
+                , DECODE(SF_CHK_MAX_IDR_X_RSLT,'OK','안전','점검필요') SF_CHK_MAX_IDR_X_RSLT
+                , DECODE(SF_CHK_MAX_IDR_Y_RSLT,'OK','안전','점검필요') SF_CHK_MAX_IDR_Y_RSLT
+                , DECODE(SF_CHK_NAT_FRQ_MV_X_RSLT,'OK','안전','점검필요') SF_CHK_NAT_FRQ_MV_X_RSLT
+                , DECODE(SF_CHK_NAT_FRQ_MV_Y_RSLT,'OK','안전','점검필요') SF_CHK_NAT_FRQ_MV_Y_RSLT
+                , DECODE(SF_CHK_STR_FREE_NAT_FRQ_X,'OK','안전','점검필요') SF_CHK_STR_FREE_NAT_FRQ_X
+                , DECODE(SF_CHK_STR_FREE_NAT_FRQ_Y,'OK','안전','점검필요') SF_CHK_STR_FREE_NAT_FRQ_Y
+                , DECODE(SF_CHK_OVR_ACC_X_RSLT,'OK','안전','점검필요') SF_CHK_OVR_ACC_X_RSLT
+                , DECODE(SF_CHK_OVR_ACC_Y_RSLT,'OK','안전','점검필요') SF_CHK_OVR_ACC_Y_RSLT
+                , DECODE(ROUND(to_number(DATA_FREE_MAX_DISP_X),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_MAX_DISP_X),2)) DATA_FREE_MAX_DISP_X
+                , DECODE(ROUND(to_number(DATA_FREE_MAX_DISP_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_MAX_DISP_Y),2)) DATA_FREE_MAX_DISP_Y
+                , DECODE(ROUND(to_number(DATA_TOP_REL_MAX_SPED_X),2),'-1','-', null, '-',ROUND(to_number(DATA_TOP_REL_MAX_SPED_X),2)) DATA_TOP_REL_MAX_SPED_X
+                , DECODE(ROUND(to_number(DATA_TOP_REL_MAX_SPED_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_TOP_REL_MAX_SPED_Y),2)) DATA_TOP_REL_MAX_SPED_Y
+                , DECODE(ROUND(to_number(DATA_TOP_REL_MAX_DISP_X),2),'-1','-', null, '-',ROUND(to_number(DATA_TOP_REL_MAX_DISP_X),2)) DATA_TOP_REL_MAX_DISP_X
+                , DECODE(ROUND(to_number(DATA_TOP_REL_MAX_DISP_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_TOP_REL_MAX_DISP_Y),2)) DATA_TOP_REL_MAX_DISP_Y
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_X),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_X),2)) DATA_FREE_ACC_X
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_Y),2)) DATA_FREE_ACC_Y
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_Z),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_Z),2)) DATA_FREE_ACC_Z
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_HORZ),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_HORZ),2)) DATA_FREE_ACC_HORZ
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_SPED_X),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_SPED_X),2)) DATA_FREE_ACC_SPED_X
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_SPED_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_SPED_Y),2)) DATA_FREE_ACC_SPED_Y
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_SPED_Z),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_SPED_Z),2)) DATA_FREE_ACC_SPED_Z
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_SPED_HORZ),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_SPED_HORZ),2)) DATA_FREE_ACC_SPED_HORZ
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_DISP_X),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_DISP_X),2)) DATA_FREE_ACC_DISP_X
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_DISP_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_DISP_Y),2)) DATA_FREE_ACC_DISP_Y
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_DISP_Z),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_DISP_Z),2)) DATA_FREE_ACC_DISP_Z
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_DISP_HORZ),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_ACC_DISP_HORZ),2)) DATA_FREE_ACC_DISP_HORZ
+                , DECODE(ROUND(to_number(DATA_STR_BOT_ACC_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_BOT_ACC_X),2)) DATA_STR_BOT_ACC_X
+                , DECODE(ROUND(to_number(DATA_STR_BOT_ACC_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_BOT_ACC_Y),2)) DATA_STR_BOT_ACC_Y
+                , DECODE(ROUND(to_number(DATA_STR_BOT_ACC_Z),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_BOT_ACC_Z),2)) DATA_STR_BOT_ACC_Z
+                , DECODE(ROUND(to_number(DATA_STR_BOT_SPED_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_BOT_SPED_X),2)) DATA_STR_BOT_SPED_X
+                , DECODE(ROUND(to_number(DATA_STR_BOT_SPED_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_BOT_SPED_Y),2)) DATA_STR_BOT_SPED_Y
+                , DECODE(ROUND(to_number(DATA_STR_BOT_DISP_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_BOT_DISP_X),2)) DATA_STR_BOT_DISP_X
+                , DECODE(ROUND(to_number(DATA_STR_BOT_DISP_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_BOT_DISP_Y),2)) DATA_STR_BOT_DISP_Y
+                , DECODE(ROUND(to_number(DATA_STR_MID_ACC_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_MID_ACC_X),2)) DATA_STR_MID_ACC_X
+                , DECODE(ROUND(to_number(DATA_STR_MID_ACC_Y1),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_MID_ACC_Y1),2)) DATA_STR_MID_ACC_Y1
+                , DECODE(ROUND(to_number(DATA_STR_MID_ACC_Y2),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_MID_ACC_Y2),2)) DATA_STR_MID_ACC_Y2
+                , DECODE(ROUND(to_number(DATA_STR_MID_SPED_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_MID_SPED_X),2)) DATA_STR_MID_SPED_X
+                , DECODE(ROUND(to_number(DATA_STR_MID_SPED_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_MID_SPED_Y),2)) DATA_STR_MID_SPED_Y
+                , DECODE(ROUND(to_number(DATA_STR_MID_DISP_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_MID_DISP_X),2)) DATA_STR_MID_DISP_X
+                , DECODE(ROUND(to_number(DATA_STR_MID_DISP_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_MID_DISP_Y),2)) DATA_STR_MID_DISP_Y
+                , DECODE(ROUND(to_number(DATA_STR_TOP_ACC_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_TOP_ACC_X),2)) DATA_STR_TOP_ACC_X
+                , DECODE(ROUND(to_number(DATA_STR_TOP_ACC_Y1),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_TOP_ACC_Y1),2)) DATA_STR_TOP_ACC_Y1
+                , DECODE(ROUND(to_number(DATA_STR_TOP_ACC_Y2),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_TOP_ACC_Y2),2)) DATA_STR_TOP_ACC_Y2
+                , DECODE(ROUND(to_number(DATA_STR_TOP_SPED_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_TOP_SPED_X),2)) DATA_STR_TOP_SPED_X
+                , DECODE(ROUND(to_number(DATA_STR_TOP_SPED_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_TOP_SPED_Y),2)) DATA_STR_TOP_SPED_Y
+                , DECODE(ROUND(to_number(DATA_STR_TOP_DISP_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_TOP_DISP_X),2)) DATA_STR_TOP_DISP_X
+                , DECODE(ROUND(to_number(DATA_STR_TOP_DISP_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_TOP_DISP_Y),2)) DATA_STR_TOP_DISP_Y
+                , DECODE(ROUND(to_number(DATA_STR_FRQ_X),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_FRQ_X),2)) DATA_STR_FRQ_X
+                , DECODE(ROUND(to_number(DATA_STR_FRQ_Y),2),'-1','-', null, '-',ROUND(to_number(DATA_STR_FRQ_Y),2)) DATA_STR_FRQ_Y
+                , DECODE(ROUND(to_number(DATA_FREE_FRQ),2),'-1','-', null, '-',ROUND(to_number(DATA_FREE_FRQ),2)) DATA_FREE_FRQ
+                , DECODE(ROUND(to_number(GREATEST(DATA_FREE_ACC_DISP_X, DATA_FREE_ACC_DISP_Y, DATA_FREE_ACC_DISP_Z)),2),'-1','-', null, '-',ROUND(to_number(GREATEST(DATA_FREE_ACC_DISP_X, DATA_FREE_ACC_DISP_Y, DATA_FREE_ACC_DISP_Z)),2)) DATA_FREE_ACC_DISP
+                , A.INPT_USR_ID INPT_USR_ID
+                , DECODE((SELECT ANA_OPIN_SIMC_AREA FROM IDDL_AASS_OPIN_V WHERE FCTY_CD = B.FCTY_CD AND GVMT_CD = B.GVMT_CD AND IDDL_AASS_NO = B.IDDL_AASS_NO), '1', C.SMF_SF, '2', C.SEF_SF, '3', C.RCF_SF, '4', C.RCSW_SF) AS UPDT_USR_ID                
+                , A.INPT_DT INPT_DT
+                , A.UPDT_DT UPDT_DT
+                , A.GVMT_CD GVMT_CD
+                , DECODE(ROUND(to_number(B.MONI_FREE_NRFY),2),'-1','-', null, '-',ROUND(to_number(B.MONI_FREE_NRFY),2)) MONI_FREE_NRFY
+                , DECODE(ROUND(to_number(B.MONI_MJ_NRFY),2),'-1','-', null, '-',ROUND(to_number(B.MONI_MJ_NRFY),2)) MONI_MJ_NRFY
+                , DECODE(ROUND(to_number(B.MONI_SHOT_NRFY),2),'-1','-', null, '-',ROUND(to_number(B.MONI_SHOT_NRFY),2)) MONI_SHOT_NRFY
+                , C.SMF_SF
+                , C.SEF_SF
+                , C.RCF_SF
+                , C.RCSW_SF
+                , C.NAT_FRQ_RNG
+                , C.STR_FREE_NAT_FRQ_RNG
+                , C.OVR_ACC_RNG
+                , F.FCTY_NM
+                , FI.FCTY_HT
+                , FI.FCTY_STR_TYCD
+                , DECODE(FI.FCTY_STR_TYCD,'S1',C.SMF_SF,'S2',C.SEF_SF,'S3',C.RCF_SF,'S4',C.RCSW_SF) IDDL_AASS_INFO_SF                     
+			FROM IDDL_AASS_RLST A, IDDL_AASS_INFO B, ANYS_IDX_COFF_CFG C, FCTY_MGR F, FCTY_ADD_INFO FI
+						WHERE A.FCTY_CD=#fctyCd#
+								AND A.IDDL_AASS_NO=#iddlAassNo#
+								AND A.GVMT_CD=#gvmtCd# 
+                                AND A.FCTY_CD=B.FCTY_CD
+                                AND A.GVMT_CD=B.GVMT_CD
+                                AND A.IDDL_AASS_NO = B.IDDL_AASS_NO
+                                AND C.ANYS_IDX_COFF_NO = 1
+                                AND A.FCTY_CD = F.FCTY_CD
+                                AND A.GVMT_CD = F.GVMT_CD
+                                AND A.FCTY_CD = FI.FCTY_CD
+                                AND A.GVMT_CD = FI.GVMT_CD 
+				]]>
+	</select>
+	
+	<select id="iddlAassRlstDAO.selectIddlAassRlst_R" resultMap="iddlAassRlst">
+		<![CDATA[
+            SELECT
+                  A.FCTY_CD FCTY_CD
+                , A.IDDL_AASS_NO IDDL_AASS_NO
+                , DECODE(ROUND(to_number(RSLT_MAX_IDR_X),2),'0','0.00',ROUND(to_number(RSLT_MAX_IDR_X),2)) RSLT_MAX_IDR_X
+                , DECODE(ROUND(to_number(RSLT_MAX_IDR_Y),2),'0','0.00',ROUND(to_number(RSLT_MAX_IDR_Y),2)) RSLT_MAX_IDR_Y
+                , DECODE(ROUND(to_number(RSLT_OVR_ACC_VAL),2),'0','0.00',ROUND(to_number(RSLT_OVR_ACC_VAL),2)) RSLT_OVR_ACC_VAL
+                , DECODE(ROUND(to_number(RSLT_OVR_ACC_X),2),'0','0.00',ROUND(to_number(RSLT_OVR_ACC_X),2)) RSLT_OVR_ACC_X
+                , DECODE(ROUND(to_number(RSLT_OVR_ACC_Y),2),'0','0.00',ROUND(to_number(RSLT_OVR_ACC_Y),2)) RSLT_OVR_ACC_Y
+                , DECODE(ROUND(to_number(RSLT_NAT_FRQ_MV_X),2),'0','0.00',ROUND(to_number(RSLT_NAT_FRQ_MV_X),2)) RSLT_NAT_FRQ_MV_X
+                , DECODE(ROUND(to_number(RSLT_NAT_FRQ_MV_Y),2),'0','0.00',ROUND(to_number(RSLT_NAT_FRQ_MV_Y),2)) RSLT_NAT_FRQ_MV_Y
+                , DECODE(ROUND(to_number(RSLT_STR_FREE_NAT_FRQ_X),2),'0','0.00',ROUND(to_number(RSLT_STR_FREE_NAT_FRQ_X),2)) RSLT_STR_FREE_NAT_FRQ_X
+                , DECODE(ROUND(to_number(RSLT_STR_FREE_NAT_FRQ_Y),2),'0','0.00',ROUND(to_number(RSLT_STR_FREE_NAT_FRQ_Y),2)) RSLT_STR_FREE_NAT_FRQ_Y
+                , DECODE(SF_CHK_MAX_IDR_X_RSLT,'OK','안전','점검필요') SF_CHK_MAX_IDR_X_RSLT
+                , DECODE(SF_CHK_MAX_IDR_Y_RSLT,'OK','안전','점검필요') SF_CHK_MAX_IDR_Y_RSLT
+                , DECODE(SF_CHK_NAT_FRQ_MV_X_RSLT,'OK','안전','점검필요') SF_CHK_NAT_FRQ_MV_X_RSLT
+                , DECODE(SF_CHK_NAT_FRQ_MV_Y_RSLT,'OK','안전','점검필요') SF_CHK_NAT_FRQ_MV_Y_RSLT
+                , DECODE(SF_CHK_STR_FREE_NAT_FRQ_X,'OK','안전','점검필요') SF_CHK_STR_FREE_NAT_FRQ_X
+                , DECODE(SF_CHK_STR_FREE_NAT_FRQ_Y,'OK','안전','점검필요') SF_CHK_STR_FREE_NAT_FRQ_Y
+                , DECODE(SF_CHK_OVR_ACC_X_RSLT,'OK','안전','점검필요') SF_CHK_OVR_ACC_X_RSLT
+                , DECODE(SF_CHK_OVR_ACC_Y_RSLT,'OK','안전','점검필요') SF_CHK_OVR_ACC_Y_RSLT
+                , DECODE(ROUND(to_number(DATA_FREE_MAX_DISP_X),2),'0','0.00',ROUND(to_number(DATA_FREE_MAX_DISP_X),2)) DATA_FREE_MAX_DISP_X
+                , DECODE(ROUND(to_number(DATA_FREE_MAX_DISP_Y),2),'0','0.00',ROUND(to_number(DATA_FREE_MAX_DISP_Y),2)) DATA_FREE_MAX_DISP_Y
+                , DECODE(ROUND(to_number(DATA_TOP_REL_MAX_SPED_X),2),'0','0.00',ROUND(to_number(DATA_TOP_REL_MAX_SPED_X),2)) DATA_TOP_REL_MAX_SPED_X
+                , DECODE(ROUND(to_number(DATA_TOP_REL_MAX_SPED_Y),2),'0','0.00',ROUND(to_number(DATA_TOP_REL_MAX_SPED_Y),2)) DATA_TOP_REL_MAX_SPED_Y
+                , DECODE(ROUND(to_number(DATA_TOP_REL_MAX_DISP_X),2),'0','0.00',ROUND(to_number(DATA_TOP_REL_MAX_DISP_X),2)) DATA_TOP_REL_MAX_DISP_X
+                , DECODE(ROUND(to_number(DATA_TOP_REL_MAX_DISP_Y),2),'0','0.00',ROUND(to_number(DATA_TOP_REL_MAX_DISP_Y),2)) DATA_TOP_REL_MAX_DISP_Y
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_X),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_X),2)) DATA_FREE_ACC_X
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_Y),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_Y),2)) DATA_FREE_ACC_Y
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_Z),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_Z),2)) DATA_FREE_ACC_Z
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_HORZ),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_HORZ),2)) DATA_FREE_ACC_HORZ
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_SPED_X),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_SPED_X),2)) DATA_FREE_ACC_SPED_X
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_SPED_Y),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_SPED_Y),2)) DATA_FREE_ACC_SPED_Y
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_SPED_Z),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_SPED_Z),2)) DATA_FREE_ACC_SPED_Z
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_SPED_HORZ),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_SPED_HORZ),2)) DATA_FREE_ACC_SPED_HORZ
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_DISP_X),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_DISP_X),2)) DATA_FREE_ACC_DISP_X
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_DISP_Y),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_DISP_Y),2)) DATA_FREE_ACC_DISP_Y
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_DISP_Z),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_DISP_Z),2)) DATA_FREE_ACC_DISP_Z
+                , DECODE(ROUND(to_number(DATA_FREE_ACC_DISP_HORZ),2),'0','0.00',ROUND(to_number(DATA_FREE_ACC_DISP_HORZ),2)) DATA_FREE_ACC_DISP_HORZ
+                , DECODE(ROUND(to_number(DATA_STR_BOT_ACC_X),2),'0','0.00',ROUND(to_number(DATA_STR_BOT_ACC_X),2)) DATA_STR_BOT_ACC_X
+                , DECODE(ROUND(to_number(DATA_STR_BOT_ACC_Y),2),'0','0.00',ROUND(to_number(DATA_STR_BOT_ACC_Y),2)) DATA_STR_BOT_ACC_Y
+                , DECODE(ROUND(to_number(DATA_STR_BOT_ACC_Z),2),'0','0.00',ROUND(to_number(DATA_STR_BOT_ACC_Z),2)) DATA_STR_BOT_ACC_Z
+                , DECODE(ROUND(to_number(DATA_STR_BOT_SPED_X),2),'0','0.00',ROUND(to_number(DATA_STR_BOT_SPED_X),2)) DATA_STR_BOT_SPED_X
+                , DECODE(ROUND(to_number(DATA_STR_BOT_SPED_Y),2),'0','0.00',ROUND(to_number(DATA_STR_BOT_SPED_Y),2)) DATA_STR_BOT_SPED_Y
+                , DECODE(ROUND(to_number(DATA_STR_BOT_DISP_X),2),'0','0.00',ROUND(to_number(DATA_STR_BOT_DISP_X),2)) DATA_STR_BOT_DISP_X
+                , DECODE(ROUND(to_number(DATA_STR_BOT_DISP_Y),2),'0','0.00',ROUND(to_number(DATA_STR_BOT_DISP_Y),2)) DATA_STR_BOT_DISP_Y
+                , DECODE(ROUND(to_number(DATA_STR_MID_ACC_X),2),'0','0.00',ROUND(to_number(DATA_STR_MID_ACC_X),2)) DATA_STR_MID_ACC_X
+                , DECODE(ROUND(to_number(DATA_STR_MID_ACC_Y1),2),'0','0.00',ROUND(to_number(DATA_STR_MID_ACC_Y1),2)) DATA_STR_MID_ACC_Y1
+                , DECODE(ROUND(to_number(DATA_STR_MID_ACC_Y2),2),'0','0.00',ROUND(to_number(DATA_STR_MID_ACC_Y2),2)) DATA_STR_MID_ACC_Y2
+                , DECODE(ROUND(to_number(DATA_STR_MID_SPED_X),2),'0','0.00',ROUND(to_number(DATA_STR_MID_SPED_X),2)) DATA_STR_MID_SPED_X
+                , DECODE(ROUND(to_number(DATA_STR_MID_SPED_Y),2),'0','0.00',ROUND(to_number(DATA_STR_MID_SPED_Y),2)) DATA_STR_MID_SPED_Y
+                , DECODE(ROUND(to_number(DATA_STR_MID_DISP_X),2),'0','0.00',ROUND(to_number(DATA_STR_MID_DISP_X),2)) DATA_STR_MID_DISP_X
+                , DECODE(ROUND(to_number(DATA_STR_MID_DISP_Y),2),'0','0.00',ROUND(to_number(DATA_STR_MID_DISP_Y),2)) DATA_STR_MID_DISP_Y
+                , DECODE(ROUND(to_number(DATA_STR_TOP_ACC_X),2),'0','0.00',ROUND(to_number(DATA_STR_TOP_ACC_X),2)) DATA_STR_TOP_ACC_X
+                , DECODE(ROUND(to_number(DATA_STR_TOP_ACC_Y1),2),'0','0.00',ROUND(to_number(DATA_STR_TOP_ACC_Y1),2)) DATA_STR_TOP_ACC_Y1
+                , DECODE(ROUND(to_number(DATA_STR_TOP_ACC_Y2),2),'0','0.00',ROUND(to_number(DATA_STR_TOP_ACC_Y2),2)) DATA_STR_TOP_ACC_Y2
+                , DECODE(ROUND(to_number(DATA_STR_TOP_SPED_X),2),'0','0.00',ROUND(to_number(DATA_STR_TOP_SPED_X),2)) DATA_STR_TOP_SPED_X
+                , DECODE(ROUND(to_number(DATA_STR_TOP_SPED_Y),2),'0','0.00',ROUND(to_number(DATA_STR_TOP_SPED_Y),2)) DATA_STR_TOP_SPED_Y
+                , DECODE(ROUND(to_number(DATA_STR_TOP_DISP_X),2),'0','0.00',ROUND(to_number(DATA_STR_TOP_DISP_X),2)) DATA_STR_TOP_DISP_X
+                , DECODE(ROUND(to_number(DATA_STR_TOP_DISP_Y),2),'0','0.00',ROUND(to_number(DATA_STR_TOP_DISP_Y),2)) DATA_STR_TOP_DISP_Y
+                , DECODE(ROUND(to_number(DATA_STR_FRQ_X),2),'0','0.00',ROUND(to_number(DATA_STR_FRQ_X),2)) DATA_STR_FRQ_X
+                , DECODE(ROUND(to_number(DATA_STR_FRQ_Y),2),'0','0.00',ROUND(to_number(DATA_STR_FRQ_Y),2)) DATA_STR_FRQ_Y
+                , DECODE(ROUND(to_number(DATA_FREE_FRQ),2),'0','0.00',ROUND(to_number(DATA_FREE_FRQ),2)) DATA_FREE_FRQ
+                , DECODE(ROUND(to_number(GREATEST(DATA_FREE_ACC_DISP_X, DATA_FREE_ACC_DISP_Y, DATA_FREE_ACC_DISP_Z)),2),'0','0.00',ROUND(to_number(GREATEST(DATA_FREE_ACC_DISP_X, DATA_FREE_ACC_DISP_Y, DATA_FREE_ACC_DISP_Z)),2)) DATA_FREE_ACC_DISP
+                , A.INPT_USR_ID INPT_USR_ID
+                , A.INPT_DT INPT_DT
+                , A.UPDT_USR_ID UPDT_USR_ID
+                , A.UPDT_DT UPDT_DT
+                , A.GVMT_CD GVMT_CD
+                , B.MONI_FREE_NRFY
+                , B.MONI_MJ_NRFY
+                , B.MONI_SHOT_NRFY
+                , C.SMF_SF
+                , C.SEF_SF
+                , C.RCF_SF
+                , C.RCSW_SF
+                , C.NAT_FRQ_RNG
+                , C.STR_FREE_NAT_FRQ_RNG
+                , C.OVR_ACC_RNG
+                , F.FCTY_NM
+                , FI.FCTY_HT
+                , FI.FCTY_STR_TYCD
+                , DECODE(FI.FCTY_STR_TYCD,'S1',C.SMF_SF,'S2',C.SEF_SF,'S3',C.RCF_SF,'S4',C.RCSW_SF) IDDL_AASS_INFO_SF
+			FROM IDDL_AASS_RLST A, IDDL_AASS_INFO B, ANYS_IDX_COFF_CFG C, FCTY_MGR F, FCTY_ADD_INFO FI
+						WHERE A.FCTY_CD=#fctyCd#
+								AND A.IDDL_AASS_NO=#iddlAassNo#
+								AND A.GVMT_CD=#gvmtCd# 
+                                AND A.FCTY_CD=B.FCTY_CD
+                                AND A.GVMT_CD=B.GVMT_CD
+                                AND A.IDDL_AASS_NO = B.IDDL_AASS_NO
+                                AND C.ANYS_IDX_COFF_NO = 1
+                                AND A.FCTY_CD = F.FCTY_CD
+                                AND A.GVMT_CD = F.GVMT_CD
+                                AND A.FCTY_CD = FI.FCTY_CD
+                                AND A.GVMT_CD = FI.GVMT_CD
+				]]>
+	</select>
+	
+	<select id="iddlAassRlstDAO.selectSFIddlAassRlst_S" resultMap="iddlAassRlst">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, IDDL_AASS_NO
+				, RSLT_MAX_IDR_X
+				, RSLT_MAX_IDR_Y
+				, RSLT_OVR_ACC_X
+				, RSLT_OVR_ACC_Y
+				, RSLT_NAT_FRQ_MV_X
+				, RSLT_NAT_FRQ_MV_Y
+				, RSLT_STR_FREE_NAT_FRQ_X
+				, RSLT_STR_FREE_NAT_FRQ_Y
+				, SF_CHK_MAX_IDR_X_RSLT
+				, SF_CHK_MAX_IDR_Y_RSLT
+				, SF_CHK_NAT_FRQ_MV_X_RSLT
+				, SF_CHK_NAT_FRQ_MV_Y_RSLT
+				, SF_CHK_STR_FREE_NAT_FRQ_X
+				, SF_CHK_STR_FREE_NAT_FRQ_Y
+				, SF_CHK_OVR_ACC_X_RSLT
+				, SF_CHK_OVR_ACC_Y_RSLT
+				, DATA_FREE_MAX_DISP_X
+				, DATA_FREE_MAX_DISP_Y
+				, DATA_TOP_REL_MAX_SPED_X
+				, DATA_TOP_REL_MAX_SPED_Y
+				, DATA_TOP_REL_MAX_DISP_X
+				, DATA_TOP_REL_MAX_DISP_Y
+				, DATA_FREE_ACC_X
+				, DATA_FREE_ACC_Y
+				, DATA_FREE_ACC_Z
+				, DATA_STR_BOT_ACC_X
+				, DATA_STR_BOT_ACC_Y
+				, DATA_STR_BOT_ACC_Z
+				, DATA_STR_MID_ACC_X
+				, DATA_STR_MID_ACC_Y1
+				, DATA_STR_MID_ACC_Y2
+				, DATA_STR_TOP_ACC_X
+				, DATA_STR_TOP_ACC_Y1
+				, DATA_STR_TOP_ACC_Y2
+				, DATA_STR_FRQ_X
+				, DATA_STR_FRQ_Y
+				, DATA_FREE_FRQ
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM IDDL_AASS_RLST
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+				]]>
+	</select>
+	
+
+	<select id="iddlAassRlstDAO.selectIddlAassRlstList_D" parameterClass="iddlAassRlstSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FCTY_CD
+								, IDDL_AASS_NO
+								, RSLT_MAX_IDR_X
+								, RSLT_MAX_IDR_Y
+								, RSLT_OVR_ACC_X
+								, RSLT_OVR_ACC_Y
+								, RSLT_NAT_FRQ_MV_X
+								, RSLT_NAT_FRQ_MV_Y
+								, RSLT_STR_FREE_NAT_FRQ_X
+								, RSLT_STR_FREE_NAT_FRQ_Y
+								, SF_CHK_MAX_IDR_X_RSLT
+								, SF_CHK_MAX_IDR_Y_RSLT
+								, SF_CHK_NAT_FRQ_MV_X_RSLT
+								, SF_CHK_NAT_FRQ_MV_Y_RSLT
+								, SF_CHK_STR_FREE_NAT_FRQ_X
+								, SF_CHK_STR_FREE_NAT_FRQ_Y
+								, SF_CHK_OVR_ACC_X_RSLT
+								, SF_CHK_OVR_ACC_Y_RSLT
+								, DATA_FREE_MAX_DISP_X
+								, DATA_FREE_MAX_DISP_Y
+								, DATA_TOP_REL_MAX_SPED_X
+								, DATA_TOP_REL_MAX_SPED_Y
+								, DATA_TOP_REL_MAX_DISP_X
+								, DATA_TOP_REL_MAX_DISP_Y
+								, DATA_FREE_ACC_X
+								, DATA_FREE_ACC_Y
+								, DATA_FREE_ACC_Z
+								, DATA_STR_BOT_ACC_X
+								, DATA_STR_BOT_ACC_Y
+								, DATA_STR_BOT_ACC_Z
+								, DATA_STR_MID_ACC_X
+								, DATA_STR_MID_ACC_Y1
+								, DATA_STR_MID_ACC_Y2
+								, DATA_STR_TOP_ACC_X
+								, DATA_STR_TOP_ACC_Y1
+								, DATA_STR_TOP_ACC_Y2
+								, DATA_STR_FRQ_X
+								, DATA_STR_FRQ_Y
+								, DATA_FREE_FRQ
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM IDDL_AASS_RLST
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FCTY_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					IDDL_AASS_NO LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FCTY_CD DESC
+							, IDDL_AASS_NO DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="iddlAassRlstDAO.selectIddlAassRlstListTotCnt_S" parameterClass="iddlAassRlstSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM IDDL_AASS_RLST
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				IDDL_AASS_NO LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+	
+	<!-- 점검 필요 갯수  -->   
+	<select id="iddlAassRlstDAO.selectFctyChkListTotCnt_S" parameterClass="iddlAassRlstSerarchVO" resultClass="int">
+			 SELECT 
+				      SUM(CHK_YN) AS totcnt
+				 FROM 
+				 ( SELECT   CASE WHEN  TRIM(SF_CHK_MAX_IDR_X_RSLT) = 'OK'
+				                  AND TRIM(SF_CHK_MAX_IDR_Y_RSLT) = 'OK' 
+				                  AND TRIM(SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'
+				                  AND TRIM(SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'
+				                  AND TRIM(SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'
+				                  AND TRIM(SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'
+				                  AND TRIM(SF_CHK_OVR_ACC_X_RSLT) = 'OK'
+				                  AND TRIM(SF_CHK_OVR_ACC_Y_RSLT) = 'OK' 
+				                  THEN '0' ELSE '1' 
+				                END AS CHK_YN   
+				   FROM IDDL_AASS_RLST A, FCTY_MGR B
+				  WHERE 1=1   
+				    AND A.FCTY_CD = B.FCTY_CD
+				    AND A.GVMT_CD = B.GVMT_CD
+				    AND (A.FCTY_CD,A.GVMT_CD,IDDL_AASS_NO) IN     
+					  (SELECT FCTY_CD,GVMT_CD,MAX(IDDL_AASS_NO)         
+					      FROM IDDL_AASS_INFO       
+					      WHERE (EHQK_REQ_ID,EHQK_TRAN_GBCD) IN (SELECT EHQK_REQ_ID, EHQK_TRAN_GBCD                                                 
+					                                              FROM EHQK_OCUR_INFO                                           
+					                                               WHERE EHQK_REQ_ID = #ehqkReqId#
+								                                              AND   EHQK_TRAN_GBCD = #ehqkTranGbcd#)  
+					  GROUP BY  FCTY_CD,GVMT_CD)) 
+	</select>
+	
+	
+	<select id="iddlAassRlstDAO.selectEhqkOtnInfo_D" parameterClass="iddlAassRlstSerarchVO" resultClass="egovMap">
+ 
+	 SELECT
+		      MIN(DECODE(FCTY_DATA,'01',FCTY_NM,'')) AS FCTY_DATA_01
+		     ,MIN(DECODE(FCTY_DATA,'01',FCTY_NM,'')) AS FCTY_DATA_02
+		     ,MIN(DECODE(FCTY_DATA,'01',FCTY_NM,'')) AS FCTY_DATA_03
+		FROM
+		(SELECT   ('DATA01') AS GRP_FCTY_DATA
+		        , ('01') AS FCTY_DATA
+		         ,AA.FCTY_CD
+		         ,AA.GVMT_CD 
+		         ,CC.FCTY_NM
+		  FROM	 
+		  (SELECT FCTY_CD
+		         ,GVMT_CD
+		        ,MAX (CASE WHEN DATA_FREE_ACC_Z > (CASE WHEN DATA_FREE_ACC_X > DATA_FREE_ACC_Y 
+		                                                THEN DATA_FREE_ACC_X 
+		                                                ELSE DATA_FREE_ACC_Y END) 
+		                  THEN DATA_FREE_ACC_Z 
+		                  ELSE (CASE WHEN DATA_FREE_ACC_X > DATA_FREE_ACC_Y 
+		                            THEN DATA_FREE_ACC_X 
+		                            ELSE DATA_FREE_ACC_Y END)
+		                  END )AS DATA_FREE_ACC
+								FROM IDDL_AASS_RLST
+						WHERE 1=1 
+		         AND (FCTY_CD,GVMT_CD,IDDL_AASS_NO) IN 
+					    (SELECT FCTY_CD,GVMT_CD,MAX(IDDL_AASS_NO)
+					      FROM IDDL_AASS_INFO
+					     WHERE (EHQK_REQ_ID,EHQK_TRAN_GBCD) IN (SELECT EHQK_REQ_ID, EHQK_TRAN_GBCD 
+					                                              FROM EHQK_OCUR_INFO 
+					                                              WHERE EHQK_REQ_ID = #ehqkReqId#
+					                                              AND   EHQK_TRAN_GBCD = #ehqkTranGbcd#) 
+					    GROUP BY  FCTY_CD,GVMT_CD) 
+		        GROUP BY FCTY_CD ,GVMT_CD) AA,
+		  (SELECT  MAX (CASE WHEN DATA_FREE_ACC_Z > (CASE WHEN DATA_FREE_ACC_X > DATA_FREE_ACC_Y 
+		                                                THEN DATA_FREE_ACC_X 
+		                                                ELSE DATA_FREE_ACC_Y END) 
+		                  THEN DATA_FREE_ACC_Z 
+		                  ELSE (CASE WHEN DATA_FREE_ACC_X > DATA_FREE_ACC_Y 
+		                            THEN DATA_FREE_ACC_X 
+		                            ELSE DATA_FREE_ACC_Y END)
+		                  END )AS DATA_FREE_ACC 
+								FROM IDDL_AASS_RLST
+						WHERE 1=1 
+		         AND (FCTY_CD,GVMT_CD,IDDL_AASS_NO) IN 
+					    (SELECT FCTY_CD,GVMT_CD,MAX(IDDL_AASS_NO)
+					      FROM IDDL_AASS_INFO
+					     WHERE (EHQK_REQ_ID,EHQK_TRAN_GBCD) IN (SELECT EHQK_REQ_ID, EHQK_TRAN_GBCD 
+					                                              FROM EHQK_OCUR_INFO
+					                                              WHERE EHQK_REQ_ID = #ehqkReqId#
+					                                              AND   EHQK_TRAN_GBCD = #ehqkTranGbcd# ) 
+					    GROUP BY  FCTY_CD,GVMT_CD) ) BB , FCTY_MGR CC
+		      WHERE AA.DATA_FREE_ACC >= BB.DATA_FREE_ACC
+		       AND AA.FCTY_CD = CC.FCTY_CD
+		       AND AA.GVMT_CD = CC.GVMT_CD
+		          
+		 UNION ALL   
+		 SELECT  ('DATA02')  AS GRP_FCTY_DATA
+		        , ('01') AS FCTY_DATA
+		         ,AA.FCTY_CD
+		         ,AA.GVMT_CD 
+		         ,CC.FCTY_NM
+		  FROM	 
+		  (SELECT FCTY_CD
+		         ,GVMT_CD
+		        ,MAX(CASE WHEN RSLT_OVR_ACC_X > RSLT_OVR_ACC_Y 
+		              THEN RSLT_OVR_ACC_X 
+		              ELSE RSLT_OVR_ACC_Y END) AS RSLT_OVR_ACC 
+								FROM IDDL_AASS_RLST
+						WHERE 1=1 
+		         AND (FCTY_CD,GVMT_CD,IDDL_AASS_NO) IN 
+					    (SELECT FCTY_CD,GVMT_CD,MAX(IDDL_AASS_NO)
+					      FROM IDDL_AASS_INFO
+					     WHERE (EHQK_REQ_ID,EHQK_TRAN_GBCD) IN (SELECT EHQK_REQ_ID, EHQK_TRAN_GBCD 
+					                                              FROM EHQK_OCUR_INFO 
+					                                              WHERE EHQK_REQ_ID = #ehqkReqId#
+					                                              AND   EHQK_TRAN_GBCD = #ehqkTranGbcd#) 
+					    GROUP BY  FCTY_CD,GVMT_CD) 
+		        GROUP BY FCTY_CD ,GVMT_CD) AA,
+		  (SELECT  MAX(CASE WHEN RSLT_OVR_ACC_X > RSLT_OVR_ACC_Y 
+		              THEN RSLT_OVR_ACC_X 
+		              ELSE RSLT_OVR_ACC_Y END) AS RSLT_OVR_ACC 
+								FROM IDDL_AASS_RLST
+						WHERE 1=1 
+		         AND (FCTY_CD,GVMT_CD,IDDL_AASS_NO) IN 
+					    (SELECT FCTY_CD,GVMT_CD,MAX(IDDL_AASS_NO)
+					      FROM IDDL_AASS_INFO
+					     WHERE (EHQK_REQ_ID,EHQK_TRAN_GBCD) IN (SELECT EHQK_REQ_ID, EHQK_TRAN_GBCD 
+					                                              FROM EHQK_OCUR_INFO
+					                                              WHERE EHQK_REQ_ID = #ehqkReqId#
+					                                              AND   EHQK_TRAN_GBCD = #ehqkTranGbcd# ) 
+					    GROUP BY  FCTY_CD,GVMT_CD) ) BB , FCTY_MGR CC
+		      WHERE AA.RSLT_OVR_ACC >= BB.RSLT_OVR_ACC
+		       AND AA.FCTY_CD = CC.FCTY_CD
+		       AND AA.GVMT_CD = CC.GVMT_CD       
+		 UNION ALL       
+		 SELECT  ('DATA03')  AS GRP_FCTY_DATA
+		        , ('01') AS FCTY_DATA
+		         ,AA.FCTY_CD
+		         ,AA.GVMT_CD 
+		         ,CC.FCTY_NM
+		  FROM
+		  (SELECT FCTY_CD
+		         ,GVMT_CD
+		        ,MAX(CASE WHEN RSLT_MAX_IDR_X > RSLT_MAX_IDR_Y 
+		              THEN RSLT_MAX_IDR_X 
+		              ELSE RSLT_MAX_IDR_Y END) AS RSLT_MAX_IDR 
+								FROM IDDL_AASS_RLST
+						WHERE 1=1 
+		         AND (FCTY_CD,GVMT_CD,IDDL_AASS_NO) IN 
+					    (SELECT FCTY_CD,GVMT_CD,MAX(IDDL_AASS_NO)
+					      FROM IDDL_AASS_INFO
+					     WHERE (EHQK_REQ_ID,EHQK_TRAN_GBCD) IN (SELECT EHQK_REQ_ID, EHQK_TRAN_GBCD 
+					                                              FROM EHQK_OCUR_INFO 
+					                                              WHERE EHQK_REQ_ID = #ehqkReqId#
+					                                              AND   EHQK_TRAN_GBCD = #ehqkTranGbcd#) 
+					    GROUP BY  FCTY_CD,GVMT_CD) 
+		        GROUP BY FCTY_CD ,GVMT_CD) AA,
+		  (SELECT  
+		        MAX(CASE WHEN RSLT_MAX_IDR_X > RSLT_MAX_IDR_Y 
+		              THEN RSLT_MAX_IDR_X 
+		              ELSE RSLT_MAX_IDR_Y END)  AS RSLT_MAX_IDR
+								FROM IDDL_AASS_RLST
+						WHERE 1=1 
+		         AND (FCTY_CD,GVMT_CD,IDDL_AASS_NO) IN 
+					    (SELECT FCTY_CD,GVMT_CD,MAX(IDDL_AASS_NO)
+					      FROM IDDL_AASS_INFO
+					     WHERE (EHQK_REQ_ID,EHQK_TRAN_GBCD) IN (SELECT EHQK_REQ_ID, EHQK_TRAN_GBCD 
+					                                              FROM EHQK_OCUR_INFO 
+					                                              WHERE EHQK_REQ_ID = #ehqkReqId#
+					                                              AND   EHQK_TRAN_GBCD = #ehqkTranGbcd#) 
+					    GROUP BY  FCTY_CD,GVMT_CD) ) BB, FCTY_MGR CC
+		      WHERE AA.RSLT_MAX_IDR >= BB.RSLT_MAX_IDR
+		       AND AA.FCTY_CD = CC.FCTY_CD
+		       AND AA.GVMT_CD = CC.GVMT_CD)
+		GROUP BY GRP_FCTY_DATA
+	 
+	</select>
+    
+    <!-- 지진분석점검필요 목록   -->
+	<select id="iddlAassRlstDAO.selectIptnInfo_D" parameterClass="iddlAassRlstSerarchVO" resultClass="egovMap"> 
+				 
+                SELECT 
+                     AA.FCTY_CD
+                    ,AA.FCTY_NM
+                    ,AA.GVMT_CD
+                    ,BB.IDDL_AASS_NO
+                    , ( SELECT ITEM03
+									 FROM SYM_COMM_CD_DTL BB 
+								    WHERE BB.COMM_CD = 'ITEM_011'   
+									  AND  BB.COMM_DTL_CD  = FCTY_KND_CD ) AS FCTY_KND_NM 
+               FROM FCTY_MGR AA, 
+				(SELECT
+								  FCTY_CD
+								, GVMT_CD
+								, IDDL_AASS_NO 
+								, CASE WHEN  TRIM(SF_CHK_MAX_IDR_X_RSLT) = 'OK'
+				                  AND TRIM(SF_CHK_MAX_IDR_Y_RSLT) = 'OK' 
+				                  AND TRIM(SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'
+				                  AND TRIM(SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'
+				                  AND TRIM(SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'
+				                  AND TRIM(SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'
+				                  AND TRIM(SF_CHK_OVR_ACC_X_RSLT) = 'OK'
+				                  AND TRIM(SF_CHK_OVR_ACC_Y_RSLT) = 'OK' 
+				                  THEN 'Y' ELSE 'N' 
+				                END AS CHK_YN   
+						FROM IDDL_AASS_RLST
+				WHERE 1=1 
+				AND (FCTY_CD,GVMT_CD,IDDL_AASS_NO) IN 
+			    (SELECT FCTY_CD,GVMT_CD,MAX(IDDL_AASS_NO)
+			      FROM IDDL_AASS_INFO
+			     WHERE (EHQK_REQ_ID,EHQK_TRAN_GBCD) IN (SELECT EHQK_REQ_ID, EHQK_TRAN_GBCD 
+			                                              FROM EHQK_OCUR_INFO
+			                                              WHERE EHQK_REQ_ID = #ehqkReqId#
+			                                              AND   EHQK_TRAN_GBCD = #ehqkTranGbcd#) 
+			    GROUP BY  FCTY_CD,GVMT_CD)) BB
+			    WHERE AA.FCTY_CD = BB.FCTY_CD
+			      AND AA.GVMT_CD = BB.GVMT_CD  
+            AND BB.CHK_YN = 'N' 
+	</select>
+	
+    <!-- 분석결과 목록   -->
+   <select id="iddlAassRlstDAO.selectSfResultInfo_D" parameterClass="iddlAassRlstSerarchVO" resultClass="egovMap">
+      <![CDATA[	
+    SELECT  DISTINCT A.IDDL_AASS_DT ,  SUBSTR(A.EHQK_STTM,0,8) AS EHQK_DT ,A.EHQK_STTM, 
+                A.EHQK_ORG_AREA, A.EHQK_SCAL,   
+                A.EHQK_REQ_ID,
+                A.EHQK_TRAN_GBCD   
+          FROM (
+            SELECT 
+                RANK() OVER( PARTITION BY C.FCTY_CD, C.GVMT_CD, C.EHQK_REQ_ID, C.EHQK_TRAN_GBCD  ORDER BY C.IDDL_AASS_NO DESC ) AS RNK,
+                C.FCTY_CD,
+                C.GVMT_CD,
+                C.EHQK_REQ_ID,
+                C.EHQK_TRAN_GBCD, 
+                C.IDDL_AASS_NO,
+                A.EHQK_ORG_AREA,
+                A.EHQK_SCAL,
+                C.IDDL_AASS_DT,
+                A.EHQK_ORG_TM AS EHQK_STTM,
+                CASE WHEN  TRIM(SF_CHK_MAX_IDR_X_RSLT) = 'OK'
+                  AND TRIM(SF_CHK_MAX_IDR_Y_RSLT) = 'OK' 
+                  AND TRIM(SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'
+                  AND TRIM(SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'
+                  AND TRIM(SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'
+                  AND TRIM(SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'
+                  AND TRIM(SF_CHK_OVR_ACC_X_RSLT) = 'OK'
+                  AND TRIM(SF_CHK_OVR_ACC_Y_RSLT) = 'OK' 
+                  THEN '안전' ELSE '점검필요' 
+                END AS CHK_YN   
+              FROM EHQK_OCUR_INFO A, IDDL_AASS_INFO C, IDDL_AASS_RLST R, FCTY_MGR F, CON_EVNT_DATA G
+             WHERE 1=1 
+               AND A.EHQK_REQ_ID = G.EHQK_REQ_ID
+               AND A.EHQK_TRAN_GBCD = G.EHQK_TRAN_GBCD
+               AND G.FCTY_CD = C.FCTY_CD 
+               AND G.GVMT_CD  = C.GVMT_CD
+               AND A.EHQK_REQ_ID = C.EHQK_REQ_ID
+               AND A.EHQK_TRAN_GBCD = C.EHQK_TRAN_GBCD
+               AND C.FCTY_CD = R.FCTY_CD
+               AND C.IDDL_AASS_NO = R.IDDL_AASS_NO
+               AND C.GVMT_CD = R.GVMT_CD 
+               AND C.EHQK_REQ_ID IS NOT NULL
+               AND C.EHQK_TRAN_GBCD IS NOT NULL
+               AND G.FCTY_CD = F.FCTY_CD
+               AND G.GVMT_CD = F.GVMT_CD
+             ORDER BY EHQK_ORG_TM DESC
+        ) A
+         WHERE 1=1
+           AND RNK = 1     
+        ORDER BY EHQK_STTM DESC
+           	 
+]]>
+	</select>
+</sqlMap>

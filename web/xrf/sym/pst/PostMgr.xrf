@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>PostMgr</xh:title>
+		<xh:link href="../../../style/sample/style.css" media="all" rel="stylesheet" type="text/css"/>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="cyberlhs" name="author"/>
+		<xh:meta content="13. 6. 28 오전 11:34" name="date"/>
+		<xh:meta content="2.0.0.201304021017" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xf:jsoninstance id="instance">
+  			<![CDATA[{root : {EXRIAERRMSG : ""}}]]>
+</xf:jsoninstance>
+		</xf:model>
+		<xh:script src="../../../js/stdCmn.js"/>
+		<xh:script src="../../../js/stdUtil.js"/>
+		<xh:script page="PostMgr" src="PostMgr.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:768;width:1024;left:0;top:0;">
+		<xr:label id="lblSubTitle01" style="height:36;text-align:left;width:1010;left:20;border-width:0;top:254;"
+			  z-index="0" tabindex="0" class="lbl_subtitle" outerClass="lbl_subtitle_outer">
+			<xr:text>기본정보</xr:text>
+		</xr:label>
+		<xr:group id="grp1" style="border-bottom-width:1;height:169;width:1010;overflow:visible;border-right-width:1;border-color:#A5BACC;left:20;border-width:0;border-left-width:1;top:290;"
+			  z-index="1" tabindex="0">
+			<xr:label id="lblLine1" style="height:1;width:1010;left:0;top:0;" z-index="0" tabindex="0"
+			    outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl65" style="height:28;width:110;border-style:solid;left:0;top:1;"
+			    z-index="1" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>사업부호</xr:text>
+			</xr:label>
+			<xr:input id="ipb1" style="height:20;width:150;left:120;top:5;" instanceid="resInstance"
+			    ref="/root/bsimInfo/bsnsSmbol" z-index="2" class="ipt_form" outerClass="ipt_form_outer"
+			    readonly="true" type="text"/>
+			<xr:label id="lbl58" style="height:28;width:110;border-style:solid;left:280;top:1;"
+			    z-index="3" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>사업명</xr:text>
+			</xr:label>
+			<xr:label id="lbl67" style="border-bottom-width:0;padding-left:5;height:28;color:gray;text-align:left;width:440;border-right-width:0;border-style:solid;left:400;border-left-width:0;border-top-width:0;top:1;"
+			    instanceid="resInstance" ref="/root/bsimInfo/bsnsNm" z-index="4" tabindex="0"
+			    class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblLine2" style="height:1;width:1010;left:0;top:28;" z-index="5"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl59" style="height:28;width:110;border-style:solid;left:0;top:29;"
+			    z-index="6" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>사업구분</xr:text>
+			</xr:label>
+			<xr:label id="lbl60" style="border-bottom-width:0;height:28;color:gray;text-align:center;width:150;border-right-width:0;border-style:solid;left:120;border-left-width:0;border-top-width:0;top:29;"
+			    z-index="7" tabindex="0" class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl61" style="height:28;width:110;border-style:solid;left:280;top:29;"
+			    z-index="8" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>단축명</xr:text>
+			</xr:label>
+			<xr:label id="lbl62" style="border-bottom-width:0;padding-left:5;height:28;color:gray;text-align:left;width:170;border-right-width:0;border-style:solid;left:400;border-left-width:0;border-top-width:0;top:29;"
+			    instanceid="resInstance" ref="/root/bsimInfo/shrtenNm" z-index="9" tabindex="0"
+			    class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl70" style="height:28;width:100;border-style:solid;left:580;top:29;"
+			    z-index="10" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>주도형태</xr:text>
+			</xr:label>
+			<xr:label id="lbl71" style="border-bottom-width:0;height:28;color:gray;text-align:center;width:150;border-right-width:0;border-style:solid;left:690;border-left-width:0;border-top-width:0;top:29;"
+			    instanceid="resInstance" ref="/root/bsimInfo/ldngFrmNm" z-index="11" tabindex="0"
+			    class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblLine3" style="height:1;width:1010;left:0;top:56;" z-index="12"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl72" style="height:28;width:110;border-style:solid;left:0;top:57;"
+			    z-index="13" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>주관본부</xr:text>
+			</xr:label>
+			<xr:label id="lbl73" style="border-bottom-width:0;height:28;color:gray;width:150;border-right-width:0;border-style:solid;left:120;border-left-width:0;border-top-width:0;top:57;"
+			    instanceid="resInstance" ref="/root/bsimInfo/excHdqrtrsNm" z-index="14" tabindex="0"
+			    class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl74" style="height:28;width:110;border-style:solid;left:280;top:57;"
+			    z-index="15" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>주관부서</xr:text>
+			</xr:label>
+			<xr:label id="lbl75" style="border-bottom-width:0;height:28;color:gray;text-align:center;width:170;border-right-width:0;border-style:solid;left:400;border-left-width:0;border-top-width:0;top:56;"
+			    instanceid="resInstance" ref="/root/bsimInfo/excDeptNm" z-index="16" tabindex="0"
+			    class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl76" style="height:28;width:100;border-style:solid;left:580;top:57;"
+			    z-index="17" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>8대분야</xr:text>
+			</xr:label>
+			<xr:label id="lbl77" style="border-bottom-width:0;height:28;color:gray;width:150;border-right-width:0;border-style:solid;left:690;border-left-width:0;border-top-width:0;top:57;"
+			    instanceid="resInstance" ref="/root/bsimInfo/realmNm" z-index="18" tabindex="0"
+			    class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblLine4" style="height:1;width:1010;left:0;top:84;" z-index="19"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl78" style="height:28;width:110;border-style:solid;left:0;top:85;"
+			    z-index="20" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>사업기간</xr:text>
+			</xr:label>
+			<xr:label id="lbl79" style="border-bottom-width:0;height:28;color:gray;width:450;border-right-width:0;border-style:solid;left:120;border-left-width:0;border-top-width:0;top:85;"
+			    instanceid="resInstance" ref="/root/bsimInfo/totPeriod" z-index="21" tabindex="0"
+			    class="lbl_form" outerClass="lbl_form_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl68" style="height:28;width:100;border-style:solid;left:580;top:85;"
+			    z-index="22" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>진도관리방법</xr:text>
+			</xr:label>
+			<xr:radiobutton id="rdb1" style="height:20;font-size:9;width:150;left:690;border-width:0;top:89;"
+			    z-index="23" class="rdb_form" outerClass="rdb_form_outer" displayMode="horizontal">
+			  <xr:itemgroup style="width:75;">
+			    <xr:item label="분기별" selected="false" value="1"/>
+			    <xr:item label="월별" selected="true" value="2"/>
+			  </xr:itemgroup>
+			</xr:radiobutton>
+			<xr:label id="lblLine5" style="height:1;width:1010;left:0;top:112;" z-index="24"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl84" style="height:28;width:110;border-style:solid;left:0;top:113;"
+			    z-index="25" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>사업책임자</xr:text>
+			</xr:label>
+			<xr:label id="lbl85" style="border-bottom-width:0;height:28;color:gray;width:150;border-right-width:0;border-style:solid;left:120;border-left-width:0;border-top-width:0;top:113;"
+			    instanceid="resInstance" ref="/root/bsimInfo/rspnberUserNm" z-index="26" tabindex="0"
+			    class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl86" style="height:28;width:110;border-style:solid;left:280;top:113;"
+			    z-index="27" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>사업예산(천원)</xr:text>
+			</xr:label>
+			<xr:label id="lbl87" style="border-bottom-width:0;height:28;color:gray;text-align:center;width:170;border-right-width:0;border-style:solid;left:400;border-left-width:0;border-top-width:0;top:113;"
+			    instanceid="resInstance" ref="/root/bsimInfo/bsnsBudget" z-index="28" tabindex="0"
+			    class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl88" style="height:28;width:100;border-style:solid;left:580;top:113;"
+			    z-index="29" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>사업인력(M/Y)</xr:text>
+			</xr:label>
+			<xr:label id="lbl89" style="border-bottom-width:0;height:28;color:gray;width:150;border-right-width:0;border-style:solid;left:690;border-left-width:0;border-top-width:0;top:113;"
+			    instanceid="resInstance" ref="/root/bsimInfo/bsnsHnf" z-index="30" tabindex="0"
+			    class="lbl_formval" outerClass="lbl_formval_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblLine6" style="height:1;width:1010;left:0;top:140;" z-index="31"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl103" style="height:28;width:110;border-style:solid;left:0;top:141;"
+			    z-index="32" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>사진/개념도</xr:text>
+			</xr:label>
+			<xr:button id="btnRegist" style="height:20;width:54;left:120;top:145;" z-index="33"
+			    class="btn_inn02s" outerClass="btn_inn_outer">
+			  <xr:text>등록</xr:text>
+			</xr:button>
+			<xr:button id="btn2" style="height:20;width:54;left:187;top:145;" z-index="34"
+			    class="btn_inn02s" outerClass="btn_inn_outer">
+			  <xr:text>조회</xr:text>
+			</xr:button>
+			<xr:label id="lblLine7" style="height:1;width:1010;left:0;top:168;" z-index="35"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+		</xr:group>
+		<xr:label id="lblSubTitle03" style="height:36;text-align:left;width:1010;font-size:12;left:20;border-width:0;top:14;"
+			  z-index="2" tabindex="0" class="lbl_subtitle" outerClass="lbl_subtitle_outer">
+			<xr:text>메뉴관리</xr:text>
+		</xr:label>
+		<xr:group id="grp3" style="height:200;width:1010;left:20;top:50;" z-index="3" tabindex="0">
+			<xr:label id="lblSerchArea1" style="height:35;width:991;left:10;top:10;" z-index="0"
+			    tabindex="0" outerClass="lbl_srcharea_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblOrgnClsfCd" style="height:20;width:60;left:30;border-width:0;top:17;"
+			    z-index="1" tabindex="0" class="lbl_srch" outerClass="lbl_srch_outer">
+			  <xr:text>상위메뉴</xr:text>
+			</xr:label>
+			<xr:combobox id="cbbOrgnClsfCd" style="btnWidth:20;height:20;width:80;left:100;top:17;"
+			    z-index="2" tabindex="0" instanceid="insRequest" ref="/root/requestKey/orgn_clsf_cd"
+			    class="cbb_srch" outerClass="cbb_srch_outer" readonly="true">
+			  <xr:listarea style="focusBackgroundColor:#E5E5E5;" class="cbb_srch_list"/>
+			  <xr:itemgroup>
+			    <xr:item label="전체" selected="true" value="%"/>
+			    <xr:itemset instanceid="insData" nodeset="/root/listOrgnClsfCd/list" label="cd_nm"
+			        value="com_cd"/>
+			  </xr:itemgroup>
+			</xr:combobox>
+			<xr:label id="lblOrgnClsfCd_copy_1" style="height:20;width:60;left:190;border-width:0;top:17;"
+			    z-index="3" tabindex="0" class="lbl_srch" outerClass="lbl_srch_outer">
+			  <xr:text>메뉴명</xr:text>
+			</xr:label>
+			<xr:input id="ipb4" style="height:20;width:80;left:260;top:17;" z-index="4" class="ipt_srch"
+			    outerClass="ipt_srch_outer" type="text"/>
+			<xr:button id="btnSrch" style="height:24;width:77;left:360;top:15;" z-index="5"
+			    tabindex="0" class="btn_srch" outerClass="btn_srch_outer">
+			  <xr:text>조회</xr:text>
+			</xr:button>
+			<xr:gridex id="grx1" style="height:140;width:991;left:10;top:45;" z-index="6">
+			  <xr:cfg sorted="false" sorting="false"/>
+			  <xr:gridheader>
+			    <xr:cols>
+			      <xr:colsrow style="height:20;">
+			        <xr:headcol id="ghc1" style="text-align:center;width:50;" class="ghc">
+			        	<xr:text>No</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc2" style="text-align:center;width:98;" colspan="1" rowspan="1"
+			        	  class="ghc">
+			        	<xr:text>메뉴코드</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc3" style="text-align:center;width:90;" colspan="1" rowspan="1"
+			        	  class="ghc">
+			        	<xr:text>상위메뉴코드</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc4" style="text-align:center;width:168;" colspan="1"
+			        	  rowspan="1" class="ghc">
+			        	<xr:text>메뉴명</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc5" style="text-align:center;width:421;" colspan="1"
+			        	  rowspan="1" class="ghc">
+			        	<xr:text>메뉴설명</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc6" style="text-align:center;width:67;" colspan="1" rowspan="1"
+			        	  class="ghc">
+			        	<xr:text>표시순서</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc7" style="text-align:center;width:70;" colspan="1" rowspan="1"
+			        	  class="ghc">
+			        	<xr:text>사용여부</xr:text>
+			        </xr:headcol>
+			      </xr:colsrow>
+			    </xr:cols>
+			  </xr:gridheader>
+			  <xr:gridbody>
+			    <xr:cols>
+			      <xr:colsrow style="height:20;">
+			        <xr:bodycol id="gbc1" style="width:50;" colid="ghc1" type="Text"/>
+			        <xr:bodycol id="gbc2" style="width:98;" colid="ghc2" type="Text"/>
+			        <xr:bodycol id="gbc3" style="width:90;" colid="ghc3" type="Text"/>
+			        <xr:bodycol id="gbc4" style="width:168;" colid="ghc4" type="Text"/>
+			        <xr:bodycol id="gbc5" style="width:421;" colid="ghc5" type="Text"/>
+			        <xr:bodycol id="gbc6" style="width:67;" colid="ghc6" type="Text"/>
+			        <xr:bodycol id="gbc7" style="width:70;" colid="ghc7" type="Text"/>
+			      </xr:colsrow>
+			    </xr:cols>
+			    <xr:rows/>
+			  </xr:gridbody>
+			  <xr:gridtoolbar/>
+			  <xr:panel/>
+			</xr:gridex>
+		</xr:group>
+	</xh:body>
+</xh:html>

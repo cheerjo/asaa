@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="OverallAnalyRpt">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="overallAnalyRptVO" type="estam.app.rpt.service.OverallAnalyRptDefaultVO"/> 
+	
+	<!-- 분석결과 목록  -->
+    <select id="overallAnalyRptDAO.selectAnalyRsltList" parameterClass="overallAnalyRptVO" resultClass="egovMap">   
+	<!-- 
+		SELECT 
+            A.FCTY_CD, A.GVMT_CD, A.IDDL_AASS_NO, A.EHQK_STTM, A.EHQK_ORG_AREA, A.EHQK_REQ_ID, A.EHQK_TRAN_GBCD, A.EHQK_SCAL, A.IDDL_AASS_DT
+          FROM (
+            SELECT    
+                RANK() OVER( PARTITION BY C.FCTY_CD, C.GVMT_CD, C.EHQK_REQ_ID, C.EHQK_TRAN_GBCD  ORDER BY C.IDDL_AASS_NO DESC ) AS RNK,
+                C.FCTY_CD,
+                C.GVMT_CD,
+                C.EHQK_REQ_ID,
+                C.EHQK_TRAN_GBCD, 
+                C.IDDL_AASS_NO,
+                A.EHQK_ORG_AREA,
+                A.EHQK_SCAL,
+                C.IDDL_AASS_DT,
+                SUBSTR (A.EHQK_ORG_TM, 1, 8) EHQK_STTM,
+                CASE WHEN R.SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                          AND R.SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                          AND R.SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                          AND R.SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                          AND R.SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                          AND R.SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                          AND R.SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                          AND R.SF_CHK_OVR_ACC_Y_RSLT = 'OK' 
+                     THEN '적합' ELSE '부적합' 
+                END AS CHK_YN
+              FROM EHQK_OCUR_INFO A, IDDL_AASS_INFO C, IDDL_AASS_RLST R, FCTY_MGR F
+             WHERE 1=1 
+               AND A.FCTY_CD = C.FCTY_CD 
+               AND A.GVMT_CD  = C.GVMT_CD
+               AND A.EHQK_REQ_ID = C.EHQK_REQ_ID
+               AND A.EHQK_TRAN_GBCD = C.EHQK_TRAN_GBCD
+               AND C.FCTY_CD = R.FCTY_CD
+               AND C.IDDL_AASS_NO = R.IDDL_AASS_NO
+               AND C.GVMT_CD = R.GVMT_CD 
+               AND C.EHQK_REQ_ID IS NOT NULL
+               AND C.EHQK_TRAN_GBCD IS NOT NULL
+               AND A.FCTY_CD = F.FCTY_CD
+               AND A.GVMT_CD = F.GVMT_CD
+             ORDER BY EHQK_ORG_TM DESC
+        ) A
+         WHERE 1=1
+           AND RNK = 1    	
+     -->
+        SELECT * FROM (
+            SELECT   EOI.EHQK_REQ_ID, EOI.EHQK_TRAN_GBCD, EOI.EHQK_SCAL,
+                     EOI.EHQK_ORG_AREA, EOI.EHQK_ORG_TM AS EHQK_STTM,
+                     MAX (IAI.IDDL_AASS_DT) IDDL_AASS_DT,
+                     MAX (IAI.IDDL_AASS_NO) IDDL_AASS_NO
+                FROM EHQK_OCUR_INFO EOI INNER JOIN IDDL_AASS_INFO IAI
+                  ON IAI.EHQK_REQ_ID = EOI.EHQK_REQ_ID
+                 AND IAI.EHQK_TRAN_GBCD = EOI.EHQK_TRAN_GBCD
+               INNER JOIN IDDL_AASS_RLST IAR
+                  ON IAI.FCTY_CD = IAR.FCTY_CD
+                 AND IAI.GVMT_CD = IAR.GVMT_CD
+                 AND IAI.IDDL_AASS_NO = IAR.IDDL_AASS_NO
+            GROUP BY EOI.EHQK_REQ_ID, EOI.EHQK_TRAN_GBCD, EOI.EHQK_SCAL,
+                     EOI.EHQK_ORG_AREA, EOI.EHQK_ORG_TM        
+        ) A
+        WHERE 1=1
+        ORDER BY A.EHQK_STTM DESC
+	</select>
+	
+	<select id="overallAnalyRptDAO.selectAnalyRsltListTotCnt" parameterClass="overallAnalyRptVO" resultClass="int">   
+	<!--  
+		SELECT COUNT(*) AS TOTCNT
+          FROM (
+            SELECT    
+                RANK() OVER( PARTITION BY C.FCTY_CD, C.GVMT_CD, C.EHQK_REQ_ID, C.EHQK_TRAN_GBCD  ORDER BY C.IDDL_AASS_NO DESC ) AS RNK,
+                C.FCTY_CD,
+                C.GVMT_CD,
+                C.EHQK_REQ_ID,
+                C.EHQK_TRAN_GBCD, 
+                C.IDDL_AASS_NO,
+                A.EHQK_ORG_AREA,
+                A.EHQK_SCAL,
+                C.IDDL_AASS_DT,
+                SUBSTR (A.EHQK_ORG_TM, 1, 8) EHQK_STTM,
+                CASE WHEN R.SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                          AND R.SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                          AND R.SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                          AND R.SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                          AND R.SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                          AND R.SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                          AND R.SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                          AND R.SF_CHK_OVR_ACC_Y_RSLT = 'OK' 
+                     THEN '적합' ELSE '부적합' 
+                END AS CHK_YN
+              FROM EHQK_OCUR_INFO A, IDDL_AASS_INFO C, IDDL_AASS_RLST R
+             WHERE 1=1 
+               AND A.FCTY_CD = C.FCTY_CD 
+               AND A.GVMT_CD  = C.GVMT_CD
+               AND A.EHQK_REQ_ID = C.EHQK_REQ_ID
+               AND A.EHQK_TRAN_GBCD = C.EHQK_TRAN_GBCD
+               AND C.FCTY_CD = R.FCTY_CD
+               AND C.IDDL_AASS_NO = R.IDDL_AASS_NO
+               AND C.GVMT_CD = R.GVMT_CD 
+               AND C.EHQK_REQ_ID IS NOT NULL
+               AND C.EHQK_TRAN_GBCD IS NOT NULL
+             ORDER BY EHQK_ORG_TM DESC
+        ) A
+         WHERE 1=1
+           AND RNK = 1   
+    -->
+    	SELECT COUNT(*) AS TOTCNT FROM (
+		    SELECT EOI.EHQK_REQ_ID, EOI.EHQK_TRAN_GBCD, EOI.EHQK_SCAL, EOI.EHQK_ORG_AREA, EOI.EHQK_ORG_TM AS EHQK_STTM,
+		          (SELECT MAX(IAI.iddl_aass_dt) FROM iddl_aass_info IAI
+		            WHERE IAI.EHQK_REQ_ID = EOI.EHQK_REQ_ID AND IAI.EHQK_TRAN_GBCD = EOI.EHQK_TRAN_GBCD ) IDDL_AASS_DT
+		      FROM ehqk_ocur_info EOI 
+		    ORDER BY EOI.EHQK_ORG_TM DESC
+		) A
+		WHERE A.IDDL_AASS_DT IS NOT NULL
+	</select>
+	
+	<select id="overallAnalyRptDAO.selectEhqkOcurInfo" parameterClass="overallAnalyRptVO" resultClass="egovMap">   
+		SELECT 
+		       E.EHQK_REQ_ID, 
+		       E.EHQK_TRAN_GBCD, 
+		       E.EHQK_DOC_TPCD, 
+		       SUBSTR(E.EHQK_ORG_TM,1,4) || '/' || SUBSTR(E.EHQK_ORG_TM,5,2) || '/' || SUBSTR(E.EHQK_ORG_TM,7,2) || ' ' || SUBSTR(E.EHQK_ORG_TM,9,2) || ':' || SUBSTR(E.EHQK_ORG_TM,11,2) || ':' || SUBSTR(E.EHQK_ORG_TM,13,2) EHQK_ORG_TM, 
+		       E.EHQK_LON, 
+		       E.EHQK_LAT, 
+		       E.EHQK_SCAL, 
+		       E.EHQK_ORG_AREA, 
+		       E.EHQK_STAT_OTR, 
+		       E.EHQK_STAT_UP, 
+		       E.EHQK_EVNT_STTM, 
+		       E.EHQK_EVNT_EDTM, 
+		       E.EHQK_EVNT_YN, 
+		       E.INPT_USR_ID, 
+		       E.INPT_DT, 
+		       E.UPDT_USR_ID, 
+		       E.UPDT_DT
+		  FROM EHQK_OCUR_INFO E
+		 WHERE 1=1
+		   AND E.EHQK_REQ_ID = #ehqkReqId#
+		   AND E.EHQK_TRAN_GBCD = #ehqkTranGbcd#  	 
+	</select>
+	
+	<select id="overallAnalyRptDAO.selectAnalyRsltInfo" parameterClass="overallAnalyRptVO" resultClass="egovMap">   
+		SELECT 
+		    A.FCTY_CD, A.GVMT_CD, C.EHQK_REQ_ID, C.EHQK_TRAN_GBCD, D.IDDL_AASS_NO,
+		    A.FCTY_NM, 
+		 	(SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE COMM_CD = 'ITEM_008' AND COMM_DTL_CD = SUBSTR (A.FCTY_AREA_CD, 1, 2)) || ' ' ||
+		    (SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE ITEM01 = 'ITEM_008' AND (COMM_CD || COMM_DTL_CD) = A.FCTY_AREA_CD) FCTY_ST_ADDR, 
+		    A.FCTY_ED_ADDR,
+		    A.FCTY_LON,
+		    A.FCTY_LAT,
+		    E.DATA_FREE_ACC_HORZ,
+		    CASE WHEN TRIM(E.SF_CHK_MAX_IDR_X_RSLT) = 'OK'
+		          AND TRIM(E.SF_CHK_MAX_IDR_Y_RSLT) = 'OK'
+		          AND TRIM(E.SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'
+		          AND TRIM(E.SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'
+		          AND TRIM(E.SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'
+		          AND TRIM(E.SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'
+		          AND TRIM(E.SF_CHK_OVR_ACC_X_RSLT) = 'OK'
+		          AND TRIM(E.SF_CHK_OVR_ACC_Y_RSLT) = 'OK' 
+		         THEN 'Y' ELSE 'N' 
+		    END AS CHK_YN,
+		    TO_CHAR(TO_DATE(C.EHQK_EVNT_STTM,'YYYYMMDDHH24MISS'),'YYYY/MM/DD HH24:MI:SS') EHQK_EVNT_STTM,
+		    TO_CHAR(TO_DATE(C.EHQK_EVNT_EDTM,'YYYYMMDDHH24MISS'),'YYYY/MM/DD HH24:MI:SS') EHQK_EVNT_EDTM,
+		    TO_CHAR(TO_DATE(C.EHQK_ORG_TM,'YYYYMMDDHH24MISS'),'YYYY/MM/DD HH24:MI:SS') EHQK_ORG_TM
+		  FROM FCTY_MGR A, FCTY_ADD_INFO B, EHQK_OCUR_INFO C, IDDL_AASS_INFO D, IDDL_AASS_RLST E, CON_EVNT_DATA F
+    	 WHERE A.FCTY_CD = B.FCTY_CD
+           AND A.GVMT_CD = B.GVMT_CD
+           AND A.FCTY_CD = F.FCTY_CD
+           AND A.GVMT_CD = F.GVMT_CD
+           AND F.FCTY_CD = D.FCTY_CD
+           AND F.GVMT_CD = D.GVMT_CD
+           AND F.EHQK_REQ_ID = D.EHQK_REQ_ID
+           AND F.EHQK_TRAN_GBCD  = D.EHQK_TRAN_GBCD
+           AND C.EHQK_REQ_ID = F.EHQK_REQ_ID
+           AND C.EHQK_TRAN_GBCD  = F.EHQK_TRAN_GBCD
+		<iterate prepend="AND A.FCTY_CD || '|' || A.GVMT_CD IN " property="fctyListAL" open="(" close=")" conjunction=",">
+			#fctyListAL[]#
+		</iterate>
+		   AND C.EHQK_REQ_ID = #ehqkReqId#
+		   AND C.EHQK_TRAN_GBCD = #ehqkTranGbcd#
+		   AND D.IDDL_AASS_NO = #iddlAassNo#
+		   AND D.FCTY_CD = E.FCTY_CD
+		   AND D.GVMT_CD = E.GVMT_CD
+		   AND D.IDDL_AASS_NO = E.IDDL_AASS_NO 
+	</select>
+	
+	
+	<select id="overallAnalyRptDAO.selectFctyList" parameterClass="overallAnalyRptVO" resultClass="egovMap">   
+		SELECT 
+		   F.FCTY_CD, 
+		   F.GVMT_CD, 
+		   F.FCTY_NM, 
+		   F.FCTY_ESMT_STDT, 
+		   F.FCTY_ESMT_EDDT, 
+		   F.FCTY_AREA_CD, 
+		   F.FCTY_ST_ADDR, 
+		   F.FCTY_ED_ADDR, 
+		   F.FCTY_KND_CD, 
+		   F.FCTY_LON, 
+		   F.FCTY_LAT, 
+		   F.FCTY_ATTC, 
+		   F.FCTY_GRND_HT, 
+		   F.FCTY_UGRD_HT, 
+		   F.FCTY_BASC, 
+		   F.FCTY_GRND_CD, 
+		   F.SEIS_CD, 
+		   F.FCTY_HOLC_YN, 
+		   F.INPT_USR_ID, 
+		   F.INPT_DT, 
+		   F.UPDT_USR_ID, 
+		   F.UPDT_DT
+		 FROM FCTY_MGR F
+		WHERE 1=1 
+	</select>
+	
+	<select id="overallAnalyRptDAO.selectChkRult1" parameterClass="overallAnalyRptVO" resultClass="egovMap"> 
+		SELECT * FROM (  
+			SELECT 
+			    A.FCTY_CD, A.GVMT_CD, C.EHQK_REQ_ID, C.EHQK_TRAN_GBCD, D.IDDL_AASS_NO,
+			    A.FCTY_NM, 
+			 	(SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE COMM_CD = 'ITEM_008' AND COMM_DTL_CD = SUBSTR (A.FCTY_AREA_CD, 1, 2)) || ' ' ||
+			    (SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE ITEM01 = 'ITEM_008' AND (COMM_CD || COMM_DTL_CD) = A.FCTY_AREA_CD) FCTY_ST_ADDR, 
+			    A.FCTY_ED_ADDR,
+			    A.FCTY_LON,
+			    A.FCTY_LAT,
+			    E.DATA_FREE_ACC_HORZ,
+			    RANK() OVER(ORDER BY E.DATA_FREE_ACC_HORZ DESC) RNK
+			  FROM FCTY_MGR A, FCTY_ADD_INFO B, EHQK_OCUR_INFO C, IDDL_AASS_INFO D, IDDL_AASS_RLST E, CON_EVNT_DATA F
+	    	 WHERE A.FCTY_CD = B.FCTY_CD
+	           AND A.GVMT_CD = B.GVMT_CD
+	           AND A.FCTY_CD = F.FCTY_CD
+	           AND A.GVMT_CD = F.GVMT_CD
+	           AND F.FCTY_CD = D.FCTY_CD
+	           AND F.GVMT_CD = D.GVMT_CD
+	           AND F.EHQK_REQ_ID = D.EHQK_REQ_ID
+	           AND F.EHQK_TRAN_GBCD  = D.EHQK_TRAN_GBCD
+	           AND C.EHQK_REQ_ID = F.EHQK_REQ_ID
+	           AND C.EHQK_TRAN_GBCD  = F.EHQK_TRAN_GBCD
+			<iterate prepend="AND A.FCTY_CD || '|' || A.GVMT_CD IN " property="fctyListAL" open="(" close=")" conjunction=",">
+				#fctyListAL[]#
+			</iterate>
+			   AND C.EHQK_REQ_ID = #ehqkReqId#
+			   AND C.EHQK_TRAN_GBCD = #ehqkTranGbcd#
+			   AND D.IDDL_AASS_NO = #iddlAassNo#
+			   AND D.FCTY_CD = E.FCTY_CD
+			   AND D.GVMT_CD = E.GVMT_CD
+			   AND D.IDDL_AASS_NO = E.IDDL_AASS_NO 
+		) A
+		 WHERE 1=1
+		   AND A.RNK = 1
+	</select>
+	
+	<select id="overallAnalyRptDAO.selectChkRult2" parameterClass="overallAnalyRptVO" resultClass="egovMap"> 
+		SELECT * FROM (  
+			SELECT 
+			    A.FCTY_CD, A.GVMT_CD, C.EHQK_REQ_ID, C.EHQK_TRAN_GBCD, D.IDDL_AASS_NO,
+			    A.FCTY_NM, 
+			 	(SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE COMM_CD = 'ITEM_008' AND COMM_DTL_CD = SUBSTR (A.FCTY_AREA_CD, 1, 2)) || ' ' ||
+			    (SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE ITEM01 = 'ITEM_008' AND (COMM_CD || COMM_DTL_CD) = A.FCTY_AREA_CD) FCTY_ST_ADDR, 
+			    A.FCTY_ED_ADDR,
+			    A.FCTY_LON,
+			    A.FCTY_LAT,
+			    E.RSLT_OVR_ACC_VAL,
+            	E.RSLT_OVR_ACC_X,
+            	E.RSLT_OVR_ACC_Y,
+            	E.RSLT_OVR_ACC_X + E.RSLT_OVR_ACC_Y AS RSLT_OVR_ACC_RSLT,
+            	RANK() OVER(ORDER BY E.RSLT_OVR_ACC_X + E.RSLT_OVR_ACC_Y DESC) RNK
+			  FROM FCTY_MGR A, FCTY_ADD_INFO B, EHQK_OCUR_INFO C, IDDL_AASS_INFO D, IDDL_AASS_RLST E, CON_EVNT_DATA F
+	    	 WHERE A.FCTY_CD = B.FCTY_CD
+	           AND A.GVMT_CD = B.GVMT_CD
+	           AND A.FCTY_CD = F.FCTY_CD
+	           AND A.GVMT_CD = F.GVMT_CD
+	           AND F.FCTY_CD = D.FCTY_CD
+	           AND F.GVMT_CD = D.GVMT_CD
+	           AND F.EHQK_REQ_ID = D.EHQK_REQ_ID
+	           AND F.EHQK_TRAN_GBCD  = D.EHQK_TRAN_GBCD
+	           AND C.EHQK_REQ_ID = F.EHQK_REQ_ID
+	           AND C.EHQK_TRAN_GBCD  = F.EHQK_TRAN_GBCD
+			<iterate prepend="AND A.FCTY_CD || '|' || A.GVMT_CD IN " property="fctyListAL" open="(" close=")" conjunction=",">
+				#fctyListAL[]#
+			</iterate>
+			   AND C.EHQK_REQ_ID = #ehqkReqId#
+			   AND C.EHQK_TRAN_GBCD = #ehqkTranGbcd#
+			   AND D.IDDL_AASS_NO = #iddlAassNo#
+			   AND D.FCTY_CD = E.FCTY_CD
+			   AND D.GVMT_CD = E.GVMT_CD
+			   AND D.IDDL_AASS_NO = E.IDDL_AASS_NO 
+			   <!-- AND E.RSLT_OVR_ACC_X > 0
+			   AND E.RSLT_OVR_ACC_Y > 0 -->
+		) A
+		 WHERE 1=1
+		   AND A.RNK = 1
+	</select>
+</sqlMap>

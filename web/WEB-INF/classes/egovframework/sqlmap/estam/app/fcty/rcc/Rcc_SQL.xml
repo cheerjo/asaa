@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Rcc">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rccSerarchVO" type="estam.app.fcty.service.RccDefaultVO"/>
+	
+	<resultMap id="rcc" class="estam.app.fcty.service.RccVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="rccId" column="RCC_ID" columnIndex="2"/>
+		<result property="rccSrlNo" column="RCC_SRL_NO" columnIndex="3"/>
+		<result property="rccCmpy" column="RCC_CMPY" columnIndex="4"/>
+		<result property="rccMdl" column="RCC_MDL" columnIndex="5"/>
+		<result property="rccWrry" column="RCC_WRRY" columnIndex="6"/>
+		<result property="rccWfmt" column="RCC_WFMT" columnIndex="7"/>
+		<result property="rccPotl" column="RCC_POTL" columnIndex="8"/>
+		<result property="rccZSeni" column="RCC_Z_SENI" columnIndex="9"/>
+		<result property="rccNSeni" column="RCC_N_SENI" columnIndex="10"/>
+		<result property="rccESeni" column="RCC_E_SENI" columnIndex="11"/>
+		<result property="rccYn" column="RCC_YN" columnIndex="12"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="13"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="14"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="15"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="16"/>
+	</resultMap>
+	
+	<insert id="rccDAO.insertRcc_S">
+		<![CDATA[
+			INSERT INTO RCC 
+				( FCTY_CD
+				  , RCC_ID
+				  , RCC_SRL_NO
+				  , RCC_CMPY
+				  , RCC_MDL
+				  , RCC_WRRY
+				  , RCC_WFMT
+				  , RCC_POTL
+				  , RCC_Z_SENI
+				  , RCC_N_SENI
+				  , RCC_E_SENI
+				  , RCC_YN
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #rccId#
+				  , #rccSrlNo#
+				  , #rccCmpy#
+				  , #rccMdl#
+				  , #rccWrry#
+				  , #rccWfmt#
+				  , #rccPotl#
+				  , #rccZSeni#
+				  , #rccNSeni#
+				  , #rccESeni#
+				  , #rccYn#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rccDAO.updateRcc_S">
+		<![CDATA[
+			UPDATE RCC
+			SET FCTY_CD=#fctyCd#
+				, RCC_ID=#rccId#
+				, RCC_SRL_NO=#rccSrlNo#
+				, RCC_CMPY=#rccCmpy#
+				, RCC_MDL=#rccMdl#
+				, RCC_WRRY=#rccWrry#
+				, RCC_WFMT=#rccWfmt#
+				, RCC_POTL=#rccPotl#
+				, RCC_Z_SENI=#rccZSeni#
+				, RCC_N_SENI=#rccNSeni#
+				, RCC_E_SENI=#rccESeni#
+				, RCC_YN=#rccYn#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND RCC_ID=#rccId#
+				]]>
+	</update>
+	
+	<delete id="rccDAO.deleteRcc_S">
+		<![CDATA[
+			DELETE FROM RCC 
+						WHERE FCTY_CD=#fctyCd#
+								AND RCC_ID=#rccId#
+				]]>
+	</delete>
+	
+	<select id="rccDAO.selectRcc_S" resultMap="rcc">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, RCC_ID
+				, RCC_SRL_NO
+				, RCC_CMPY
+				, RCC_MDL
+				, RCC_WRRY
+				, RCC_WFMT
+				, RCC_POTL
+				, RCC_Z_SENI
+				, RCC_N_SENI
+				, RCC_E_SENI
+				, RCC_YN
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RCC
+						WHERE FCTY_CD=#fctyCd#
+								AND RCC_ID=#rccId#
+				]]>
+	</select>
+	
+	<select id="rccDAO.selectRccList_D" parameterClass="rccSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FCTY_CD
+								, RCC_ID
+								, RCC_SRL_NO
+								, RCC_CMPY
+								, RCC_MDL
+								, RCC_WRRY
+								, RCC_WFMT
+								, RCC_POTL
+								, RCC_Z_SENI
+								, RCC_N_SENI
+								, RCC_E_SENI
+								, RCC_YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RCC
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FCTY_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					RCC_ID LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FCTY_CD DESC
+							, RCC_ID DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="rccDAO.selectRccListTotCnt_S" parameterClass="rccSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RCC
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				RCC_ID LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

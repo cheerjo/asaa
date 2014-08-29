@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptMgrHolcImg">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptMgrHolcImgSerarchVO" type="estam.app.scn.rpt.service.RptMgrHolcImgDefaultVO"/>
+	
+	<resultMap id="rptMgrHolcImg" class="estam.app.scn.rpt.service.RptMgrHolcImgVO">
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="1"/>
+		<result property="iptDt" column="IPT_DT" columnIndex="2"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="3"/>
+		<result property="fctyHolcMapSvch" column="FCTY_HOLC_MAP_SVCH" columnIndex="4"/>
+		<result property="fctyHolcMap" column="FCTY_HOLC_MAP" columnIndex="5"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="6"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="7"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="8"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="9"/>
+	</resultMap>
+	
+	<insert id="rptMgrHolcImgDAO.insertRptMgrHolcImg_S">
+		<![CDATA[
+			INSERT INTO RPT_MGR_HOLC_IMG 
+				( CON_DA_GBCD
+				  , IPT_DT
+				  , FCTY_CD
+				  , FCTY_HOLC_MAP_SVCH
+				  , FCTY_HOLC_MAP
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #conDaGbcd#
+				  , #iptDt#
+				  , #fctyCd#
+				  , #fctyHolcMapSvch#
+				  , #fctyHolcMap#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptMgrHolcImgDAO.updateRptMgrHolcImg_S">
+		<![CDATA[
+			UPDATE RPT_MGR_HOLC_IMG
+			SET CON_DA_GBCD=#conDaGbcd#
+				, IPT_DT=#iptDt#
+				, FCTY_CD=#fctyCd#
+				, FCTY_HOLC_MAP_SVCH=#fctyHolcMapSvch#
+				, FCTY_HOLC_MAP=#fctyHolcMap#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE CON_DA_GBCD=#conDaGbcd#
+								AND IPT_DT=#iptDt#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</update>
+	
+	<delete id="rptMgrHolcImgDAO.deleteRptMgrHolcImg_S">
+		<![CDATA[
+			DELETE FROM RPT_MGR_HOLC_IMG 
+						WHERE CON_DA_GBCD=#conDaGbcd#
+								AND IPT_DT=#iptDt#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</delete>
+	
+	<select id="rptMgrHolcImgDAO.selectRptMgrHolcImg_S" resultMap="rptMgrHolcImg">
+			SELECT
+				CON_DA_GBCD
+				, IPT_DT
+				, FCTY_CD
+				, FCTY_HOLC_MAP_SVCH
+				, FCTY_HOLC_MAP
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_MGR_HOLC_IMG
+		   WHERE 1=1
+		<isNotEmpty property="conDaGbcd" prepend="AND">
+		        CON_DA_GBCD=#conDaGbcd#
+		</isNotEmpty>
+		<isNotEmpty property="iptDt" prepend="AND">
+				IPT_DT=#iptDt#
+		</isNotEmpty>
+		<isEmpty property="iptDt" prepend="AND"> <!-- ipt_dt값이 들어오지 않을 경우 IPT_DT가 MAX인 값을 취한다 -->
+				IPT_DT=(SELECT MAX(IPT_DT) FROM RPT_MGR_HOLC_IMG WHERE CON_DA_GBCD=#conDaGbcd# AND FCTY_CD=#fctyCd#)				  
+		</isEmpty>
+		<isNotEmpty property="fctyCd" prepend="AND">
+				FCTY_CD=#fctyCd#
+		</isNotEmpty>
+	</select>
+	
+	<select id="rptMgrHolcImgDAO.selectRptMgrHolcImgList_D" parameterClass="rptMgrHolcImgSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								CON_DA_GBCD
+								, IPT_DT
+								, FCTY_CD
+								, FCTY_HOLC_MAP_SVCH
+								, FCTY_HOLC_MAP
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_MGR_HOLC_IMG
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					CON_DA_GBCD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					IPT_DT LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						CON_DA_GBCD DESC
+							, IPT_DT DESC
+							, FCTY_CD DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="rptMgrHolcImgDAO.selectRptMgrHolcImgListTotCnt_S" parameterClass="rptMgrHolcImgSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_MGR_HOLC_IMG
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				CON_DA_GBCD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				IPT_DT LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

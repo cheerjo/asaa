@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CmmUse">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="ComDefaultCodeVO" type="egovframework.com.cmm.ComDefaultCodeVO"/>
+
+	<resultMap id="CmmCodeDetail" class="egovframework.com.cmm.service.CmmnDtlCode">
+	    <result property="commCd" column="COMM_CD" columnIndex="1"/>
+		<result property="commDtlCd" column="COMM_DTL_CD" columnIndex="2"/>
+		<result property="commDtlNm" column="COMM_DTL_NM" columnIndex="3"/>
+		<result property="commDtlOrd" column="COMM_DTL_ORD" columnIndex="4"/>
+		<result property="commDtlInfo" column="COMM_DTL_INFO" columnIndex="5"/>  
+		<result property="item01" column="ITEM01" columnIndex="6"/>
+		<result property="item02" column="ITEM02" columnIndex="7"/>
+		<result property="item03" column="ITEM03" columnIndex="8"/>
+		<result property="item04" column="ITEM04" columnIndex="9"/>
+		<result property="item05" column="ITEM05" columnIndex="10"/>
+		<result property="useYn" column="USE_YN" columnIndex="11"/> 
+	</resultMap>
+
+	<select id="CmmUseDAO.selectCmmCodeDetail" parameterClass="ComDefaultCodeVO" resultMap="CmmCodeDetail">
+	 
+		   SELECT
+		          COMM_CD
+				, COMM_DTL_CD
+				, COMM_DTL_NM 
+				, COMM_DTL_ORD
+				, COMM_DTL_INFO 
+				 ,ITEM01 
+				  ,ITEM02 
+				  ,ITEM03 
+				  ,ITEM04 
+				  ,ITEM05
+				, USE_YN
+			FROM SYM_COMM_CD_DTL
+			WHERE
+			USE_YN      = 'Y'
+			AND  COMM_CD=#commCd#
+		    <isNotEmpty prepend="AND" property="item01" >
+                ITEM01   = #item01#
+            </isNotEmpty>
+            <isNotEmpty prepend="AND" property="item02" >
+                ITEM02  =  #item02#
+            </isNotEmpty>
+			ORDER BY COMM_DTL_ORD ASC
+	 
+	</select>
+
+    <select id="CmmUseDAO.selectOgrnztIdDetail" parameterClass="ComDefaultCodeVO" resultMap="CmmCodeDetail">
+            <![CDATA[ 
+            SELECT 
+                #tableNm#     CODE_ID, 
+                ORGNZT_ID     CODE, 
+                ORGNZT_NM     CODE_NM, 
+                ORGNZT_DC     CODE_DC
+            FROM 
+                COMTNORGNZTINFO
+            WHERE 1=1
+            ]]>
+            <isEqual prepend="AND" property="haveDetailCondition" compareValue="Y">
+                ORGNZT_ID  LIKE  #detailConditionValue#
+            </isEqual>
+    </select>
+    
+    <select id="CmmUseDAO.selectGroupIdDetail" parameterClass="ComDefaultCodeVO" resultMap="CmmCodeDetail">
+            <![CDATA[ 
+            SELECT 
+                #tableNm#     CODE_ID, 
+                GROUP_ID     CODE, 
+                GROUP_NM     CODE_NM, 
+                GROUP_DC     CODE_DC
+            FROM 
+                COMTNAUTHORGROUPINFO
+            WHERE 1=1
+            ]]>
+            <isEqual prepend="AND" property="haveDetailCondition" compareValue="Y">
+                GROUP_ID  LIKE  #detailConditionValue#
+            </isEqual>
+    </select>
+    
+
+</sqlMap>            

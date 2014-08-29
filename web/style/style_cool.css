@@ -1,0 +1,890 @@
+@charset "utf-8";
+
+/* CSS Document */
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #111111;
+}
+
+
+/*********************************************
+*******************************************/ /* #btn */
+	/* @search button */ /* width:77; */ /* height:24; */
+.btn_srch_outer {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #a2a2a2;
+}
+
+.btn_srch {
+	color: #000000;
+	background-color: #eaeaea;
+	text-align: center;
+	cursor: pointer;
+}
+
+/* @button in space area */ /* heigth:26; */
+.btn_spc_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.btn_spc {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #111111;
+	background-image: url(./img/btn_04.gif);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+/* @내부버튼 */ /* heigth:25; */
+.btn_inn_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+/* width:62; */ /* character length:2; */
+.btn_inn02 {
+	font-family: Dotum;
+	font-size: 9pt;
+	color: #585858;
+	background-image: url(image/btn2.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	cursor: pointer;
+}
+
+/* width:90; */
+.btn_inn04,.btn_inn {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #47928a;
+	background-image: url(./img/btn_04.gif);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+/* width:100; */
+.btn_inn05 {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #47928a;
+	background-image: url(./img/btn_05.gif);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+/* width:120; */
+.btn_inn06 {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #47928a;
+	background-image: url(./img/btn_06.gif);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+/* @폼 내부 버튼 */ /* width:54; */ /* height:20; */
+.btn_inn02s {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #47928a;
+	background-image: url(./img/btn_02s.gif);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+/* width:381 */
+.btn_inn07 {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #47928a;
+	background-image: url(./img/btn_07.gif);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+/* @CUD button */ /* width:61; */ /* height:25; */
+.btn_cud_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.btn_cud {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #111111;
+	background-image: url(./image/sub/bg_btn.gif);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+/* @Left/Right Shuttle Button */ /* width:32; */ /* height:32; */
+.btn_sht_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.btn_shtright {
+	background-image: url(./image/shuttle_right.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	cursor: pointer;
+}
+
+.btn_shtleft {
+	background-image: url(./image/shuttle_left.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	cursor: pointer;
+}
+
+.btn_shttop {
+	background-image: url(./image/shuttle_top.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	cursor: pointer;
+}
+
+.btn_shtbottom {
+	background-image: url(./image/shuttle_bottom.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	cursor: pointer;
+}
+
+/* @excel export button */ /* width:26; */ /* height:25; */
+.btn_xls_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.btn_xls {
+	background-image: url(./image/btn_xls.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	cursor: pointer;
+}
+
+/* @minimize button of left menu area */
+.btn_minimize {
+	cursor: pointer;
+}
+
+/* @drop down Button */ /* width:97; */ /* height:25; */
+.btn_drop_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.btn_drop {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #111111;
+	background-image: url(./image/btn_g_06.gif);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+/* #lbl */
+.lbl_bg_outer {	
+	background-color: #9c9cFF;
+	border-style: none;
+	border-width:0px;
+}
+
+/* @page background of left menu area */
+.lbl_ltpgarea_outer {
+	background-color: transparent;
+	background-image: url(./image/index/bg_leftmenu.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	border-style: none;
+	border-width: 0px;
+}
+
+/* @page background of left side area */
+.lbl_ltarea_outer {
+	background-color: #f8f8f8;
+	border-style: solid;
+	border-color: #e0e0e0;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+}
+
+/* @left menu title */ /* height:63; */
+.lbl_lttitle {
+	text-align: left;
+	font-family: "Malgun Gothic", Tahoma;
+	font-weight: bold;
+	font-size: 11pt;
+	color: #222222;
+	padding-top: 0px;
+	padding-right: 18px;
+	padding-bottom: 17px;
+	padding-left: 40px;
+}
+
+/* @left menu title */ /* height:63; */
+.lbl_ltfooter {
+	padding-left: 15px;
+	color: #777777;
+	font-family: Verdana;
+	font-size: 7.5pt;
+	letter-spacing: -1px;
+	text-align: left;
+}
+
+.lbl_ltfooter span {
+	font-weight: bold;
+}
+
+/* @page title */ /* height:43; */
+.lbl_pgtitle_outer {
+	border-style: solid;
+	border-top-color: #7ca7a3;
+	border-bottom-color: #7ca7a3;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-bottom-width: 1px;
+	border-right-width: 0px;
+}
+
+.lbl_pgtitle {
+	background-image: url(./image/sub/icon_stitle.gif);
+	background-position: 10px bottom;
+	background-repeat: no-repeat;
+	font-family: "Malgun Gothic", Tahoma;
+	color: #222222;
+	font-size: 10.5pt;
+	font-weight: bold;
+	text-align: left;
+	padding-top: 0px;
+	padding-left: 30px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+/* @label in search area */
+.lbl_srch_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.lbl_srch {
+	font-family: Dotum;
+	color: #585858;
+	font-size: 9pt;
+	font-weight: normal;
+	text-align: left;
+	padding-left: 7px;
+}
+
+/* @page navigation area(네비게이션 정렬 문제로 grp를 사용하지 않았음) */ /* height:36; */
+.lbl_pgnavi_outer {
+	border-style: solid;
+	border-color: #c1c1c1;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	background-image: url(./image/area_bg.gif);
+	background-color: #ededed;
+	background-repeat: repeat-x;
+	cursor: pointer;
+}
+
+/* @page navi number */
+.lbl_navinum_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.lbl_navinum {
+	background-image: url(./image/page_midline.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	cursor: pointer;
+}
+
+/* @subtitle area */ /* height:36; */
+.lbl_subtitle_outer {
+	border-style: none;
+	border-color: #5bacc;
+	border-width: 0px;
+	background-image: url(image/title_icon.gif);
+	background-position: left center;
+	background-repeat: no-peat;
+}
+
+.lbl_subtitle {
+	font-family: Dotum;
+	font-size: 14px;
+	font-weight: bold;
+	color: #343434;
+	text-align: left;
+	padding-left: 35px;
+}
+
+/* @shuttle title */ /* height:31; */
+.lbl_shttitle_outer {
+	border-style: none;
+	border-width: 0px;
+	background-color: #d4e3e3;
+}
+
+.lbl_shuttle {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	font-weight: bold;
+	color: #2e5f5a;
+	padding-left: 10px;
+	text-align: left;
+}
+
+/* @shuttle top area */ /* height:29; */
+.lbl_shttop_outer {
+	border-style: solid;
+	border-color: #c1c1c1;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	background-color: #ededed;
+	background-image: url(./image/area_bg.gif);
+	background-repeat: repeat-x;
+}
+
+/* @shuttle bottom area */ /* height:29; */
+.lbl_shtbtm_outer {
+	border-style: solid;
+	border-color: #c1c1c1;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	background-color: #ededed;
+	background-image: url(./image/area_bg.gif);
+	background-repeat: repeat-x;
+}
+
+/* @label for form attribute */ /* height:28 */
+.lbl_formattr_outer {
+	border-style: solid;
+	border-color: #7ca7a3;
+	border-top-width: 0px;
+	border-bottom-width: 1px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	background-color: #e0e5e9;
+}
+
+.lbl_formattr {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	font-weight: bold;
+	text-align: right;
+	padding-right: 10px;
+	color: #555555;
+}
+
+/* @label for form input outer box */ /* height:28 */
+.lbl_formvalbox_outer {
+	border-style: solid;
+	border-color: #c1c1c1;
+	border-top-width: 0px;
+	border-bottom-width: 1px;
+	border-right-width: 0px;
+	border-left-width: 0px;
+}
+
+/* @label for form value */ /* height:28 */
+.lbl_formval_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.lbl_formval {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	text-align: left;
+	color: #111111;
+	padding-left: 5px;
+}
+
+/* @search area */ /* height(1 row):35; */ /* height(2 rows):70; */
+.lbl_srcharea_outer {
+	border-style: solid;
+	border-color: #bbe8af;
+	border-width: 2px;
+}
+
+/* @space area */ /* height:36; */
+.lbl_spcarea_outer {
+	border-style: solid;
+	border-top: solid #e5e5e5;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	background-color: #ededed;
+	/*background-image:url(./image/area_bg.gif);
+  background-repeat:repeat-x;*/
+}
+
+/* @button area in form edit view*/ /* height:36; */
+.lbl_btnarea_outer {
+	border-style: solid;
+	border-top: solid #888888;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom: solid #DDDDDD;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+}
+
+/* @grid row count display label*/ /* height:36; */
+.lbl_grxcnt_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.lbl_grxcnt {
+	font-family: Dotum;
+	font-size: 9pt;
+	color: #128617;
+}
+
+.lbl_link {
+	font-family: "Malgun Gothic", Tahoma;
+	text-decoration: underline;
+}
+
+/* #cbb */ /* @search combo */
+.cbb_srch_outer {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #93aaba;
+	background-color: #ecf2d5;
+}
+
+.cbb_srch {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #000000;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	background-color: #ecf2d5;
+}
+
+.cbb_srch_list {
+	border-style: none;
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #111111;
+}
+
+/* @cbb in form */
+.cbb_form_outer {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #93aaba;
+	background-color: #ffffff;
+}
+
+.cbb_form {
+	font-family: Dotum;
+	font-size: 9pt;
+	color: #585858;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	background-color: #ffffff;
+}
+
+.cbb_form_list {
+	border-style: none;
+	font-family: Dotum;
+	font-size: 9pt;
+	color: #585858;
+}
+
+/* #grp */ /* @search area */ /* height(1 row):35; */
+	/* height(2 rows):70; */
+.grp_srch_outer {
+	border-style: solid;
+	border-top: solid #e7e7e7;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+}
+
+.grp_srch {
+	background-color: #e3e3e3;
+	background-image: url(./image/search_bg.gif);
+	background-repeat: repeat-x;
+}
+
+/* @space area */ /* height:36; */
+.grp_spc {
+	background-color: #ededed;
+	background-image: url(./image/area_bg.gif);
+	background-repeat: repeat-x;
+}
+
+/* #grx */
+.grx_def_outer {
+	border-style: solid;
+	border-color: #bbe8af;
+	border-width: 2px;
+}
+
+/* @header */
+.ghc_outer {
+	border-style: solid;
+	border-color: #7ca7a3;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+}
+
+.ghc {
+	background-color: #5b992e;
+	font-family: Dotum;
+	color: #ffffff;
+	font-size: 9pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+.gbc_outer {
+	border-style: solid;
+	border-color: #7ca7a3;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+}
+
+.gbc {
+	background-color: #fafafa;
+	font-family: Dotum;
+	color: #ffffff;
+	font-size: 9pt;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* #ipt */ /* @search area */
+.ipb_srch_outer {
+	border-style: solid;
+	border-color: #dddddd;
+	border-width: 1px;
+	background-color: #f8f8f8;
+}
+
+.ipb_srch {
+	font-family: Dotum;
+	font-size: 9pt;
+	background-color: #f8f8f8;
+	color: #585858;
+	padding-top: 0px;
+	padding-right: 4px;
+	padding-bottom: 0px;
+	padding-left: 4px;
+}
+
+/* @input for form attribute value */ /* height:16; */
+.ipb_form_outer {
+	border-style: solid;
+	border-color: #dddddd;
+	border-width: 1px;
+}
+
+.ipb_form {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	padding-right: 2px;
+	padding-left: 2px;
+}
+
+/* #rdb */ /* radiobox in form */
+.rdb_form_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.rdb_form {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #111111;
+}
+
+/* #ckb */ /* checkbox in form */
+.ckb_form_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.ckb_form {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #111111;
+}
+
+/* #trv */ /* @tree in left menu area */
+.trv_lt_itemgrp {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #111111;
+}
+
+.trv_menu_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+/* @WBS upper item */
+.trv_wbs_upper {
+	border-style: solid;
+	border-color: #C1C1C1;
+	border-width: 1px;
+	background-color: #D4E3E3;
+	border-bottom: #7ca7a3 1px solid;
+	color: #2e5f5a;
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Dotum;
+	padding: 2px 5px;
+}
+
+/* @WBS lower item */
+.trv_wbs_lower {
+	border-style: solid;
+	border-color: #C1C1C1;
+	border-width: 1px;
+	color: #111111;
+	font-size: 9pt;
+	font-family: Dotum;
+	padding: 2px 5px;
+}
+
+/* #dip */ /* @search DateInput */
+.dip_srch_outer {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #93aaba;
+	background-color: #ecf2d5;
+}
+
+.dip_srch {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	color: #000000;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	background-color: #ecf2d5;
+}
+
+/* #import */
+/* @page navigator */
+.imp_pgnavi_outer {
+	border-style: none;
+	border-width: 0px;
+}
+
+.ghc_txt {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 10pt;
+	color: #31719d;
+	background: url(img/ghc_bg.jpg) repeat;
+}
+
+.lbl_txt {
+	font-weight: bold;
+	color: #111111;
+	text-align: right;
+}
+
+.lbl_txt_big {
+	font-family: dotum;
+	font-size: 16pt;
+	font-weight: bold;
+	color: #2a2f32;
+}
+
+.lbl_rep {
+	background-color: #EDEDED;
+	color: #31719d;
+	text-align: right;
+	padding-right: 10px;
+	font-size: 10pt;
+}
+
+.lbl_rep_outer {
+	border-style: solid;
+	border-color: #cccccc;
+}
+
+/* #TreeView */ /* @Menu TreeView depth02 */
+.menu_depth01 {
+	background: #FFF url(./image/index/bg_leftmenu_on.gif) no-repeat;
+}
+
+/* @Menu TreeView depth01 on focus*/
+.menu_depth01_on {
+	background: #FFF url(./image/index/bg_leftmenu_on.gif) no-repeat;
+}
+
+/* @Menu TreeView depth02 */
+.menu_depth02 {
+	background: #FFFFFF url(./image/index/bg_leftmenu_sub_off.gif) no-repeat
+		left top;
+}
+
+/* @Menu TreeView depth02 on focus*/
+.menu_depth02_on {
+	background: #FFFFFF url(./image/index/bg_leftmenu_sub_on.gif) no-repeat
+		left top;
+}
+
+/* @Menu Label TreeView depth01*/
+.menu_depth01 td {
+	padding: 8px 0 10px 18px;
+	color: #333333;
+	font-size: 10pt;
+}
+
+/* @Menu Label TreeView depth01 on focus*/
+.menu_depth01_on td {
+	padding: 8px 0 10px 18px;
+	color: #2876a7;
+	font-size: 10pt;
+}
+
+/* @Menu Label TreeView depth02*/
+.menu_depth02 td {
+	padding: 2px 0 10px 30px;
+	color: #555555;
+	font-size: 9pt;
+}
+
+.menu_depth02 td:hover {
+	color: #FF0000;
+	font-weight: bold
+}
+
+/* @Menu Label TreeView depth02 on focus*/
+.menu_depth02_on td {
+	padding: 2px 0 10px 30px;
+	color: #2876a7;
+	font-size: 9pt;
+}
+
+/****************************************
+********  메뉴 관련 ************************
+******************************************/
+.position {
+	display: inline-block;
+	margin: 54px 0 0 0;
+	width: 1260px;
+}
+
+.position1 {
+	display: inline-block;
+	margin: 9pt 0 0 0;
+}
+
+.position2 {
+	display: inline-block;
+	margin: 0 0 0 20;
+}
+
+.menu td {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 14px;
+	font-weight: bold;
+	color: #555555;
+	padding: 0px 30px 0px 30px;
+	border-right: 1px solid #fbfbfb;
+	cursor: pointer;
+}
+
+.menu td .menuOn {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 14px;
+	font-weight: bold;
+	color: #2876a7;
+	padding: 0px 30px 0px 30px;
+	border-right: 1px solid #fbfbfb;
+	cursor: pointer;
+}
+
+.menu td a:link {
+	text-decoration: none;
+	color: #2876a7;
+}
+
+.menu td a:visited {
+	text-decoration: none;
+	color: #2876a7;
+}
+
+.menu td a:hover {
+	text-decoration: none;
+	color: #2876a7;
+}
+
+.menu td a:active {
+	text-decoration: none;
+	color: #2876a7;
+}
+
+.subMenu td {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 9pt;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 0px 30px 0px 30px;
+	border-right: 1px solid #cfe7e1;
+	cursor: pointer;
+}
+
+.subMenu td.subMenuOn {
+	font-family: "Malgun Gothic", Tahoma;
+	font-size: 13px;
+	font-weight: bold;
+	color: #F60;
+	padding: 0px 30px 0px 30px;
+	border-right: 1px solid #CCC;
+	cursor: pointer;
+}
+
+.subMenu td a:hover,.subMenu td a:active {
+	text-decoration: none;
+	color: #faf700;
+}
+
+select {
+	background-color: #f2f2f2;
+	border-style: none;
+	border-color: #A5BACC;
+	border-width: 0;
+	button-color: #111111;
+	font-weight: bold;
+	top: 6;
+	color: #406b82;
+}

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptRglrIptn">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptRglrIptnSerarchVO" type="estam.app.scn.rpt.service.RptRglrIptnDefaultVO"/>
+	<typeAlias  alias="rptRglrIptnVO" type="estam.app.scn.rpt.service.RptRglrIptnVO"/>
+	
+	<resultMap id="rptRglrIptn" class="estam.app.scn.rpt.service.RptRglrIptnVO">
+		<result property="iptDt" column="IPT_DT" columnIndex="1"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="2"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="3"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="4"/>
+		<result property="rglrQst11yn" column="RGLR_QST1_1YN" columnIndex="5"/>
+		<result property="rglrQst12yn" column="RGLR_QST1_2YN" columnIndex="6"/>
+		<result property="rglrQst13yn" column="RGLR_QST1_3YN" columnIndex="7"/>
+		<result property="rglrQst14yn" column="RGLR_QST1_4YN" columnIndex="8"/>
+		<result property="rglrQst21yn" column="RGLR_QST2_1YN" columnIndex="9"/>
+		<result property="rglrQst22yn" column="RGLR_QST2_2YN" columnIndex="10"/>
+		<result property="rglrQst23yn" column="RGLR_QST2_3YN" columnIndex="11"/>
+		<result property="rglrQst24yn" column="RGLR_QST2_4YN" columnIndex="12"/>
+		<result property="rglrQst31yn" column="RGLR_QST3_1YN" columnIndex="13"/>
+		<result property="rglrQst32yn" column="RGLR_QST3_2YN" columnIndex="14"/>
+		<result property="rglrQst41yn" column="RGLR_QST4_1YN" columnIndex="15"/>
+		<result property="rglrQst42yn" column="RGLR_QST4_2YN" columnIndex="16"/>
+		<result property="rglrQst43yn" column="RGLR_QST4_3YN" columnIndex="17"/>
+		<result property="rglrRsltCtnt" column="RGLR_RSLT_CTNT" columnIndex="18"/>
+		<result property="rglrMngeCtnt" column="RGLR_MNGE_CTNT" columnIndex="19"/>
+		<result property="rglrUsrDept" column="RGLR_USR_DEPT" columnIndex="20"/>
+		<result property="rglrUsrDuty" column="RGLR_USR_DUTY" columnIndex="21"/>
+		<result property="rglrUsrNm" column="RGLR_USR_NM" columnIndex="22"/>
+		<result property="rglrUsrTel" column="RGLR_USR_TEL" columnIndex="23"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="24"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="25"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="26"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="27"/>
+	</resultMap>
+	
+	<insert id="rptRglrIptnDAO.insertRptRglrIptn_S">
+		<![CDATA[
+			INSERT INTO RPT_RGLR_IPTN 
+				( IPT_DT
+				  , FCTY_CD
+				  , CON_DA_GBCD
+				  , GVMT_CD
+				  , RGLR_QST1_1YN
+				  , RGLR_QST1_2YN
+				  , RGLR_QST1_3YN
+				  , RGLR_QST1_4YN
+				  , RGLR_QST2_1YN
+				  , RGLR_QST2_2YN
+				  , RGLR_QST2_3YN
+				  , RGLR_QST2_4YN
+				  , RGLR_QST3_1YN
+				  , RGLR_QST3_2YN
+				  , RGLR_QST4_1YN
+				  , RGLR_QST4_2YN
+				  , RGLR_QST4_3YN
+				  , RGLR_RSLT_CTNT
+				  , RGLR_MNGE_CTNT
+				  , RGLR_USR_DEPT
+				  , RGLR_USR_DUTY
+				  , RGLR_USR_NM
+				  , RGLR_USR_TEL
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #iptDt#
+				  , #fctyCd#
+				  , #conDaGbcd#
+				  , #gvmtCd#
+				  , #rglrQst11yn#
+				  , #rglrQst12yn#
+				  , #rglrQst13yn#
+				  , #rglrQst14yn#
+				  , #rglrQst21yn#
+				  , #rglrQst22yn#
+				  , #rglrQst23yn#
+				  , #rglrQst24yn#
+				  , #rglrQst31yn#
+				  , #rglrQst32yn#
+				  , #rglrQst41yn#
+				  , #rglrQst42yn#
+				  , #rglrQst43yn#
+				  , #rglrRsltCtnt#
+				  , #rglrMngeCtnt#
+				  , #rglrUsrDept#
+				  , #rglrUsrDuty#
+				  , #rglrUsrNm#
+				  , #rglrUsrTel#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptRglrIptnDAO.updateRptRglrIptn_S">
+		<![CDATA[
+			UPDATE RPT_RGLR_IPTN
+			SET IPT_DT=#iptDt#
+				, FCTY_CD=#fctyCd#
+				, CON_DA_GBCD=#conDaGbcd#
+				, GVMT_CD=#gvmtCd#
+				, RGLR_QST1_1YN=#rglrQst11yn#
+				, RGLR_QST1_2YN=#rglrQst12yn#
+				, RGLR_QST1_3YN=#rglrQst13yn#
+				, RGLR_QST1_4YN=#rglrQst14yn#
+				, RGLR_QST2_1YN=#rglrQst21yn#
+				, RGLR_QST2_2YN=#rglrQst22yn#
+				, RGLR_QST2_3YN=#rglrQst23yn#
+				, RGLR_QST2_4YN=#rglrQst24yn#
+				, RGLR_QST3_1YN=#rglrQst31yn#
+				, RGLR_QST3_2YN=#rglrQst32yn#
+				, RGLR_QST4_1YN=#rglrQst41yn#
+				, RGLR_QST4_2YN=#rglrQst42yn#
+				, RGLR_QST4_3YN=#rglrQst43yn#
+				, RGLR_RSLT_CTNT=#rglrRsltCtnt#
+				, RGLR_MNGE_CTNT=#rglrMngeCtnt#
+				, RGLR_USR_DEPT=#rglrUsrDept#
+				, RGLR_USR_DUTY=#rglrUsrDuty#
+				, RGLR_USR_NM=#rglrUsrNm#
+				, RGLR_USR_TEL=#rglrUsrTel#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE IPT_DT=#iptDt#
+								AND FCTY_CD=#fctyCd#
+								AND CON_DA_GBCD=#conDaGbcd#
+				]]>
+	</update>
+	
+	<delete id="rptRglrIptnDAO.deleteRptRglrIptn_S">
+		<![CDATA[
+			DELETE FROM RPT_RGLR_IPTN 
+						WHERE IPT_DT=#iptDt#
+								AND FCTY_CD=#fctyCd#
+								AND CON_DA_GBCD=#conDaGbcd#
+				]]>
+	</delete>
+	
+	<select id="rptRglrIptnDAO.selectRptRglrIptn_S" parameterClass="rptRglrIptnVO" resultMap="rptRglrIptn">
+		<![CDATA[
+			SELECT
+				IPT_DT
+				, FCTY_CD
+				, CON_DA_GBCD
+				, GVMT_CD
+				, RGLR_QST1_1YN
+				, RGLR_QST1_2YN
+				, RGLR_QST1_3YN
+				, RGLR_QST1_4YN
+				, RGLR_QST2_1YN
+				, RGLR_QST2_2YN
+				, RGLR_QST2_3YN
+				, RGLR_QST2_4YN
+				, RGLR_QST3_1YN
+				, RGLR_QST3_2YN
+				, RGLR_QST4_1YN
+				, RGLR_QST4_2YN
+				, RGLR_QST4_3YN
+				, RGLR_RSLT_CTNT
+				, RGLR_MNGE_CTNT
+				, RGLR_USR_DEPT
+				, RGLR_USR_DUTY
+				, RGLR_USR_NM
+				, RGLR_USR_TEL
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_RGLR_IPTN
+						WHERE IPT_DT=#iptDt#
+								AND FCTY_CD=#fctyCd#
+								AND CON_DA_GBCD=#conDaGbcd#
+				]]>
+	</select>
+	
+	<select id="rptRglrIptnDAO.selectRptRglrIptnList_D" parameterClass="rptRglrIptnVO" resultMap="rptRglrIptn">
+				SELECT
+								IPT_DT
+								, FCTY_CD
+								, CON_DA_GBCD
+								, GVMT_CD
+								, RGLR_QST1_1YN
+								, RGLR_QST1_2YN
+								, RGLR_QST1_3YN
+								, RGLR_QST1_4YN
+								, RGLR_QST2_1YN
+								, RGLR_QST2_2YN
+								, RGLR_QST2_3YN
+								, RGLR_QST2_4YN
+								, RGLR_QST3_1YN
+								, RGLR_QST3_2YN
+								, RGLR_QST4_1YN
+								, RGLR_QST4_2YN
+								, RGLR_QST4_3YN
+								, RGLR_RSLT_CTNT
+								, RGLR_MNGE_CTNT
+								, RGLR_USR_DEPT
+								, RGLR_USR_DUTY
+								, RGLR_USR_NM
+								, RGLR_USR_TEL
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_RGLR_IPTN
+                    WHERE  1=1						
+						<!-- 
+                    WHERE  IPT_DT= (SELECT MAX(IPT_DT) 
+                                    FROM CON_OBS_META
+                                    WHERE 1=1 
+                                          AND CON_DA_GBCD=#conDaGbcd#
+                                          AND GVMT_CD=#gvmtCd#
+                                          AND FCTY_CD = #fctyCd#)
+                        -->
+                      AND CON_DA_GBCD=#conDaGbcd#
+                      AND GVMT_CD=#gvmtCd#
+                      AND FCTY_CD=#fctyCd#
+					ORDER BY 
+						IPT_DT DESC
+							, FCTY_CD DESC
+							, CON_DA_GBCD DESC
+	</select>	
+	<select id="rptRglrIptnDAO.selectRptRglrIptnListTotCnt_S" parameterClass="rptRglrIptnSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_RGLR_IPTN
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				IPT_DT = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				FCTY_CD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

@@ -1,0 +1,94 @@
+<xf:model xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ht="http://www.w3.org/TR/html5" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://www.exria.org/exria" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:wf="http://www.w3.org/TR/web-forms-2" defaultinstance="ins_request" xmlns:xl="http://www.w3.org/1999/xlink"><xr:submission id="sbm_message" res-type="" req-protocol="urlencoded" req-type="" action="/gnss/common/data/MessageData.js" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:response-ref ref="/root/messages" add="false" instanceid="ins_response"></xr:response-ref>
+</xr:submission>
+<xr:submission id="sbm_get_http_session" res-type="" req-protocol="urlencoded" req-type="" action="/gnss/system/common/httpSession/getHttpSession.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/refHttpSession/loginUsrId" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/refHttpSession/loginUsrNm" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/refHttpSession/loginEpno" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/refHttpSession/loginAutIdBind" instanceid="ins_request"></xr:request-ref>
+<xr:response-ref ref="/root/httpSession" add="false" instanceid="ins_response"></xr:response-ref>
+</xr:submission>
+<xr:submission id="sbm_remove_http_session" res-type="" req-protocol="urlencoded" req-type="" action="/gnss/system/common/httpSession/removeHttpSession.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/refHttpSession/loginUsrId" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/refHttpSession/loginUsrNm" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/refHttpSession/loginEpno" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/refHttpSession/loginAutIdBind" instanceid="ins_request"></xr:request-ref>
+<xr:response-ref ref="/root/httpSession" add="false" instanceid="ins_response"></xr:response-ref>
+</xr:submission>
+<xr:submission id="sbm_get_server_date" res-type="" req-protocol="urlencoded" req-type="" action="/gnss/system/common/cmmnBaseData/getServerDate.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqServerDate/format" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/reqServerDate/nodeName" instanceid="ins_request"></xr:request-ref>
+<xr:response-ref ref="/root/getServerDate" add="false" instanceid="ins_response"></xr:response-ref>
+</xr:submission>
+<xr:submission id="sbm_get_db_param_value" res-type="" req-protocol="urlencoded" req-type="" action="/gnss/system/common/cmmnBaseData/selectParaVal.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqDbParamValue/reqParaId" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/reqDbParamValue/nodeName" instanceid="ins_request"></xr:request-ref>
+<xr:response-ref ref="/root/getDbParamValue" add="false" instanceid="ins_response"></xr:response-ref>
+</xr:submission>
+<xr:submission id="sbm_insert_usr_appr_his_info" res-type="" req-protocol="urlencoded" req-type="" action="/gnss/system/common/cmmnBaseData/insertUsrApprHisInfo.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="false" req-charset="utf-8" async="true"><xr:request-ref ref="/root/insertUsrApprHisInfo/usrId" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/insertUsrApprHisInfo/pgmId" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/insertUsrApprHisInfo/apprGbcd" instanceid="ins_request"></xr:request-ref>
+<xr:request-ref ref="/root/insertUsrApprHisInfo/updUsrId" instanceid="ins_request"></xr:request-ref>
+<xr:response-ref ref="/root/tranResult" add="false" instanceid="ins_response"></xr:response-ref>
+</xr:submission>
+<xf:jsoninstance id="ins_request">{
+					root : {
+						refHttpSession : {
+							loginUsrId : "",
+							loginUsrNm : "",
+							loginEpno : "",
+							loginAutIdBind : ""
+						},
+						reqServerDate : {
+							format : "",
+							nodeName : "getServerDate"
+						},
+						reqDbParamValue : {
+							reqParaId : "",
+							nodeName : "getDbParamValue"
+						},
+						insertUsrApprHisInfo : {
+							usrId : "",
+							pgmId : "",
+							apprGbcd : "",
+							updUsrId : ""
+						}
+					}
+				}</xf:jsoninstance>
+<xf:jsoninstance id="ins_response">{
+					root : {
+						messages : {
+							row : [
+								{
+									id : "",
+									text : ""
+								}
+							]
+						},
+						httpSession : {
+							row : [
+								{
+									loginEpno : "",
+									loginUsrNm : "",
+									loginUsrId : "",
+									loginAutIdBind : ""
+								}
+							]
+						},
+						getServerDate : {
+							serverDate : "",
+							year : "",
+							month : "",
+							day : "",
+							hour : "",
+							minute : "",
+							second : "",
+							millisecond : ""
+						},
+						getDbParamValue : {
+							PARA_VAL : ""
+						},
+						tranResult : {
+							tranSuccess : "",
+							resultMsg : "",
+							saveCnt : "",
+							msgCode : ""
+						}
+					}
+				}</xf:jsoninstance>
+</xf:model>

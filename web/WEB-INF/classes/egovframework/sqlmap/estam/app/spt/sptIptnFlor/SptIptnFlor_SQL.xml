@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SptIptnFlor">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="sptIptnFlorSerarchVO" type="estam.app.spt.service.SptIptnFlorDefaultVO"/>
+	<typeAlias  alias="sptIptnFlorVO" type="estam.app.spt.service.SptIptnFlorVO"/>
+	
+	<resultMap id="sptIptnFlor" class="estam.app.spt.service.SptIptnFlorVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="sptIptnDt" column="SPT_IPTN_DT" columnIndex="2"/>
+		<result property="sptIptnFlorSeq" column="SPT_IPTN_FLOR_SEQ" columnIndex="3"/>
+		<result property="sptIptnFlorSz" column="SPT_IPTN_FLOR_SZ" columnIndex="4"/>
+		<result property="sptIptnFlorFlnm" column="SPT_IPTN_FLOR_FLNM" columnIndex="5"/>
+		<result property="sptIptnFlorFlsv" column="SPT_IPTN_FLOR_FLSV" columnIndex="6"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="7"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="8"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="9"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="10"/>
+	</resultMap>
+	
+    <resultMap id="sptIptnFlorView" class="estam.app.spt.service.SptIptnFlorVO">
+        <result property="sptIptnFlorSeq" column="SPT_IPTN_FLOR_SEQ" columnIndex="1"/>
+        <result property="sptIptnFlorSz" column="SPT_IPTN_FLOR_SZ" columnIndex="2"/>
+        <result property="sptIptnFlorFlnm" column="SPT_IPTN_FLOR_FLNM" columnIndex="3"/>
+        <result property="sptIptnFlorFlsv" column="SPT_IPTN_FLOR_FLSV" columnIndex="4"/>
+    </resultMap>
+    	
+	<insert id="sptIptnFlorDAO.insertSptIptnFlor_S">
+		<![CDATA[
+			INSERT INTO SPT_IPTN_FLOR 
+				( FCTY_CD
+				  , SPT_IPTN_DT
+				  , SPT_IPTN_FLOR_SEQ
+				  , SPT_IPTN_FLOR_SZ
+				  , SPT_IPTN_FLOR_FLNM
+				  , SPT_IPTN_FLOR_FLSV
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #sptIptnDt#
+				  , #sptIptnFlorSeq#
+				  , #sptIptnFlorSz#
+				  , #sptIptnFlorFlnm#
+				  , #sptIptnFlorFlsv#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="sptIptnFlorDAO.updateSptIptnFlor_S">
+		<![CDATA[
+			UPDATE SPT_IPTN_FLOR
+			SET FCTY_CD=#fctyCd#
+				, SPT_IPTN_DT=#sptIptnDt#
+				, SPT_IPTN_FLOR_SEQ=#sptIptnFlorSeq#
+				, SPT_IPTN_FLOR_SZ=#sptIptnFlorSz#
+				, SPT_IPTN_FLOR_FLNM=#sptIptnFlorFlnm#
+				, SPT_IPTN_FLOR_FLSV=#sptIptnFlorFlsv#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND SPT_IPTN_DT=#sptIptnDt#
+								AND SPT_IPTN_FLOR_SEQ=#sptIptnFlorSeq#
+				]]>
+	</update>
+	
+	<delete id="sptIptnFlorDAO.deleteSptIptnFlor_S">
+		<![CDATA[
+			DELETE FROM SPT_IPTN_FLOR 
+						WHERE FCTY_CD=#fctyCd#
+								AND SPT_IPTN_DT=#sptIptnDt#
+								AND SPT_IPTN_FLOR_SEQ=#sptIptnFlorSeq#
+				]]>
+	</delete>
+	
+	<select id="sptIptnFlorDAO.selectSptIptnFlor_S" resultMap="sptIptnFlor">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, SPT_IPTN_DT
+				, SPT_IPTN_FLOR_SEQ
+				, SPT_IPTN_FLOR_SZ
+				, SPT_IPTN_FLOR_FLNM
+				, SPT_IPTN_FLOR_FLSV
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM SPT_IPTN_FLOR
+						WHERE FCTY_CD=#fctyCd#
+								AND SPT_IPTN_DT=#sptIptnDt#
+								AND SPT_IPTN_FLOR_SEQ=#sptIptnFlorSeq#
+				]]>
+	</select>
+	
+	<select id="sptIptnFlorDAO.selectSptIptnFlorList_D" parameterClass="sptIptnFlorVO" resultMap="sptIptnFlorView">
+		SELECT SPT_IPTN_FLOR_SEQ,
+		       SPT_IPTN_FLOR_SZ,
+		       SPT_IPTN_FLOR_FLNM,
+		       SPT_IPTN_FLOR_FLSV       
+		FROM   SPT_IPTN_RSLT SPT,
+		       SPT_IPTN_FLOR RCC
+		WHERE  1=1
+		AND    SPT.FCTY_CD = RCC.FCTY_CD
+		AND    SPT.GVMT_CD = RCC.GVMT_CD
+		AND    SPT.SPT_IPTN_DT = RCC.SPT_IPTN_DT
+		AND    SPT.FCTY_CD = #fctyCd#
+		AND    SPT.GVMT_CD =#gvmtCd# 
+      <isNotEmpty prepend="AND" property="sptIptnDt">
+          SPT.SPT_IPTN_DT = #sptIptnDt#
+      </isNotEmpty>		
+	</select>	
+	<select id="sptIptnFlorDAO.selectSptIptnFlorListTotCnt_S" parameterClass="sptIptnFlorSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM SPT_IPTN_FLOR
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				SPT_IPTN_DT LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="IddlAassOpinV">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="iddlAassOpinVSerarchVO" type="estam.app.iddl.service.IddlAassOpinVDefaultVO"/>
+	
+	<resultMap id="iddlAassOpinV" class="estam.app.iddl.service.IddlAassOpinVVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="iddlAassNo" column="IDDL_AASS_NO" columnIndex="2"/>
+		<result property="scnFitrFreeX" column="SCN_FITR_FREE_X" columnIndex="3"/>
+		<result property="scnFitrFreeY" column="SCN_FITR_FREE_Y" columnIndex="4"/>
+		<result property="scnFitrFreeZ" column="SCN_FITR_FREE_Z" columnIndex="5"/>
+		<result property="scnFitrBotX" column="SCN_FITR_BOT_X" columnIndex="6"/>
+		<result property="scnFitrBotY" column="SCN_FITR_BOT_Y" columnIndex="7"/>
+		<result property="scnFitrBotZ" column="SCN_FITR_BOT_Z" columnIndex="8"/>
+		<result property="scnFitrMidX" column="SCN_FITR_MID_X" columnIndex="9"/>
+		<result property="scnFitrMidY1" column="SCN_FITR_MID_Y1" columnIndex="10"/>
+		<result property="scnFitrMidY2" column="SCN_FITR_MID_Y2" columnIndex="11"/>
+		<result property="scnFitrTopX" column="SCN_FITR_TOP_X" columnIndex="12"/>
+		<result property="scnFitrTopY1" column="SCN_FITR_TOP_Y1" columnIndex="13"/>
+		<result property="scnFitrTopY2" column="SCN_FITR_TOP_Y2" columnIndex="14"/>
+		<result property="anaOpinIdrAmp" column="ANA_OPIN_IDR_AMP" columnIndex="15"/>
+		<result property="anaOpinSimcArea" column="ANA_OPIN_SIMC_AREA" columnIndex="16"/>
+		<result property="anaOpinStrHei" column="ANA_OPIN_STR_HEI" columnIndex="17"/>
+		<result property="anaOpinStrTycd" column="ANA_OPIN_STR_TYCD" columnIndex="18"/>
+		<result property="anaOpinStrNm" column="ANA_OPIN_STR_NM" columnIndex="19"/>
+		<result property="anaOpinStrFrqWinMjL" column="ANA_OPIN_STR_FRQ_WIN_MJ_L" columnIndex="20"/>
+		<result property="anaOpinStrFrqWinMjH" column="ANA_OPIN_STR_FRQ_WIN_MJ_H" columnIndex="21"/>
+		<result property="anaOpinStrFrqWinShotL" column="ANA_OPIN_STR_FRQ_WIN_SHOT_L" columnIndex="22"/>
+		<result property="anaOpinStrFrqWinShotH" column="ANA_OPIN_STR_FRQ_WIN_SHOT_H" columnIndex="23"/>
+		<result property="anaOpinLimiStatMenSlit" column="ANA_OPIN_LIMI_STAT_MEN_SLIT" columnIndex="24"/>
+		<result property="anaOpinLimiStatMenNor" column="ANA_OPIN_LIMI_STAT_MEN_NOR" columnIndex="25"/>
+		<result property="anaOpinLimiStatMenHsh" column="ANA_OPIN_LIMI_STAT_MEN_HSH" columnIndex="26"/>
+		<result property="anaOpinLimiStatSlit" column="ANA_OPIN_LIMI_STAT_SLIT" columnIndex="27"/>
+		<result property="anaOpinLimiStatNor" column="ANA_OPIN_LIMI_STAT_NOR" columnIndex="28"/>
+		<result property="anaOpinLimiStatHsh" column="ANA_OPIN_LIMI_STAT_HSH" columnIndex="29"/>
+		<result property="anaOpinFrqPrvX" column="ANA_OPIN_FRQ_PRV_X" columnIndex="30"/>
+		<result property="anaOpinFrqPrvY" column="ANA_OPIN_FRQ_PRV_Y" columnIndex="31"/>
+		<result property="sfIdrRngSmfSf" column="SF_IDR_RNG_SMF_SF" columnIndex="32"/>
+		<result property="sfIdrRngSmfChk" column="SF_IDR_RNG_SMF_CHK" columnIndex="33"/>
+		<result property="sfIdrRngSmfHsh" column="SF_IDR_RNG_SMF_HSH" columnIndex="34"/>
+		<result property="sfIdrRngSmfShr" column="SF_IDR_RNG_SMF_SHR" columnIndex="35"/>
+		<result property="sfIdrRngSefSf" column="SF_IDR_RNG_SEF_SF" columnIndex="36"/>
+		<result property="sfIdrRngSefChk" column="SF_IDR_RNG_SEF_CHK" columnIndex="37"/>
+		<result property="sfIdrRngSefHsh" column="SF_IDR_RNG_SEF_HSH" columnIndex="38"/>
+		<result property="sfIdrRngSefShr" column="SF_IDR_RNG_SEF_SHR" columnIndex="39"/>
+		<result property="sfIdrRngRcfSf" column="SF_IDR_RNG_RCF_SF" columnIndex="40"/>
+		<result property="sfIdrRngRcfChk" column="SF_IDR_RNG_RCF_CHK" columnIndex="41"/>
+		<result property="sfIdrRngRcfHsh" column="SF_IDR_RNG_RCF_HSH" columnIndex="42"/>
+		<result property="sfIdrRngRcfShr" column="SF_IDR_RNG_RCF_SHR" columnIndex="43"/>
+		<result property="sfIdrRngRcswSf" column="SF_IDR_RNG_RCSW_SF" columnIndex="44"/>
+		<result property="sfIdrRngRcswChk" column="SF_IDR_RNG_RCSW_CHK" columnIndex="45"/>
+		<result property="sfIdrRngRcswHsh" column="SF_IDR_RNG_RCSW_HSH" columnIndex="46"/>
+		<result property="sfIdrRngRcswShr" column="SF_IDR_RNG_RCSW_SHR" columnIndex="47"/>
+		<result property="sfNatFrqRng" column="SF_NAT_FRQ_RNG" columnIndex="48"/>
+		<result property="sfStrFreeNatFrqRng" column="SF_STR_FREE_NAT_FRQ_RNG" columnIndex="49"/>
+		<result property="sfOvrAccRng" column="SF_OVR_ACC_RNG" columnIndex="50"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="51"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="52"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="53"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="54"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="54"/>
+	</resultMap>
+	
+	<insert id="iddlAassOpinVDAO.insertIddlAassOpinV_S">
+		<![CDATA[
+			INSERT INTO IDDL_AASS_OPIN_V 
+				( FCTY_CD
+				  , IDDL_AASS_NO
+                  , GVMT_CD
+				  , SCN_FITR_FREE_X
+				  , SCN_FITR_FREE_Y
+				  , SCN_FITR_FREE_Z
+				  , SCN_FITR_BOT_X
+				  , SCN_FITR_BOT_Y
+				  , SCN_FITR_BOT_Z
+				  , SCN_FITR_MID_X
+				  , SCN_FITR_MID_Y1
+				  , SCN_FITR_MID_Y2
+				  , SCN_FITR_TOP_X
+				  , SCN_FITR_TOP_Y1
+				  , SCN_FITR_TOP_Y2
+				  , ANA_OPIN_IDR_AMP
+				  , ANA_OPIN_SIMC_AREA
+				  , ANA_OPIN_STR_HEI
+				  , ANA_OPIN_STR_TYCD
+				  , ANA_OPIN_STR_NM
+				  , ANA_OPIN_STR_FRQ_WIN_MJ_L
+				  , ANA_OPIN_STR_FRQ_WIN_MJ_H
+				  , ANA_OPIN_STR_FRQ_WIN_SHOT_L
+				  , ANA_OPIN_STR_FRQ_WIN_SHOT_H
+				  , ANA_OPIN_LIMI_STAT_MEN_SLIT
+				  , ANA_OPIN_LIMI_STAT_MEN_NOR
+				  , ANA_OPIN_LIMI_STAT_MEN_HSH
+				  , ANA_OPIN_LIMI_STAT_SLIT
+				  , ANA_OPIN_LIMI_STAT_NOR
+				  , ANA_OPIN_LIMI_STAT_HSH
+				  , ANA_OPIN_FRQ_PRV_X
+				  , ANA_OPIN_FRQ_PRV_Y
+				  , SF_IDR_RNG_SMF_SF
+				  , SF_IDR_RNG_SMF_CHK
+				  , SF_IDR_RNG_SMF_HSH
+				  , SF_IDR_RNG_SMF_SHR
+				  , SF_IDR_RNG_SEF_SF
+				  , SF_IDR_RNG_SEF_CHK
+				  , SF_IDR_RNG_SEF_HSH
+				  , SF_IDR_RNG_SEF_SHR
+				  , SF_IDR_RNG_RCF_SF
+				  , SF_IDR_RNG_RCF_CHK
+				  , SF_IDR_RNG_RCF_HSH
+				  , SF_IDR_RNG_RCF_SHR
+				  , SF_IDR_RNG_RCSW_SF
+				  , SF_IDR_RNG_RCSW_CHK
+				  , SF_IDR_RNG_RCSW_HSH
+				  , SF_IDR_RNG_RCSW_SHR
+				  , SF_NAT_FRQ_RNG
+				  , SF_STR_FREE_NAT_FRQ_RNG
+				  , SF_OVR_ACC_RNG
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES (
+				#fctyCd#
+				, #iddlAassNo#
+				, #gvmtCd#
+				, #scnFitrFreeX#
+				, #scnFitrFreeY#
+				, #scnFitrFreeZ#
+				, #scnFitrBotX#
+				, #scnFitrBotY#
+				, #scnFitrBotZ#
+				, #scnFitrMidX#
+				, #scnFitrMidY1#
+				, #scnFitrMidY2#
+				, #scnFitrTopX#
+				, #scnFitrTopY1#
+				, #scnFitrTopY2#
+				, #anaOpinIdrAmp#
+				, #anaOpinSimcArea#
+				, #anaOpinStrHei#
+				, #anaOpinStrTycd#
+				, #anaOpinStrNm#
+				, #anaOpinStrFrqWinMjL#
+				, #anaOpinStrFrqWinMjH#
+				, #anaOpinStrFrqWinShotL#
+				, #anaOpinStrFrqWinShotH#
+				, #anaOpinLimiStatMenSlit#
+				, #anaOpinLimiStatMenNor#
+				, #anaOpinLimiStatMenHsh#
+				, #anaOpinLimiStatSlit#
+				, #anaOpinLimiStatNor#
+				, #anaOpinLimiStatHsh#
+				, #anaOpinFrqPrvX#
+				, #anaOpinFrqPrvY#
+				, #sfIdrRngSmfSf#
+				, #sfIdrRngSmfChk#
+				, #sfIdrRngSmfHsh#
+				, #sfIdrRngSmfShr#
+				, #sfIdrRngSefSf#
+				, #sfIdrRngSefChk#
+				, #sfIdrRngSefHsh#
+				, #sfIdrRngSefShr#
+				, #sfIdrRngRcfSf#
+				, #sfIdrRngRcfChk#
+				, #sfIdrRngRcfHsh#
+				, #sfIdrRngRcfShr#
+				, #sfIdrRngRcswSf#
+				, #sfIdrRngRcswChk#
+				, #sfIdrRngRcswHsh#
+				, #sfIdrRngRcswShr#
+				, #sfNatFrqRng#
+				, #sfStrFreeNatFrqRng#
+				, #sfOvrAccRng#
+				, #inptUsrId#
+				, #inptDt#
+				, #updtUsrId#
+				, #updtDt#
+				)	  
+		]]>
+	</insert>
+	
+	<update id="iddlAassOpinVDAO.updateIddlAassOpinV_S">
+		<![CDATA[
+			UPDATE IDDL_AASS_OPIN_V
+			SET FCTY_CD=#fctyCd#
+				, IDDL_AASS_NO=#iddlAassNo#
+				, SCN_FITR_FREE_X=#scnFitrFreeX#
+				, SCN_FITR_FREE_Y=#scnFitrFreeY#
+				, SCN_FITR_FREE_Z=#scnFitrFreeZ#
+				, SCN_FITR_BOT_X=#scnFitrBotX#
+				, SCN_FITR_BOT_Y=#scnFitrBotY#
+				, SCN_FITR_BOT_Z=#scnFitrBotZ#
+				, SCN_FITR_MID_X=#scnFitrMidX#
+				, SCN_FITR_MID_Y1=#scnFitrMidY1#
+				, SCN_FITR_MID_Y2=#scnFitrMidY2#
+				, SCN_FITR_TOP_X=#scnFitrTopX#
+				, SCN_FITR_TOP_Y1=#scnFitrTopY1#
+				, SCN_FITR_TOP_Y2=#scnFitrTopY2#
+				, ANA_OPIN_IDR_AMP=#anaOpinIdrAmp#
+				, ANA_OPIN_SIMC_AREA=#anaOpinSimcArea#
+				, ANA_OPIN_STR_HEI=#anaOpinStrHei#
+				, ANA_OPIN_STR_TYCD=#anaOpinStrTycd#
+				, ANA_OPIN_STR_NM=#anaOpinStrNm#
+				, ANA_OPIN_STR_FRQ_WIN_MJ_L=#anaOpinStrFrqWinMjL#
+				, ANA_OPIN_STR_FRQ_WIN_MJ_H=#anaOpinStrFrqWinMjH#
+				, ANA_OPIN_STR_FRQ_WIN_SHOT_L=#anaOpinStrFrqWinShotL#
+				, ANA_OPIN_STR_FRQ_WIN_SHOT_H=#anaOpinStrFrqWinShotH#
+				, ANA_OPIN_LIMI_STAT_MEN_SLIT=#anaOpinLimiStatMenSlit#
+				, ANA_OPIN_LIMI_STAT_MEN_NOR=#anaOpinLimiStatMenNor#
+				, ANA_OPIN_LIMI_STAT_MEN_HSH=#anaOpinLimiStatMenHsh#
+				, ANA_OPIN_LIMI_STAT_SLIT=#anaOpinLimiStatSlit#
+				, ANA_OPIN_LIMI_STAT_NOR=#anaOpinLimiStatNor#
+				, ANA_OPIN_LIMI_STAT_HSH=#anaOpinLimiStatHsh#
+				, ANA_OPIN_FRQ_PRV_X=#anaOpinFrqPrvX#
+				, ANA_OPIN_FRQ_PRV_Y=#anaOpinFrqPrvY#
+				, SF_IDR_RNG_SMF_SF=#sfIdrRngSmfSf#
+				, SF_IDR_RNG_SMF_CHK=#sfIdrRngSmfChk#
+				, SF_IDR_RNG_SMF_HSH=#sfIdrRngSmfHsh#
+				, SF_IDR_RNG_SMF_SHR=#sfIdrRngSmfShr#
+				, SF_IDR_RNG_SEF_SF=#sfIdrRngSefSf#
+				, SF_IDR_RNG_SEF_CHK=#sfIdrRngSefChk#
+				, SF_IDR_RNG_SEF_HSH=#sfIdrRngSefHsh#
+				, SF_IDR_RNG_SEF_SHR=#sfIdrRngSefShr#
+				, SF_IDR_RNG_RCF_SF=#sfIdrRngRcfSf#
+				, SF_IDR_RNG_RCF_CHK=#sfIdrRngRcfChk#
+				, SF_IDR_RNG_RCF_HSH=#sfIdrRngRcfHsh#
+				, SF_IDR_RNG_RCF_SHR=#sfIdrRngRcfShr#
+				, SF_IDR_RNG_RCSW_SF=#sfIdrRngRcswSf#
+				, SF_IDR_RNG_RCSW_CHK=#sfIdrRngRcswChk#
+				, SF_IDR_RNG_RCSW_HSH=#sfIdrRngRcswHsh#
+				, SF_IDR_RNG_RCSW_SHR=#sfIdrRngRcswShr#
+				, SF_NAT_FRQ_RNG=#sfNatFrqRng#
+				, SF_STR_FREE_NAT_FRQ_RNG=#sfStrFreeNatFrqRng#
+				, SF_OVR_ACC_RNG=#sfOvrAccRng#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+				]]>
+	</update>
+	
+	<delete id="iddlAassOpinVDAO.deleteIddlAassOpinV_S">
+		<![CDATA[
+			DELETE FROM IDDL_AASS_OPIN_V 
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+				]]>
+	</delete>
+	
+	<select id="iddlAassOpinVDAO.selectIddlAassOpinV_S" resultMap="iddlAassOpinV">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, IDDL_AASS_NO
+				, SCN_FITR_FREE_X
+				, SCN_FITR_FREE_Y
+				, SCN_FITR_FREE_Z
+				, SCN_FITR_BOT_X
+				, SCN_FITR_BOT_Y
+				, SCN_FITR_BOT_Z
+				, SCN_FITR_MID_X
+				, SCN_FITR_MID_Y1
+				, SCN_FITR_MID_Y2
+				, SCN_FITR_TOP_X
+				, SCN_FITR_TOP_Y1
+				, SCN_FITR_TOP_Y2
+				, ANA_OPIN_IDR_AMP
+				, ANA_OPIN_SIMC_AREA
+				, ANA_OPIN_STR_HEI
+				, ANA_OPIN_STR_TYCD
+				, ANA_OPIN_STR_NM
+				, ANA_OPIN_STR_FRQ_WIN_MJ_L
+				, ANA_OPIN_STR_FRQ_WIN_MJ_H
+				, ANA_OPIN_STR_FRQ_WIN_SHOT_L
+				, ANA_OPIN_STR_FRQ_WIN_SHOT_H
+				, ANA_OPIN_LIMI_STAT_MEN_SLIT
+				, ANA_OPIN_LIMI_STAT_MEN_NOR
+				, ANA_OPIN_LIMI_STAT_MEN_HSH
+				, ANA_OPIN_LIMI_STAT_SLIT
+				, ANA_OPIN_LIMI_STAT_NOR
+				, ANA_OPIN_LIMI_STAT_HSH
+				, ANA_OPIN_FRQ_PRV_X
+				, ANA_OPIN_FRQ_PRV_Y
+				, SF_IDR_RNG_SMF_SF
+				, SF_IDR_RNG_SMF_CHK
+				, SF_IDR_RNG_SMF_HSH
+				, SF_IDR_RNG_SMF_SHR
+				, SF_IDR_RNG_SEF_SF
+				, SF_IDR_RNG_SEF_CHK
+				, SF_IDR_RNG_SEF_HSH
+				, SF_IDR_RNG_SEF_SHR
+				, SF_IDR_RNG_RCF_SF
+				, SF_IDR_RNG_RCF_CHK
+				, SF_IDR_RNG_RCF_HSH
+				, SF_IDR_RNG_RCF_SHR
+				, SF_IDR_RNG_RCSW_SF
+				, SF_IDR_RNG_RCSW_CHK
+				, SF_IDR_RNG_RCSW_HSH
+				, SF_IDR_RNG_RCSW_SHR
+				, SF_NAT_FRQ_RNG
+				, SF_STR_FREE_NAT_FRQ_RNG
+				, SF_OVR_ACC_RNG
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM IDDL_AASS_OPIN_V
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+				]]>
+	</select>
+	
+	<select id="iddlAassOpinVDAO.selectIddlAassOpinVList_D" parameterClass="iddlAassOpinVSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FCTY_CD
+								, IDDL_AASS_NO
+								, SCN_FITR_FREE_X
+								, SCN_FITR_FREE_Y
+								, SCN_FITR_FREE_Z
+								, SCN_FITR_BOT_X
+								, SCN_FITR_BOT_Y
+								, SCN_FITR_BOT_Z
+								, SCN_FITR_MID_X
+								, SCN_FITR_MID_Y1
+								, SCN_FITR_MID_Y2
+								, SCN_FITR_TOP_X
+								, SCN_FITR_TOP_Y1
+								, SCN_FITR_TOP_Y2
+								, ANA_OPIN_IDR_AMP
+								, ANA_OPIN_SIMC_AREA
+								, ANA_OPIN_STR_HEI
+								, ANA_OPIN_STR_TYCD
+								, ANA_OPIN_STR_NM
+								, ANA_OPIN_STR_FRQ_WIN_MJ_L
+								, ANA_OPIN_STR_FRQ_WIN_MJ_H
+								, ANA_OPIN_STR_FRQ_WIN_SHOT_L
+								, ANA_OPIN_STR_FRQ_WIN_SHOT_H
+								, ANA_OPIN_LIMI_STAT_MEN_SLIT
+								, ANA_OPIN_LIMI_STAT_MEN_NOR
+								, ANA_OPIN_LIMI_STAT_MEN_HSH
+								, ANA_OPIN_LIMI_STAT_SLIT
+								, ANA_OPIN_LIMI_STAT_NOR
+								, ANA_OPIN_LIMI_STAT_HSH
+								, ANA_OPIN_FRQ_PRV_X
+								, ANA_OPIN_FRQ_PRV_Y
+								, SF_IDR_RNG_SMF_SF
+								, SF_IDR_RNG_SMF_CHK
+								, SF_IDR_RNG_SMF_HSH
+								, SF_IDR_RNG_SMF_SHR
+								, SF_IDR_RNG_SEF_SF
+								, SF_IDR_RNG_SEF_CHK
+								, SF_IDR_RNG_SEF_HSH
+								, SF_IDR_RNG_SEF_SHR
+								, SF_IDR_RNG_RCF_SF
+								, SF_IDR_RNG_RCF_CHK
+								, SF_IDR_RNG_RCF_HSH
+								, SF_IDR_RNG_RCF_SHR
+								, SF_IDR_RNG_RCSW_SF
+								, SF_IDR_RNG_RCSW_CHK
+								, SF_IDR_RNG_RCSW_HSH
+								, SF_IDR_RNG_RCSW_SHR
+								, SF_NAT_FRQ_RNG
+								, SF_STR_FREE_NAT_FRQ_RNG
+								, SF_OVR_ACC_RNG
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM IDDL_AASS_OPIN_V
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FCTY_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					IDDL_AASS_NO LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FCTY_CD DESC
+							, IDDL_AASS_NO DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="iddlAassOpinVDAO.selectIddlAassOpinVListTotCnt_S" parameterClass="iddlAassOpinVSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM IDDL_AASS_OPIN_V
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				IDDL_AASS_NO LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

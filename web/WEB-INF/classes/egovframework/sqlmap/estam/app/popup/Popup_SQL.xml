@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TbCode">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="popupSerarchVO" type="estam.app.popup.service.PopupDefaultVO"/>
+    <typeAlias alias="zipCodeVO" type="estam.app.popup.service.ZipCodeVO"/>
+	
+   <resultMap id="symCommCd" class="estam.app.popup.service.SymCommCdVO">
+		<result property="commCd" column="COMM_CD" columnIndex="1"/>
+		<result property="commNm" column="COMM_NM" columnIndex="2"/>
+		<result property="commInfo" column="COMM_INFO" columnIndex="3"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="4"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="5"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="6"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="7"/>
+	</resultMap>
+	
+	<resultMap id="symMenu" class="estam.app.popup.service.SymMenuVO">
+		<result property="menuCd" column="MENU_CD" columnIndex="1"/>
+		<result property="upMenuCd" column="UP_MENU_CD" columnIndex="2"/>
+		<result property="siteGbcd" column="SITE_GBCD" columnIndex="3"/>
+		<result property="menuNm" column="MENU_NM" columnIndex="4"/>
+		<result property="menuDesc" column="MENU_DESC" columnIndex="5"/>
+		<result property="reMark" column="RE_MARK" columnIndex="6"/>
+		<result property="linkUrl" column="LINK_URL" columnIndex="7"/>
+		<result property="dplyNo" column="DPLY_NO" columnIndex="8"/>
+		<result property="useYn" column="USE_YN" columnIndex="9"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="10"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="11"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="12"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="13"/>
+	</resultMap>
+	 
+	<resultMap id="ZipCodeMap" class="estam.app.popup.service.ZipCodeVO">
+        <result property="zip" column="ZIP"/>
+        <result property="sn" column="SN"/>
+        <result property="sido" column="SIDO"/>
+        <result property="gu" column="GU"/> 
+        <result property="dong" column="DONG"/>
+        <result property="ri" column="RI"/>
+        <result property="doseo" column="DOSEO"/>
+        <result property="addr" column="ADDR"/>
+        <result property="bldg" column="BLDG"/>
+        <result property="chgYmd" column="CHG_YMD"/>                                               
+        <result property="fullAddr" column="FULL_ADDR"/>
+    </resultMap>
+	
+    <resultMap id="zipCodeDoroMap" class="estam.app.popup.service.ZipCodeVO">
+        <result property="lawDongCd" column="LAW_DONG_CD"/>    
+		<result property="sido" column="SIDO"/>            
+		<result property="sigungu" column="SIGUNGU"/>          
+		<result property="lawDong" column="LAW_DONG"/>         
+		<result property="lawRi" column="LAW_RI"/>         
+		<result property="sanFlag" column="SAN_FLAG"/>         
+		<result property="addrMainNo" column="ADDR_MAIN_NO"/>      
+		<result property="addrSubNo" column="ADDR_SUB_NO"/>    
+		<result property="doroCd" column="DORO_CD"/>           
+		<result property="doroNm" column="DORO_NM"/>           
+		<result property="underFlag" column="UNDER_FLAG"/>     
+		<result property="bldgMainNo" column="BLDG_MAIN_NO"/>      
+		<result property="bldgSubNo" column="BLDG_SUB_NO"/>    
+		<result property="bldgNm" column="BLDG_NM"/>           
+		<result property="bldgNmDetl" column="BLDG_NM_DETL"/>      
+		<result property="bldgMngNo" column="BLDG_MNG_NO"/>    
+		<result property="dongSn" column="DONG_SN"/>           
+		<result property="admDongCd" column="ADM_DONG_CD"/>    
+		<result property="admDongNm" column="ADM_DONG_NM"/>    
+		<result property="zip" column="ZIP"/>              
+		<result property="zipSn" column="ZIP_SN"/>         
+		<result property="dlvrNm" column="DLVR_NM"/>           
+		<result property="chgCauseCd" column="CHG_CAUSE_CD"/>      
+		<result property="chgYmd" column="CHG_YMD"/>           
+		<result property="chgBefore" column="CHG_BEFORE"/>     
+		<result property="bldgNmSigumgu" column="BLDG_NM_SIGUMGU"/>  
+		<result property="aptFlag" column="APT_FLAG"/>    
+    </resultMap>
+    	
+	<select id="popupDAO.selectPopupSymCommCd" parameterClass="popupSerarchVO" resultMap="symCommCd">
+				SELECT
+								COMM_CD
+								, COMM_NM
+								, COMM_INFO
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM SYM_COMM_CD
+				WHERE 1=1  
+				<isNotEmpty prepend="AND" property="searchKeyword" >
+				COMM_NM LIKE '%' || #searchKeyword# || '%' 
+				</isNotEmpty>
+				ORDER BY COMM_CD DESC
+	</select>	
+	
+	<select id="popupDAO.selectPopupSymMenu" parameterClass="popupSerarchVO" resultMap="symMenu"> 
+				SELECT
+								MENU_CD
+								, UP_MENU_CD
+								, SITE_GBCD
+								, MENU_NM
+								, MENU_DESC
+								, RE_MARK
+								, LINK_URL
+								, DPLY_NO
+								, USE_YN
+								, INPT_USR_ID
+								, UPDT_USR_ID
+								, INPT_DT
+								, UPDT_DT
+						FROM SYM_MENU
+				WHERE 1=1 
+					ORDER BY 
+						MENU_CD DESC 
+	</select>	
+	
+    <select id="zipCodeDAO.selectZipCodeList" parameterClass="zipCodeVO" resultMap="ZipCodeMap">
+        SELECT 
+                 ZIP
+               , SN
+               , SIDO
+               , GU
+               , DONG
+               , RI
+               , DOSEO
+               , ADDR
+               , BLDG
+               , CHG_YMD
+               , FULL_ADDR
+          FROM TB_ZIP
+         WHERE DONG LIKE '%' || #dong# || '%'
+         ORDER BY DONG, RI
+    </select>
+    
+       <select id="zipCodeDAO.selectZipCodeDoroPageList" parameterClass="zipCodeVO" resultMap="zipCodeDoroMap">
+        SELECT 
+                 LAW_DONG_CD
+               , SIDO
+               , SIGUNGU
+               , LAW_DONG
+               , LAW_RI
+               , SAN_FLAG
+               , ADDR_MAIN_NO
+               , ADDR_SUB_NO
+               , DORO_CD
+               , DORO_NM
+               , UNDER_FLAG
+               , BLDG_MAIN_NO
+               , BLDG_SUB_NO
+               , BLDG_NM
+               , BLDG_NM_DETL
+               , BLDG_MNG_NO
+               , DONG_SN
+               , ADM_DONG_CD
+               , ADM_DONG_NM
+               , ZIP
+               , ZIP_SN
+               , DLVR_NM
+               , CHG_CAUSE_CD
+               , CHG_YMD
+               , CHG_BEFORE
+               , BLDG_NM_SIGUMGU
+               , APT_FLAG
+          FROM (
+		        SELECT ROWNUM RN, A.* 
+		                  FROM (
+						        SELECT 
+						                 LAW_DONG_CD
+						               , SIDO
+						               , SIGUNGU
+						               , LAW_DONG
+						               , LAW_RI
+						               , SAN_FLAG
+						               , ADDR_MAIN_NO
+						               , ADDR_SUB_NO
+						               , DORO_CD
+						               , DORO_NM
+						               , UNDER_FLAG
+						               , BLDG_MAIN_NO
+						               , BLDG_SUB_NO
+						               , BLDG_NM
+						               , BLDG_NM_DETL
+						               , BLDG_MNG_NO
+						               , DONG_SN
+						               , ADM_DONG_CD
+						               , ADM_DONG_NM
+						               , ZIP
+						               , ZIP_SN
+						               , DLVR_NM
+						               , CHG_CAUSE_CD
+						               , CHG_YMD
+						               , CHG_BEFORE
+						               , BLDG_NM_SIGUMGU
+						               , APT_FLAG
+						         FROM  TB_ZIP_DORO
+						         WHERE SIDO = #pSido# 
+						         
+						         <isNotEmpty prepend="AND" property="pSigungu">
+						             SIGUNGU LIKE '' || #pSigungu# || '%'
+						         </isNotEmpty>
+						         
+						         <isNotEmpty prepend="AND" property="pLawDong">
+						             LAW_DONG LIKE '' || #pLawDong# || '%'
+						         </isNotEmpty>
+						         
+						         <isNotEmpty prepend="AND" property="pDoroNm">
+						             DORO_NM LIKE '' || #pDoroNm# || '%'
+						         </isNotEmpty>
+								 
+								 <isNotEmpty prepend="AND" property="pLawRi">
+                                     LAW_RI LIKE '' || #pLawRi# || '%'
+                                 </isNotEmpty>
+								 
+								 <isNotEmpty prepend="AND" property="pBldgNm">
+								     BLDG_NM LIKE '' || #pBldgNm# || '%'
+								 </isNotEmpty>  
+								 
+								 ORDER BY DORO_NM, BLDG_MAIN_NO, BLDG_SUB_NO
+							  ) A	 
+				) B
+           WHERE B.RN BETWEEN #firstIndex# + 1 AND #firstIndex# + #recordCountPerPage#
+    </select>
+    
+    <select id="zipCodeDAO.selectZipCodeDoroPageListCnt" parameterClass="zipCodeVO" resultClass="java.lang.Integer">
+	    SELECT 
+	            COUNT(LAW_DONG)
+	      FROM  TB_ZIP_DORO
+	      WHERE SIDO = #pSido# 
+	      
+	      <isNotEmpty prepend="AND" property="pSigungu">
+	          SIGUNGU LIKE '' || #pSigungu# || '%'
+	      </isNotEmpty>
+	      
+	      <isNotEmpty prepend="AND" property="pLawDong">
+	          LAW_DONG LIKE '' || #pLawDong# || '%'
+	      </isNotEmpty>
+	      
+	      <isNotEmpty prepend="AND" property="pDoroNm">
+	          DORO_NM LIKE '' || #pDoroNm# || '%'
+	      </isNotEmpty>
+	      
+	      <isNotEmpty prepend="AND" property="pLawRi">
+	          LAW_RI LIKE '' || #pLawRi# || '%'
+	      </isNotEmpty>
+	      
+	      <isNotEmpty prepend="AND" property="pBldgNm">
+	          BLDG_NM LIKE '' || #pBldgNm# || '%'
+	      </isNotEmpty> 
+    </select>
+    
+</sqlMap>

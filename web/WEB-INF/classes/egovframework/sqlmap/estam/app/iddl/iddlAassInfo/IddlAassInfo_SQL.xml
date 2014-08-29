@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd"> 
+
+<sqlMap namespace="IddlAassInfo">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="iddlAassInfoSerarchVO" type="estam.app.iddl.service.IddlAassInfoDefaultVO"/>
+	
+	<resultMap id="iddlAassInfo" class="estam.app.iddl.service.IddlAassInfoVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>	
+		<result property="fctyNm" column="FCTY_NM" columnIndex="2"/>	
+		<result property="iddlAassNo" column="IDDL_AASS_NO" columnIndex="3"/>
+		<result property="iddlAassDt" column="IDDL_AASS_DT" columnIndex="4"/>
+		<result property="ehqkOtn" column="EHQK_OTN" columnIndex="5"/>
+		<result property="wvScnExtFlsv" column="WV_SCN_EXT_FLSV" columnIndex="6"/>
+		<result property="wvScnExtFlnm" column="WV_SCN_EXT_FLNM" columnIndex="7"/>
+		<result property="wvScnExtFldt" column="WV_SCN_EXT_FLDT" columnIndex="8"/>
+		<result property="moniFreeNrfy" column="MONI_FREE_NRFY" columnIndex="9"/>
+		<result property="moniMjNrfy" column="MONI_MJ_NRFY" columnIndex="10"/>
+		<result property="moniShotNrfy" column="MONI_SHOT_NRFY" columnIndex="11"/>
+		<result property="ehqkReqId" column="EHQK_REQ_ID" columnIndex="12"/>
+		<result property="wvScnRsltFlsv" column="WV_SCN_RSLT_FLSV" columnIndex="13"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="14"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="15"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="16"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="17"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="18"/>	
+		<result property="ehqkTranGbcd" column="EHQK_TRAN_GBCD" columnIndex="19"/>
+		
+		<result property="ehqkAreaCd" column="EHQK_AREA_CD" columnIndex="20"/>
+		<result property="fctyStrTycd" column="FCTY_STR_TYCD" columnIndex="21"/>
+		<result property="fctyHt" column="FCTY_HT" columnIndex="22"/>
+	</resultMap>
+	
+	<resultMap id="ehqkOcurInfo" class="estam.app.scn.evnt.service.EhqkOcurInfoVO">
+		<result property="ehqkReqId" column="EHQK_REQ_ID" columnIndex="1"/>
+		<result property="ehqkTranGbcd" column="EHQK_TRAN_GBCD" columnIndex="2"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="3"/>
+		<result property="ehqkDocTpcd" column="EHQK_DOC_TPCD" columnIndex="4"/>
+		<result property="ehqkOrgTm" column="EHQK_ORG_TM" columnIndex="5"/>
+		<result property="ehqkLon" column="EHQK_LON" columnIndex="6"/>
+		<result property="ehqkLat" column="EHQK_LAT" columnIndex="7"/>
+		<result property="ehqkScal" column="EHQK_SCAL" columnIndex="8"/>
+		<result property="ehqkOrgArea" column="EHQK_ORG_AREA" columnIndex="9"/>
+		<result property="ehqkEvntSttm" column="EHQK_EVNT_STTM" columnIndex="10"/>
+		<result property="ehqkEvntEdtm" column="EHQK_EVNT_EDTM" columnIndex="11"/>
+		<result property="ehqkEvntYn" column="EHQK_EVNT_YN" columnIndex="12"/>
+		<result property="ehqkStatOtr" column="EHQK_STAT_OTR" columnIndex="13"/>
+		<result property="ehqkStatUp" column="EHQK_STAT_UP" columnIndex="14"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="15"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="16"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="17"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="18"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="19"/>
+	</resultMap>
+	
+	<select id="iddlAassInfoDAO.selectEhqkOcurInfo" parameterClass="iddlAassInfoSerarchVO" resultMap="ehqkOcurInfo">
+		<![CDATA[
+			  SELECT EHQK_REQ_ID   
+					,EHQK_TRAN_GBCD
+					,FCTY_CD       
+					,EHQK_DOC_TPCD 
+					,EHQK_ORG_TM   
+					,EHQK_LON      
+					,EHQK_LAT      
+					,EHQK_SCAL     
+					,EHQK_ORG_AREA 
+					,EHQK_STAT_OTR 
+					,EHQK_STAT_UP  
+					,EHQK_EVNT_STTM
+					,EHQK_EVNT_EDTM
+					,GVMT_CD       
+					,EHQK_EVNT_YN
+					,INPT_USR_ID
+					,INPT_DT
+					,UPDT_USR_ID
+					,UPDT_DT  
+                FROM EHQK_OCUR_INFO
+              WHERE EHQK_ORG_TM  = '20070120000000'
+	             AND EHQK_EVNT_YN = 'Y'
+                 AND EHQK_TRAN_GBCD = 'K'                
+				]]>
+	</select>
+	
+	<insert id="iddlAassInfoDAO.insertIddlAassInfo_S">
+		<![CDATA[
+			INSERT INTO IDDL_AASS_INFO 
+				(    FCTY_CD
+					,IDDL_AASS_NO
+					,GVMT_CD
+					,EHQK_OTN
+					,IDDL_AASS_DT
+					,WV_SCN_EXT_FLSV
+					,WV_SCN_EXT_FLNM
+					,WV_SCN_RSLT_FLSV
+					,WV_SCN_EXT_FLDT
+					,MONI_FREE_NRFY
+					,MONI_MJ_NRFY
+					,MONI_SHOT_NRFY
+					,EHQK_REQ_ID
+					,INPT_USR_ID
+					,INPT_DT
+					,UPDT_USR_ID
+					,UPDT_DT
+					,EHQK_TRAN_GBCD )
+			VALUES ( #fctyCd#
+					,(SELECT nvl(max(IDDL_AASS_NO)+1,1) FROM IDDL_AASS_INFO 
+				      where FCTY_CD = #fctyCd#  and GVMT_CD = #gvmtCd#)
+					,#gvmtCd#
+					,#ehqkOtn#
+					,to_char(sysdate,'yyyymmdd') 
+					,#wvScnExtFlsv#||( SELECT nvl(max(IDDL_AASS_NO)+1,1) FROM IDDL_AASS_INFO where FCTY_CD = #fctyCd#  and GVMT_CD = #gvmtCd#)||'/'
+					,#wvScnExtFlnm#
+					,#wvScnRsltFlsv#||( SELECT nvl(max(IDDL_AASS_NO)+1,1) FROM IDDL_AASS_INFO where FCTY_CD = #fctyCd#  and GVMT_CD = #gvmtCd#)||'/'
+					,to_char(sysdate,'yyyymmdd') 
+					,NVL((SELECT DATA_STR_FRQ_X FROM IDDL_AASS_RLST 
+                           WHERE FCTY_CD = #fctyCd# AND GVMT_CD = #gvmtCd# AND ROWNUM=1 ), -1)
+					,NVL((SELECT DATA_STR_FRQ_Y FROM IDDL_AASS_RLST 
+                           WHERE FCTY_CD = #fctyCd# AND GVMT_CD = #gvmtCd# AND ROWNUM=1 ), -1)
+					,NVL((SELECT DATA_FREE_FRQ FROM IDDL_AASS_RLST 
+                           WHERE FCTY_CD = #fctyCd# AND GVMT_CD = #gvmtCd# AND ROWNUM=1 ), -1) 
+					,#ehqkReqId#
+					,#inptUsrId#
+					,#inptDt#
+					,#updtUsrId#
+					,#updtDt#  
+					,#ehqkTranGbcd#  )
+					
+		]]>
+	</insert>
+	
+	<update id="iddlAassInfoDAO.updateIddlAassInfo_S">
+		<![CDATA[
+			UPDATE IDDL_AASS_INFO
+			SET FCTY_CD=#fctyCd#
+				, IDDL_AASS_NO=#iddlAassNo#
+				, IDDL_AASS_DT=#iddlAassDt#
+				, GVMT_CD=#ehqkOtn#
+				, WV_SCN_EXT_FLSV=#wvScnExtFlsv#
+				, WV_SCN_EXT_FLNM=#wvScnExtFlnm#
+				, WV_SCN_EXT_FLDT=#wvScnExtFldt#
+				, MONI_FREE_NRFY=#moniFreeNrfy#
+				, MONI_MJ_NRFY=#moniMjNrfy#
+				, MONI_SHOT_NRFY=#moniShotNrfy#
+				, EHQK_REQ_ID=#ehqkReqId#
+				, WV_SCN_RSLT_FLSV=#wvScnRsltFlsv#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+				, EHQK_TRAN_GBCD=#ehqkTranGbcd#
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+				]]>
+	</update>
+	
+	<delete id="iddlAassInfoDAO.deleteIddlAassInfo_S">
+		<![CDATA[
+			DELETE FROM IDDL_AASS_INFO 
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+				]]>
+	</delete>
+	<!-- 홍익제 수정 20131224 -->
+	<select id="iddlAassInfoDAO.selectIddlAassInfo_S" parameterClass="iddlAassInfoSerarchVO" resultMap="iddlAassInfo">
+		
+			SELECT IAI.FCTY_CD
+			     , FM.FCTY_NM
+				 , IAI.IDDL_AASS_NO
+				 , IAI.IDDL_AASS_DT
+				 , IAI.EHQK_OTN
+				 , IAI.WV_SCN_EXT_FLSV
+				 , IAI.WV_SCN_EXT_FLNM
+				 , IAI.WV_SCN_EXT_FLDT
+				 , IAI.MONI_FREE_NRFY
+				 , IAI.MONI_MJ_NRFY
+				 , IAI.MONI_SHOT_NRFY
+				 , IAI.EHQK_REQ_ID
+				 , IAI.WV_SCN_RSLT_FLSV
+				 , IAI.INPT_USR_ID
+				 , IAI.INPT_DT
+				 , IAI.UPDT_USR_ID
+				 , IAI.UPDT_DT
+				 , IAI.EHQK_TRAN_GBCD
+				 , IAI.GVMT_CD
+                 , (SELECT EHQK_AREA_CD FROM FCTY_ADD_INFO WHERE FCTY_CD = FM.FCTY_CD AND GVMT_CD = FM.GVMT_CD) AS EHQK_AREA_CD
+                 , (SELECT FCTY_STR_TYCD FROM FCTY_ADD_INFO WHERE FCTY_CD = FM.FCTY_CD AND GVMT_CD = FM.GVMT_CD) AS FCTY_STR_TYCD
+                 , (SELECT FCTY_HT FROM FCTY_ADD_INFO WHERE FCTY_CD = FM.FCTY_CD AND GVMT_CD = FM.GVMT_CD) AS FCTY_HT				 
+			FROM IDDL_AASS_INFO IAI
+		   	   , FCTY_MGR FM
+           WHERE IAI.FCTY_CD = FM.FCTY_CD(+)
+             AND IAI.GVMT_CD = FM.GVMT_CD(+)
+			<isNotEmpty prepend="AND" property="fctyCd" >
+			       IAI.FCTY_CD = #fctyCd#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gvmtCd" >
+			       IAI.GVMT_CD = #gvmtCd#
+			</isNotEmpty>                 
+			  AND IAI.EHQK_REQ_ID = #ehqkReqId#
+			  AND IAI.IDDL_AASS_NO = ( SELECT MAX(IDDL_AASS_NO)                        
+                                         FROM IDDL_AASS_INFO
+                                        WHERE 1=1  
+										<isNotEmpty prepend="AND" property="fctyCd" >
+										       FCTY_CD = #fctyCd#
+										</isNotEmpty>
+										<isNotEmpty prepend="AND" property="gvmtCd" >
+										       GVMT_CD = #gvmtCd#
+										</isNotEmpty>                                            
+                                          AND EHQK_REQ_ID = #ehqkReqId#                     
+                                      ) 
+	</select>
+	
+	<select id="iddlAassInfoDAO.selectIddlAassInfoList_D" parameterClass="iddlAassInfoSerarchVO" resultClass="egovMap"> 
+		 SELECT GG.FCTY_CD     ,GG.GVMT_CD ,GG.IDDL_AASS_NO     , GG.IDDL_AASS_DT         , GG.EHQK_ORG_DT         
+				, GG.EHQK_STAT_OTR, 				GG.EHQK_ORG_AREA      
+				, DECODE ( GG.EVENT_CNT,0,0,ROUND((GG.NOK_CNT / GG.EVENT_CNT * 100),1)) AS NOK_PCNT         
+				, DECODE ( GG.EVENT_CNT,0,0,ROUND((GG.OK_CNT  / GG.EVENT_CNT * 100) ,1)) AS OK_PCNT
+				, GG.EHQK_REQ_ID  EHQK_REQ_ID
+                , GG.EHQK_TRAN_GBCD  EHQK_TRAN_GBCD
+                , GG.EHQK_OTN       	EHQK_OTN
+		   FROM (SELECT AA.FCTY_CD
+		                , AA.GVMT_CD     
+				        , AA.IDDL_AASS_NO     
+                        , AA.IDDL_AASS_DT
+                        , AA.EHQK_REQ_ID  EHQK_REQ_ID
+                        , AA.EHQK_TRAN_GBCD  EHQK_TRAN_GBCD
+                        , AA.EHQK_OTN EHQK_OTN     
+                        ,(SELECT SUBSTR(DD.EHQK_ORG_TM,0,8)                      
+                            FROM EHQK_OCUR_INFO  DD                    
+                           WHERE DD.EHQK_REQ_ID = AA.EHQK_REQ_ID              
+                             AND DD.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+                             AND DD.FCTY_CD = AA.FCTY_CD
+							 AND DD.GVMT_CD = AA.GVMT_CD) AS EHQK_ORG_DT                 
+                        ,(SELECT EHQK_STAT_OTR                      
+                            FROM EHQK_OCUR_INFO  DD                    
+                           WHERE DD.EHQK_REQ_ID = AA.EHQK_REQ_ID              
+                             AND DD.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+                             AND DD.FCTY_CD = AA.FCTY_CD
+						     AND DD.GVMT_CD = AA.GVMT_CD) AS EHQK_STAT_OTR 
+                        ,(SELECT DD.EHQK_ORG_AREA
+						    FROM EHQK_OCUR_INFO  DD
+						   WHERE 
+					/*	   
+						   DD.EHQK_REQ_ID = AA.EHQK_REQ_ID
+						     AND DD.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+						     AND 
+					*/	     
+						     DD.FCTY_CD = AA.FCTY_CD
+						     AND DD.EHQK_REQ_ID = AA.EHQK_REQ_ID
+						     AND DD.GVMT_CD = AA.GVMT_CD) AS EHQK_ORG_AREA              
+                        ,(SELECT COUNT(FF.FCTY_CD)                       
+                            FROM EHQK_OCUR_INFO FF                     
+                           WHERE FF.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+                             AND FF.FCTY_CD = AA.FCTY_CD
+                             AND FF.GVMT_CD = AA.GVMT_CD) AS EVENT_CNT                 
+                        ,(SELECT SUM(CASE WHEN  SF_CHK_MAX_IDR_X_RSLT = 'OK'                                     
+                                           AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'                                     
+                                           AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'                                     
+                                           AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'                                     
+                                           AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'                                     
+                                           AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'                                     
+                                           AND SF_CHK_OVR_ACC_X_RSLT = 'OK'                                     
+                                           AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'                                 
+                                     THEN 1 ELSE 0 END)                      
+                           FROM IDDL_AASS_RLST                         
+                          WHERE (FCTY_CD ,GVMT_CD,IDDL_AASS_NO) IN ( SELECT FCTY_CD ,GVMT_CD,MAX(IDDL_AASS_NO)                        
+                                                                       FROM IDDL_AASS_INFO                         
+                                                                      GROUP BY EHQK_REQ_ID,FCTY_CD,GVMT_CD )) AS OK_CNT                 
+                        ,(SELECT SUM(CASE WHEN  SF_CHK_MAX_IDR_X_RSLT = 'OK'                                     
+                                           AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'                                     
+                                           AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'                                     
+                                           AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'                                     
+                                           AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'                                     
+                                           AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'                                     
+                                           AND SF_CHK_OVR_ACC_X_RSLT = 'OK'                                     
+                                           AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'                                 
+                                     THEN 0 ELSE 1 END)                      
+                            FROM IDDL_AASS_RLST                        
+                           WHERE (FCTY_CD ,GVMT_CD,IDDL_AASS_NO) IN ( SELECT FCTY_CD ,GVMT_CD,MAX(IDDL_AASS_NO)                        
+                                                                        FROM IDDL_AASS_INFO                         
+                                                                       GROUP BY EHQK_REQ_ID,FCTY_CD,GVMT_CD )) AS NOK_CNT       
+                FROM IDDL_AASS_INFO AA, FCTY_MGR BB            
+               WHERE 1=1              
+                 AND AA.FCTY_CD = BB.FCTY_CD
+                 AND AA.GVMT_CD = BB.GVMT_CD                            
+                 AND (AA.FCTY_CD,AA.GVMT_CD,AA.IDDL_AASS_NO) IN (SELECT CC.FCTY_CD,CC.GVMT_CD,MAX(CC.IDDL_AASS_NO)                                       
+                                                        FROM IDDL_AASS_INFO CC  
+                                     WHERE CC.FCTY_CD = #fctyCd#
+                                       AND CC.GVMT_CD = #gvmtCd#
+                                      GROUP BY EHQK_REQ_ID,FCTY_CD,GVMT_CD) ) GG            
+               ORDER BY  GG.ehqk_org_DT DESC , GG.FCTY_CD ASC , GG.IDDL_AASS_NO DESC  , GG.IDDL_AASS_DT DESC
+	</select>	
+	<select id="iddlAassInfoDAO.selectIddlAassInfoListTotCnt_S" parameterClass="iddlAassInfoSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM IDDL_AASS_INFO AA
+			WHERE 1=1
+			<isNotEmpty prepend="AND" property="fctyCd" >
+				   (AA.FCTY_CD,AA.IDDL_AASS_NO) IN (SELECT FCTY_CD,MAX(CC.IDDL_AASS_NO)
+                                      FROM IDDL_AASS_INFO CC  
+                                     WHERE CC.FCTY_CD = #fctyCd#
+                                       AND CC.GVMT_CD = #gvmtCd#
+                                      GROUP BY EHQK_REQ_ID,FCTY_CD) 
+			</isNotEmpty> 
+	</select>
+	
+	<select id="iddlAassInfoDAO.selectBarEventFrmInfo_D" parameterClass="iddlAassInfoSerarchVO" resultClass="egovMap"> 
+ <![CDATA[
+    SELECT
+       ('MM') AS GVMT_CD,
+       (0) AS  FCTY_NO,
+       ('전국') AS COMM_DTL_NM,
+         DECODE ( XX.EVENT_CNT,0,0,ROUND((XX.NOK_CNT / XX.EVENT_CNT * 100),1)) AS NOK_PCNT,         
+         DECODE ( XX.EVENT_CNT,0,0,ROUND((XX.OK_CNT  / XX.EVENT_CNT * 100) ,1)) AS OK_PCNT
+   FROM
+   (SELECT  
+        SUM(NVL(NN.NOK_CNT,0)) AS NOK_CNT,
+        SUM(NVL(NN.OK_CNT,0)) AS OK_CNT , 
+        SUM(NVL(NN.EVENT_CNT,0)) AS EVENT_CNT 
+    FROM  (SELECT COMM_CD, COMM_DTL_CD, COMM_DTL_NM, 
+                   COMM_DTL_ORD, COMM_DTL_INFO, ITEM01, 
+                   ITEM02, ITEM03, ITEM04, 
+                   ITEM05, USE_YN, INPT_USR_ID, 
+                   INPT_DT, UPDT_USR_ID, UPDT_DT
+                FROM SYM_COMM_CD_DTL 
+               WHERE ITEM01 = 'ITEM_005'
+                 AND COMM_CD = '01'  
+         ) MM, 
+          (  SELECT  GG.FCTY_CD     
+                        , GG.GVMT_CD 
+                        , GG.IDDL_AASS_NO    
+                        , GG.IDDL_AASS_DT         
+                        , GG.EHQK_ORG_DT         
+                        , GG.EHQK_STAT_OTR
+                        , GG.EHQK_ORG_AREA 
+                        , GG.NOK_CNT
+                        , GG.OK_CNT  
+                        , GG.EVENT_CNT
+                        , GG.EHQK_REQ_ID  EHQK_REQ_ID 
+                        , GG.EHQK_TRAN_GBCD  EHQK_TRAN_GBCD
+                        , GG.EHQK_OTN           EHQK_OTN
+                   FROM (SELECT AA.FCTY_CD
+                                , AA.GVMT_CD     
+                                , AA.IDDL_AASS_NO     
+                                , AA.IDDL_AASS_DT
+                                , AA.EHQK_REQ_ID  EHQK_REQ_ID
+                                , AA.EHQK_TRAN_GBCD  EHQK_TRAN_GBCD
+                                , AA.EHQK_OTN EHQK_OTN     
+                                ,(SELECT SUBSTR(DD.EHQK_ORG_TM,0,8)                      
+                                    FROM EHQK_OCUR_INFO  DD                    
+                                   WHERE DD.EHQK_REQ_ID = AA.EHQK_REQ_ID              
+                                     AND DD.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD ) AS EHQK_ORG_DT                 
+                                ,(SELECT EHQK_STAT_OTR                      
+                                    FROM EHQK_OCUR_INFO  DD                    
+                                   WHERE DD.EHQK_REQ_ID = AA.EHQK_REQ_ID              
+                                     AND DD.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD ) AS EHQK_STAT_OTR 
+                                ,(SELECT DD.EHQK_ORG_AREA
+                                    FROM EHQK_OCUR_INFO  DD
+                                   WHERE    DD.EHQK_REQ_ID = AA.EHQK_REQ_ID
+                                     AND DD.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD) AS EHQK_ORG_AREA              
+                                ,(SELECT COUNT(FF.FCTY_CD)                       
+                                    FROM CON_EVNT_DATA FF                     
+                                   WHERE FF.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+                                     AND FF.FCTY_CD = AA.FCTY_CD
+                                     AND FF.GVMT_CD = AA.GVMT_CD
+                                     AND FF.EHQK_REQ_ID = AA.EHQK_REQ_ID) AS EVENT_CNT                 
+                                ,(SELECT SUM(CASE WHEN  trim(SF_CHK_MAX_IDR_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_MAX_IDR_Y_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'                                     
+                                                   AND trim(SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'                                     
+                                                   AND trim(SF_CHK_OVR_ACC_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_OVR_ACC_Y_RSLT) = 'OK'                                  
+                                             THEN 1 ELSE 0 END)                      
+                                   FROM IDDL_AASS_RLST                         
+                                  WHERE (FCTY_CD ,GVMT_CD,IDDL_AASS_NO) IN ( SELECT FCTY_CD ,GVMT_CD,MAX(IDDL_AASS_NO)                        
+                                                                               FROM IDDL_AASS_INFO  
+                                                                                WHERE EHQK_REQ_ID = #ehqkReqId#
+			                                                                     AND  EHQK_TRAN_GBCD = #ehqkTranGbcd#                       
+                                                                              GROUP BY EHQK_REQ_ID,FCTY_CD,GVMT_CD )
+                                                                               AND  EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+                                     AND  FCTY_CD = AA.FCTY_CD
+                                     AND  GVMT_CD = AA.GVMT_CD
+                                     AND  EHQK_REQ_ID = AA.EHQK_REQ_ID) AS OK_CNT                 
+                                ,(SELECT SUM(CASE WHEN  trim(SF_CHK_MAX_IDR_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_MAX_IDR_Y_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'                                     
+                                                   AND trim(SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'                                     
+                                                   AND trim(SF_CHK_OVR_ACC_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_OVR_ACC_Y_RSLT) = 'OK'                                   
+                                             THEN 0 ELSE 1 END)                      
+                                    FROM IDDL_AASS_RLST                        
+                                   WHERE (FCTY_CD ,GVMT_CD,IDDL_AASS_NO) IN ( SELECT FCTY_CD ,GVMT_CD,MAX(IDDL_AASS_NO)                        
+                                                                                FROM IDDL_AASS_INFO
+                                                                                 WHERE EHQK_REQ_ID = #ehqkReqId#
+			                                                                       AND EHQK_TRAN_GBCD = #ehqkTranGbcd#                         
+                                                                               GROUP BY EHQK_REQ_ID,FCTY_CD,GVMT_CD )
+                                                                                AND  EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+                                     AND  FCTY_CD = AA.FCTY_CD
+                                     AND  GVMT_CD = AA.GVMT_CD
+                                     AND  EHQK_REQ_ID = AA.EHQK_REQ_ID) AS NOK_CNT       
+                        FROM IDDL_AASS_INFO AA, FCTY_MGR BB            
+                       WHERE 1=1              
+                         AND AA.FCTY_CD = BB.FCTY_CD
+                         AND AA.GVMT_CD = BB.GVMT_CD                            
+                         AND (AA.FCTY_CD,AA.GVMT_CD,AA.IDDL_AASS_NO) IN (SELECT CC.FCTY_CD,CC.GVMT_CD,MAX(CC.IDDL_AASS_NO)                                       
+                                                                FROM IDDL_AASS_INFO CC  
+                                                                 WHERE CC.EHQK_REQ_ID = #ehqkReqId#
+			                                                       AND  CC.EHQK_TRAN_GBCD = #ehqkTranGbcd# 
+                                              GROUP BY EHQK_REQ_ID,FCTY_CD,GVMT_CD) ) GG            
+                       ORDER BY  GG.ehqk_org_DT DESC , GG.FCTY_CD ASC , GG.IDDL_AASS_NO DESC  , GG.IDDL_AASS_DT DESC ) NN
+             WHERE MM.COMM_DTL_CD =  NN.GVMT_CD(+) 
+               AND MM.COMM_DTL_CD <> 'GR' ) XX
+   UNION ALL
+   SELECT
+        QQ.GVMT_CD,
+        QQ.FCTY_NO,
+        QQ.COMM_DTL_NM, 
+         DECODE ( QQ.EVENT_CNT,0,0,ROUND((QQ.NOK_CNT / QQ.EVENT_CNT * 100),1)) AS NOK_PCNT,         
+         DECODE ( QQ.EVENT_CNT,0,0,ROUND((QQ.OK_CNT  / QQ.EVENT_CNT * 100) ,1)) AS OK_PCNT
+   FROM
+   (SELECT 
+        (MM.COMM_DTL_CD) AS GVMT_CD,
+        MM.COMM_DTL_ORD as FCTY_NO,
+        MM.COMM_DTL_NM,
+        SUM(NVL(NN.NOK_CNT,0)) AS NOK_CNT,
+        SUM(NVL(NN.OK_CNT,0)) AS OK_CNT , 
+        SUM(NVL(NN.EVENT_CNT,0)) AS EVENT_CNT 
+    FROM  (SELECT COMM_CD, COMM_DTL_CD, COMM_DTL_NM, 
+                   COMM_DTL_ORD, COMM_DTL_INFO, ITEM01, 
+                   ITEM02, ITEM03, ITEM04, 
+                   ITEM05, USE_YN, INPT_USR_ID, 
+                   INPT_DT, UPDT_USR_ID, UPDT_DT
+                FROM SYM_COMM_CD_DTL 
+               WHERE ITEM01 = 'ITEM_005'
+                 AND COMM_CD = '01'  
+         ) MM, 
+          (  SELECT  GG.FCTY_CD     
+                        , GG.GVMT_CD 
+                        , GG.IDDL_AASS_NO    
+                        , GG.IDDL_AASS_DT         
+                        , GG.EHQK_ORG_DT         
+                        , GG.EHQK_STAT_OTR
+                        , GG.EHQK_ORG_AREA 
+                        , GG.NOK_CNT
+                        , GG.OK_CNT  
+                        , GG.EVENT_CNT
+                        , GG.EHQK_REQ_ID  EHQK_REQ_ID 
+                        , GG.EHQK_TRAN_GBCD  EHQK_TRAN_GBCD
+                        , GG.EHQK_OTN           EHQK_OTN
+                   FROM (SELECT AA.FCTY_CD
+                                , AA.GVMT_CD     
+                                , AA.IDDL_AASS_NO     
+                                , AA.IDDL_AASS_DT
+                                , AA.EHQK_REQ_ID  EHQK_REQ_ID
+                                , AA.EHQK_TRAN_GBCD  EHQK_TRAN_GBCD
+                                , AA.EHQK_OTN EHQK_OTN     
+                                ,(SELECT SUBSTR(DD.EHQK_ORG_TM,0,8)                      
+                                    FROM EHQK_OCUR_INFO  DD                    
+                                   WHERE DD.EHQK_REQ_ID = AA.EHQK_REQ_ID              
+                                     AND DD.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD ) AS EHQK_ORG_DT                 
+                                ,(SELECT EHQK_STAT_OTR                      
+                                    FROM EHQK_OCUR_INFO  DD                    
+                                   WHERE DD.EHQK_REQ_ID = AA.EHQK_REQ_ID              
+                                     AND DD.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD ) AS EHQK_STAT_OTR 
+                                ,(SELECT DD.EHQK_ORG_AREA
+                                    FROM EHQK_OCUR_INFO  DD
+                                   WHERE DD.EHQK_REQ_ID = AA.EHQK_REQ_ID
+                                     AND DD.EHQK_REQ_ID = AA.EHQK_REQ_ID) AS EHQK_ORG_AREA              
+                                ,(SELECT COUNT(FF.FCTY_CD)                       
+                                    FROM CON_EVNT_DATA FF                     
+                                   WHERE FF.EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+                                     AND FF.FCTY_CD = AA.FCTY_CD
+                                     AND FF.GVMT_CD = AA.GVMT_CD
+                                     AND FF.EHQK_REQ_ID = AA.EHQK_REQ_ID) AS EVENT_CNT                 
+                                ,(SELECT SUM(CASE WHEN  trim(SF_CHK_MAX_IDR_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_MAX_IDR_Y_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'                                     
+                                                   AND trim(SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'                                     
+                                                   AND trim(SF_CHK_OVR_ACC_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_OVR_ACC_Y_RSLT) = 'OK'                                  
+                                             THEN 1 ELSE 0 END)                      
+                                   FROM IDDL_AASS_RLST                         
+                                  WHERE (FCTY_CD ,GVMT_CD,IDDL_AASS_NO) IN ( SELECT FCTY_CD ,GVMT_CD,MAX(IDDL_AASS_NO)                        
+                                                                               FROM IDDL_AASS_INFO   
+                                                                                WHERE EHQK_REQ_ID = #ehqkReqId#
+			                                                                     AND  EHQK_TRAN_GBCD = #ehqkTranGbcd#                      
+                                                                              GROUP BY EHQK_REQ_ID,FCTY_CD,GVMT_CD )
+                                                                               AND  EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+                                     AND  FCTY_CD = AA.FCTY_CD
+                                     AND  GVMT_CD = AA.GVMT_CD
+                                     AND  EHQK_REQ_ID = AA.EHQK_REQ_ID) AS OK_CNT                 
+                                ,(SELECT SUM(CASE WHEN  trim(SF_CHK_MAX_IDR_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_MAX_IDR_Y_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'                                     
+                                                   AND trim(SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'                                     
+                                                   AND trim(SF_CHK_OVR_ACC_X_RSLT) = 'OK'                                     
+                                                   AND trim(SF_CHK_OVR_ACC_Y_RSLT) = 'OK'                                   
+                                             THEN 0 ELSE 1 END)                      
+                                    FROM IDDL_AASS_RLST                        
+                                   WHERE (FCTY_CD ,GVMT_CD,IDDL_AASS_NO) IN ( SELECT FCTY_CD ,GVMT_CD,MAX(IDDL_AASS_NO)                        
+                                                                                FROM IDDL_AASS_INFO  
+                                                                                 WHERE EHQK_REQ_ID = #ehqkReqId#
+			                                                                       AND EHQK_TRAN_GBCD = #ehqkTranGbcd#                       
+                                                                               GROUP BY EHQK_REQ_ID,FCTY_CD,GVMT_CD )
+                                     AND  EHQK_TRAN_GBCD = AA.EHQK_TRAN_GBCD
+                                     AND  FCTY_CD = AA.FCTY_CD
+                                     AND  GVMT_CD = AA.GVMT_CD
+                                     AND  EHQK_REQ_ID = AA.EHQK_REQ_ID) AS NOK_CNT       
+                        FROM IDDL_AASS_INFO AA, FCTY_MGR BB            
+                       WHERE 1=1              
+                         AND AA.FCTY_CD = BB.FCTY_CD
+                         AND AA.GVMT_CD = BB.GVMT_CD                            
+                         AND (AA.FCTY_CD,AA.GVMT_CD,AA.IDDL_AASS_NO) IN (SELECT CC.FCTY_CD,CC.GVMT_CD,MAX(CC.IDDL_AASS_NO)                                       
+                                                                FROM IDDL_AASS_INFO CC   
+                                                                 WHERE CC.EHQK_REQ_ID = #ehqkReqId#
+			                                                       AND  CC.EHQK_TRAN_GBCD = #ehqkTranGbcd#
+                                              GROUP BY EHQK_REQ_ID,FCTY_CD,GVMT_CD) ) GG            
+                       ORDER BY  GG.ehqk_org_DT DESC , GG.FCTY_CD ASC , GG.IDDL_AASS_NO DESC  , GG.IDDL_AASS_DT DESC ) NN
+             WHERE MM.COMM_DTL_CD =  NN.GVMT_CD(+) 
+               AND MM.COMM_DTL_CD <> 'GR'
+            GROUP BY MM.COMM_DTL_CD, MM.COMM_DTL_NM,MM.COMM_DTL_ORD 
+           /* ORDER BY MM.COMM_DTL_ORD  ASC  */ ) QQ
+           	]]>
+	</select>	
+	
+	
+	<select id="iddlAassInfoDAO.selectBarEventFrmInfo2_D" parameterClass="iddlAassInfoSerarchVO" resultClass="egovMap"> 
+	<![CDATA[
+		WITH AREACNT AS (
+		SELECT 
+		        A.FCTY_CD, A.GVMT_CD, D.EHQK_REQ_ID, D.EHQK_TRAN_GBCD, D.IDDL_AASS_NO,
+		        A.FCTY_NM,SUBSTR (A.FCTY_AREA_CD, 1, 2)  FCTY_AREA_CD,
+		        1 AS CNT,
+		        CASE WHEN TRIM(E.SF_CHK_MAX_IDR_X_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_MAX_IDR_Y_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'
+		              AND TRIM(E.SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'
+		              AND TRIM(E.SF_CHK_OVR_ACC_X_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_OVR_ACC_Y_RSLT) = 'OK' 
+		             THEN 1 ELSE 0 
+		        END AS OK_CNT,
+		        CASE WHEN TRIM(E.SF_CHK_MAX_IDR_X_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_MAX_IDR_Y_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_NAT_FRQ_MV_X_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_NAT_FRQ_MV_Y_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_STR_FREE_NAT_FRQ_X) = 'OK'
+		              AND TRIM(E.SF_CHK_STR_FREE_NAT_FRQ_Y) = 'OK'
+		              AND TRIM(E.SF_CHK_OVR_ACC_X_RSLT) = 'OK'
+		              AND TRIM(E.SF_CHK_OVR_ACC_Y_RSLT) = 'OK' 
+		             THEN 0 ELSE 1 
+		        END AS NOK_CNT
+		      FROM FCTY_MGR A, IDDL_AASS_INFO D, IDDL_AASS_RLST E
+		     WHERE 1=1
+		       AND A.FCTY_CD = D.FCTY_CD
+		       AND A.GVMT_CD = D.GVMT_CD
+		       AND D.EHQK_REQ_ID = #ehqkReqId#
+		       AND D.EHQK_TRAN_GBCD = #ehqkTranGbcd#
+		       AND D.IDDL_AASS_NO = (SELECT MAX(A.IDDL_AASS_NO) FROM IDDL_AASS_INFO A WHERE A.EHQK_REQ_ID = #ehqkReqId# AND A.EHQK_TRAN_GBCD = #ehqkTranGbcd#)
+		       AND D.FCTY_CD = E.FCTY_CD
+		       AND D.GVMT_CD = E.GVMT_CD
+		       AND D.IDDL_AASS_NO = E.IDDL_AASS_NO  
+		)
+		SELECT 
+		    0 FCTY_NO, 
+		    '전국' AS COMM_DTL_NM,
+		    NVL(DECODE ( SUM(CNT),0,0,ROUND((SUM(NOK_CNT) / SUM(CNT) * 100) ,1)),0) AS NOK_PCNT,
+		    NVL(DECODE ( SUM(CNT),0,0,ROUND((SUM(OK_CNT)  / SUM(CNT) * 100) ,1)),0) AS OK_PCNT
+		  FROM AREACNT
+		UNION ALL
+		SELECT
+		    X.COMM_DTL_ORD AS FCTY_NO,
+		    X.COMM_DTL_NM,
+		    NVL(DECODE ( SUM(CNT),0,0,ROUND((SUM(NOK_CNT) / SUM(CNT) * 100) ,1)),0) AS NOK_PCNT,
+		    NVL(DECODE ( SUM(CNT),0,0,ROUND((SUM(OK_CNT)  / SUM(CNT) * 100) ,1)),0) AS OK_PCNT
+		  FROM (
+		    SELECT COMM_CD, COMM_DTL_CD, COMM_DTL_NM, COMM_DTL_ORD
+		      FROM SYM_COMM_CD_DTL 
+		     WHERE 1=1 
+		       AND COMM_CD = 'ITEM_008'
+		       AND USE_YN = 'Y'
+		  ) X, AREACNT Z
+		 WHERE X.COMM_DTL_CD = Z.FCTY_AREA_CD (+)
+		 GROUP BY X.COMM_DTL_ORD, X.COMM_DTL_NM
+		 ORDER BY FCTY_NO
+	]]>
+	</select>	
+	
+	
+	<select id="iddlAassInfoDAO.selectWvEvntList_D" parameterClass="iddlAassInfoSerarchVO" resultClass="egovMap"> 
+	 SELECT
+          GVMT_CD
+				, FCTY_CD
+				, IDDL_AASS_NO  
+				, EHQK_REQ_ID 
+				, EHQK_TRAN_GBCD
+				, FCTY_NM 
+ FROM
+ (SELECT  GVMT_CD
+				, FCTY_CD
+				, IDDL_AASS_NO  
+				, EHQK_REQ_ID 
+				, EHQK_TRAN_GBCD
+				, (SELECT FCTY_NM FROM FCTY_MGR
+				WHERE FCTY_MGR.GVMT_CD = CC.GVMT_CD 
+				AND FCTY_MGR.FCTY_CD = CC.FCTY_CD ) AS FCTY_NM 
+      FROM
+		 	(SELECT
+		 	    AA.GVMT_CD
+				, AA.FCTY_CD
+				, AA.IDDL_AASS_NO  
+        , BB.EHQK_REQ_ID  
+        , BB.EHQK_TRAN_GBCD
+				, MAX (CASE WHEN AA.DATA_FREE_ACC_Z > (CASE WHEN AA.DATA_FREE_ACC_X > AA.DATA_FREE_ACC_Y 
+		                                                THEN AA.DATA_FREE_ACC_X 
+		                                                ELSE AA.DATA_FREE_ACC_Y END) 
+		                  THEN AA.DATA_FREE_ACC_Z 
+		                  ELSE (CASE WHEN AA.DATA_FREE_ACC_X > AA.DATA_FREE_ACC_Y 
+		                            THEN AA.DATA_FREE_ACC_X 
+		                            ELSE AA.DATA_FREE_ACC_Y END)
+		                  END )AS DATA_FREE_ACC
+			FROM IDDL_AASS_RLST AA, IDDL_AASS_INFO BB
+		 WHERE AA.GVMT_CD = BB.GVMT_CD 
+			 AND AA.FCTY_CD = BB.FCTY_CD 
+			 AND AA.IDDL_AASS_NO = BB.IDDL_AASS_NO 
+			 AND (BB.FCTY_CD,BB.GVMT_CD,BB.IDDL_AASS_NO) IN (SELECT DD.FCTY_CD,DD.GVMT_CD,MAX(DD.IDDL_AASS_NO)                                       
+                                                                FROM IDDL_AASS_INFO DD   
+                                              GROUP BY DD.EHQK_REQ_ID,DD.FCTY_CD,DD.GVMT_CD)  
+      GROUP BY  AA.GVMT_CD , AA.FCTY_CD , AA.IDDL_AASS_NO   , BB.EHQK_REQ_ID ,BB.EHQK_TRAN_GBCD
+			 )  CC ,
+			   (SELECT MAX (CASE WHEN FF.DATA_FREE_ACC_Z > (CASE WHEN FF.DATA_FREE_ACC_X > FF.DATA_FREE_ACC_Y 
+		                                                THEN FF.DATA_FREE_ACC_X 
+		                                                ELSE FF.DATA_FREE_ACC_Y END) 
+		                  THEN FF.DATA_FREE_ACC_Z 
+		                  ELSE (CASE WHEN FF.DATA_FREE_ACC_X > FF.DATA_FREE_ACC_Y 
+		                            THEN FF.DATA_FREE_ACC_X 
+		                            ELSE FF.DATA_FREE_ACC_Y END)
+		                  END )AS DATA_FREE_ACC
+			FROM IDDL_AASS_RLST FF
+		 WHERE (FF.FCTY_CD,FF.GVMT_CD,FF.IDDL_AASS_NO) IN (SELECT GG.FCTY_CD,GG.GVMT_CD,MAX(GG.IDDL_AASS_NO)                                       
+                                                                FROM IDDL_AASS_INFO GG   
+                                              GROUP BY GG.EHQK_REQ_ID,GG.FCTY_CD,GG.GVMT_CD)) MM
+		 WHERE  CC.DATA_FREE_ACC >= MM.DATA_FREE_ACC 
+     ORDER BY FCTY_NM ASC )
+    WHERE ROWNUM = 1
+	</select>	
+	
+	<select id="iddlAassInfoDAO.selectWvEvntList2_D" parameterClass="iddlAassInfoSerarchVO" resultClass="egovMap"> 
+		SELECT * FROM (  
+            SELECT 
+                A.FCTY_CD, A.GVMT_CD, C.EHQK_REQ_ID, C.EHQK_TRAN_GBCD, D.IDDL_AASS_NO,
+                A.FCTY_NM, 
+                 (SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE COMM_CD = 'ITEM_008' AND COMM_DTL_CD = SUBSTR (A.FCTY_AREA_CD, 1, 2)) || ' ' ||
+                (SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE ITEM01 = 'ITEM_008' AND (COMM_CD || COMM_DTL_CD) = A.FCTY_AREA_CD) FCTY_ST_ADDR, 
+                A.FCTY_ED_ADDR,
+                A.FCTY_LON,
+                A.FCTY_LAT,
+                E.DATA_FREE_ACC_X,
+                E.DATA_FREE_ACC_Y,
+                E.DATA_FREE_ACC_Z,
+                E.DATA_FREE_ACC_X + E.DATA_FREE_ACC_Y + E.DATA_FREE_ACC_Z AS DATA_FREE_ACC_RSLT, 
+                <!-- 자유장최대계측가속도값 X,Y,Z 중 제일큰값???이 불확실해서 그냥 SUM해서 순위매김 -->
+                RANK() OVER(ORDER BY E.DATA_FREE_ACC_X + E.DATA_FREE_ACC_Y + E.DATA_FREE_ACC_Z DESC) RNK 
+              FROM FCTY_MGR A, FCTY_ADD_INFO B, EHQK_OCUR_INFO C, IDDL_AASS_INFO D, IDDL_AASS_RLST E, CON_EVNT_DATA F
+             WHERE A.FCTY_CD = B.FCTY_CD
+               AND A.GVMT_CD = B.GVMT_CD
+               AND A.FCTY_CD = F.FCTY_CD
+               AND A.GVMT_CD = F.GVMT_CD
+               AND F.FCTY_CD = D.FCTY_CD
+               AND F.GVMT_CD = D.GVMT_CD
+               AND F.EHQK_REQ_ID = D.EHQK_REQ_ID
+               AND F.EHQK_TRAN_GBCD  = D.EHQK_TRAN_GBCD
+               AND C.EHQK_REQ_ID = F.EHQK_REQ_ID
+               AND C.EHQK_TRAN_GBCD  = F.EHQK_TRAN_GBCD
+               AND C.EHQK_REQ_ID = #ehqkReqId#
+               AND C.EHQK_TRAN_GBCD = #ehqkTranGbcd#
+               AND D.IDDL_AASS_NO = (SELECT MAX(A.IDDL_AASS_NO) FROM IDDL_AASS_INFO A WHERE A.EHQK_REQ_ID = #ehqkReqId# AND A.EHQK_TRAN_GBCD = #ehqkTranGbcd#)
+               AND D.FCTY_CD = E.FCTY_CD
+               AND D.GVMT_CD = E.GVMT_CD
+               AND D.IDDL_AASS_NO = E.IDDL_AASS_NO 
+        ) A
+         WHERE 1=1
+           AND A.RNK = 1
+	</select>	
+	 
+
+</sqlMap>

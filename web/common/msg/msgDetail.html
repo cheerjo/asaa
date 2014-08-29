@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<title></title>
+<link href="../../style/msg.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+function init() {
+  var voOpenerPage = window.opener ? window.opener.moOpenerPage : window.dialogArguments.moOpenerPage;
+  if(voOpenerPage == null) return;
+  var vsInstanceRef = voOpenerPage.window.ComMsg.instanceRef;
+  var vaInstanceRef = vsInstanceRef.split(",");
+  if(vaInstanceRef.length < 5) return;
+  var voPage = voOpenerPage.searchPage(vaInstanceRef[0]);
+  if(voPage == null) return;
+  var voWindow = voPage.window;
+  var voInst = voPage.getInstance(vaInstanceRef[1]);
+  var voList = voInst.selectNodes(vaInstanceRef[2]);
+  var vnSize = voList.getLength();
+  var voMapNode = null;
+  var voDiv = document.getElementById("msgDiv");
+  var vsCol1, vsCol2, vsCol3;
+  var vsInnerHTML = "<table width=\"100%\" border=\"0\" cellpadding=\"2\" cellspacing=\"1\" bgcolor=\"#cddbb9\" class=\"table1\">";
+  vsInnerHTML += "<tr><td class=\"tdttl2C\">구분</td><td class=\"tdttl2C\">내용</td><td class=\"tdttl2C\">비고</td></tr>";
+  for(var i = 0; i < vnSize; i++) {
+    voMapNode = new voWindow.eXria.data.xhtml.MapNode(voList.item(i));
+    vsCol1 = voMapNode.get(vaInstanceRef[3]);
+    vsCol2 = voMapNode.get(vaInstanceRef[4]);
+    vsCol3 = voMapNode.get(vaInstanceRef[5]);
+    vsCol1 = vsCol1 ? vsCol1 : "&nbsp";
+    vsCol2 = vsCol2 ? vsCol2 : "&nbsp";
+    vsCol3 = vsCol3 ? vsCol3 : "&nbsp";
+    vsInnerHTML += "<tr class=\"trC11\">";
+    vsInnerHTML += "<td height=\"auto\" class=\"td1\">" + vsCol1 + "</td>";
+    vsInnerHTML += "<td height=\"auto\" class=\"td1\">" + vsCol2 + "</td>";
+    vsInnerHTML += "<td height=\"auto\" class=\"td1\">" + vsCol3 + "</td>";
+    vsInnerHTML += "</tr>";
+  }
+  vsInnerHTML += "</table>";
+  voDiv.innerHTML = vsInnerHTML;
+};
+
+function doClose() {
+  window.close();
+}
+</script>
+</head>
+
+<body onload="init()">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" background="../../style/image/msg/puttl2.gif">
+  <tr>
+    <td><img src="../../style/image/msg/puttl1-1.gif" width="380" height="45" style="display:block;"></td>
+    <td width="20"><img src="../../style/image/msg/puttl3.gif" width="20" height="45" style="display:block;"></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="20" background="../../style/image/msg/pubg1.gif">&nbsp;</td>
+    <td align="center"><br>
+      <div style="width:400px;height:117px;overflow:auto" id="msgDiv">
+	      <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#cddbb9" class="table1" style="table-layout:fixed">
+	        <tr>
+	          <td class="tdttl2C">구분</td>
+	          <td class="tdttl2C">내용</td>
+	          <td class="tdttl2C">비고</td>
+	        </tr>
+	        <tr class="trC11">
+	          <td class="td1">코드시스템</td>
+	          <td class="td1">코드시스템</td>
+	          <td class="td1">학사행정</td>
+	        </tr>
+	        <tr class="trC12">
+	          <td class="td1">&nbsp;</td>
+	          <td class="td1">&nbsp;</td>
+	          <td class="td1">&nbsp;</td>
+	        </tr>
+	        <tr class="trC11">
+	          <td class="td1">&nbsp;</td>
+	          <td class="td1">&nbsp;</td>
+	          <td class="td1">&nbsp;</td>
+	        </tr>
+	        <tr class="trC12">
+	          <td class="td1">&nbsp;</td>
+	          <td class="td1">&nbsp;</td>
+	          <td class="td1">&nbsp;</td>
+	        </tr>
+	        <tr class="trC11">
+	          <td class="td1">&nbsp;</td>
+	          <td class="td1">&nbsp;</td>
+	          <td class="td1">&nbsp;</td>
+	        </tr>
+	      </table>
+      </div>
+      <table width="98%" height="40" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="center"><span class="btn2" style="display:block;width:80px;height:16px;" onclick="doClose()">확인</span></td>
+          </tr>
+      </table></td>
+    <td width="20" background="../../style/image/msg/pubg2.gif">&nbsp;</td>
+  </tr>
+</table>
+<table width="100%" height="17" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="20"><img src="../../style/image/msg/pubttm1.gif" width="20" height="17"></td>
+    <td background="../../style/image/msg/pubttm2.gif">&nbsp;</td>
+    <td width="20"><img src="../../style/image/msg/pubttm3.gif" width="20" height="17"></td>
+  </tr>
+</table>
+</body>
+</html>

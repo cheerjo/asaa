@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exria-multilingual-config xmlns="http://eXria.org/language"
+	version="1.0.0.200910271100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://eXria.org/language language.xsd ">
+	<use-multilingual>false</use-multilingual>
+	<locale-list defaultLocale="ko_KR">
+		<locale use="true" name="ko_KR">ko-KR, ko, koKR</locale>
+	</locale-list>
+	<apply-order-list>
+		<order use="true">Session</order>
+		<order use="true">Parameter</order>
+		<order use="true">Locale</order>
+		<order use="true">Default</order>
+	</apply-order-list>
+	<session-name>eXriaLocale</session-name>
+	<multilingual-type>static</multilingual-type>
+</exria-multilingual-config>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>mainTest</xh:title>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="cyberlhs" name="author"/>
+		<xh:meta content="13. 9. 3 오후 1:36" name="date"/>
+		<xh:meta content="2.0.0.201304021017" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xf:jsoninstance id="instance">
+  			<![CDATA[{root : {EXRIAERRMSG : ""}}]]>
+</xf:jsoninstance>
+		</xf:model>
+		<xh:script page="mainTest" src="mainTest.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:760;width:1230;left:0;top:0;">
+		<xr:subpage id="sbpMapPage" style="height:641;width:471;left:10;top:10;" z-index="0"/>
+		<xr:subpage id="sbp1" style="height:121;width:251;left:490;top:10;" z-index="1"/>
+		<xr:subpage id="sbp2" style="height:121;width:251;left:750;top:10;" z-index="2"/>
+		<xr:subpage id="sbpWaveFrom" style="height:241;width:471;left:490;top:500;" z-index="3"/>
+		<xr:subpage id="sbp4" style="height:351;width:731;left:490;top:140;" z-index="4"/>
+		<xr:subpage id="sbp5" style="height:241;width:251;left:970;top:500;" z-index="5"/>
+		<xr:subpage id="sbp6" style="height:121;width:211;left:1010;top:10;" z-index="6"/>
+		<xr:subpage id="sbpPgaBar01" style="height:161;width:135;left:500;top:150;" z-index="7"/>
+		<xr:subpage id="sbpPgaBar02" style="height:161;width:135;left:500;top:320;" z-index="8"/>
+		<xr:subpage id="sbpPgaBar03" style="height:161;width:138;left:641;top:150;" z-index="9"
+			  tabindex="0"/>
+		<xr:subpage id="sbpPgaBar04" style="height:161;width:138;left:641;top:320;" z-index="10"
+			  tabindex="0"/>
+		<xr:subpage id="sbpPgaBar05" style="height:161;width:138;left:787;top:150;" z-index="11"
+			  tabindex="0"/>
+		<xr:subpage id="sbpPgaBar06" style="height:161;width:138;left:787;top:320;" z-index="12"
+			  tabindex="0"/>
+		<xr:subpage id="sbpPgaBar07" style="height:161;width:138;left:931;top:150;" z-index="13"
+			  tabindex="0"/>
+		<xr:subpage id="sbpPgaBar08" style="height:161;width:138;left:931;top:320;" z-index="14"
+			  tabindex="0"/>
+		<xr:subpage id="sbpPgaBar09" style="height:161;width:138;left:1077;top:150;" z-index="15"
+			  tabindex="0"/>
+		<xr:subpage id="sbpPgaBar10" style="height:161;width:138;left:1077;top:320;" z-index="16"
+			  tabindex="0"/>
+	</xh:body>
+</xh:html>

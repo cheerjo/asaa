@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AnysIdxCoffCfg">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="anysIdxCoffCfgSerarchVO" type="estam.app.signalux.service.AnysIdxCoffCfgDefaultVO"/>
+	
+	<resultMap id="anysIdxCoffCfg" class="estam.app.signalux.service.AnysIdxCoffCfgVO">
+		<result property="anysIdxCoffNo" column="ANYS_IDX_COFF_NO" columnIndex="1"/>
+		<result property="smfSf" column="SMF_SF" columnIndex="2"/>
+		<result property="smfChk" column="SMF_CHK" columnIndex="3"/>
+		<result property="sefSf" column="SEF_SF" columnIndex="4"/>
+		<result property="sefChk" column="SEF_CHK" columnIndex="5"/>
+		<result property="rcfSf" column="RCF_SF" columnIndex="6"/>
+		<result property="rcfChk" column="RCF_CHK" columnIndex="7"/>
+		<result property="rcswSf" column="RCSW_SF" columnIndex="8"/>
+		<result property="rcswChk" column="RCSW_CHK" columnIndex="9"/>
+		<result property="natFrqRng" column="NAT_FRQ_RNG" columnIndex="10"/>
+		<result property="strFreeNatFrqRng" column="STR_FREE_NAT_FRQ_RNG" columnIndex="11"/>
+		<result property="ovrAccRng" column="OVR_ACC_RNG" columnIndex="12"/>
+		<result property="strFrqWinMjH" column="STR_FRQ_WIN_MJ_H" columnIndex="13"/>
+		<result property="strFrqWinMjL" column="STR_FRQ_WIN_MJ_L" columnIndex="14"/>
+		<result property="strFrqWinShotH" column="STR_FRQ_WIN_SHOT_H" columnIndex="15"/>
+		<result property="strFrqWinShotL" column="STR_FRQ_WIN_SHOT_L" columnIndex="16"/>
+		<result property="frqWinLent" column="FRQ_WIN_LENT" columnIndex="17"/>
+		<result property="movTrmLent" column="MOV_TRM_LENT" columnIndex="18"/>
+		<result property="idrAmp" column="IDR_AMP" columnIndex="19"/>
+	</resultMap>
+	
+	<insert id="anysIdxCoffCfgDAO.insertAnysIdxCoffCfg_S">
+		<![CDATA[
+			INSERT INTO ANYS_IDX_COFF_CFG 
+				( ANYS_IDX_COFF_NO
+				  , SMF_SF
+				  , SMF_CHK
+				  , SEF_SF
+				  , SEF_CHK
+				  , RCF_SF
+				  , RCF_CHK
+				  , RCSW_SF
+				  , RCSW_CHK
+				  , NAT_FRQ_RNG
+				  , STR_FREE_NAT_FRQ_RNG
+				  , OVR_ACC_RNG
+				  , STR_FRQ_WIN_MJ_H
+				  , STR_FRQ_WIN_MJ_L
+				  , STR_FRQ_WIN_SHOT_H
+				  , STR_FRQ_WIN_SHOT_L
+				  , FRQ_WIN_LENT
+				  , MOV_TRM_LENT
+				  , IDR_AMP )
+			VALUES ( (SELECT nvl(max(ANYS_IDX_COFF_NO)+1,1) FROM ANYS_IDX_COFF_CFG)
+				  , #smfSf#
+				  , #smfChk#
+				  , #sefSf#
+				  , #sefChk#
+				  , #rcfSf#
+				  , #rcfChk#
+				  , #rcswSf#
+				  , #rcswChk#
+				  , #natFrqRng#
+				  , #strFreeNatFrqRng#
+				  , #ovrAccRng#
+				  , #strFrqWinMjH#
+				  , #strFrqWinMjL#
+				  , #strFrqWinShotH#
+				  , #strFrqWinShotL#
+				  , #frqWinLent#
+				  , #movTrmLent#
+				  , #idrAmp# )
+		]]>
+	</insert>
+	
+	<update id="anysIdxCoffCfgDAO.updateAnysIdxCoffCfg_S">
+		<![CDATA[
+			UPDATE ANYS_IDX_COFF_CFG
+			SET ANYS_IDX_COFF_NO=#anysIdxCoffNo#
+				, SMF_SF=#smfSf#
+				, SMF_CHK=#smfChk#
+				, SEF_SF=#sefSf#
+				, SEF_CHK=#sefChk#
+				, RCF_SF=#rcfSf#
+				, RCF_CHK=#rcfChk#
+				, RCSW_SF=#rcswSf#
+				, RCSW_CHK=#rcswChk#
+				, NAT_FRQ_RNG=#natFrqRng#
+				, STR_FREE_NAT_FRQ_RNG=#strFreeNatFrqRng#
+				, OVR_ACC_RNG=#ovrAccRng#
+				, STR_FRQ_WIN_MJ_H=#strFrqWinMjH#
+				, STR_FRQ_WIN_MJ_L=#strFrqWinMjL#
+				, STR_FRQ_WIN_SHOT_H=#strFrqWinShotH#
+				, STR_FRQ_WIN_SHOT_L=#strFrqWinShotL#
+				, FRQ_WIN_LENT=#frqWinLent#
+				, MOV_TRM_LENT=#movTrmLent#
+				, IDR_AMP=#idrAmp#
+						WHERE ANYS_IDX_COFF_NO=#anysIdxCoffNo#
+				]]>
+	</update>
+	
+	<delete id="anysIdxCoffCfgDAO.deleteAnysIdxCoffCfg_S">
+		<![CDATA[
+			DELETE FROM ANYS_IDX_COFF_CFG 
+			
+				]]>
+	</delete>
+	
+	<select id="anysIdxCoffCfgDAO.selectAnysIdxCoffCfgList_D" resultMap="anysIdxCoffCfg">
+		<![CDATA[
+			SELECT
+				ANYS_IDX_COFF_NO
+				, SMF_SF
+				, SMF_CHK
+				, SEF_SF
+				, SEF_CHK
+				, RCF_SF
+				, RCF_CHK
+				, RCSW_SF
+				, RCSW_CHK
+				, NAT_FRQ_RNG
+				, STR_FREE_NAT_FRQ_RNG
+				, OVR_ACC_RNG
+				, STR_FRQ_WIN_MJ_H
+				, STR_FRQ_WIN_MJ_L
+				, STR_FRQ_WIN_SHOT_H
+				, STR_FRQ_WIN_SHOT_L
+				, FRQ_WIN_LENT
+				, MOV_TRM_LENT
+				, IDR_AMP
+			FROM ANYS_IDX_COFF_CFG
+						WHERE ANYS_IDX_COFF_NO=#anysIdxCoffNo#
+				]]>
+	</select>
+	
+	<select id="anysIdxCoffCfgDAO.selectAnysIdxCoffCfg_S" resultMap="anysIdxCoffCfg">
+		<![CDATA[
+			SELECT
+				ANYS_IDX_COFF_NO
+				, SMF_SF
+				, SMF_CHK
+				, SEF_SF
+				, SEF_CHK
+				, RCF_SF
+				, RCF_CHK
+				, RCSW_SF
+				, RCSW_CHK
+				, NAT_FRQ_RNG
+				, STR_FREE_NAT_FRQ_RNG
+				, OVR_ACC_RNG
+				, STR_FRQ_WIN_MJ_H
+				, STR_FRQ_WIN_MJ_L
+				, STR_FRQ_WIN_SHOT_H
+				, STR_FRQ_WIN_SHOT_L
+				, FRQ_WIN_LENT
+				, MOV_TRM_LENT
+				, IDR_AMP
+			FROM ANYS_IDX_COFF_CFG
+						WHERE ANYS_IDX_COFF_NO=#anysIdxCoffNo#
+				]]>
+	</select>
+	
+	
+	<select id="anysIdxCoffCfgDAO.selectAnysIdxCoffCfgList_D1" parameterClass="anysIdxCoffCfgSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								ANYS_IDX_COFF_NO
+								, SMF_SF
+								, SMF_CHK
+								, SEF_SF
+								, SEF_CHK
+								, RCF_SF
+								, RCF_CHK
+								, RCSW_SF
+								, RCSW_CHK
+								, NAT_FRQ_RNG
+								, STR_FREE_NAT_FRQ_RNG
+								, OVR_ACC_RNG
+								, STR_FRQ_WIN_MJ_H
+								, STR_FRQ_WIN_MJ_L
+								, STR_FRQ_WIN_SHOT_H
+								, STR_FRQ_WIN_SHOT_L
+								, FRQ_WIN_LENT
+								, MOV_TRM_LENT
+								, IDR_AMP
+						FROM ANYS_IDX_COFF_CFG
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					ANYS_IDX_COFF_NO = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					SMF_SF LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						ANYS_IDX_COFF_NO DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="anysIdxCoffCfgDAO.selectAnysIdxCoffCfgListTotCnt_S" parameterClass="anysIdxCoffCfgSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM ANYS_IDX_COFF_CFG
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				ANYS_IDX_COFF_NO = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				SMF_SF LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

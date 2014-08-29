@@ -1,0 +1,183 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>막대그래프차트 </title>
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+<style>
+* {
+	font-family: 'Nanum Gothic';
+}
+
+.chart {
+	margin: 70px auto;
+	width: 90%;
+	height: 500px;
+}
+</style>
+</head>
+<body>
+
+	<div id="rainfall-chart" class="chart"></div>
+
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/amcharts/amcharts.js"></script>
+	<script>
+		// 이 데모의 원본 샘플은 http://www.amcharts.com/javascript-charts/3d-stacked-column/ 입니다.
+		(function() {
+
+			var chart;
+			var graph;
+	    var data  = parent.page.getData();
+			// 실제 차트를 그리는 부분
+			$(function() {
+
+				// 먼저 차트를 만듭니다.
+				createChart();
+
+				// ajax로 데이터를 받아와서 차트에 데이터를 업데이트 합니다.
+			
+		
+		
+			
+					chart.dataProvider =    data.items;
+					chart.validateData();
+				
+
+			});
+
+			// this method is called when chart is first inited as we listen for "dataUpdated" event
+			function zoomChart() {
+				// different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
+				chart.zoomToDates(new Date(2010, 11), new Date(2012, 0));
+			}
+
+			function createChart() {
+				// SERIAL CHART
+				chart = new AmCharts.AmSerialChart();
+				chart.addTitle(data.title, 24);
+				chart.pathToImages = "js/amcharts/images/";
+
+				chart.autoMargins = true;
+				chart.marginLeft = 0;
+				chart.marginRight = 0;
+				chart.marginBottom = 25;
+				chart.marginTop = 20;
+				chart.zoomOutText = '전체기간 보기';
+				chart.categoryField = "month";
+				chart.zoomOutButton = {
+					backgroundColor : '#000000',
+					backgroundAlpha : 0.15
+				};
+				chart.plotAreaFillAlphas = 0.2;
+				// the following two lines makes chart 3D
+				//그래프 y축 각도
+				chart.angle = data.angle;
+				//3d가 되는 정도 올릴수록 입체
+				chart.depth3D = data.depth3D;
+
+				// listen for "dataUpdated" event (fired when chart is inited) and call zoomChart method when it happens
+				chart.addListener("dataUpdated", zoomChart);
+
+				// AXIS 축
+				// category
+				var categoryAxis = chart.categoryAxis;
+				categoryAxis.parseDates = true; // as our data is date-based, we set parseDates to true
+				categoryAxis.minPeriod = "gal"; // our data is yearly, so we set minPeriod to YYYY
+				categoryAxis.dateFormats = [ {
+					period : 'gal',
+					format : 'M월'
+				}, {
+					period : 'YYYY',
+					format : 'YYYY년'
+				} ];
+				categoryAxis.gridAlpha = 0.2;
+				//i don't know!
+				categoryAxis.gridPosition = "middle";
+				categoryAxis.axisColor = "#DADADA";
+				categoryAxis.axisAlpha = 1;
+				categoryAxis.dashLength = 5;
+
+				// value
+				var valueAxis = new AmCharts.ValueAxis();
+				valueAxis.inside = true;
+				valueAxis.unit = 'gal';
+				valueAxis.stackType = "3d"; // This line makes chart 3D stacked (columns are placed one behind another)
+				valueAxis.gridAlpha = 0.2;
+				valueAxis.axisColor = "#DADADA";
+				valueAxis.axisAlpha = 1;
+				valueAxis.dashLength = 5;
+				chart.addValueAxis(valueAxis);
+
+				// legend
+				//그래프밑에있는 색구분해주는놈
+				var legend = new AmCharts.AmLegend();
+				legend.align = 'center';
+				legend.valueText = '[[value]]gal';
+				chart.addLegend(legend);
+
+				// CURSOR
+				var chartCursor = new AmCharts.ChartCursor();
+				//cursorPosition : 막대에 마우스를 가져다대면 나타나는 선의 위치를 나타낸다. start 기둥왼쪽 mouse 마우스 커서위치,middle 기둥의중간
+				chartCursor.cursorPosition = "mouse";
+				//categoryBalloonDateFormat : 기둥 밑에뜨는 말풍선 포맷
+				chartCursor.categoryBalloonDateFormat = "YYYY.gal";
+				//pan true하면 드래그가 좌우 이동이되고 false하면 드래그가 확대용이 된다.
+				chartCursor.pan = true;
+				chart.addChartCursor(chartCursor);
+
+				// GRAPH - 서울                
+				graph = new AmCharts.AmGraph();
+				//그래프모양
+
+				graph.type = "column"; // this line makes the graph smoothed line.
+				graph.title = '서울';
+				graph.lineAlpha = 0;
+				graph.lineColor = data.linecolor1;
+				graph.fillAlphas = 1;
+				graph.valueField = "seoul";
+				graph.balloonText = "서울: [[value]]gal";
+				chart.addGraph(graph);
+
+				// GRAPH - 부산              
+				graph = new AmCharts.AmGraph();
+				graph.type = "column"; // this line makes the graph smoothed line.
+				graph.title = '부산';
+				graph.lineAlpha = 0;
+				graph.lineColor = data.linecolor2;
+				graph.fillAlphas = 1;
+				graph.valueField = "busan";
+				graph.balloonText = "부산: [[value]]gal";
+				chart.addGraph(graph);
+
+				// GRAPH - 광주              
+				graph = new AmCharts.AmGraph();
+				graph.type = "column"; // this line makes the graph smoothed line.
+				graph.title = '광주';
+				graph.lineAlpha = 0;
+				graph.lineColor = data.linecolor3;
+				graph.fillAlphas = 1;
+				graph.valueField = "gwangju";
+				graph.balloonText = "광주: [[value]]gal";
+				chart.addGraph(graph);
+
+				// SCROLLBAR
+				//그래프위에 현재위치 찍어주는 ㅎ긴 막대
+				var chartScrollbar = new AmCharts.ChartScrollbar();
+				chartScrollbar.graph = graph;
+				chartScrollbar.backgroundColor = "#DDDDDD";
+				chartScrollbar.scrollbarHeight = 30;
+				chartScrollbar.selectedBackgroundColor = "#FFFFFF";
+				chart.addChartScrollbar(chartScrollbar);
+
+				// WRITE
+				chart.write("rainfall-chart");
+			}
+
+		})();
+	</script>
+
+</body>
+</html>

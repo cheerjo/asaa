@@ -1,0 +1,118 @@
+<xf:model xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ht="http://www.w3.org/TR/html5" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://www.exria.org/exria" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:wf="http://www.w3.org/TR/web-forms-2" defaultinstance="instance" xmlns:xl="http://www.w3.org/1999/xlink"><xr:submission id="smsSymPrivGrpList" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symPrivMenu/SymPrivGrpListEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymPrivGrpVO" instanceid="requestData"></xr:request-ref>
+<xr:response-ref ref="/root/resSymPrivGrpList" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymPrivMenuList" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symPrivMenu/SymPrivMenuListExria.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymPrivGrpVO" instanceid="requestData"></xr:request-ref>
+<xr:response-ref ref="/root/resSymPrivNonMenuList" add="false" instanceid="responseData"></xr:response-ref>
+<xr:response-ref ref="/root/resSymPrivMenuList" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymPrivMenuMove" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symPrivMenu/savePrivMenuListExria.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymMenuList" instanceid="requestData"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:request-ref ref="/root/reqSymPrivGrpVO" instanceid="requestData"></xr:request-ref>
+</xr:submission>
+<xr:dataset id="dstSymPrivGrpList" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[/root/resSymPrivGrpList/row]]></xr:query>
+<xr:autocrud></xr:autocrud>
+<xr:columns><xr:column sourceName="privGrpNo"></xr:column>
+<xr:column sourceName="privGrpNm"></xr:column>
+<xr:column sourceName="privDesc"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xf:jsoninstance id="instance"><![CDATA[{root : {EXRIAERRMSG : ""}}]]></xf:jsoninstance>
+<xf:jsoninstance id="requestData"><![CDATA[{
+					root : {
+						reqSymPrivGrpVO : {
+							privDesc : "",
+							privGrpNm : "",
+							privGrpNo : "",
+							inptUsrId : "",
+							inptDt : ""
+						},
+						reqSymMenuList : {
+							menuCd : "",
+							upMenuCd : "",
+							useYn : "",
+							inptUsrId : "",
+							dplyNo : "",
+							linkUrl : "",
+							inptDt : "",
+							siteGbcd : "",
+							reMark : "",
+							menuDesc : "",
+							menuNm : "",
+							updtUsrId : "",
+							updtDt : ""
+						},
+						searchVO : {
+							searchCondition : "",
+							pageIndex : "",
+							lastIndex : "",
+							firstIndex : "",
+							searchUseYn : "",
+							pageSize : "",
+							searchKeyword : "",
+							recordCountPerPage : "",
+							pageUnit : ""
+						},
+						reqSymPrivMenuVO : {
+							privGrpNo : "",
+							menuCd : "",
+							inptUsrId : "",
+							updtDt : "",
+							updtUsrId : "",
+							inptDt : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="responseData"><![CDATA[{
+					root : {
+						resSymPrivGrpList : {
+							row : [
+								{
+									privGrpNo : "",
+									privGrpNm : "",
+									privDesc : "",
+									inptUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						resSymMenuList : {
+							row : [
+								{
+									menuCd : "",
+									upMenuCd : "",
+									useYn : "",
+									inptUsrId : "",
+									dplyNo : "",
+									linkUrl : "",
+									inptDt : "",
+									siteGbcd : "",
+									reMark : "",
+									menuDesc : "",
+									menuNm : "",
+									updtUsrId : "",
+									updtDt : ""
+								}
+							]
+						},
+						resSymPrivMenuList : {
+							row : []
+						},
+						resSymPrivNonMenuList : {
+							row : []
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="resMessage"><![CDATA[{
+					root : {
+						message : ""
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="reqMethod"><![CDATA[{
+					root : {
+						method : ""
+					}
+				}]]></xf:jsoninstance>
+</xf:model>

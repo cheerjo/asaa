@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptMgr">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptMgrSerarchVO" type="estam.app.scn.rpt.service.RptMgrDefaultVO"/>
+	
+	<resultMap id="rptMgr" class="estam.app.scn.rpt.service.RptMgrVO">
+		<result property="iptDt" column="IPT_DT" columnIndex="1"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="2"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="3"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="4"/>
+		<result property="obsName" column="OBS_NAME" columnIndex="5"/>
+		<result property="openDate" column="OPEN_DATE" columnIndex="6"/>
+		<result property="offDate" column="OFF_DATE" columnIndex="7"/>
+		<result property="fctyAreaCd" column="FCTY_AREA_CD" columnIndex="8"/>
+		<result property="fctyAddr" column="FCTY_ADDR" columnIndex="9"/>
+		<result property="fctyKndCd" column="FCTY_KND_CD" columnIndex="10"/>
+		<result property="mechPotn" column="MECH_POTN" columnIndex="11"/>
+		<result property="fctyLon" column="FCTY_LON" columnIndex="12"/>
+		<result property="fctyLat" column="FCTY_LAT" columnIndex="13"/>
+		<result property="fctyAttc" column="FCTY_ATTC" columnIndex="14"/>
+		<result property="fctyGrndHt" column="FCTY_GRND_HT" columnIndex="15"/>
+		<result property="fctyUgrdHt" column="FCTY_UGRD_HT" columnIndex="16"/>
+		<result property="fctyBasc" column="FCTY_BASC" columnIndex="17"/>
+		<result property="ehqkScnCnt" column="EHQK_SCN_CNT" columnIndex="18"/>
+		<result property="rccCnt" column="RCC_CNT" columnIndex="19"/>
+		<result property="strcFrmCd" column="STRC_FRM_CD" columnIndex="20"/>
+		<result property="seisCd" column="SEIS_CD" columnIndex="21"/>
+		<result property="fctyGrndCd" column="FCTY_GRND_CD" columnIndex="22"/>
+		<result property="fctyHolcYn" column="FCTY_HOLC_YN" columnIndex="23"/>
+		<result property="fctyChgeNm" column="FCTY_CHGE_NM" columnIndex="24"/>
+		<result property="fctyCottTel" column="FCTY_COTT_TEL" columnIndex="25"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="26"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="27"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="28"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="29"/>
+	</resultMap>
+	
+	<insert id="rptMgrDAO.insertRptMgr_S">
+		<![CDATA[
+			INSERT INTO RPT_MGR 
+				( IPT_DT
+				  , FCTY_CD
+				  , CON_DA_GBCD
+				  , GVMT_CD
+				  , OBS_NAME
+				  , OPEN_DATE
+				  , OFF_DATE
+				  , FCTY_AREA_CD
+				  , FCTY_ADDR
+				  , FCTY_KND_CD
+				  , MECH_POTN
+				  , FCTY_LON
+				  , FCTY_LAT
+				  , FCTY_ATTC
+				  , FCTY_GRND_HT
+				  , FCTY_UGRD_HT
+				  , FCTY_BASC
+				  , EHQK_SCN_CNT
+				  , RCC_CNT
+				  , STRC_FRM_CD
+				  , SEIS_CD
+				  , FCTY_GRND_CD
+				  , FCTY_HOLC_YN
+				  , FCTY_CHGE_NM
+				  , FCTY_COTT_TEL
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #iptDt#
+				  , #fctyCd#
+				  , #conDaGbcd#
+				  , #gvmtCd#
+				  , #obsName#
+				  , #openDate#
+				  , #offDate#
+				  , #fctyAreaCd#
+				  , #fctyAddr#
+				  , #fctyKndCd#
+				  , #mechPotn#
+				  , #fctyLon#
+				  , #fctyLat#
+				  , #fctyAttc#
+				  , #fctyGrndHt#
+				  , #fctyUgrdHt#
+				  , #fctyBasc#
+				  , #ehqkScnCnt#
+				  , #rccCnt#
+				  , #strcFrmCd#
+				  , #seisCd#
+				  , #fctyGrndCd#
+				  , #fctyHolcYn#
+				  , #fctyChgeNm#
+				  , #fctyCottTel#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptMgrDAO.updateRptMgr_S">
+		<![CDATA[
+			UPDATE RPT_MGR
+			SET IPT_DT=#iptDt#
+				, FCTY_CD=#fctyCd#
+				, CON_DA_GBCD=#conDaGbcd#
+				, GVMT_CD=#gvmtCd#
+				, OBS_NAME=#obsName#
+				, OPEN_DATE=#openDate#
+				, OFF_DATE=#offDate#
+				, FCTY_AREA_CD=#fctyAreaCd#
+				, FCTY_ADDR=#fctyAddr#
+				, FCTY_KND_CD=#fctyKndCd#
+				, MECH_POTN=#mechPotn#
+				, FCTY_LON=#fctyLon#
+				, FCTY_LAT=#fctyLat#
+				, FCTY_ATTC=#fctyAttc#
+				, FCTY_GRND_HT=#fctyGrndHt#
+				, FCTY_UGRD_HT=#fctyUgrdHt#
+				, FCTY_BASC=#fctyBasc#
+				, EHQK_SCN_CNT=#ehqkScnCnt#
+				, RCC_CNT=#rccCnt#
+				, STRC_FRM_CD=#strcFrmCd#
+				, SEIS_CD=#seisCd#
+				, FCTY_GRND_CD=#fctyGrndCd#
+				, FCTY_HOLC_YN=#fctyHolcYn#
+				, FCTY_CHGE_NM=#fctyChgeNm#
+				, FCTY_COTT_TEL=#fctyCottTel#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE IPT_DT=#iptDt#
+								AND FCTY_CD=#fctyCd#
+								AND CON_DA_GBCD=#conDaGbcd#
+				]]>
+	</update>
+	
+	<delete id="rptMgrDAO.deleteRptMgr_S">
+		<![CDATA[
+			DELETE FROM RPT_MGR 
+						WHERE IPT_DT=#iptDt#
+								AND FCTY_CD=#fctyCd#
+								AND CON_DA_GBCD=#conDaGbcd#
+				]]>
+	</delete>
+	
+	<select id="rptMgrDAO.selectRptMgr_S" resultMap="rptMgr">
+		<![CDATA[
+			SELECT
+				IPT_DT
+				, FCTY_CD
+				, CON_DA_GBCD
+				, GVMT_CD
+				, OBS_NAME
+				, OPEN_DATE
+				, OFF_DATE
+				, FCTY_AREA_CD
+				, FCTY_ADDR
+				, FCTY_KND_CD
+				, MECH_POTN
+				, FCTY_LON
+				, FCTY_LAT
+				, FCTY_ATTC
+				, FCTY_GRND_HT
+				, FCTY_UGRD_HT
+				, FCTY_BASC
+				, EHQK_SCN_CNT
+				, RCC_CNT
+				, STRC_FRM_CD
+				, SEIS_CD
+				, FCTY_GRND_CD
+				, FCTY_HOLC_YN
+				, FCTY_CHGE_NM
+				, FCTY_COTT_TEL
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_MGR
+						WHERE IPT_DT=#iptDt#
+								AND FCTY_CD=#fctyCd#
+								AND CON_DA_GBCD=#conDaGbcd#
+								AND GVMT_CD=#gvmtCd#
+				]]>
+	</select>
+	
+	<select id="rptMgrDAO.selectRptMgrList_D" parameterClass="rptMgrSerarchVO" resultClass="egovMap">
+	       SELECT * FROM ( 
+	 				SELECT
+								IPT_DT
+								, FCTY_CD
+								, CON_DA_GBCD
+								, GVMT_CD
+								, OBS_NAME 
+								, OPEN_DATE
+								, OFF_DATE
+								, FCTY_AREA_CD
+								, (
+								   SELECT COMM_DTL_NM
+								     FROM SYM_COMM_CD_DTL BB 
+								     WHERE BB.ITEM01 = 'ITEM_008'   
+								       AND (BB.COMM_CD || BB.COMM_DTL_CD) = FCTY_AREA_CD 
+								  ) AS FCTY_AREA_NM
+								, FCTY_ADDR
+								, FCTY_KND_CD
+								, MECH_POTN
+								, FCTY_LON
+								, FCTY_LAT
+								, FCTY_ATTC
+								, FCTY_GRND_HT
+								, FCTY_UGRD_HT
+								, FCTY_BASC
+								, EHQK_SCN_CNT
+								, RCC_CNT
+								, STRC_FRM_CD
+								, SEIS_CD
+								, FCTY_GRND_CD
+								, FCTY_HOLC_YN
+								, FCTY_CHGE_NM
+								, FCTY_COTT_TEL
+								,(CASE WHEN 
+                                           (SELECT  COUNT(*)  
+                                                      FROM RPT_RGLR_IPTN CC
+                                             WHERE CC.IPT_DT  = IPT_DT  
+                                               AND CC.FCTY_CD= FCTY_CD
+                                               AND CC.GVMT_CD = GVMT_CD
+                                               AND CC.CON_DA_GBCD= '04') > 0
+				                      THEN  
+				                          (SELECT   CASE WHEN  EE.RGLR_QST1_1YN = 'Y'
+				                                        AND EE.RGLR_QST1_2YN = 'Y'
+				                                        AND EE.RGLR_QST1_3YN = 'Y'
+				                                        AND EE.RGLR_QST1_4YN = 'Y'
+				                                        AND EE.RGLR_QST2_1YN = 'Y'
+				                                        AND EE.RGLR_QST2_2YN = 'Y'
+				                                        AND EE.RGLR_QST2_3YN = 'Y'
+				                                        AND EE.RGLR_QST2_4YN = 'Y'
+				                                        AND EE.RGLR_QST3_1YN = 'Y'
+				                                        AND EE.RGLR_QST3_2YN = 'Y'
+				                                        AND EE.RGLR_QST4_1YN = 'Y'
+				                                        AND EE.RGLR_QST4_2YN = 'Y'
+				                                        AND EE.RGLR_QST4_3YN = 'Y'
+				                                        THEN 'Y' ELSE 'N' END
+				                                    FROM RPT_RGLR_IPTN EE
+                                                   WHERE EE.IPT_DT =  (SELECT MAX(IPT_DT) 
+                                                                       FROM CON_OBS_META
+                                                                        WHERE 1=1 
+                                                                        AND CON_DA_GBCD='04'
+                                                                        AND FCTY_CD = FCTY_CD
+                                                                        AND GVMT_CD = GVMT_CD
+                                                                        ) 
+				                                     AND EE.FCTY_CD= FCTY_CD
+                                                     AND EE.GVMT_CD = GVMT_CD
+                                                     AND EE.CON_DA_GBCD= '04' ) 
+				                      ELSE  
+				                           ( SELECT   CASE WHEN GG.SCN_QST1_1YN  = 'Y'
+				                                            AND GG.SCN_QST1_2YN  = 'Y'
+				                                            AND GG.SCN_QST1_3YN  = 'Y'
+				                                            AND GG.SCN_QST2_1YN  = 'Y'
+				                                            AND GG.SCN_QST2_2YN  = 'Y'
+				                                            AND GG.SCN_QST3_1YN  = 'Y'
+				                                            AND GG.SCN_QST3_2YN  = 'Y'
+				                                          THEN 'Y' ELSE 'N' END
+				                                      FROM RPT_FRST_EHQK_SCN GG
+                                                     WHERE GG.IPT_DT = (SELECT MAX(IPT_DT) 
+                                                                 FROM CON_OBS_META
+                                                                 WHERE 1=1 
+                                                                 AND CON_DA_GBCD='03'
+                                                                 AND FCTY_CD = FCTY_CD
+                                                                 AND GVMT_CD = GVMT_CD
+                                              )
+                                                       AND GG.FCTY_CD= FCTY_CD
+                                                       AND GG.GVMT_CD = GVMT_CD
+                                                         AND GG.CON_DA_GBCD= '03')  
+				                    END                    
+								  ) AS FCTY_USE_YN 
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_MGR
+				WHERE 1=1
+				<isNotEmpty prepend="AND" property="fctyAreaCd" >
+					FCTY_AREA_CD LIKE #fctyAreaCd# || '%'
+				</isNotEmpty>
+ 
+				<isNotEmpty prepend="AND" property="fctyKndCd" >
+					FCTY_KND_CD = #fctyKndCd#
+				</isNotEmpty>
+				 <!-- AND CON_DA_GBCD=#conDaGbcd# --> 
+                 AND (IPT_DT,FCTY_CD, GVMT_CD) IN (SELECT MAX(IPT_DT),FCTY_CD, GVMT_CD
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD=#conDaGbcd#
+										      GROUP BY FCTY_CD, GVMT_CD)
+                 ) WHERE 1=1 										      
+                <isNotEmpty prepend="AND" property="fctyUseYn" >
+                    FCTY_USE_YN = #fctyUseYn#
+                </isNotEmpty>
+					ORDER BY OBS_NAME
+					<!-- 
+						IPT_DT DESC
+							, FCTY_CD DESC
+							, CON_DA_GBCD DESC
+							--> 
+	</select>	
+	
+	<select id="rptMgrDAO.selectRptFctyMgrScnList_D" parameterClass="rptMgrSerarchVO" resultClass="egovMap"> 
+				<![CDATA[
+		
+  SELECT 
+           DECODE(NVL((CASE WHEN DD.RPT_FGLR_YN = 'Y' 
+		       THEN
+		       	   (
+		       	     SELECT   MAX(IPT_DT) 
+				      FROM RPT_RGLR_IPTN KK
+				     WHERE KK.FCTY_CD=DD.FCTY_CD
+				       AND KK.GVMT_CD = GVMT_CD
+			           AND KK.CON_DA_GBCD= '04'
+		       	   ) 
+		       ELSE 
+		           (
+		               SELECT MAX(IPT_DT)   
+				      FROM RPT_FRST_RCC JJ
+				     WHERE JJ.FCTY_CD=DD.FCTY_CD
+				       AND JJ.GVMT_CD = GVMT_CD
+			           AND JJ.CON_DA_GBCD = '03'  
+		           )
+		       END),''),'',DD.IPT_DT,(CASE WHEN DD.RPT_FGLR_YN = 'Y' 
+									       THEN
+									       	   (
+									       	     SELECT   MAX(IPT_DT) 
+											      FROM RPT_RGLR_IPTN KK
+											     WHERE KK.FCTY_CD=DD.FCTY_CD
+											       AND KK.GVMT_CD = GVMT_CD
+										           AND KK.CON_DA_GBCD= '04'
+									       	   ) 
+									       ELSE 
+									           (
+									               SELECT MAX(IPT_DT)   
+											      FROM RPT_FRST_RCC JJ
+											     WHERE JJ.FCTY_CD=DD.FCTY_CD
+											       AND JJ.GVMT_CD = GVMT_CD
+										           AND JJ.CON_DA_GBCD = '03'  
+									           )
+									       END)
+		       ) AS IPT_DT     /* 최종점검일 */ 
+		, DD.FCTY_CD
+		, DD.CON_DA_GBCD
+		, DD.EHQK_SCN_PSTN     /* 설치위치 */
+		, DD.EHQK_SCN_CHL_VAL  /* 계측성분 */ 
+		, DD.EHQK_SCN_ID      /* 고유번호 */
+	    , DD.RPT_FRST_YN
+		, DD.RPT_FGLR_YN
+		, NVL((CASE WHEN DD.RPT_FGLR_YN = 'Y' 
+		       THEN
+		       	   (
+		       	     SELECT   DISTINCT (CASE WHEN  EE.RGLR_QST1_1YN = 'Y'
+							        AND EE.RGLR_QST1_2YN = 'Y'
+									AND EE.RGLR_QST1_3YN = 'Y'
+									AND EE.RGLR_QST1_4YN = 'Y'
+									AND EE.RGLR_QST2_1YN = 'Y'
+									AND EE.RGLR_QST2_2YN = 'Y'
+									AND EE.RGLR_QST2_3YN = 'Y'
+									AND EE.RGLR_QST2_4YN = 'Y'
+									AND EE.RGLR_QST3_1YN = 'Y'
+									AND EE.RGLR_QST3_2YN = 'Y'
+									AND EE.RGLR_QST4_1YN = 'Y'
+									AND EE.RGLR_QST4_2YN = 'Y'
+									AND EE.RGLR_QST4_3YN = 'Y'
+						      THEN '적합' ELSE '부적합' END)
+				      FROM RPT_RGLR_IPTN EE
+				     WHERE EE.IPT_DT   = (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD='03'
+										      AND GVMT_CD = #gvmtCd#
+										      AND FCTY_CD = #fctyCd#)
+				       AND EE.FCTY_CD=DD.FCTY_CD
+				       AND EE.GVMT_CD=DD.GVMT_CD
+			           AND EE.CON_DA_GBCD='03' 
+		       	   ) 
+		       ELSE 
+		           (
+		               SELECT   DISTINCT (CASE WHEN GG.SCN_QST1_1YN  = 'Y'
+									  AND GG.SCN_QST1_2YN  = 'Y'
+									  AND GG.SCN_QST1_3YN  = 'Y'
+									  AND GG.SCN_QST2_1YN  = 'Y'
+									  AND GG.SCN_QST2_2YN  = 'Y'
+									  AND GG.SCN_QST3_1YN  = 'Y'
+									  AND GG.SCN_QST3_2YN  = 'Y'
+						      THEN '적합' ELSE '부적합' END)
+				      FROM RPT_FRST_EHQK_SCN GG
+				     WHERE GG.IPT_DT = (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD='04'
+										      AND GVMT_CD = #gvmtCd#
+										      AND FCTY_CD = #fctyCd#)
+				       AND GG.FCTY_CD=DD.FCTY_CD
+				       AND GG.GVMT_CD = DD.GVMT_CD
+			           AND GG.CON_DA_GBCD='04'
+		           )
+		       END),'부적합') AS RPT_IPTN_RSLT
+    FROM  (SELECT
+				  AA.IPT_DT            /* 최종점검일 */
+				, AA.FCTY_CD
+				, AA.CON_DA_GBCD
+				, AA.GVMT_CD
+				, AA.EHQK_SCN_PSTN     /* 설치위치 */
+				, AA.EHQK_SCN_CHL_VAL  /* 계측성분 */
+				, AA.EHQK_SCN_Z_RES
+				, AA.EHQK_SCN_N_RES
+				, AA.EHQK_SCN_E_RES
+				, AA.EHQK_SCN_ID      /* 고유번호 */
+				, (
+				   SELECT CASE WHEN COUNT(*) > 0 THEN 'Y' ELSE 'N' END
+				     FROM RPT_FRST_IPTN BB
+				     WHERE BB.IPT_DT  = (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD='03'
+										      AND GVMT_CD = #gvmtCd#
+										      AND FCTY_CD = #fctyCd#)
+				       AND BB.FCTY_CD    = AA.FCTY_CD
+				       AND BB.GVMT_CD    = AA.GVMT_CD
+			           AND BB.CON_DA_GBCD= '03'
+				  ) AS RPT_FRST_YN
+				, (
+				    SELECT CASE WHEN COUNT(*) > 0 THEN 'Y' ELSE 'N' END
+				     FROM RPT_RGLR_IPTN CC
+				     WHERE CC.IPT_DT  = (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD='04'
+										      AND GVMT_CD = #gvmtCd#
+										      AND FCTY_CD = #fctyCd#)
+				       AND CC.FCTY_CD=AA.FCTY_CD
+				       AND CC.GVMT_CD= AA.GVMT_CD
+			           AND CC.CON_DA_GBCD= '04'
+				  ) AS RPT_FGLR_YN
+			FROM RPT_MGR_EHQK_SCN AA 
+			 WHERE AA.IPT_DT = #iptDt# 
+			 AND AA.FCTY_CD=#fctyCd#
+			 AND AA.GVMT_CD=#gvmtCd#
+			 AND AA.CON_DA_GBCD=#conDaGbcd#
+			 ) DD   
+			ORDER BY DD.EHQK_SCN_ID ASC
+				]]> 
+	</select>	
+	
+	<select id="rptMgrDAO.selectRptFctyMgrRccList_D" parameterClass="rptMgrSerarchVO" resultClass="egovMap">
+ 		<![CDATA[
+		
+  SELECT 
+         DECODE(NVL((CASE WHEN DD.RPT_FGLR_YN = 'Y' 
+		       THEN
+		       	   (
+		       	     SELECT   MAX(IPT_DT) 
+				      FROM RPT_RGLR_IPTN KK
+				     WHERE KK.FCTY_CD=DD.FCTY_CD
+			           AND KK.CON_DA_GBCD= '04'
+		       	   ) 
+		       ELSE 
+		           (
+		               SELECT MAX(IPT_DT)   
+				      FROM RPT_FRST_RCC JJ
+				     WHERE JJ.FCTY_CD=DD.FCTY_CD
+			           AND JJ.CON_DA_GBCD = '03'  
+		           )
+		       END),''),'',DD.IPT_DT,(CASE WHEN DD.RPT_FGLR_YN = 'Y' 
+									       THEN
+									       	   (
+									       	     SELECT   MAX(IPT_DT) 
+											      FROM RPT_RGLR_IPTN KK
+											     WHERE KK.FCTY_CD=DD.FCTY_CD
+										           AND KK.CON_DA_GBCD= '04'
+									       	   ) 
+									       ELSE 
+									           (
+									               SELECT MAX(IPT_DT)   
+											      FROM RPT_FRST_RCC JJ
+											     WHERE JJ.FCTY_CD=DD.FCTY_CD
+										           AND JJ.CON_DA_GBCD = '03'  
+									           )
+									       END)
+		       ) AS IPT_DT     /* 최종점검일 */
+		, DD.FCTY_CD
+		, DD.CON_DA_GBCD
+		, DD.MECH_POTN         /* 설치위치 */
+		, II.EHQK_SCN_IDS      /* 계측기 연결상태  */ 
+		, DD.RCC_ID            /* 고유번호 */
+	    , DD.RPT_FRST_YN
+		, DD.RPT_FGLR_YN
+		, NVL((CASE WHEN DD.RPT_FGLR_YN = 'Y' 
+		       THEN
+		       	   (
+		       	     SELECT   DISTINCT (CASE WHEN  EE.RGLR_QST1_1YN = 'Y'
+							        AND EE.RGLR_QST1_2YN = 'Y'
+									AND EE.RGLR_QST1_3YN = 'Y'
+									AND EE.RGLR_QST1_4YN = 'Y'
+									AND EE.RGLR_QST2_1YN = 'Y'
+									AND EE.RGLR_QST2_2YN = 'Y'
+									AND EE.RGLR_QST2_3YN = 'Y'
+									AND EE.RGLR_QST2_4YN = 'Y'
+									AND EE.RGLR_QST3_1YN = 'Y'
+									AND EE.RGLR_QST3_2YN = 'Y'
+									AND EE.RGLR_QST4_1YN = 'Y'
+									AND EE.RGLR_QST4_2YN = 'Y'
+									AND EE.RGLR_QST4_3YN = 'Y'
+						      THEN '적합' ELSE '부적합' END)
+				      FROM RPT_RGLR_IPTN EE
+				     WHERE EE.IPT_DT =  (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD='04'
+										      AND FCTY_CD = #fctyCd#)
+				       AND EE.FCTY_CD=DD.FCTY_CD
+			           AND EE.CON_DA_GBCD= '04'
+		       	   ) 
+		       ELSE 
+		           (
+		               SELECT   DISTINCT (CASE WHEN GG.RCC_QST1_1YN = 'Y'
+									  AND GG.RCC_QST1_2YN = 'Y'
+									  AND GG.RCC_QST2_1YN = 'Y'
+									  AND GG.RCC_QST2_2YN = 'Y'
+									  AND GG.RCC_QST3_1YN = 'Y'
+									  AND GG.RCC_QST3_2YN = 'Y'
+									  AND GG.RCC_QST4_1YN = 'Y'
+									  AND GG.RCC_QST4_2YN = 'Y'
+									  AND GG.RCC_QST4_3YN = 'Y'
+									  AND GG.RCC_QST5_1YN = 'Y'
+									  AND GG.RCC_QST5_2YN = 'Y'
+									  AND GG.RCC_QST5_3YN = 'Y'
+									  AND GG.RCC_QST6_1YN = 'Y'
+									  AND GG.RCC_QST6_2YN = 'Y'
+									  AND GG.RCC_QST7_YN  = 'Y'
+									  AND GG.RCC_QST8_YN  = 'Y'
+						      THEN '적합' ELSE '부적합' END)
+				      FROM RPT_FRST_RCC GG
+				     WHERE GG.IPT_DT =  (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD='03'
+										      AND FCTY_CD = #fctyCd#)
+				       AND GG.FCTY_CD=DD.FCTY_CD
+			           AND GG.CON_DA_GBCD = '03'  
+		           )
+		       END),'부적합') AS RPT_IPTN_RSLT
+    FROM  (SELECT
+				  AA.IPT_DT            /* 최종점검일 */
+				, AA.FCTY_CD
+				, AA.CON_DA_GBCD
+				, ('') AS MECH_POTN         /* 설치위치 */ 
+				, AA.RCC_ID          /* 고유번호 */
+				, (
+				   SELECT CASE WHEN COUNT(*) > 0 THEN 'Y' ELSE 'N' END
+				     FROM RPT_FRST_IPTN BB
+				     WHERE BB.IPT_DT  =  (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD='03'
+										      AND FCTY_CD = #fctyCd#) 
+				       AND BB.FCTY_CD=AA.FCTY_CD
+			           AND BB.CON_DA_GBCD= '03'
+				  ) AS RPT_FRST_YN
+				, (
+				    SELECT CASE WHEN COUNT(*) > 0 THEN 'Y' ELSE 'N' END
+				     FROM RPT_RGLR_IPTN CC
+				     WHERE CC.IPT_DT  = (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD='04'
+										      AND FCTY_CD = #fctyCd#)
+				       AND CC.FCTY_CD=AA.FCTY_CD
+			           AND CC.CON_DA_GBCD= '04' 
+				  ) AS RPT_FGLR_YN
+			FROM RPT_MGR_RCC AA 
+			 WHERE AA.IPT_DT = #iptDt# 
+			 AND AA.FCTY_CD=#fctyCd#
+			 AND AA.CON_DA_GBCD=#conDaGbcd#
+			 ) DD ,
+			  ( SELECT CON_RCC_ID,LTRIM(SYS_CONNECT_BY_PATH(EHQK_SCN_ID, ','),',') EHQK_SCN_IDS
+						FROM (
+						SELECT HH.TMPNO , HH.CON_RCC_ID
+							,  HH.EHQK_SCN_ID
+							, ROW_NUMBER() OVER (PARTITION BY  HH.TMPNO ORDER BY  HH.TMPNO) RNUM
+							, COUNT(*) OVER (PARTITION BY  HH.TMPNO) CNT
+						FROM  
+						  (SELECT ('1') AS TMPNO, FF.CON_RCC_ID,FF.EHQK_SCN_ID 
+			                   FROM   RPT_MGR_EHQK_SCN FF
+			                  WHERE FF.IPT_DT  =  #iptDt# 
+			 					AND FF.FCTY_CD=#fctyCd#
+			 					AND FF.CON_DA_GBCD=#conDaGbcd#
+						            
+						   ) HH
+						)
+						WHERE LEVEL = CNT
+						START WITH RNUM = 1
+						CONNECT BY PRIOR TMPNO = TMPNO 
+						AND PRIOR RNUM = RNUM - 1  
+						) II
+			 WHERE DD.RCC_ID = II.CON_RCC_ID(+) 
+			ORDER BY DD.RCC_ID ASC
+				]]> 
+	</select>	
+	<select id="rptMgrDAO.selectRptMgrListTotCnt_S" parameterClass="rptMgrSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_MGR
+			WHERE 1=1
+			<isNotEmpty prepend="AND" property="iptDt" >
+				IPT_DT = #iptDt#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="fctyCd" >
+				FCTY_CD  = #fctyCd# 
+			</isNotEmpty>
+	</select>
+
+</sqlMap>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SymPrivGrp">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="symPrivGrpSerarchVO" type="estam.app.sym.grp.service.SymPrivGrpDefaultVO"/>
+	 
+	<resultMap id="symPrivGrp" class="estam.app.sym.grp.service.SymPrivGrpVO">
+		<result property="privGrpNo" column="PRIV_GRP_NO" columnIndex="1"/>
+		<result property="privGrpNm" column="PRIV_GRP_NM" columnIndex="2"/>
+		<result property="privGrpDesc" column="PRIV_GRP_DESC" columnIndex="3"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="4"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="5"/>
+	</resultMap>
+	 
+	<insert id="symPrivGrpDAO.insertSymPrivGrp_S">
+		<![CDATA[
+			INSERT INTO SYM_PRIV_GRP 
+				( PRIV_GRP_NO
+				  , PRIV_GRP_NM
+				  , PRIV_GRP_DESC
+				  , INPT_USR_ID
+				  , INPT_DT )
+			VALUES ( #privGrpNo#
+				  , #privGrpNm#
+				  , #privGrpDesc#
+				  , #inptUsrId#
+				  , SYSDATE )
+		]]>
+	</insert>
+	
+	<update id="symPrivGrpDAO.updateSymPrivGrp_S">
+		<![CDATA[
+			UPDATE SYM_PRIV_GRP
+			SET   PRIV_GRP_NM=#privGrpNm#
+				, PRIV_GRP_DESC=#privGrpDesc#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=SYSDATE
+						WHERE PRIV_GRP_NO=#privGrpNo#
+				]]>
+	</update>
+	
+	<delete id="symPrivGrpDAO.deleteSymPrivGrp_S">
+		<![CDATA[
+			DELETE FROM SYM_PRIV_GRP 
+						WHERE PRIV_GRP_NO=#privGrpNo#
+				]]>
+	</delete>
+	
+	<select id="symPrivGrpDAO.selectSymPrivGrp_S" resultMap="symPrivGrp">
+		<![CDATA[
+			SELECT
+				PRIV_GRP_NO
+				, PRIV_GRP_NM
+				, PRIV_GRP_DESC
+				, INPT_USR_ID
+				, INPT_DT
+			FROM SYM_PRIV_GRP
+						WHERE PRIV_GRP_NO=#privGrpNo#
+				]]>
+	</select>
+	
+	<select id="symPrivGrpDAO.selectSymPrivGrpList_D" parameterClass="symPrivGrpSerarchVO" resultClass="egovMap">
+<!-- SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM ( -->
+				SELECT
+								PRIV_GRP_NO
+								, PRIV_GRP_NM
+								, PRIV_GRP_DESC
+								, INPT_USR_ID
+								, INPT_DT
+						FROM SYM_PRIV_GRP
+				WHERE 1=1
+				<isNotEmpty prepend="AND" property="searchKeyword" >
+				PRIV_GRP_NM LIKE '%' || #searchKeyword# || '%'
+				</isNotEmpty>
+	
+					ORDER BY 
+						PRIV_GRP_NO DESC
+		
+<!-- 		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex# 
+]]>-->
+	</select>	
+	
+	<select id="symPrivGrpDAO.ListSymPrivGrp"  resultMap="symPrivGrp"> 
+				SELECT   		  PRIV_GRP_NO
+								, PRIV_GRP_NM
+								, PRIV_GRP_DESC
+								, INPT_USR_ID
+								, INPT_DT
+						FROM SYM_PRIV_GRP 
+	</select>	
+	 
+	<select id="symPrivGrpDAO.selectSymPrivGrpListTotCnt_S" parameterClass="symPrivGrpSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM SYM_PRIV_GRP
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				PRIV_GRP_NO = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				PRIV_GRP_NM LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

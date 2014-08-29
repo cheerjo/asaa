@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptFrstEhqkScn">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptFrstEhqkScnSerarchVO" type="estam.app.scn.rpt.service.RptFrstEhqkScnDefaultVO"/>
+	
+	<resultMap id="rptFrstEhqkScn" class="estam.app.scn.rpt.service.RptFrstEhqkScnVO">
+		<result property="ehqkScnId" column="EHQK_SCN_ID" columnIndex="1"/>
+		<result property="iptDt" column="IPT_DT" columnIndex="2"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="3"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="4"/>
+		<result property="scnQst11yn" column="SCN_QST1_1YN" columnIndex="5"/>
+		<result property="scnQst12yn" column="SCN_QST1_2YN" columnIndex="6"/>
+		<result property="scnQst13yn" column="SCN_QST1_3YN" columnIndex="7"/>
+		<result property="scnQst21yn" column="SCN_QST2_1YN" columnIndex="8"/>
+		<result property="scnQst22yn" column="SCN_QST2_2YN" columnIndex="9"/>
+		<result property="scnQst31yn" column="SCN_QST3_1YN" columnIndex="10"/>
+		<result property="scnQst32yn" column="SCN_QST3_2YN" columnIndex="11"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="12"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="13"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="14"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="15"/>
+	</resultMap>
+	
+	<insert id="rptFrstEhqkScnDAO.insertRptFrstEhqkScn_S">
+		<![CDATA[
+			INSERT INTO RPT_FRST_EHQK_SCN 
+				( EHQK_SCN_ID
+				  , IPT_DT
+				  , CON_DA_GBCD
+				  , FCTY_CD
+				  , SCN_QST1_1YN
+				  , SCN_QST1_2YN
+				  , SCN_QST1_3YN
+				  , SCN_QST2_1YN
+				  , SCN_QST2_2YN
+				  , SCN_QST3_1YN
+				  , SCN_QST3_2YN
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #ehqkScnId#
+				  , #iptDt#
+				  , #conDaGbcd#
+				  , #fctyCd#
+				  , #scnQst11yn#
+				  , #scnQst12yn#
+				  , #scnQst13yn#
+				  , #scnQst21yn#
+				  , #scnQst22yn#
+				  , #scnQst31yn#
+				  , #scnQst32yn#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptFrstEhqkScnDAO.updateRptFrstEhqkScn_S">
+		<![CDATA[
+			UPDATE RPT_FRST_EHQK_SCN
+			SET EHQK_SCN_ID=#ehqkScnId#
+				, IPT_DT=#iptDt#
+				, CON_DA_GBCD=#conDaGbcd#
+				, FCTY_CD=#fctyCd#
+				, SCN_QST1_1YN=#scnQst11yn#
+				, SCN_QST1_2YN=#scnQst12yn#
+				, SCN_QST1_3YN=#scnQst13yn#
+				, SCN_QST2_1YN=#scnQst21yn#
+				, SCN_QST2_2YN=#scnQst22yn#
+				, SCN_QST3_1YN=#scnQst31yn#
+				, SCN_QST3_2YN=#scnQst32yn#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE EHQK_SCN_ID=#ehqkScnId#
+								AND IPT_DT=#iptDt#
+				]]>
+	</update>
+	
+	<delete id="rptFrstEhqkScnDAO.deleteRptFrstEhqkScn_S">
+		<![CDATA[
+			DELETE FROM RPT_FRST_EHQK_SCN 
+						WHERE EHQK_SCN_ID=#ehqkScnId#
+								AND IPT_DT=#iptDt#
+				]]>
+	</delete>
+	
+	<select id="rptFrstEhqkScnDAO.selectRptFrstEhqkScn_S" resultMap="rptFrstEhqkScn">
+		<![CDATA[
+			SELECT
+				EHQK_SCN_ID
+				, IPT_DT
+				, CON_DA_GBCD
+				, FCTY_CD
+				, SCN_QST1_1YN
+				, SCN_QST1_2YN
+				, SCN_QST1_3YN
+				, SCN_QST2_1YN
+				, SCN_QST2_2YN
+				, SCN_QST3_1YN
+				, SCN_QST3_2YN
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_FRST_EHQK_SCN
+						WHERE EHQK_SCN_ID=#ehqkScnId#
+								AND IPT_DT=#iptDt#
+				]]>
+	</select>
+	
+	<select id="rptFrstEhqkScnDAO.selectRptFrstEhqkScnList_D" parameterClass="rptFrstEhqkScnSerarchVO" resultClass="egovMap"> 
+				SELECT
+								EHQK_SCN_ID
+								, IPT_DT
+								, CON_DA_GBCD
+								, FCTY_CD
+								, SCN_QST1_1YN
+								, SCN_QST1_2YN
+								, SCN_QST1_3YN
+								, SCN_QST2_1YN
+								, SCN_QST2_2YN
+								, SCN_QST3_1YN
+								, SCN_QST3_2YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_FRST_EHQK_SCN  
+						WHERE  IPT_DT= (SELECT MAX(IPT_DT) 
+								         FROM CON_OBS_META
+								        WHERE 1=1 
+									      AND CON_DA_GBCD=#conDaGbcd#
+									       AND GVMT_CD=#gvmtCd#
+									      AND FCTY_CD = #fctyCd#)
+				      AND CON_DA_GBCD=#conDaGbcd#
+				      AND GVMT_CD=#gvmtCd#
+					  AND FCTY_CD=#fctyCd#
+							ORDER BY 
+						EHQK_SCN_ID DESC
+							, IPT_DT DESC 
+	</select>	
+	<select id="rptFrstEhqkScnDAO.selectRptFrstEhqkScnListTotCnt_S" parameterClass="rptFrstEhqkScnSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_FRST_EHQK_SCN
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				EHQK_SCN_ID = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				IPT_DT LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

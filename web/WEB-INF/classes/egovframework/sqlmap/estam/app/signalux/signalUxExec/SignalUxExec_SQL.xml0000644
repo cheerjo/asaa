@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SignalUxExec">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="signalUxExecSerarchVO" type="estam.app.signalux.service.SignalUxExecDefaultVO"/>
+	
+	<resultMap id="signalUxExec" class="estam.app.signalux.service.SignalUxExecVO">
+		<result property="cd" column="CD" columnIndex="1"/>
+		<result property="cdNm" column="CD_NM" columnIndex="2"/>
+		<result property="cdDesc" column="CD_DESC" columnIndex="3"/>
+		<result property="useYn" column="USE_YN" columnIndex="4"/>
+		<result property="udtUser" column="UDT_USER" columnIndex="5"/>
+		<result property="udtDt" column="UDT_DT" columnIndex="6"/>
+		<result property="grCd" column="GR_CD" columnIndex="7"/>
+		<result property="dispOrder" column="DISP_ORDER" columnIndex="8"/>
+	</resultMap>
+	
+	<insert id="signalUxExecDAO.insertSignalUxExec_S">
+		<![CDATA[
+			INSERT INTO TB_CODE 
+				( CD
+				  , CD_NM
+				  , CD_DESC
+				  , USE_YN
+				  , UDT_USER
+				  , UDT_DT
+				  , GR_CD
+				  , DISP_ORDER )
+			VALUES ( #cd#
+				  , #cdNm#
+				  , #cdDesc#
+				  , #useYn#
+				  , #udtUser#
+				  , #udtDt#
+				  , #grCd#
+				  , #dispOrder# )
+		]]>
+	</insert>
+	
+	<update id="signalUxExecDAO.updateSignalUxExec_S">
+		<![CDATA[
+			UPDATE TB_CODE
+			SET CD=#cd#
+				, CD_NM=#cdNm#
+				, CD_DESC=#cdDesc#
+				, USE_YN=#useYn#
+				, UDT_USER=#udtUser#
+				, UDT_DT=#udtDt#
+				, GR_CD=#grCd#
+				, DISP_ORDER=#dispOrder#
+						WHERE CD=#cd#
+								AND GR_CD=#grCd#
+				]]>
+	</update>
+	
+	<delete id="signalUxExecDAO.deleteSignalUxExec_S">
+		<![CDATA[
+			DELETE FROM TB_CODE 
+						WHERE CD=#cd#
+								AND GR_CD=#grCd#
+				]]>
+	</delete>
+	
+	<select id="signalUxExecDAO.selectSignalUxExec_S" resultMap="signalUxExec">
+		<![CDATA[
+			SELECT
+				CD
+				, CD_NM
+				, CD_DESC
+				, USE_YN
+				, UDT_USER
+				, UDT_DT
+				, GR_CD
+				, DISP_ORDER
+			FROM TB_CODE
+						WHERE CD=#cd#
+								AND GR_CD=#grCd#
+				]]>
+	</select>
+	
+	<select id="signalUxExecDAO.selectSignalUxExecList_D" parameterClass="signalUxExecSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								CD
+								, CD_NM
+								, CD_DESC
+								, USE_YN
+								, UDT_USER
+								, UDT_DT
+								, GR_CD
+								, DISP_ORDER
+						FROM TB_CODE
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					CD_NM LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						CD DESC
+							, GR_CD DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="signalUxExecDAO.selectSignalUxExecListTotCnt_S" parameterClass="signalUxExecSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM TB_CODE
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				CD_NM LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

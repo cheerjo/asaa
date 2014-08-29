@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html
+		xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>MenuGroupMgr</xh:title>
+		<xh:link href="../../../style/sample/style.css" media="all" rel="stylesheet" type="text/css"/>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="cyberlhs" name="author"/>
+		<xh:meta content="13. 6. 28 오전 11:34" name="date"/>
+		<xh:meta content="2.0.0.201304021017" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xr:submission id="smsSymPrivGrpList" action="/sym/symPrivMenu/SymPrivGrpListEx.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymPrivGrpVO"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/resSymPrivGrpList"/>
+			</xr:submission>
+			<xr:submission id="smsSymPrivMenuList" action="/sym/symPrivMenu/SymPrivMenuListExria.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymPrivGrpVO"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/resSymPrivNonMenuList"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/resSymPrivMenuList"/>
+			</xr:submission>
+			<xr:submission id="smsSymPrivMenuMove" action="/sym/symPrivMenu/savePrivMenuListExria.do"
+			    async="false" method="post" req-charset="utf-8" req-protocol="urlencoded" req-type=""
+			    res-charset="utf-8" res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymMenuList"/>
+			  <xr:request-ref instanceid="reqMethod" ref="/root/method"/>
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymPrivGrpVO"/>
+			</xr:submission>
+			<xr:dataset id="dstSymPrivGrpList" instanceSync="true" sourceType="instance" useoriginval="true">
+			  <xr:connectioninfo>responseData</xr:connectioninfo>
+			  <xr:query><![CDATA[/root/resSymPrivGrpList/row]]></xr:query>
+			  <xr:autocrud/>
+			  <xr:columns>
+			    <xr:column sourceName="privGrpNo"/>
+			    <xr:column sourceName="privGrpNm"/>
+			    <xr:column sourceName="privDesc"/>
+			    <xr:column sourceName="inptUsrId"/>
+			    <xr:column sourceName="inptDt"/>
+			  </xr:columns>
+			</xr:dataset>
+			<xf:jsoninstance id="instance">
+  			<![CDATA[{root : {EXRIAERRMSG : ""}}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="requestData">
+  			<![CDATA[{
+					root : {
+						reqSymPrivGrpVO : {
+							privDesc : "",
+							privGrpNm : "",
+							privGrpNo : "",
+							inptUsrId : "",
+							inptDt : ""
+						},
+						reqSymMenuList : {
+							menuCd : "",
+							upMenuCd : "",
+							useYn : "",
+							inptUsrId : "",
+							dplyNo : "",
+							linkUrl : "",
+							inptDt : "",
+							siteGbcd : "",
+							reMark : "",
+							menuDesc : "",
+							menuNm : "",
+							updtUsrId : "",
+							updtDt : ""
+						},
+						searchVO : {
+							searchCondition : "",
+							pageIndex : "",
+							lastIndex : "",
+							firstIndex : "",
+							searchUseYn : "",
+							pageSize : "",
+							searchKeyword : "",
+							recordCountPerPage : "",
+							pageUnit : ""
+						},
+						reqSymPrivMenuVO : {
+							privGrpNo : "",
+							menuCd : "",
+							inptUsrId : "",
+							updtDt : "",
+							updtUsrId : "",
+							inptDt : ""
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="responseData">
+  			<![CDATA[{
+					root : {
+						resSymPrivGrpList : {
+							row : [
+								{
+									privGrpNo : "",
+									privGrpNm : "",
+									privDesc : "",
+									inptUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						resSymMenuList : {
+							row : [
+								{
+									menuCd : "",
+									upMenuCd : "",
+									useYn : "",
+									inptUsrId : "",
+									dplyNo : "",
+									linkUrl : "",
+									inptDt : "",
+									siteGbcd : "",
+									reMark : "",
+									menuDesc : "",
+									menuNm : "",
+									updtUsrId : "",
+									updtDt : ""
+								}
+							]
+						},
+						resSymPrivMenuList : {
+							row : []
+						},
+						resSymPrivNonMenuList : {
+							row : []
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="resMessage">
+  			<![CDATA[{
+					root : {
+						message : ""
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="reqMethod">
+  			<![CDATA[{
+					root : {
+						method : ""
+					}
+				}]]>
+</xf:jsoninstance>
+		</xf:model>
+		<xh:script page="MenuGroupMgr" src="MenuGroupMgr.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:735;width:1620;left:0;top:0;">
+		<ev:listener event="onload" handler="page.onLoad" hasReturn="false"/>
+		<xr:label id="lblShtTitle02" style="height:31;width:551;left:1040;top:10;" z-index="0"
+			  tabindex="0" class="lbl_shuttle" outerClass="lbl_shttitle_outer">
+			<xr:text>미선택메뉴</xr:text>
+		</xr:label>
+		<xr:label id="lblShtTitle01" style="height:31;width:501;left:490;top:10;" z-index="1"
+			  tabindex="0" class="lbl_shuttle" outerClass="lbl_shttitle_outer">
+			<xr:text>선택메뉴</xr:text>
+		</xr:label>
+		<xr:button id="btnShtRight" style="height:32;width:32;left:999;top:177;" z-index="2"
+			  tabindex="0" class="btn_shtright" outerClass="btn_sht_outer">
+			<xr:text></xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnShtRight" hasReturn="false"/>
+		</xr:button>
+		<xr:button id="btnShtLeft" style="height:32;width:32;left:999;background-repeat:no-repeat;top:227;"
+			  z-index="3" tabindex="0" class="btn_shtleft" outerClass="btn_sht_outer">
+			<xr:text></xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnShtLeft" hasReturn="false"/>
+		</xr:button>
+		<xr:label id="lblShtTitle01_copy_1" style="height:31;width:423;left:28;top:10;"
+			  z-index="4" tabindex="0" class="lbl_shuttle" outerClass="lbl_shttitle_outer">
+			<xr:text>권한그룹</xr:text>
+		</xr:label>
+		<xr:gridex id="grxLeftPrivGrp" style="height:429;width:423;left:28;top:42;" z-index="5"
+			  tabindex="0" nodeset="" datasetid="dstSymPrivGrpList" hideInitRow="true">
+			<xr:cfg editing="1" idColumn="ghcSeq" sorted="false" sorting="false"/>
+			<xr:gridheader>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:headcol id="ghcSeq" style="text-align:center;width:69;" class="ghc">
+			    		<xr:text>seq</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghcPrivGrpNo" style="text-align:center;width:145;" colspan="1"
+			    		  rowspan="1" class="ghc">
+			    		<xr:text>그룹번호</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghcPrivGrpNm" style="text-align:center;width:206;" colspan="1"
+			    		  rowspan="1" class="ghc">
+			    		<xr:text>그룹명</xr:text>
+			    	</xr:headcol>
+			    </xr:colsrow>
+			  </xr:cols>
+			</xr:gridheader>
+			<xr:gridbody>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:bodycol id="gbcSeq" style="text-align:center;width:69;" datasetcol=""
+			    		  canEdit="2" colid="ghcSeq" inputMode="number" type="Text"/>
+			    	<xr:bodycol id="gbcPrivGrpNo" style="width:145;" datasetcol="privGrpNo" datasetid="dstSymPrivGrpList"
+			    		  canEdit="2" colid="ghcPrivGrpNo" type="Text"/>
+			    	<xr:bodycol id="gbcPrivGrpNm" style="width:206;" datasetcol="privGrpNm" datasetid="dstSymPrivGrpList"
+			    		  canEdit="2" colid="ghcPrivGrpNm" type="Text"/>
+			    </xr:colsrow>
+			  </xr:cols>
+			  <xr:rows/>
+			</xr:gridbody>
+			<ev:listener event="onGridexAfterValueChanged" handler="page.onGridexAfterValueChanged_grxLeftPrivGrp"
+			    hasReturn="false"/>
+			<ev:listener event="onGridexDblClick" handler="page.onGridexDblClick_grxLeftPrivGrp"
+			    hasReturn="false"/>
+			<xr:gridtoolbar/>
+			<xr:panel/>
+		</xr:gridex>
+		<xr:treeview id="trvSelect" style="height:426;width:501;left:490;top:42;" z-index="6"
+			  expandAll="true">
+			<xr:itemnodegroup>
+			  <xr:itemnodeset instanceid="responseData" nodeset="/root/resSymPrivMenuList/row"
+			    	label="menuNm" parent="upMenuCd" value="menuCd"/>
+			</xr:itemnodegroup>
+			<xr:iconfiles/>
+		</xr:treeview>
+		<xr:treeview id="trvNoSelect" style="height:426;width:551;left:1040;top:42;" z-index="7"
+			  tabindex="0" expandAll="true" selectionMode="single" showCheckBox="false">
+			<xr:itemnodegroup>
+			  <xr:itemnodeset instanceid="responseData" nodeset="/root/resSymPrivNonMenuList/row"
+			    	label="menuNm" parent="upMenuCd" value="menuCd"/>
+			</xr:itemnodegroup>
+			<xr:iconfiles/>
+		</xr:treeview>
+		<xr:button id="btn2" style="height:25;width:61;left:1530;top:480;" z-index="8" tabindex="0"
+			  class="btn_cud" outerClass="btn_cud_outer">
+			<xr:text>조회</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btn2" hasReturn="false"/>
+		</xr:button>
+	</xh:body>
+</xh:html>

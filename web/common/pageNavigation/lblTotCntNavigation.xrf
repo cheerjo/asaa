@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html
+    xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+    xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+  <xh:head>
+    <xh:title>lblTotCntNavigation</xh:title>
+    <xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+    <xh:meta content="no-cache" http-equiv="cache-control"/>
+    <xh:meta content="no-cache" http-equiv="pragma"/>
+    <xh:meta content="eXriaSuite v1.0" name="generator"/>
+    <xh:meta content="eXria.1.0" name="version"/>
+    <xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+    <xh:meta content="Administrator" name="author"/>
+    <xh:meta content="11. 4. 12 오전 10:15" name="date"/>
+    <xh:meta content="2.0.0.201103291838" name="xrf-version"/>
+    <xf:model/>
+    <xh:script page="lblTotCntNavigation" src="lblTotCntNavigation.js" type="text/javascript"/>
+  </xh:head>
+  <xh:body style="height:33;width:154;left:0;top:0;">
+    <xr:group id="grpLblTotCntNavi" style="height:31;width:131;left:3;border-width:0;top:2;"
+        z-index="0">
+      <xr:label id="lblLblTotCntNavi" style="height:25;width:110;left:10;top:4;" z-index="0">
+        <xr:text></xr:text>
+      </xr:label>
+    </xr:group>
+  </xh:body>
+</xh:html>

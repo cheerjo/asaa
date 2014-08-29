@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SymUser">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="symUserSerarchVO" type="estam.app.sym.usr.service.SymUserDefaultVO"/>
+	<!-- <typeAlias  alias="symPrivGrpVO" type="estam.app.sym.grp.service.SymPrivGrpVO"/> -->
+	
+	<resultMap id="symUser" class="estam.app.sym.usr.service.SymUserVO"> 
+		<result property="userId" column="USER_ID" columnIndex="1"/>
+		<result property="privGrpNo" column="PRIV_GRP_NO" columnIndex="2"/>
+		<result property="orgYn" column="ORG_YN" columnIndex="3"/>
+		<result property="orgNm" column="ORG_NM" columnIndex="4"/>
+		<result property="userNm" column="USER_NM" columnIndex="5"/>
+		<result property="usrPswd" column="USR_PSWD" columnIndex="6"/>
+		<result property="usrEmail" column="USR_EMAIL" columnIndex="7"/>
+		<result property="telNo" column="TEL_NO" columnIndex="8"/>
+		<result property="mblNo" column="MBL_NO" columnIndex="9"/>
+		<result property="useObjt" column="USE_OBJT" columnIndex="10"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="11"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="12"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="13"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="14"/>
+		<result property="delDt" column="DEL_DT" columnIndex="15"/>
+	</resultMap>
+	
+	<resultMap id="listSymPrivGrp" class="estam.app.sym.usr.service.SymPrivGrpCboVO"> 
+		<result property="privGrpNo" column="PRIV_GRP_NO" columnIndex="1"/>
+		<result property="privGrpNm" column="PRIV_GRP_NM" columnIndex="2"/>
+	</resultMap>
+	
+	
+	<insert id="symUserDAO.insertSymUser_S">
+		<![CDATA[
+			INSERT INTO SYM_USER 
+				( PRIV_GRP_NO
+				  , USER_ID
+				  , ORG_YN
+				  , ORG_NM
+				  , USER_NM
+				  , USR_PSWD
+				  , USR_EMAIL
+				  , TEL_NO
+				  , MBL_NO
+				  , USE_OBJT
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT
+				  , DEL_DT )
+			VALUES ( #privGrpNo#
+				  , #userId#
+				  , #orgYn#
+				  , #orgNm#
+				  , #userNm#
+				  , #usrPswd#
+				  , #usrEmail#
+				  , #telNo#
+				  , #mblNo#
+				  , #useObjt#
+				  , #inptUsrId#
+				  , SYSDATE
+				  , #updtUsrId#
+				  , #updtDt#
+				  , #delDt# )
+		]]>
+	</insert>
+	
+	<update id="symUserDAO.updateSymUser_S">
+		<![CDATA[
+			UPDATE SYM_USER
+			SET PRIV_GRP_NO=#privGrpNo#
+				, USER_ID=#userId#
+				, ORG_YN=#orgYn#
+				, ORG_NM=#orgNm#
+				, USER_NM=#userNm#
+				, USR_PSWD=#usrPswd#
+				, USR_EMAIL=#usrEmail#
+				, TEL_NO=#telNo#
+				, MBL_NO=#mblNo#
+				, USE_OBJT=#useObjt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT= SYSDATE
+						WHERE USER_ID=#userId#
+				]]>
+	</update>
+	
+	<delete id="symUserDAO.deleteSymUser_S">
+		<![CDATA[
+			DELETE FROM SYM_USER 
+						WHERE USER_ID=#userId#
+				]]>
+	</delete>
+	
+	<select id="symUserDAO.selectSymUser_S" resultMap="symUser">
+		<![CDATA[
+			SELECT
+				USER_ID
+				, PRIV_GRP_NO
+				, ORG_YN
+				, ORG_NM
+				, USER_NM
+				, USR_PSWD
+				, USR_EMAIL
+				, TEL_NO
+				, MBL_NO
+				, USE_OBJT
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+				, DEL_DT
+			FROM SYM_USER
+			WHERE USER_ID=#userId#
+				]]>
+	</select>
+	<!-- resultMap="symUser" -->
+	<select id="symUserDAO.selectSymUserList_D" parameterClass="symUserSerarchVO"  resultClass="egovMap" >
+<!-- SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM ( -->
+				SELECT
+								  USER_ID
+								, (SELECT PRIV_GRP_NM FROM SYM_PRIV_GRP B WHERE A.PRIV_GRP_NO = B.PRIV_GRP_NO) AS PRIV_GRP_NO
+								, DECODE(ORG_YN,'G','연구소','') AS ORG_YN
+								, ORG_NM
+								, USER_NM
+								, USR_PSWD
+								, USR_EMAIL
+								, TEL_NO
+								, MBL_NO
+								, USE_OBJT
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+								, DEL_DT
+						FROM SYM_USER A
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="USERMAIL">
+					USR_EMAIL LIKE '%' || #searchKeyword# || '%'
+				</isEqual> 
+				<isEqual prepend="AND" property="searchCondition" compareValue="USERNM">
+					USER_NM LIKE '%' || #searchKeyword# || '%'
+				</isEqual> 
+					ORDER BY 
+						USER_ID DESC
+		
+<!-- 		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]> -->
+	</select>	
+	<select id="symUserDAO.selectSymUserListTotCnt_S" parameterClass="symUserSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM SYM_USER
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				PRIV_GRP_NO = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				USER_NM LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+	<!-- 권한그룹코드 콤보를 위한 쿼리  -->
+    <select id="symUserDAO.listSymPrivGrp_S"  resultMap="listSymPrivGrp">
+      SELECT  PRIV_GRP_NO
+	    	, PRIV_GRP_NM 
+		FROM  SYM_PRIV_GRP
+      ORDER   BY PRIV_GRP_NO DESC
+	</select>
+
+</sqlMap>

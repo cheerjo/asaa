@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>SignalUxCfg</xh:title>
+		<xh:link href="../../style/sample/style.css" media="all" rel="stylesheet" type="text/css"/>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="cyberlhs" name="author"/>
+		<xh:meta content="13. 8. 4 오전 1:36" name="date"/>
+		<xh:meta content="2.0.0.201304021017" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xf:jsoninstance id="instance">
+  			<![CDATA[{root : {EXRIAERRMSG : ""}}]]>
+</xf:jsoninstance>
+		</xf:model>
+		<xh:script src="../../js/stdCmn.js"/>
+		<xh:script src="../../js/stdUtil.js"/>
+		<xh:script page="SignalUxCfg" src="SignalUxCfg.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:1200;width:1024;left:0;top:0;">
+		<xr:label id="lblSubTitle01" style="height:36;text-align:left;width:1010;left:11;border-width:0;top:550;"
+			  z-index="0" tabindex="0" class="lbl_subtitle" outerClass="lbl_subtitle_outer">
+			<xr:text>기본설정</xr:text>
+		</xr:label>
+		<xr:group id="grp1" style="border-bottom-width:1;height:450;overflow:visible;width:1010;border-right-width:1;border-color:#A5BACC;left:11;border-width:0;border-left-width:1;top:596;"
+			  z-index="1" tabindex="0">
+			<xr:label id="lblLine1" style="height:1;width:1010;left:0;top:0;" z-index="0" tabindex="0"
+			    outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl65" style="height:28;width:110;border-style:solid;left:0;top:1;"
+			    z-index="1" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>시드파일존재경로</xr:text>
+			</xr:label>
+			<xr:input id="ipbUserId" style="height:20;width:881;left:120;top:5;" instanceid="responseData"
+			    ref="/root/resSymUserVO/userId" z-index="2" class="ipt_form" outerClass="ipt_form_outer"
+			    readonly="true" type="text"/>
+			<xr:label id="lblLine2" style="height:1;width:1010;left:0;top:28;" z-index="3"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl59" style="height:28;width:110;border-style:solid;left:0;top:29;"
+			    z-index="4" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>가속도저장경로</xr:text>
+			</xr:label>
+			<xr:label id="lblLine3" style="height:1;width:1010;left:0;top:56;" z-index="5"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl72" style="height:28;width:110;border-style:solid;left:0;top:57;"
+			    z-index="6" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>자유장X방향</xr:text>
+			</xr:label>
+			<xr:label id="lbl74" style="height:28;width:110;border-style:solid;left:500;top:57;"
+			    z-index="7" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>자유장Y방향</xr:text>
+			</xr:label>
+			<xr:label id="lblLine4" style="height:1;width:1010;left:0;top:84;" z-index="8"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl78" style="height:28;width:110;border-style:solid;left:0;top:85;"
+			    z-index="9" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>자유장Z방향</xr:text>
+			</xr:label>
+			<xr:editmask id="edmMblNo" style="height:20;text-align:left;width:361;left:120;top:61;"
+			    z-index="10" instanceid="responseData" ref="/root/resSymUserVO/mblNo" calendarEnable="false"
+			    calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:editmask id="edmTelNo" style="height:20;text-align:left;width:381;left:620;top:61;"
+			    z-index="11" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/telNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:input id="ipbUseObjt" style="height:20;width:361;left:120;top:89;" instanceid="responseData"
+			    ref="/root/resSymUserVO/useObjt" z-index="12" type="text"/>
+			<xr:input id="ipbUserId_copy_3" style="height:20;width:881;left:120;top:33;" instanceid="responseData"
+			    ref="/root/resSymUserVO/userId" z-index="13" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="true" type="text"/>
+			<xr:label id="lblLine3_copy_3" style="height:1;width:1010;left:0;top:112;" z-index="14"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl110" style="height:28;width:110;border-style:solid;left:0;top:113;"
+			    z-index="15" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>최하층X방향</xr:text>
+			</xr:label>
+			<xr:label id="lbl111" style="height:28;width:110;border-style:solid;left:500;top:113;"
+			    z-index="16" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>최하층Y방향</xr:text>
+			</xr:label>
+			<xr:label id="lblLine4_copy_3" style="height:1;width:1010;left:0;top:140;" z-index="17"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl112" style="height:28;width:110;border-style:solid;left:0;top:141;"
+			    z-index="18" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>최하층Z방향</xr:text>
+			</xr:label>
+			<xr:editmask id="edmMblNo_copy_3" style="height:20;text-align:left;width:361;left:120;top:117;"
+			    z-index="19" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/mblNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:editmask id="edmTelNo_copy_3" style="height:20;text-align:left;width:381;left:620;top:117;"
+			    z-index="20" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/telNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:input id="ipbUseObjt_copy_3" style="height:20;width:361;left:120;top:145;"
+			    instanceid="responseData" ref="/root/resSymUserVO/useObjt" z-index="21" tabindex="0"
+			    type="text"/>
+			<xr:label id="lblLine3_copy_4" style="height:1;width:1010;left:0;top:168;" z-index="22"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl113" style="height:28;width:110;border-style:solid;left:0;top:169;"
+			    z-index="23" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>중간층X방향</xr:text>
+			</xr:label>
+			<xr:label id="lbl114" style="height:28;width:110;border-style:solid;left:500;top:169;"
+			    z-index="24" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>중간층Y방향</xr:text>
+			</xr:label>
+			<xr:label id="lblLine4_copy_4" style="height:1;width:1010;left:0;top:196;" z-index="25"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl115" style="height:28;width:110;border-style:solid;left:0;top:197;"
+			    z-index="26" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>중간층Z방향</xr:text>
+			</xr:label>
+			<xr:editmask id="edmMblNo_copy_4" style="height:20;text-align:left;width:361;left:120;top:173;"
+			    z-index="27" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/mblNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:editmask id="edmTelNo_copy_4" style="height:20;text-align:left;width:381;left:620;top:173;"
+			    z-index="28" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/telNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:input id="ipbUseObjt_copy_4" style="height:20;width:361;left:120;top:201;"
+			    instanceid="responseData" ref="/root/resSymUserVO/useObjt" z-index="29" tabindex="0"
+			    type="text"/>
+			<xr:label id="lblLine3_copy_5" style="height:1;width:1010;left:0;top:222;" z-index="30"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl116" style="height:28;width:110;border-style:solid;left:0;top:223;"
+			    z-index="31" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>최상층X방향</xr:text>
+			</xr:label>
+			<xr:label id="lbl117" style="height:28;width:110;border-style:solid;left:500;top:223;"
+			    z-index="32" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>최상층Y방향</xr:text>
+			</xr:label>
+			<xr:label id="lblLine4_copy_5" style="height:1;width:1010;left:0;top:250;" z-index="33"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl118" style="height:28;width:110;border-style:solid;left:0;top:251;"
+			    z-index="34" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>최상층Z방향</xr:text>
+			</xr:label>
+			<xr:editmask id="edmMblNo_copy_5" style="height:20;text-align:left;width:361;left:120;top:227;"
+			    z-index="35" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/mblNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:editmask id="edmTelNo_copy_5" style="height:20;text-align:left;width:381;left:620;top:227;"
+			    z-index="36" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/telNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:input id="ipbUseObjt_copy_5" style="height:20;width:361;left:120;top:255;"
+			    instanceid="responseData" ref="/root/resSymUserVO/useObjt" z-index="37" tabindex="0"
+			    type="text"/>
+			<xr:label id="lblLine1_copy_1" style="height:1;width:1010;left:0;top:278;" z-index="38"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl92" style="height:28;width:110;border-style:solid;left:0;top:279;"
+			    z-index="39" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>개별분석필터링</xr:text>
+			</xr:label>
+			<xr:input id="ipbUserId_copy_1" style="height:20;width:361;left:120;top:283;" instanceid="responseData"
+			    ref="/root/resSymUserVO/userId" z-index="40" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="true" type="text"/>
+			<xr:label id="lblLine2_copy_1" style="height:1;width:1010;left:0;top:306;" z-index="41"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl94" style="height:28;width:110;border-style:solid;left:0;top:307;"
+			    z-index="42" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>해석층변위증폭</xr:text>
+			</xr:label>
+			<xr:label id="lbl95" style="height:28;width:110;border-style:solid;left:280;top:307;"
+			    z-index="43" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>해석감시영역</xr:text>
+			</xr:label>
+			<xr:label id="lbl96" style="height:28;width:100;border-style:solid;left:580;top:307;"
+			    z-index="44" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>진동수감시길이</xr:text>
+			</xr:label>
+			<xr:label id="lblLine3_copy_1" style="height:1;width:1010;left:0;top:334;" z-index="45"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl97" style="height:28;width:110;border-style:solid;left:0;top:335;"
+			    z-index="46" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>해석한계중앙값</xr:text>
+			</xr:label>
+			<xr:label id="lbl98" style="height:28;width:110;border-style:solid;left:280;top:335;"
+			    z-index="47" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>해석표준편차</xr:text>
+			</xr:label>
+			<xr:label id="lbl99" style="height:28;width:100;border-style:solid;left:580;top:335;"
+			    z-index="48" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>해석고유진동수</xr:text>
+			</xr:label>
+			<xr:label id="lblLine4_copy_1" style="height:1;width:1010;left:0;top:362;" z-index="49"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:combobox id="cbbOrgYn_copy_1" style="btnWidth:20;height:20;width:171;left:400;top:311;"
+			    z-index="50" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/orgYn"
+			    readonly="true">
+			  <xr:listarea style="focusBackgroundColor:#E5E5E5;" class="cbb_srch_list"/>
+			  <xr:itemgroup>
+			    <xr:item label="전체" selected="true" value="%"/>
+			    <xr:itemset instanceid="insData" nodeset="/root/listOrgnClsfCd/list" label="cd_nm"
+			        value="com_cd"/>
+			  </xr:itemgroup>
+			</xr:combobox>
+			<xr:editmask id="edmMblNo_copy_1" style="height:20;text-align:center;width:150;left:120;top:339;"
+			    z-index="51" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/mblNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:editmask id="edmTelNo_copy_1" style="height:20;text-align:center;width:171;left:400;top:339;"
+			    z-index="52" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/telNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:input id="scbUsrPwd_copy_1" style="height:20;width:141;left:690;top:339;" instanceid="responseData"
+			    ref="/root/resSymUserVO/usrPswd" z-index="53" tabindex="0" type="password"/>
+			<xr:input id="ipbUsrEmail_copy_1" style="height:20;width:311;left:690;top:311;"
+			    instanceid="responseData" ref="/root/resSymUserVO/usrEmail" z-index="54" tabindex="0"
+			    class="ipt_form" outerClass="ipt_form_outer" readonly="true" type="text"/>
+			<xr:combobox id="cbbPrivGrpNo_copy_1" style="btnWidth:20;height:20;width:150;left:120;top:311;"
+			    z-index="55" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/privGrpNo"
+			    readonly="true">
+			  <xr:listarea style="focusBackgroundColor:#E5E5E5;" class="cbb_srch_list"/>
+			  <xr:itemgroup>
+			    <xr:itemset instanceid="responseData" nodeset="/root/privGrpList/row" label="privGrpNm"
+			        value="privGrpNo"/>
+			  </xr:itemgroup>
+			</xr:combobox>
+			<xr:label id="lbl106" style="height:28;width:110;border-style:solid;left:0;top:364;"
+			    z-index="56" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>안전 모멘트골조</xr:text>
+			</xr:label>
+			<xr:label id="lbl107" style="height:28;width:110;border-style:solid;left:280;top:364;"
+			    z-index="57" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>안전 편심새골조</xr:text>
+			</xr:label>
+			<xr:label id="lbl108" style="height:28;width:100;border-style:solid;left:580;top:364;"
+			    z-index="58" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>안전 골조</xr:text>
+			</xr:label>
+			<xr:editmask id="edmMblNo_copy_2" style="height:20;text-align:center;width:150;left:120;top:368;"
+			    z-index="59" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/mblNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:editmask id="edmTelNo_copy_2" style="height:20;text-align:center;width:171;left:400;top:368;"
+			    z-index="60" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/telNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:input id="scbUsrPwd_copy_2" style="height:20;width:141;left:690;top:368;" instanceid="responseData"
+			    ref="/root/resSymUserVO/usrPswd" z-index="61" tabindex="0" type="password"/>
+			<xr:label id="lblLine4_copy_2" style="height:1;width:1010;left:0;top:391;" z-index="62"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl119" style="height:28;width:110;border-style:solid;left:0;top:393;"
+			    z-index="63" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>안전 전단벽</xr:text>
+			</xr:label>
+			<xr:label id="lbl120" style="height:28;width:110;border-style:solid;left:280;top:393;"
+			    z-index="64" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>안전 변화율</xr:text>
+			</xr:label>
+			<xr:label id="lbl121" style="height:28;width:100;border-style:solid;left:580;top:393;"
+			    z-index="65" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>안전 고유진동비</xr:text>
+			</xr:label>
+			<xr:editmask id="edmMblNo_copy_6" style="height:20;text-align:center;width:150;left:120;top:397;"
+			    z-index="66" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/mblNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:editmask id="edmTelNo_copy_6" style="height:20;text-align:center;width:171;left:400;top:397;"
+			    z-index="67" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/telNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+			<xr:input id="scbUsrPwd_copy_3" style="height:20;width:141;left:690;top:397;" instanceid="responseData"
+			    ref="/root/resSymUserVO/usrPswd" z-index="68" tabindex="0" type="password"/>
+			<xr:label id="lbl122" style="height:1;width:1010;left:0;top:420;" z-index="69"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl123" style="height:28;width:110;border-style:solid;left:0;top:422;"
+			    z-index="70" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>안전 초과율</xr:text>
+			</xr:label>
+			<xr:editmask id="edm1" style="height:20;text-align:center;width:150;left:120;top:426;"
+			    z-index="71" tabindex="0" instanceid="responseData" ref="/root/resSymUserVO/mblNo"
+			    calendarEnable="false" calendarImageUrl="" format="###-####-####" formatType="string"/>
+		</xr:group>
+		<xr:label id="lblSubTitle03" style="height:36;text-align:left;font-size:12;width:1010;left:11;border-width:0;top:13;"
+			  z-index="2" tabindex="0" class="lbl_subtitle" outerClass="lbl_subtitle_outer">
+			<xr:text>SignalUx 설정</xr:text>
+		</xr:label>
+		<xr:group id="grp3" style="height:492;width:1010;left:11;top:49;" z-index="3" tabindex="0">
+			<xr:label id="lblSerchArea1" style="height:35;width:991;left:10;top:10;" z-index="0"
+			    tabindex="0" outerClass="lbl_srcharea_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblOrgnClsfCd" style="height:20;width:70;left:20;border-width:0;top:17;"
+			    z-index="1" tabindex="0" class="lbl_srch" outerClass="lbl_srch_outer">
+			  <xr:text>구   분</xr:text>
+			</xr:label>
+			<xr:combobox id="cbbOrgnClsfCd" style="btnWidth:20;height:20;width:121;left:100;top:17;"
+			    z-index="2" tabindex="0" instanceid="requestData" ref="/root/searchVO/searchGubun"
+			    class="cbb_srch" outerClass="cbb_srch_outer" readonly="true">
+			  <xr:listarea style="focusBackgroundColor:#E5E5E5;" class="cbb_srch_list"/>
+			  <xr:itemgroup/>
+			</xr:combobox>
+			<xr:input id="ipbSchUserNm" style="height:20;width:231;left:224;top:17;" instanceid="requestData"
+			    ref="/root/searchVO/searchKeyword" z-index="3" class="ipt_srch" type="text"/>
+			<xr:button id="btnSrch" style="height:24;width:77;left:474;top:15;" z-index="4"
+			    tabindex="0" class="btn_srch" outerClass="btn_srch_outer">
+			  <xr:text>조회</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_btnSrch" hasReturn="false"/>
+			</xr:button>
+			<xr:gridex id="grxSymUser" style="height:396;width:991;left:10;top:45;" z-index="5"
+			    nodeset="" textFileName="/eXria/config/gridex/Text.xml">
+			  <xr:cfg sorted="false" sorting="false"/>
+			  <xr:gridheader>
+			    <xr:cols>
+			      <xr:colsrow style="height:20;">
+			        <xr:headcol id="ghc1" style="text-align:center;width:50;" class="ghc">
+			        	<xr:text>No</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc2" style="text-align:center;width:182;" colspan="1"
+			        	  rowspan="1" class="ghc">
+			        	<xr:text>시설물명(코드)</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc3" style="text-align:center;width:82;" colspan="1" rowspan="1"
+			        	  class="ghc">
+			        	<xr:text>분석일련번호</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc4" style="text-align:center;width:143;" colspan="1"
+			        	  rowspan="1" class="ghc">
+			        	<xr:text>이벤트시각</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc5" style="text-align:center;width:288;" colspan="1"
+			        	  rowspan="1" class="ghc">
+			        	<xr:text>지진발생지역명</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc10" style="text-align:center;width:118;" colspan="1"
+			        	  rowspan="1" class="ghc">
+			        	<xr:text>지진번호</xr:text>
+			        </xr:headcol>
+			        <xr:headcol id="ghc11" style="text-align:center;width:105;" colspan="1"
+			        	  rowspan="1" class="ghc">
+			        	<xr:text>등록일자</xr:text>
+			        </xr:headcol>
+			      </xr:colsrow>
+			    </xr:cols>
+			  </xr:gridheader>
+			  <xr:gridbody>
+			    <xr:cols>
+			      <xr:colsrow style="height:20;">
+			        <xr:bodycol id="gbcNo" style="width:50;" colid="ghc1" type="Text"/>
+			        <xr:bodycol id="gbcUserId" style="width:182;" instanceid="requestData"
+			        	  ref="" datasetcol="userId" datasetid="dstSymUserList" colid="ghc2" type="Text"/>
+			        <xr:bodycol id="gbcPrivGrpNo" style="width:82;" instanceid="responseData"
+			        	  ref="privGrpNo" datasetcol="privGrpNo" datasetid="dstSymUserList" colid="ghc3"
+			        	  type="Text">
+			        	<xr:itemgroup>
+			        	  <xr:itemset instanceid="responseData" nodeset="/root/grxPrivGrpList/row"
+			        	      label="privGrpNm" value="privGrpNo"/>
+			        	</xr:itemgroup>
+			        </xr:bodycol>
+			        <xr:bodycol id="gbcOrgYn" style="width:143;" datasetcol="orgYn" datasetid="dstSymUserList"
+			        	  colid="ghc4" type="Text"/>
+			        <xr:bodycol id="gbcUserNm" style="width:288;" datasetcol="userNm" datasetid="dstSymUserList"
+			        	  colid="ghc5" type="Text"/>
+			        <xr:bodycol id="gbcInptDt" style="width:118;" datasetcol="inptDt" datasetid="dstSymUserList"
+			        	  colid="ghc10" type="Text"/>
+			        <xr:bodycol id="gbc1" style="width:105;" colid="ghc11" type="Text"/>
+			      </xr:colsrow>
+			    </xr:cols>
+			    <xr:rows/>
+			  </xr:gridbody>
+			  <ev:listener event="onGridexDblClick" handler="page.onGridexDblClick_grxSymUser"
+			      hasReturn="false"/>
+			  <xr:gridtoolbar/>
+			  <xr:panel/>
+			</xr:gridex>
+		</xr:group>
+		<xr:button id="btnInit" style="height:20;width:54;left:810;top:558;" z-index="4"
+			  tabindex="0" class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>초기화</xr:text>
+		</xr:button>
+		<xr:button id="btnSave" style="height:20;width:54;left:877;top:558;" z-index="5"
+			  tabindex="0" class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>저장</xr:text>
+		</xr:button>
+		<xr:button id="btnDelete" style="height:20;width:54;left:946;top:558;" z-index="6"
+			  tabindex="0" class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>삭제</xr:text>
+		</xr:button>
+	</xh:body>
+</xh:html>

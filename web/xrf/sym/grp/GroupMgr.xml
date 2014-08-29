@@ -1,0 +1,105 @@
+<xf:model xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ht="http://www.w3.org/TR/html5" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://www.exria.org/exria" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:wf="http://www.w3.org/TR/web-forms-2" defaultinstance="instance" xmlns:xl="http://www.w3.org/1999/xlink"><xr:submission id="smsSymPrivGrpList" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symPrivGrp/SymPrivGrpListEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/searchVO" instanceid="reqSymPrivGrpVO"></xr:request-ref>
+<xr:response-ref ref="/root/resSymPrivGrpList" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymPrivGrpSave" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symPrivGrp/saveSymPrivGrpEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymPrivGrpVO" instanceid="reqSymPrivGrpVO"></xr:request-ref>
+<xr:request-ref ref="/root/method" instanceid="reqMethod"></xr:request-ref>
+<xr:response-ref ref="/root/message" add="false" instanceid="resMessage"></xr:response-ref>
+</xr:submission>
+<xr:submission id="smsSymPrivGrpDel" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symPrivGrp/deleteSymPrivGrpEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymPrivGrpVO" instanceid="reqSymPrivGrpVO"></xr:request-ref>
+</xr:submission>
+<xr:submission id="smsSymPrivGrpRead" res-type="" req-protocol="urlencoded" req-type="" action="/sym/symPrivGrp/selectSymPrivGrpEx.do" res-charset="utf-8" method="post" res-protocol="json" waitcursor="true" req-charset="utf-8" async="false"><xr:request-ref ref="/root/reqSymPrivGrpVO" instanceid="reqSymPrivGrpVO"></xr:request-ref>
+<xr:response-ref ref="/root/resSymPrivGrpVO" add="false" instanceid="responseData"></xr:response-ref>
+</xr:submission>
+<xr:dataset id="dstSymPrivGrpList" sourceType="instance" instanceSync="true" useoriginval="true"><xr:connectioninfo>responseData</xr:connectioninfo>
+<xr:query><![CDATA[/root/resSymPrivGrpList/row]]></xr:query>
+<xr:autocrud><xr:table prefix="T@77" name="dstSymPrivGrpListTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns></xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns><xr:column sourceName="privGrpDesc"></xr:column>
+<xr:column sourceName="privGrpNm"></xr:column>
+<xr:column sourceName="privGrpNo"></xr:column>
+<xr:column sourceName="inptUsrId"></xr:column>
+<xr:column sourceName="inptDt"></xr:column>
+</xr:columns>
+</xr:dataset>
+<xr:dataset id="dstSymPrivGrpVO" sourceType="instance" instanceSync="true" useoriginval="true"><xr:query><![CDATA[]]></xr:query>
+<xr:autocrud><xr:table prefix="T@83" name="dstSymPrivGrpVOTable"><xr:primarykeys></xr:primarykeys>
+<xr:updatecolumns></xr:updatecolumns>
+</xr:table>
+</xr:autocrud>
+<xr:columns></xr:columns>
+</xr:dataset>
+<xf:jsoninstance id="instance"><![CDATA[{root : {EXRIAERRMSG : ""}}]]></xf:jsoninstance>
+<xf:jsoninstance id="reqSymPrivGrpVO"><![CDATA[{
+					root : {
+						reqSymPrivGrpVO : {
+							privGrpDesc : "",
+							privGrpNm : "",
+							privGrpNo : "",
+							inptUsrId : "",
+							inptDt : ""
+						},
+						searchVO : {
+							searchCondition : "",
+							pageIndex : "",
+							lastIndex : "",
+							firstIndex : "",
+							searchUseYn : "",
+							pageSize : "",
+							searchKeyword : "",
+							recordCountPerPage : "",
+							pageUnit : "",
+							schPrivGrpNm : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="responseData"><![CDATA[{
+					root : {
+						resSymPrivGrpVO : {
+							row : [
+								{
+									privGrpDesc : "",
+									privGrpNm : "",
+									privGrpNo : "",
+									inptUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						resSymPrivGrpList : {
+							row : [
+								{
+									privGrpDesc : "",
+									privGrpNm : "",
+									privGrpNo : "",
+									inptUsrId : "",
+									inptDt : ""
+								}
+							]
+						},
+						paginationInfo : {
+							row : [
+								{
+									totalRecordCount : "",
+									pageSize : "",
+									recordCountPerPage : "",
+									currentPageNo : ""
+								}
+							]
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="resMessage"><![CDATA[{
+					root : {
+						message : {
+							procMsg : ""
+						}
+					}
+				}]]></xf:jsoninstance>
+<xf:jsoninstance id="reqMethod"><![CDATA[{
+					root : {
+						method : ""
+					}
+				}]]></xf:jsoninstance>
+</xf:model>

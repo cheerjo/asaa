@@ -1,0 +1,44 @@
+﻿seed_file_path : /root/다운로드/seed/20120901_06.100
+seed_dest_path : /root/다운로드/seed/
+sensor_location_free_X : SL_KMC_HGE_00.tmp
+sensor_location_free_Y : SL_KMC_HGN_00.tmp
+sensor_location_free_Z : SL_KMC_HGZ_00.tmp
+sensor_location_bot_X : SL_KMC_HGE_01.tmp
+sensor_location_bot_Y : SL_KMC_HGN_01.tmp
+sensor_location_bot_Z : SL_KMC_HGZ_01.tmp
+sensor_location_mid_X : SL_KMC_HGE_02.tmp
+sensor_location_mid_Y1 : SL_KMC_HGN_02.tmp
+sensor_location_mid_Y2 : -
+sensor_location_top_X : SL_KMC_HGE_03.tmp
+sensor_location_top_Y1 : SL_KMC_HGN_03.tmp
+sensor_location_top_Y2 : -
+sensor_filtering_free_X : 2, 0.008, 0.8
+sensor_filtering_free_Y : 2, 0.008, 0.8
+sensor_filtering_free_Z : 2, 0.008, 0.8
+sensor_filtering_bot_X : 2, 0.008, 0.8
+sensor_filtering_bot_Y : 2, 0.008, 0.8
+sensor_filtering_bot_Z : 2, 0.008, 0.8
+sensor_filtering_mid_X : 2, 0.008, 0.8
+sensor_filtering_mid_Y1 : 2, 0.008, 0.8
+sensor_filtering_mid_Y2 : 2, 0.008, 0.8
+sensor_filtering_top_X : 2, 0.008, 0.8
+sensor_filtering_top_Y1 : 2, 0.008, 0.8
+sensor_filtering_top_Y2 : 2, 0.008, 0.8
+analy_option_idr_amp : 1.2
+analy_option_str_height : 30000.0
+analy_option_seismic_area : 1
+analy_option_str_type : 1
+analy_option_str_name : 금천구
+analy_option_str_freq_window : 0.0, 0.0, 0.0, 0.0
+analy_option_str_freq_window_move : 10.0, 5.0
+analy_option_limit_state_mean : 0.0042, 0.0067, 0.0133
+analy_option_limit_state_dev : 0.59, 0.65, 0.70
+analy_option_freq_prev_X : -1.0
+analy_option_freq_prev_Y : -1.0
+safe_idr_range_smf : 0.44, 0.7, 2.5, 5.0
+safe_idr_range_sef : 0.31, 0.5, 1.5, 2.0
+safe_idr_range_rcf : 0.5, 1.0, 2.0, 4.0
+safe_idr_range_rcsw : 0.25, 0.5, 1.0, 2.0
+safe_nat_freq_range : 20.0
+safe_str_free_nat_freq_range : 10.0
+safe_over_acc_range : 0.0

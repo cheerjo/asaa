@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title> UserMgr </title>
+<meta content="text/html+xml; charset=utf-8" http-equiv="content-type"></meta>
+<meta content="no-cache" http-equiv="cache-control"></meta>
+<meta content="no-cache" http-equiv="pragma"></meta>
+<meta content="eXriaSuite v1.0" name="generator"></meta>
+<meta content="eXria.1.0" name="version"></meta>
+<meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"></meta>
+<meta content="cyberlhs" name="author"></meta>
+<meta content="13. 6. 28 오전 11:33" name="date"></meta>
+<meta content="2.0.0.201304021017" name="xrf-version"></meta>
+<script charset="UTF-8" src="../../../js/eXria/stdCmn.js"></script>
+<script charset="UTF-8" src="../../../js/eXria/stdUtil.js"></script>
+<script type="text/javascript" src="/eXria/global/globalLib.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/exria.client.info.xrf" charset="UTF-8"></script>
+<link href="/eXria/custom/eXria_CRE_Configuration.css" charset="UTF-8" type="text/css" rel="stylesheet"></link>
+<script type="text/javascript" src="/eXria/lib/gridex/GridE.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/eXria/lib/editor/ckeditor.js" charset="UTF-8"></script>
+<style type="text/css">
+::-moz-focus-inner{border: 0px none transparent;}
+</style>
+<script type="text/javascript" src="/js/eXria/Common.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/eXria/Popup.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/eXria/Date.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/eXria/stdCmn.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/eXria/stdUtil.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/eXria/JsonParser.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/eXria/jsonpath-0.8.0.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" media="all" href="../../../style/sample/style.css"></link>
+<script type="text/javascript" src="/xrf/sym/usr/UserMgr.js" charset="utf-8"></script>
+<script type="text/javascript" src="/xrf/sym/usr/UserMgr.ui" charset="UTF-8"></script>
+<script type="text/javascript">
+	var page = new UserMgr();
+
+	page.window = window;
+	var metadata = new DomainMetadata(page);
+	metadata.version = "eXria.1.0";
+	page.setMetadata(metadata);
+	var intervalId = -1;
+	var cnt = 0;
+	var MAX_RETIRY_CNT = 10;
+	function doOnload() {
+		if(page.metadata.modelType != eXria.form.ModelType.XHTML) {
+			cnt++;
+			if(intervalId != -1) {
+				page.window.clearInterval(intervalId);
+				intervalId = -1;
+			}
+			try{
+				page.model.setPlugin();
+				page.model.plugin.getVersion();
+			}catch(e){
+				if(cnt == MAX_RETIRY_CNT) {
+					throw new Error("Plugin create fail!");
+				} else {
+					intervalId = window.setInterval("doOnload()", 50);
+				}
+				return;
+			}
+			try{
+				var voPageUI = new UserMgrUI();
+				page.model.setDefaultProgressImg();
+				page.init(voPageUI);
+			}catch(e) {
+				alert(e);
+			}
+		} else {
+			var voPageUI = new UserMgrUI();
+			page.init(voPageUI);
+		}
+	}
+</script>
+</head>
+<body onload="javascript:doOnload();">
+<script type="text/javascript">
+page.createModel();
+</script>
+</body>
+</html>

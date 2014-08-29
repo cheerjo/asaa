@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SymCommCdDtl">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="symCommCdDtlSerarchVO" type="estam.app.sym.cmm.service.SymCommCdDtlDefaultVO"/>
+	
+	<resultMap id="symCommCdDtl" class="estam.app.sym.cmm.service.SymCommCdDtlVO">
+		<result property="commDtlCd" column="COMM_DTL_CD" columnIndex="1"/>
+		<result property="commDtlNm" column="COMM_DTL_NM" columnIndex="2"/>
+		<result property="commDtlOrd" column="COMM_DTL_ORD" columnIndex="3"/>
+		<result property="commDtlInfo" column="COMM_DTL_INFO" columnIndex="4"/> 
+		<result property="commCd" column="COMM_CD" columnIndex="5"/>
+		<result property="item01" column="ITEM01" columnIndex="6"/>
+		<result property="item02" column="ITEM02" columnIndex="7"/>
+		<result property="item03" column="ITEM03" columnIndex="8"/>
+		<result property="item04" column="ITEM04" columnIndex="9"/>
+		<result property="item05" column="ITEM05" columnIndex="10"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="11"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="12"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="13"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="14"/>
+		<result property="useYn" column="USE_YN" columnIndex="15"/>
+	</resultMap>
+	
+	<insert id="symCommCdDtlDAO.insertSymCommCdDtl_S">
+		<![CDATA[
+			INSERT INTO SYM_COMM_CD_DTL 
+				( COMM_DTL_CD
+				  , COMM_DTL_NM
+				  , COMM_DTL_ORD
+				  , COMM_DTL_INFO
+				  , COMM_CD
+				  ,ITEM01 
+				  ,ITEM02 
+				  ,ITEM03 
+				  ,ITEM04 
+				  ,ITEM05
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT
+				  , USE_YN )
+			VALUES ( #commDtlCd#
+				  , #commDtlNm#
+				  , #commDtlOrd#
+				  , #commDtlInfo#
+				  , #commCd#
+				  ,#item01# 
+				  ,#item02# 
+				  ,#item03# 
+				  ,#item04# 
+				  ,#item05#
+				  , #inptUsrId#
+				  , SYSDATE
+				  , #updtUsrId#
+				  , #updtDt#
+				  , #useYn# )
+		]]>
+	</insert>
+	
+	<update id="symCommCdDtlDAO.updateSymCommCdDtl_S">
+		<![CDATA[
+			UPDATE SYM_COMM_CD_DTL
+			SET   COMM_DTL_NM=#commDtlNm#
+				, COMM_DTL_ORD=#commDtlOrd#
+				, COMM_DTL_INFO=#commDtlInfo#
+				, COMM_CD=#commCd#
+				  ,ITEM01=#item01# 
+  ,ITEM02=#item02# 
+  ,ITEM03=#item03# 
+  ,ITEM04=#item04# 
+  ,ITEM05=#item05#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=SYSDATE
+				, USE_YN=#useYn#
+						WHERE COMM_DTL_CD=#commDtlCd#
+								AND COMM_CD=#commCd#
+				]]>
+	</update>
+	
+	<delete id="symCommCdDtlDAO.deleteSymCommCdDtl_S">
+		<![CDATA[
+			DELETE FROM SYM_COMM_CD_DTL 
+						WHERE COMM_DTL_CD=#commDtlCd#
+								AND COMM_CD=#commCd#
+				]]>
+	</delete>
+	
+	<select id="symCommCdDtlDAO.selectSymCommCdDtl_S" resultMap="symCommCdDtl">
+		<![CDATA[
+			SELECT
+				COMM_DTL_CD
+				, COMM_DTL_NM
+				, COMM_DTL_ORD
+				, COMM_DTL_INFO
+				, COMM_CD
+			  ,ITEM01 
+			  ,ITEM02 
+			  ,ITEM03 
+			  ,ITEM04 
+			  ,ITEM05
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+				, USE_YN
+			FROM SYM_COMM_CD_DTL
+						WHERE COMM_DTL_CD=#commDtlCd#
+								AND COMM_CD=#commCd#
+				]]>
+	</select>
+	
+	<select id="symCommCdDtlDAO.selectSymCommCdDtlList_D" parameterClass="symCommCdDtlSerarchVO" resultClass="egovMap">
+<!-- SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM ( -->
+				SELECT
+								COMM_DTL_CD
+								, COMM_DTL_NM
+								, COMM_DTL_ORD
+								, COMM_DTL_INFO
+								, COMM_CD
+								,ITEM01 
+			  ,ITEM02 
+			  ,ITEM03 
+			  ,ITEM04 
+			  ,ITEM05
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+								, USE_YN
+						FROM SYM_COMM_CD_DTL
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					COMM_CD LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="2">
+					COMM_DTL_NM LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						COMM_DTL_CD DESC
+							, COMM_CD DESC
+		
+<!-- 		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]> -->
+	</select>	
+	<select id="symCommCdDtlDAO.selectSymCommCdDtlListTotCnt_S" parameterClass="symCommCdDtlSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM SYM_COMM_CD_DTL
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				COMM_CD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="2">
+				COMM_DTL_NM LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

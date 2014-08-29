@@ -1,0 +1,474 @@
+body {
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.body1 {
+  font-family: "Malgun Gothic";
+  font-size: 10pt;
+  color: #464646;
+  font-weight: bold;
+}
+.leftmn1-1 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #FFFFFF;
+  background-image: url(images/msg/left_mnbg1-1.gif);
+  height: 23px;
+  padding-right: 5px;
+  padding-left: 10px;
+  font-weight: bold;
+  vertical-align: middle;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+.mainbg {
+  background-image: url(images/msg/bg.jpg);
+  background-repeat: repeat-x;
+  background-position: top;
+}
+.leftmn2 {
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #555555;
+  letter-spacing: -0.05em;
+  height: 17px;
+}
+
+.leftmn1 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #deeeb4;
+  background-image: url(images/msg/left_mnbg1.gif);
+  height: 23px;
+  padding-right: 5px;
+  padding-left: 10px;
+  font-weight: bold;
+  vertical-align: middle;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+.topmn {
+  font-family: "Malgun Gothic";
+  font-size: 10pt;
+  font-weight: bold;
+  color: #FFFFFF;
+  width: 65px;
+  text-align: center;
+}
+.topbg1 {
+  background-image: url(images/msg/top_bg1.jpg);
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+
+.leftmn2-1 {
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #393939;
+  letter-spacing: -0.05em;
+  height: 17px;
+  font-weight: bold;
+}
+.topmn-1 {
+  font-family: "Malgun Gothic";
+  font-size: 10pt;
+  font-weight: bold;
+  color: #FFFFFF;
+  width: 62px;
+  text-align: center;
+  background-image: url(images/msg/topnmbg.gif);
+  height: 27px;
+}
+.ttl {
+  font-family: "Malgun Gothic";
+  font-size: 10pt;
+  color: #215d00;
+  font-weight: bold;
+}
+.ttlpath {
+
+  font-family: "Malgun Gothic";
+  font-size: 9pt;
+  color: #86ad58;
+}
+.tdttl1 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #4F841E;
+  padding-right: 5px;
+  padding-left: 5px;
+  text-align: right;
+  background-color: #eaf4dc;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: #FFFFFF;
+  border-right-color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+  border-left-color: #FFFFFF;
+
+}
+.td1 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: #555555;
+  background-color: #FFFFFF;
+  word-break:break-all;
+}
+.tdttl2C {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #FFFFFF;
+  background-image: url(images/msg/tdttlbg1.gif);
+  background-repeat: repeat;
+  background-position: right top;
+  height: 20px;
+  text-align: center;
+  padding-right: 10px;
+}
+.tdttl2C-1 {
+
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #fffba9;
+  background-image: url(images/msg/tdttlbg1.gif);
+  background-repeat: no-repeat;
+  background-position: right top;
+  height: 20px;
+  text-align: center;
+  padding-right: 10px;
+}
+.td1C {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: #A7A7A7;
+  background-color: #FFFFFF;
+  text-align: center;
+}
+.td1-1 {
+
+  font-family: "Gulimche";
+  font-size: 9pt;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: #555555;
+  background-color: #fcf9f3;
+}
+.ttl1 {
+
+  font-family: "Malgun Gothic";
+  font-size: 10pt;
+  color: #666666;
+  font-weight: bold;
+}
+.form1 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #555555;
+  background-color: #eef3e5;
+  width: 100%;
+  border: 1px solid #98BE65;
+  height: 100%;
+}
+.btn1 {
+  width: 60px;
+  border: 1px solid #a4ca64;
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #418f01;
+  text-align: center;
+  height: 20px;
+  background-image: url(images/msg/btn1.gif);
+  padding-top: 3px;
+}
+.btn1-1 {
+
+  width: 60px;
+  border: 1px solid #a4ca64;
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #87ab49;
+  text-align: center;
+  height: 20px;
+  background-image: url(images/msg/btn1-1.gif);
+  padding-top: 3px;
+}
+.btn2 {
+  display: inline-block;
+  width: 60px;
+  border: 0px none;
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #FFFFFF;
+  text-align: center;
+  height: 16px;
+  background-image: url(images/msg/btn2.gif);
+  padding-top: 2px;
+}
+.btn2-1 {
+
+
+  width: 60px;
+  border: 1px solid #729c27;
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #B7CD9C;
+  text-align: center;
+  height: 20px;
+  background-image: url(images/msg/btn2-1.gif);
+  padding-top: 3px;
+}
+.btn3 {
+  border: 1px solid #ce7317;
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #FFFFFF;
+  text-align: center;
+  height: 20px;
+  background-image: url(images/msg/btn3.gif);
+  padding-top: 3px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.fonts {
+
+
+  font-family: "Malgun Gothic";
+  font-size: 9pt;
+  color: #889474;
+}
+.fonts1 {
+
+
+
+  font-family: "Malgun Gothic";
+  font-size: 9pt;
+  color: #889474;
+}
+.tab1-1 {
+  font-family: "Dotum";
+  font-size: 9pt;
+  font-weight: bold;
+  color: #A5A6A4;
+  background-image: url(images/msg/tab1-1.gif);
+  text-align: center;
+  height: 22px;
+  width: 107px;
+  padding-top: 5px;
+}
+
+.fontstop {
+
+  font-family: "Malgun Gothic";
+  font-size: 8pt;
+  color: #5A4E3D;
+}
+.tab1 {
+
+  font-family: "Dotum";
+  font-size: 9pt;
+  font-weight: bold;
+  color: #287000;
+  background-image: url(images/msg/tab1.gif);
+  text-align: center;
+  height: 22px;
+  width: 107px;
+  padding-top: 5px;
+}
+.fonts2 {
+
+
+
+
+  font-family: "Malgun Gothic";
+  font-size: 9pt;
+  color: #B0894F;
+}
+.form2 {
+    font-family: "Gulimche";
+  font-size: 9pt;
+  color: #555555;
+  background-color: #eef3e5;
+  border: 1px solid #98BE65;
+}
+.tdttl3 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #83946B;
+  padding-right: 5px;
+  padding-left: 5px;
+  background-color: #e8efdc;
+}
+.td2 {
+
+  font-family: "Gulimche";
+  font-size: 9pt;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: #6F8763;
+  background-color: #EFF0EC;
+}
+.form3 {
+    font-family: "Gulimche";
+  font-size: 9pt;
+  color: #555555;
+  background-color: #FFFFFF;
+  width: 100%;
+  border: 1px solid #C5C5C5;
+  height: 18px;
+}
+.form3-1 {
+    font-family: "Gulimche";
+  font-size: 9pt;
+  color: #555555;
+  background-color: #FFFFFF;
+  width: 100%;
+  border: 1px solid #98BE65;
+  height: 18px;
+}
+.tdttl3-1 {
+
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #287000;
+  padding-right: 5px;
+  padding-left: 5px;
+  background-color: #e8efdc;
+}
+.form3-2 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #555555;
+  background-color: #FFFFFF;
+  border: 1px solid #C5C5C5;
+  height: 18px;
+  width: 87%;
+}
+.leftmn3 {
+
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #555555;
+  letter-spacing: -0.05em;
+  height: 15px;
+}
+.putable {
+  border: 1px solid #B6CF96;
+  background-color: #FBFBF2;
+  filter: Alpha(Opacity=80);
+}
+.putd1 {
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #6D5732;
+  padding-right: 5px;
+  padding-left: 5px;
+  letter-spacing: -0.05em;
+}
+.ntctd1 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #555555;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #dce6ce;
+  height: 23px;
+}
+
+
+
+.leftmn3-1 {
+
+
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #5faa20;
+  letter-spacing: -0.05em;
+  height: 15px;
+}
+.putd1-1 {
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #6D5732;
+  background-color: #F1EEE7;
+  padding-right: 5px;
+  padding-left: 5px;
+  letter-spacing: -0.05em;
+}
+.cal1 {
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #4F841E;
+  background-color: #e8efdc;
+  text-align: center;
+}
+.cal2 {
+
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #8b8b8b;
+  background-color: #FFFFFF;
+  text-align: center;
+}
+.cal3 {
+
+
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #B95002;
+  background-color: #FFFFFF;
+  text-align: center;
+}
+.cal4 {
+  font-family: "Gulimche";
+  font-size: 8pt;
+  color: #2F2F55;
+  background-color: #F2EAD5;
+  text-align: center;
+  font-weight: bold;
+}
+.ntctd2 {
+
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #8B8B8B;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #dce6ce;
+  height: 23px;
+}
+.form1-1 {
+
+    font-family: "Gulimche";
+  font-size: 9pt;
+  color: #555555;
+  background-color: #eef3e5;
+  width: 100%;
+  border: 1px solid #C5C5C5;
+}
+
+.td3 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  color: #FFFFFF;
+  background-color: #98BE65;
+}
+.td3-1 {
+  font-family: "Gulimche";
+  font-size: 9pt;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: #BB7637;
+  background-color: #F7F3E8;
+  background-image: url(images/msg/tdbg.gif);
+  background-repeat: no-repeat;
+  background-position: right;
+}

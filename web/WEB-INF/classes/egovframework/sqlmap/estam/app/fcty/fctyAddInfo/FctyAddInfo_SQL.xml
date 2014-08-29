@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FctyAddInfo">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="fctyAddInfoSerarchVO" type="estam.app.fcty.service.FctyAddInfoDefaultVO"/>
+	
+	<resultMap id="fctyAddInfo" class="estam.app.fcty.service.FctyAddInfoVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="fctyNm" column="FCTY_NM" columnIndex="2"/>
+		<result property="fctyStblDt" column="FCTY_STBL_DT" columnIndex="3"/>
+		<result property="fctyCtatDt" column="FCTY_CTAT_DT" columnIndex="4"/>
+		<result property="fctyCplnDt" column="FCTY_CPLN_DT" columnIndex="5"/>
+		<result property="fctyGbnCd" column="FCTY_GBN_CD" columnIndex="6"/>
+		<result property="ehqkAreaCd" column="EHQK_AREA_CD" columnIndex="7"/>
+		<result property="fctyStrTycd" column="FCTY_STR_TYCD" columnIndex="8"/>
+		<result property="fctyLvcsCd" column="FCTY_LVCS_CD" columnIndex="9"/>
+		<result property="fctyBotArea" column="FCTY_BOT_AREA" columnIndex="10"/>
+		<result property="fctyFlorScl" column="FCTY_FLOR_SCL" columnIndex="11"/>
+		<result property="fctyRofHt" column="FCTY_ROF_HT" columnIndex="12"/>
+		<result property="fctyDsgnCtraCd" column="FCTY_DSGN_CTRA_CD" columnIndex="13"/>
+		<result property="fctyHt" column="FCTY_HT" columnIndex="14"/>
+		<result property="fctyUsrDept" column="FCTY_USR_DEPT" columnIndex="15"/>
+		<result property="fctyUsrNm" column="FCTY_USR_NM" columnIndex="16"/>
+		<result property="factyUsrTel" column="FACTY_USR_TEL" columnIndex="17"/>
+		<result property="fctyUsrEmail" column="FCTY_USR_EMAIL" columnIndex="18"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="19"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="20"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="21"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="22"/>
+		
+		<result property="fctyKndCd" column="FCTY_KND_CD" columnIndex="22"/>
+	</resultMap>
+	
+	<insert id="fctyAddInfoDAO.insertFctyAddInfo_S">
+		<![CDATA[
+			INSERT INTO FCTY_ADD_INFO 
+				( FCTY_CD
+				  , FCTY_STBL_DT
+				  , FCTY_CTAT_DT
+				  , FCTY_CPLN_DT
+				  , FCTY_GBN_CD
+				  , EHQK_AREA_CD
+				  , FCTY_STR_TYCD
+				  , FCTY_LVCS_CD
+				  , FCTY_BOT_AREA
+				  , FCTY_FLOR_SCL
+				  , FCTY_ROF_HT
+				  , FCTY_DSGN_CTRA_CD
+				  , FCTY_HT
+				  , FCTY_USR_DEPT
+				  , FCTY_USR_NM
+				  , FACTY_USR_TEL
+				  , FCTY_USR_EMAIL
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #fctyStblDt#
+				  , #fctyCtatDt#
+				  , #fctyCplnDt#
+				  , #fctyGbnCd#
+				  , #ehqkAreaCd#
+				  , #fctyStrTycd#
+				  , #fctyLvcsCd#
+				  , #fctyBotArea#
+				  , #fctyFlorScl#
+				  , #fctyRofHt#
+				  , #fctyDsgnCtraCd#
+				  , #fctyHt#
+				  , #fctyUsrDept#
+				  , #fctyUsrNm#
+				  , #factyUsrTel#
+				  , #fctyUsrEmail#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="fctyAddInfoDAO.updateFctyAddInfo_S">
+		<![CDATA[
+			UPDATE FCTY_ADD_INFO
+			SET FCTY_CD=#fctyCd#
+				, FCTY_STBL_DT=#fctyStblDt#
+				, FCTY_CTAT_DT=#fctyCtatDt#
+				, FCTY_CPLN_DT=#fctyCplnDt#
+				, FCTY_GBN_CD=#fctyGbnCd#
+				, EHQK_AREA_CD=#ehqkAreaCd#
+				, FCTY_STR_TYCD=#fctyStrTycd#
+				, FCTY_LVCS_CD=#fctyLvcsCd#
+				, FCTY_BOT_AREA=#fctyBotArea#
+				, FCTY_FLOR_SCL=#fctyFlorScl#
+				, FCTY_ROF_HT=#fctyRofHt#
+				, FCTY_DSGN_CTRA_CD=#fctyDsgnCtraCd#
+				, FCTY_HT=#fctyHt#
+				, FCTY_USR_DEPT=#fctyUsrDept#
+				, FCTY_USR_NM=#fctyUsrNm#
+				, FACTY_USR_TEL=#factyUsrTel#
+				, FCTY_USR_EMAIL=#fctyUsrEmail#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</update>
+	
+	<delete id="fctyAddInfoDAO.deleteFctyAddInfo_S">
+		<![CDATA[
+			DELETE FROM FCTY_ADD_INFO 
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</delete>
+	
+	<select id="fctyAddInfoDAO.selectFctyAddInfo_S" resultMap="fctyAddInfo">
+		<![CDATA[
+			SELECT AA.FCTY_CD , BB.FCTY_NM , AA.FCTY_STBL_DT     , AA.FCTY_CTAT_DT     , AA.FCTY_CPLN_DT
+			       , AA.FCTY_GBN_CD     , AA.EHQK_AREA_CD, AA.FCTY_STR_TYCD     , AA.FCTY_LVCS_CD     
+			       , AA.FCTY_BOT_AREA     , AA.FCTY_FLOR_SCL     , AA.FCTY_ROF_HT    , AA.FCTY_DSGN_CTRA_CD     
+			       , AA.FCTY_HT     , AA.FCTY_USR_DEPT     , AA.FCTY_USR_NM     , AA.FACTY_USR_TEL     
+                   , AA.FCTY_USR_EMAIL     , AA.INPT_USR_ID     , AA.INPT_DT     , AA.UPDT_USR_ID , AA.UPDT_DT
+                   , (SELECT COMM_DTL_NM FROM SYM_COMM_CD_DTL WHERE COMM_CD = 'ITEM_011' AND COMM_DTL_CD = BB.FCTY_KND_CD) AS FCTY_KND_CD    
+              FROM FCTY_ADD_INFO AA, FCTY_MGR BB      
+             WHERE AA.FCTY_CD = BB.FCTY_CD
+               AND AA.GVMT_CD = BB.GVMT_CD
+		       AND AA.FCTY_CD=#fctyCd#
+			   AND AA.GVMT_CD = #gvmtCd#			  
+				]]>
+	</select>
+	
+	<select id="fctyAddInfoDAO.selectFctyAddInfoList_D" parameterClass="fctyAddInfoSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FCTY_CD
+								, FCTY_STBL_DT
+								, FCTY_CTAT_DT
+								, FCTY_CPLN_DT
+								, FCTY_GBN_CD
+								, EHQK_AREA_CD
+								, FCTY_STR_TYCD
+								, FCTY_LVCS_CD
+								, FCTY_BOT_AREA
+								, FCTY_FLOR_SCL
+								, FCTY_ROF_HT
+								, FCTY_DSGN_CTRA_CD
+								, FCTY_HT
+								, FCTY_USR_DEPT
+								, FCTY_USR_NM
+								, FACTY_USR_TEL
+								, FCTY_USR_EMAIL
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM FCTY_ADD_INFO
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FCTY_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					FCTY_STBL_DT LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FCTY_CD DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="fctyAddInfoDAO.selectFctyAddInfoListTotCnt_S" parameterClass="fctyAddInfoSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM FCTY_ADD_INFO
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				FCTY_STBL_DT LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

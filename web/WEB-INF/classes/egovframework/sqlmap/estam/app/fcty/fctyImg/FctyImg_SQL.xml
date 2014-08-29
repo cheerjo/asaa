@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FctyImg">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="fctyImgSerarchVO" type="estam.app.fcty.service.FctyImgDefaultVO"/>
+	
+	<resultMap id="fctyImg" class="estam.app.fcty.service.FctyImgVO"> 
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="fctyImgSeq" column="FCTY_IMG_SEQ" columnIndex="2"/> 
+		<result property="fctyImgFlsv" column="FCTY_IMG_FLSV" columnIndex="3"/>
+		<result property="fctyImgFlnm" column="FCTY_IMG_FLNM" columnIndex="4"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="5"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="6"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="7"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="8"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="9"/>
+	</resultMap>
+	
+	<insert id="fctyImgDAO.insertFctyImg_S">
+		<![CDATA[
+			INSERT INTO FCTY_IMG 
+				( FCTY_CD
+				  , FCTY_IMG_SEQ
+				  , FCTY_IMG_FLSV
+				  , FCTY_IMG_FLNM
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #fctyImgSeq#
+				  , #fctyImgFlsv#
+				  , #fctyImgFlnm#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="fctyImgDAO.updateFctyImg_S">
+		<![CDATA[
+			UPDATE FCTY_IMG
+			SET FCTY_CD=#fctyCd#
+				, FCTY_IMG_SEQ=#fctyImgSeq#
+				, FCTY_IMG_FLSV=#fctyImgFlsv#
+				, FCTY_IMG_FLNM=#fctyImgFlnm#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND FCTY_IMG_SEQ=#fctyImgSeq#
+				]]>
+	</update>
+	
+	<delete id="fctyImgDAO.deleteFctyImg_S">
+		<![CDATA[
+			DELETE FROM FCTY_IMG 
+						WHERE FCTY_CD=#fctyCd#
+								AND FCTY_IMG_SEQ=#fctyImgSeq#
+				]]>
+	</delete>
+	
+	<select id="fctyImgDAO.selectFctyImg_S" resultMap="fctyImg">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, GVMT_CD
+				, FCTY_IMG_SEQ
+				, FCTY_IMG_FLSV
+				, FCTY_IMG_FLNM
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM FCTY_IMG
+						WHERE FCTY_CD=#fctyCd#
+						        AND GVMT_CD = #gvmtCd#
+								AND FCTY_IMG_SEQ  = (SELECT MAX(FCTY_IMG_SEQ) 
+								                       FROM FCTY_IMG
+					                                  WHERE FCTY_CD=#fctyCd# 
+					                                   AND GVMT_CD = #gvmtCd#)
+					                                   
+					                                  
+				]]>
+	</select>
+	
+	<select id="fctyImgDAO.selectFctyImgList_D" parameterClass="fctyImgSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FCTY_CD
+								, FCTY_IMG_SEQ
+								, FCTY_IMG_FLSV
+								, FCTY_IMG_FLNM
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM FCTY_IMG
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FCTY_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					FCTY_IMG_SEQ LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FCTY_CD DESC
+							, FCTY_IMG_SEQ DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="fctyImgDAO.selectFctyImgListTotCnt_S" parameterClass="fctyImgSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM FCTY_IMG
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				FCTY_IMG_SEQ LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

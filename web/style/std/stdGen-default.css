@@ -1,0 +1,1149 @@
+/* eXerp 표준 컨트롤 스타일 작업 */
+/* 
+ * source	: exerp_control.css
+ */
+
+/*************************/
+/*
+	button
+*/
+.btnNewWindow{
+	font-size: 9px;  
+	font-family: Gulimche, Arial;
+	background-image: url("../images/newWindow.png");
+	text-align: center;
+	background-color: #ffffff;
+	color: #000000;
+	padding-left: 3px;
+}
+
+.btnTopMenu{
+	border-width: 0px;
+	font-family: "맑은 고딕", Arial;
+	font-size: 10pt;
+	src: url(../gothic.eot); 
+	background-color: transparent;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+
+.btnTopMenu:HOVER{
+	background-image: url("../../images/theme/main/top_btn_over.gif");
+}
+
+.btnTopMenuSelected{
+	border-width: 0px;
+	font-family: "맑은 고딕", Arial;
+	font-size: 10pt;
+	src: url(../gothic.eot); 
+	background-color: transparent;
+	background-image: url("../../images/theme/main/top_btn_selected.gif");
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+
+.btnTopMenuSelected:HOVER{
+	background-image: url("../../images/theme/main/top_btn_over.gif");
+}
+
+.btnLeftSlide{
+	background-image: url("../../images/theme/main/left_arrow.gif");
+}
+
+.btnLeftSlide:HOVER{
+	background-image: url("../../images/theme/main/left_arrow_over.gif");
+}
+
+.btnRightSlide{
+	background-image: url("../../images/theme/main/right_arrow.gif");
+}
+
+.btnRightSlide:HOVER{
+	background-image: url("../../images/theme/main/right_arrow_over.gif");
+}
+
+.btnHelp{
+	font-size: 9px;  
+	font-family: Gulimche, Arial;
+	background-image: url("../images/help.png");
+	text-align: center;
+	background-color: #ffffff;
+	color: #000000;
+	padding-left: 3px;
+}
+
+/* 공통버튼 보더 스타일 */
+.btnBorder{
+	border-width: 1px;
+	border-color: #000000;
+}
+
+.btnImage{
+	background-color: transparent;
+}
+
+/* 공통을 제외한 나머지 버튼의 보더 */
+.btnOtherBorder{
+	border-style: none;
+	border-width: 0px;
+}
+
+.btnSetting{
+	font-size: 9px;  
+	font-family: Gulimche, Arial;
+	color: #000000;
+	background: transparent;
+	background-image: url("../images/icon_setting.png");
+}
+
+.btnLogout{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-image: url("../images/btn_logout.gif");
+	color: #777777;
+	background-color: #ffffff;
+}
+
+/* 버튼 공통 스타일 */
+.btnCommon{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-color: #F0F0F0;
+	color: #000000;
+	text-align: center;
+}
+
+.btnSide{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-color: #ffffff;
+	color: #000000;
+}
+
+/* 중간에 위치한 버튼 */
+.btnMiddle{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-color: #F7F4F6;
+	color: #000000;
+	text-align: center;
+}
+
+/* 검색 조건에 위치한 버튼 */
+.btnSearch{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-color: #F2D1E2;
+	color: #000000;
+	text-align: center;
+}
+
+/* 오른쪽 하단에 위치한 버튼*/
+.btnRightBottom{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-color: #DCD2EA;
+	color: #000000;
+	text-align: center;
+}
+
+/* 왼쪽 하단에 위치한 버튼 */
+.btnLeftBottom{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-color: #D8DEEE;
+	color: #000000;
+	text-align: center;
+}
+
+/*************************/
+/*
+	input, editmask
+*/
+/* input 공통 보더 스타일 */
+.ipbBorder{
+	border-width: 0px; 
+}
+
+/* input 필수 보더 스타일 */
+.ipbReqBorder{
+	border-width: 1px;
+	border-style: solid;
+	border-color:#AAAAAA;
+}
+
+.ipbOptBorder{
+	border-width: 1px;
+	border-style: solid;
+	border-color:#AAAAAA;
+}
+
+/* inputbox(editmask) 공통 */
+.ipbCommon{
+	font-size: 9pt;  font-family: Gulimche, Arial;
+	color:#555555;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* 공통 + 진하게 */
+.ipbBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	font-weight: bold;
+	color:#555555;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* 공통 + 숫자 */
+.ipbNum{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	text-align: right;
+	color:#555555;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* 공통 + 숫자 + 진하게 */
+.ipbNumBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	text-align: right;
+	font-weight: bold;
+	color:#555555;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.ipbLink{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#0087D4;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* input(editmask) 필수 스타일 */
+.ipbReq{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	background-color:#FEF8DD;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.ipbReqBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	background-color:#FEF8DD;
+	font-weight: bold;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.ipbReqNum{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	background-color:#FEF8DD;
+	text-align: right;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.ipbReqNumBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	background-color:#FEF8DD;
+	font-weight: bold;
+	text-align: right;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.ipbReqLink{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#0087D4;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+	background-color:#FEF8DD;
+}
+
+.ipbReqPoint{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#F00000;
+	background-color:#FEF8DD;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* inputBox 선택 
+ * old : ipbOpt
+ */
+.ipbOpt{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* inputBox 선택 + Bold : 선택 input에 텍스트 진하게 적용 */
+.ipbOptBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	font-weight:bold;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* inputBox 선택 + Number : number Tyep의 선택 input (오른쪽정렬) */
+.ipbOptNum{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+	text-align: right;
+}
+
+/* inputBox 선택 + Number + Bold : number Tyep의 선택 input에 진하게 적용(오른쪽정렬) */
+.ipbOptNumBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+	text-align: right;
+	font-weight:bold;
+}
+
+/* inputBox + Ponit : 강조가 되어지는 데이터 */
+.ipbOptPoint{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color: #FF0000;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* inputBox + Link : 링크가 되어지는 데이터 */
+.ipbOptLink{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	padding-top:2px;
+	padding-left:3px;
+	padding-right:3pt;
+	color:#0087D4;
+}
+/*************************/
+/*
+	output
+*/
+/* output 공통 보더 */
+.optBorder{
+	border-width: 0px;
+}
+
+/* output 필수 보더 */
+.optReqBorder{
+	border-width: 1px;
+	border-style: solid;
+	border-color:#AAAAAA;
+}
+
+/* output 선택 보더 */
+.optOptBorder{
+	border-width:1px;
+	border-color:#AAAAAA;
+	border-style:solid;
+}
+
+/* 공통 메세지 보더 */
+.optMsgBorder{
+	border-color:#CCCCCC;
+	border-style:solid;
+	border-width: 1px;
+}
+
+.optCommon{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background: #ffffff;
+	color:#555555;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.optBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background: #ffffff;
+	font-weight: bold;
+	color:#555555;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.optNum{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background: #ffffff;
+	text-align: right;
+	color:#555555;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.optNumBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background: #ffffff;
+	text-align: right;
+	font-weight: bold;
+	color:#555555;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.optMsg{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	padding-left:3px;
+	padding-right:3px;
+	color:#A75A87;
+}
+
+.optReq{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-color:#FEF8DD;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.optReqBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	font-weight: bold;
+	background-color:#FEF8DD;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.optReqNum{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	text-align: right;
+	background-color:#FEF8DD;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.optReqNumBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	padding-left:3px;
+	padding-right:3px;
+	text-align: right;
+	background-color:#FEF8DD;
+	font-weight: bold;
+}
+
+/* outputBox 선택 
+ * old : outOpt, outNOpt
+ */
+.optOpt{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* outputBox 선택 + Bold : 선택 output에 텍스트 진하게 적용 */
+.optOptBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	font-weight:bold;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/* outputBox 선택 + Number : number Tyep의 선택 output (오른쪽정렬) */
+.optOptNum{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	padding-left:3px;
+	padding-right:3px;
+	text-align: right;
+}
+
+/* outputBox 선택 + Number + Bold : number Tyep의 선택 output에 진하게 적용(오른쪽정렬) */
+.optOptNumBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	padding-left:3px;
+	padding-right:3px;
+	text-align: right;
+	font-weight:bold;
+}
+
+/* outputBox + Ponit : 강조가 되어지는 데이터 */
+.optOptPoint{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#F00000;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+/*************************/
+/*
+	combobox
+*/
+.cbbBorder{
+	border-width: 1px;
+	border-style: solid;
+	border-color: #c8c8c8;
+}
+
+.cbbList{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #c8c8c8;
+}
+
+.cbbReqBorder{
+	border-color:#aaaaaa;
+	border-style:solid;
+	border-width: 1px;
+}
+
+.cbbReqList{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	border-color:#aaaaaa;
+	border-style:solid;
+	border-width: 1px;
+}
+
+.cbbOptBorder{
+	border-color:#aaaaaa;
+	border-style:solid;
+	border-width: 1px;
+}
+
+.cbbOptList{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	border-color:#aaaaaa;
+	border-style:solid;
+	border-width: 1px;
+}
+
+/* comboBox 공통 */
+.cbbCommon{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-color:#FFFFFF;
+	color:#555555;
+}
+
+/* ComboBox 선택 */
+.cbbOpt {
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+}
+
+/* ComboBox 필수 */
+.cbbReq {
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color : #555555;
+	background-color:#FEF8DD;	
+}
+
+/*************************/
+/*
+	checkbox
+*/
+/* checkBox 공통 */
+.ckbBorder{
+	border-width: 0px;
+}
+
+.ckbReqBorder{
+	border-width:1px; 
+	border-color:#DDDDDD;
+}
+
+.ckbOptBorder{
+	border-width:1px; 
+	border-color:#DDDDDD;
+}
+
+.ckbCommon{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+}
+
+/* checkBox 선택 
+ * old : ckbComn 
+ */
+.ckbOpt{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#005588;
+}
+
+/* checkBox 필수 */
+.ckbReq{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#005588;
+	background-color:#FEF8DD;
+}
+
+/*************************/
+/*
+	radiobutton
+*/
+.rdbBorder{
+	border-width:1px; 
+	border-color:#DDDDDD;
+}
+
+.rdbBorderInGroup{
+	border-width: 0px;
+}
+
+/* radiobutton 공통 */
+.rdbCommon{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	padding-top: 2px;
+	padding-bottom: 5px;
+}
+
+/* radiobutton 선택 
+ * old : radiobutton
+ */
+.rdbOpt{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+}
+
+/* radiobutton 필수 */
+.rdbReq{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	background-color:#FEF8DD;	
+}
+
+
+/*************************/
+/*
+	label
+*/
+.lblBorder{
+	border-width:0px;
+	border-style:none;
+}
+
+/* label 공통 
+ * old : labOpt, schEtc
+ */
+.lblCommon{
+	/*color: #ffffff;*/
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	text-align: left;
+	padding-left:3px;
+	padding-right: 3px;
+	/*background-color: #ffffff;*/
+}
+
+.lblCenter{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color: #555555;
+	padding-left: 3px;
+	padding-right: 3px;
+	text-align: center;
+	/*background-color: #ffffff;*/
+}
+
+.lblRight{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color: #555555;
+	padding-left: 3px;
+	padding-right: 3px;
+	text-align: right;
+	/*background-color: #ffffff;*/
+}
+
+.lblCenterBold{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color: #555555;
+	padding-left: 3px;
+	padding-right: 3px;
+	text-align: center;
+	font-weight: bold;
+	/*background-color: #ffffff;*/
+}
+
+.lblTitleBlack{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	padding-left:3px;
+	padding-right: 3px; 
+	color:#555555;
+	font-weight:bold;
+	text-align: left;
+}
+
+.lblTitleWhite{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color: #ffffff;
+	padding-left:3px;
+	padding-right: 3px;
+	font-weight:bold;
+	text-align: left;
+}
+
+.lblSearchBorder{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	border-width:1px; 
+	border-color:#CCCCCC;
+	border-style:solid; 
+}
+
+/* label 검색, 조회 */
+.lblSearchLeft{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	background-color:#EFEFEF;
+	text-align: left;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.lblSearchRight{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	background-color:#EFEFEF;
+	text-align: right;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.lblSearchCenter{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#555555;
+	background-color:#EFEFEF;
+	text-align: center;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.lblSearch{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	background-color: #EFEFEF;
+	color: #000000;
+}
+
+.lblFrfBorder{
+	border-width:1; 
+	border-color:#AAAAAA;
+	border-style:solid;
+}
+
+.lblReqFrfLeft{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#FFF7A2;
+	background-color:#A75A87;
+	text-align: left;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.lblReqFrfRight{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#FFF7A2;
+	background-color:#A75A87;
+	text-align: right;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.lblOptFrfCenter{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#FFFFFF;
+	background-color:#A75A87;
+	text-align: center;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.lblOptFrfLeft{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#FFFFFF;
+	background-color:#A75A87;
+	text-align: left;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.lblOptFrfRight{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#FFFFFF;
+	background-color:#A75A87;
+	text-align: right;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.lblReqFrfCenter{
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	color:#FFF7A2;
+	background-color:#A75A87;
+	text-align: center;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.lblTopBar{
+	background-image: url("../../images/theme/main/top_btn_bar.gif");
+}
+
+.lblPgmTitle{
+	border-width: 0px;
+	font-family: "맑은 고딕", Arial;
+	font-size: 14pt;
+	src: url(../gothic.eot); 
+	background-color: transparent;
+	text-align: left;
+	font-weight: bold;
+	color: #474747;
+	vertical-align: top;
+}
+
+.lblPgmTitlePath{
+	border-width: 0px;
+	font-family: "맑은 고딕", Arial;
+	font-size: 8pt;
+	src: url(../gothic.eot); 
+	background-color: transparent;
+	text-align: left;
+	color: #7C7C7C;
+}
+
+/* css 이벤트 테스트를 위한 클래스 */
+/* 이벤트는 적용되지 않음 */
+.lblTest{
+	text-align: center;
+}
+
+.lblTest:HOVER{
+	text-align: left;
+	background-color: #C9C6A5;
+	color: #888888;
+	font-style: italic;
+}
+
+/*************************/
+/*
+	tab
+*/
+/* 탭 버튼 스타일 */
+.tbt{
+	color:#574250;
+	background-color: #E5E5E5;
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+}
+
+.tbt:HOVER{
+	background-color: #ffffff;
+	color: #000000;
+}
+
+.tbt:FOCUS{
+	background-color: #FFEFD5;
+	color: #777777;
+}
+
+/* 탭 버튼 보더 스타일 */
+.tbtBorder{
+	border-width:1px; 
+	border-color:#aa8fa2; 
+	border-style:solid;
+}
+
+/* tab페이지 스타일 */
+.tpgBorder{
+	background-color:#ffffff;
+	border-width:1px;
+	border-color:#CCCCCC;
+	border-style:solid;
+}
+
+.tabBorder{
+	background-color: #ffffff;
+	border-width: 0px;
+}
+
+/*************************/
+/*
+	listbox
+*/
+.lsbBorder{
+	border-width:1px;
+	border-color:#CCCCCC;
+	border-style:solid;
+}
+
+/* 다른 컨트롤 내부에 있는 리스트박스 보더 */
+.lsbInBorder{
+	border-width: 0px;
+	border-style: none;
+}
+
+.lsbItem{
+	color: #4B4B4B;
+	background-color: #FCFCFA;
+	height: 20px;
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+}
+
+.lsb {
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+}
+
+/*************************/
+/*
+	treeview
+*/
+.trvCommon{
+	background-color: #ffffff;
+	color: #000000;
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+}
+
+.trvBorder{
+	border-width:1px;
+	border-color:#CCCCCC;
+	border-style:solid;
+}
+
+/* 다른 컨트롤 안에 있는 트리뷰 보더 */
+.trvInBorder{
+	border-width: 0px;
+	border-style: none;
+}
+
+.trvItemNode{
+	color: #4B4B4B;
+	background-color: #FCFCFA;
+	height: 20px;
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+}
+
+/*************************/
+/*
+	slideTab
+*/
+/* 슬라이드 버튼 스타일 */
+.sbt{
+	color:#574250;
+	background-color: #E5E5E5;
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+	font-family: "Gulimche", "Arial";
+}
+
+/* 슬라이드 탭 버튼 보더 스타일 */
+.sbtBorder{
+	border-width:1px; 
+	border-color:#aa8fa2; 
+	border-style:solid;
+}
+
+/* 슬라이드 페이지 보더 스타일 */
+.spgBorder{
+	background-color:#ffffff;
+	border-width:1px;
+	border-color:#CCCCCC;
+	border-style:solid;
+}
+
+/* 슬라이드 컨트롤 보더 스타일 */
+.stbBorder{
+	background-color: #ffffff;
+	border-width: 0px;
+}
+
+/* 다른 컨트롤 내부에 있는 슬라이드탭 보더 */
+.stbInBorder{
+	border-width: 0px;
+	border-style: none;
+}
+
+/***********************/
+/*
+	group
+*/
+.grpBorder{
+	border-width:1px;
+	border-color:#CCCCCC;
+	border-style:solid;
+}
+
+/***********************/
+/*
+	freeform
+*/
+.frfBorder{
+	border-width:1px;
+	border-color:#CCCCCC;
+	border-style:solid;
+}
+
+.frfCommon{
+	background-color: transparent;
+	color: #555555;
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+}
+
+/***********************/
+/*
+	textarea
+*/
+.txtBorder{
+	border-width:1px;
+	border-color:#CCCCCC;
+	border-style:solid;
+}
+
+.txtCommon{
+	color: #555555;
+	background-color: transparent;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 5px;
+	font-size: 9pt;  
+	font-family: Gulimche, Arial;
+}
+
+/***************************/
+/*
+  UtilDialog
+*/
+.alert_text{
+    color:#000000;
+    font-size:9pt;
+    text-align:left;
+}
+.alert_icon01{
+    width:46px;
+    height:40px;
+    background-image: url("../images/alert_icon01.png"); 
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-color: transparent;  
+}
+.alert_icon02{
+    width:46px;
+    height:40px;
+    background-image: url("../images/alert_icon02.png"); 
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-color: transparent;  
+}
+.alert_icon03{
+    width:46px;
+    height:40px;
+    background-image: url("../images/alert_icon03.png"); 
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-color: transparent;  
+}
+.alert_icon04{
+    width:46px;
+    height:40px;
+    background-image: url("../images/alert_icon04.png"); 
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-color: transparent;  
+}
+.out_zero {
+    border-width: 0px;
+}
+.button_small01 {
+    background-color: transparent;
+    background-image: url("../images/btn_gray.gif");
+    background-position: left top; 
+    font-size: 9pt; 
+    font-family: Dotum, Gulim, AppleGothic, Sans-serif; 
+    color:#666666;
+    font-weight: bold; 
+    text-align: center; 
+    text-decoration:none;
+}

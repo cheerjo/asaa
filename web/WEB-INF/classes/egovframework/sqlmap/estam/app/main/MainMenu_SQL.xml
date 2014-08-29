@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MainMenu">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+    <typeAlias  alias="mainMenuMgrVO" type="estam.app.main.service.MainMenuMgrVO"/>
+	<typeAlias  alias="comDefaultVO" type="egovframework.com.cmm.ComDefaultVO"/>
+	
+	<select id="mainMenuMgrDAO.selectMainMenuHead" parameterClass="MainMenuMgrVO" resultClass="egovMap">
+		<![CDATA[  
+           SELECT         a.MENU_CD
+                        , LEVEL AS DISPLAY_LVL
+						, a.UP_MENU_CD
+						, a.SITE_GBCD
+						, a.MENU_NM
+						, a.LINK_URL
+						, a.DPLY_NO
+						, a.USE_YN
+						, a.LINK_URL_IMG
+				FROM (
+				   SELECT
+				         	  Trim(a.MENU_CD) MENU_CD
+							, trim(a.UP_MENU_CD) UP_MENU_CD
+							, a.SITE_GBCD
+							, a.MENU_NM
+							, a.LINK_URL
+							, a.DPLY_NO
+							, a.USE_YN
+							, a.LINK_URL_IMG
+				   FROM SYM_MENU a
+				   WHERE a.USE_YN = 'Y'
+				   AND   a.MENU_CD NOT IN ('SYM00000')
+				     ) a
+				START WITH a.UP_MENU_CD = 'ESTAM'
+				CONNECT BY PRIOR a.MENU_CD = a.UP_MENU_CD
+				ORDER SIBLINGS BY a.DPLY_NO   
+		]]> 
+	</select>
+ 
+	<select id="mainMenuMgrDAO.selectMainMenuHeadByAuthor" parameterClass="MainMenuMgrVO" resultClass="egovMap">
+        <![CDATA[ 
+		 SELECT     a.MENU_CD
+                  , LEVEL AS DISPLAY_LVL
+                  , a.UP_MENU_CD
+                  , a.SITE_GBCD
+                  , a.MENU_NM
+                  , a.LINK_URL
+                  , a.DPLY_NO
+                  , a.USE_YN
+                  , a.LINK_URL_IMG
+          FROM (
+                  SELECT
+                            Trim(a.MENU_CD) MENU_CD
+                          , trim(a.UP_MENU_CD) UP_MENU_CD
+                          , a.SITE_GBCD
+                          , a.MENU_NM
+                          , a.LINK_URL
+                          , a.DPLY_NO
+                          , a.USE_YN
+                          , a.LINK_URL_IMG
+                 FROM SYM_MENU a
+                 WHERE a.USE_YN = 'Y'
+                 AND   a.MENU_CD IN ( SELECT MENU_CD 
+                                         FROM SYM_MENU a
+                                        WHERE a.USE_YN = 'Y'
+                                          AND a.UP_MENU_CD NOT IN ('SYM00000') 
+                                          UNION ALL
+                                       SELECT CC.MENU_CD
+                                         FROM SYM_PRIV_MENU CC
+                                        WHERE CC.MENU_CD IN
+                                           (SELECT  BB.MENU_CD
+                                              FROM SYM_PRIV_MENU AA , SYM_MENU BB
+                                             WHERE AA.PRIV_GRP_NO = #privGrpNo#
+                                               AND AA.MENU_CD = BB.MENU_CD
+                                               AND BB.USE_YN = 'Y'
+                                               AND BB.UP_MENU_CD IS NOT NULL )
+                                      ) 
+               ) a
+          START WITH a.UP_MENU_CD = 'ESTAM'
+          CONNECT BY PRIOR a.MENU_CD = a.UP_MENU_CD
+          ORDER SIBLINGS BY a.DPLY_NO 
+        ]]> 
+    </select>
+    
+    	<select id="mainMenuMgrDAO.selectEstamIncMapLeft" parameterClass="MainMenuMgrVO" resultClass="egovMap">
+        <![CDATA[ 
+		    SELECT  DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'GB' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'GB' THEN 1 ELSE 0 END)) AS FCTY_01
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'NU' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'NU' THEN 1 ELSE 0 END)) AS FCTY_02
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'HB' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'HB' THEN 1 ELSE 0 END)) AS FCTY_03
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'AP' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'AP' THEN 1 ELSE 0 END)) AS FCTY_04
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD IN ('DM','RV') THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD IN ('DM','RV') THEN 1 ELSE 0 END)) AS FCTY_05
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'BR' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'BR' THEN 1 ELSE 0 END)) AS FCTY_06
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'GF' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'GF' THEN 1 ELSE 0 END)) AS FCTY_07
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'HR' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'HR' THEN 1 ELSE 0 END)) AS FCTY_08
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'NF' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'NF' THEN 1 ELSE 0 END)) AS FCTY_09
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'TS' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'TS' THEN 1 ELSE 0 END)) AS FCTY_10
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD IN ('HP','TP') THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD IN ('HP','TP') THEN 1 ELSE 0 END)) AS FCTY_11
+			       ,DECODE(SUM(CASE WHEN  FCTY_KND_CD = 'EC' THEN 1 ELSE 0 END),NULL,0,SUM(CASE WHEN  FCTY_KND_CD = 'EC' THEN 1 ELSE 0 END)) AS FCTY_12 
+			  FROM FCTY_MGR 
+        ]]> 
+    </select>
+ 
+</sqlMap>                            
+ 

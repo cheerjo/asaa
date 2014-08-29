@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptFrstItemIptn">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptFrstItemIptnSerarchVO" type="estam.app.scn.rpt.service.RptFrstItemIptnDefaultVO"/>
+	
+	<resultMap id="rptFrstItemIptn" class="estam.app.scn.rpt.service.RptFrstItemIptnVO">
+		<result property="iptDt" column="IPT_DT" columnIndex="1"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="2"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="3"/>
+		<result property="itemQst91yn" column="ITEM_QST9_1YN" columnIndex="4"/>
+		<result property="itemQst92yn" column="ITEM_QST9_2YN" columnIndex="5"/>
+		<result property="itemQst93yn" column="ITEM_QST9_3YN" columnIndex="6"/>
+		<result property="itemQst94yn" column="ITEM_QST9_4YN" columnIndex="7"/>
+		<result property="itemQst95yn" column="ITEM_QST9_5YN" columnIndex="8"/>
+		<result property="itemQst96yn" column="ITEM_QST9_6YN" columnIndex="9"/>
+		<result property="itemQst97yn" column="ITEM_QST9_7YN" columnIndex="10"/>
+		<result property="itemQst101yn" column="ITEM_QST10_1YN" columnIndex="11"/>
+		<result property="itemQst102yn" column="ITEM_QST10_2YN" columnIndex="12"/>
+		<result property="itemQst103yn" column="ITEM_QST10_3YN" columnIndex="13"/>
+		<result property="itemQst104yn" column="ITEM_QST10_4YN" columnIndex="14"/>
+		<result property="itemQst111yn" column="ITEM_QST11_1YN" columnIndex="15"/>
+		<result property="itemQst112yn" column="ITEM_QST11_2YN" columnIndex="16"/>
+		<result property="itemQst113yn" column="ITEM_QST11_3YN" columnIndex="17"/>
+		<result property="itemQst114yn" column="ITEM_QST11_4YN" columnIndex="18"/>
+		<result property="itemQst121yn" column="ITEM_QST12_1YN" columnIndex="19"/>
+		<result property="itemQst122yn" column="ITEM_QST12_2YN" columnIndex="20"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="21"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="22"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="23"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="24"/>
+	</resultMap>
+	
+	<insert id="rptFrstItemIptnDAO.insertRptFrstItemIptn_S">
+		<![CDATA[
+			INSERT INTO RPT_FRST_ITEM_IPTN 
+				( IPT_DT
+				  , CON_DA_GBCD
+				  , FCTY_CD
+				  , ITEM_QST9_1YN
+				  , ITEM_QST9_2YN
+				  , ITEM_QST9_3YN
+				  , ITEM_QST9_4YN
+				  , ITEM_QST9_5YN
+				  , ITEM_QST9_6YN
+				  , ITEM_QST9_7YN
+				  , ITEM_QST10_1YN
+				  , ITEM_QST10_2YN
+				  , ITEM_QST10_3YN
+				  , ITEM_QST10_4YN
+				  , ITEM_QST11_1YN
+				  , ITEM_QST11_2YN
+				  , ITEM_QST11_3YN
+				  , ITEM_QST11_4YN
+				  , ITEM_QST12_1YN
+				  , ITEM_QST12_2YN
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #iptDt#
+				  , #conDaGbcd#
+				  , #fctyCd#
+				  , #itemQst91yn#
+				  , #itemQst92yn#
+				  , #itemQst93yn#
+				  , #itemQst94yn#
+				  , #itemQst95yn#
+				  , #itemQst96yn#
+				  , #itemQst97yn#
+				  , #itemQst101yn#
+				  , #itemQst102yn#
+				  , #itemQst103yn#
+				  , #itemQst104yn#
+				  , #itemQst111yn#
+				  , #itemQst112yn#
+				  , #itemQst113yn#
+				  , #itemQst114yn#
+				  , #itemQst121yn#
+				  , #itemQst122yn#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptFrstItemIptnDAO.updateRptFrstItemIptn_S">
+		<![CDATA[
+			UPDATE RPT_FRST_ITEM_IPTN
+			SET IPT_DT=#iptDt#
+				, CON_DA_GBCD=#conDaGbcd#
+				, FCTY_CD=#fctyCd#
+				, ITEM_QST9_1YN=#itemQst91yn#
+				, ITEM_QST9_2YN=#itemQst92yn#
+				, ITEM_QST9_3YN=#itemQst93yn#
+				, ITEM_QST9_4YN=#itemQst94yn#
+				, ITEM_QST9_5YN=#itemQst95yn#
+				, ITEM_QST9_6YN=#itemQst96yn#
+				, ITEM_QST9_7YN=#itemQst97yn#
+				, ITEM_QST10_1YN=#itemQst101yn#
+				, ITEM_QST10_2YN=#itemQst102yn#
+				, ITEM_QST10_3YN=#itemQst103yn#
+				, ITEM_QST10_4YN=#itemQst104yn#
+				, ITEM_QST11_1YN=#itemQst111yn#
+				, ITEM_QST11_2YN=#itemQst112yn#
+				, ITEM_QST11_3YN=#itemQst113yn#
+				, ITEM_QST11_4YN=#itemQst114yn#
+				, ITEM_QST12_1YN=#itemQst121yn#
+				, ITEM_QST12_2YN=#itemQst122yn#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE IPT_DT=#iptDt#
+								AND CON_DA_GBCD=#conDaGbcd#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</update>
+	
+	<delete id="rptFrstItemIptnDAO.deleteRptFrstItemIptn_S">
+		<![CDATA[
+			DELETE FROM RPT_FRST_ITEM_IPTN 
+						WHERE IPT_DT=#iptDt#
+								AND CON_DA_GBCD=#conDaGbcd#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</delete>
+	
+	<select id="rptFrstItemIptnDAO.selectRptFrstItemIptn_S" resultMap="rptFrstItemIptn">
+		<![CDATA[
+			SELECT
+				IPT_DT
+				, CON_DA_GBCD
+				, FCTY_CD
+				, ITEM_QST9_1YN
+				, ITEM_QST9_2YN
+				, ITEM_QST9_3YN
+				, ITEM_QST9_4YN
+				, ITEM_QST9_5YN
+				, ITEM_QST9_6YN
+				, ITEM_QST9_7YN
+				, ITEM_QST10_1YN
+				, ITEM_QST10_2YN
+				, ITEM_QST10_3YN
+				, ITEM_QST10_4YN
+				, ITEM_QST11_1YN
+				, ITEM_QST11_2YN
+				, ITEM_QST11_3YN
+				, ITEM_QST11_4YN
+				, ITEM_QST12_1YN
+				, ITEM_QST12_2YN
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_FRST_ITEM_IPTN
+						WHERE IPT_DT= (SELECT MAX(IPT_DT) 
+									         FROM CON_OBS_META
+									        WHERE 1=1 
+										      AND CON_DA_GBCD=#conDaGbcd#
+										      AND FCTY_CD = #fctyCd#)
+								AND CON_DA_GBCD=#conDaGbcd#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</select>
+	
+	<select id="rptFrstItemIptnDAO.selectRptFrstItemIptnList_D" parameterClass="rptFrstItemIptnSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								IPT_DT
+								, CON_DA_GBCD
+								, FCTY_CD
+								, ITEM_QST9_1YN
+								, ITEM_QST9_2YN
+								, ITEM_QST9_3YN
+								, ITEM_QST9_4YN
+								, ITEM_QST9_5YN
+								, ITEM_QST9_6YN
+								, ITEM_QST9_7YN
+								, ITEM_QST10_1YN
+								, ITEM_QST10_2YN
+								, ITEM_QST10_3YN
+								, ITEM_QST10_4YN
+								, ITEM_QST11_1YN
+								, ITEM_QST11_2YN
+								, ITEM_QST11_3YN
+								, ITEM_QST11_4YN
+								, ITEM_QST12_1YN
+								, ITEM_QST12_2YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_FRST_ITEM_IPTN
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					IPT_DT = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					CON_DA_GBCD LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						IPT_DT DESC
+							, CON_DA_GBCD DESC
+							, FCTY_CD DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="rptFrstItemIptnDAO.selectRptFrstItemIptnListTotCnt_S" parameterClass="rptFrstItemIptnSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_FRST_ITEM_IPTN
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				IPT_DT = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				CON_DA_GBCD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

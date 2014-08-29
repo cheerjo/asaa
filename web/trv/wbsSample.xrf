@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>wbsSample</xh:title>
+		<xh:link href="style.css" media="all" rel="stylesheet" type="text/css"/>
+		<xh:link href="../../style/stdGuide.css" media="all" rel="stylesheet" type="text/css"/>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="Administrator" name="author"/>
+		<xh:meta content="10. 12. 13 오전 11:27" name="date"/>
+		<xh:meta content="2.0.0.201010071411" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xf:instance id="instance">
+				<root>
+					<EXRIAERRMSG/>
+				</root>
+			</xf:instance>
+			<xf:instance id="resInstance">
+				<root>
+					<list>
+						<row>
+							<wbsCd/>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>0</treeNo>
+							<treeNm>1500마력 변속기 개발 \n5본부 3부</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>0</sortOrdr>
+							<pbsRescueYn/>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm/>
+							<wbsNm>1500마력 변속기 개발 </wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo/>
+							<class/>
+							<upperWbsSn/>
+							<wbsDc/>
+							<wbsSn>0</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>0</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm>5본부 3부</excDeptNm>
+							<excDeptCd>630000</excDeptCd>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>N</subPartYn>
+							<treeNo>12</treeNo>
+							<treeNm>가1\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm/>
+							<wbsNm>가1</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>0</upperTreeNo>
+							<class/>
+							<upperWbsSn/>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>12</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>1</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.1.1.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>127539</treeNo>
+							<treeNm>가5-1\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가5</upperWbsNm>
+							<wbsNm>가5-1</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>5</upperTreeNo>
+							<class/>
+							<upperWbsSn>5</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127539</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>4</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>P</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.1.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>N</subPartYn>
+							<treeNo>127542</treeNo>
+							<treeNm>가7-1\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가7</upperWbsNm>
+							<wbsNm>가7-1</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>7</upperTreeNo>
+							<class/>
+							<upperWbsSn>7</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127542</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>4</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>T</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.1.2</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>N</subPartYn>
+							<treeNo>127543</treeNo>
+							<treeNm>가7-2\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>2</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가7</upperWbsNm>
+							<wbsNm>가7-2</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>7</upperTreeNo>
+							<class/>
+							<upperWbsSn>7</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127543</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>4</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.1.3</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>N</subPartYn>
+							<treeNo>127544</treeNo>
+							<treeNm>가7-3\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>3</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가7</upperWbsNm>
+							<wbsNm>가7-3</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>7</upperTreeNo>
+							<class/>
+							<upperWbsSn>7</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127544</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>4</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.1.4</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>127548</treeNo>
+							<treeNm>가7-4\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>4</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가7</upperWbsNm>
+							<wbsNm>가7-4</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>7</upperTreeNo>
+							<class/>
+							<upperWbsSn>7</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127548</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>4</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127517</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>P</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.1.5</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>127549</treeNo>
+							<treeNm>가7-5\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>5</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가7</upperWbsNm>
+							<wbsNm>가7-5</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm>WP</wpYnNm>
+							<wpVO/>
+							<upperTreeNo>7</upperTreeNo>
+							<class/>
+							<upperWbsSn>7</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127549</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>4</wbsLevel>
+							<wpYn>Y</wpYn>
+							<bsnsRelateSn>127517</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>T</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.2.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>127550</treeNo>
+							<treeNm>가8-1\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가8</upperWbsNm>
+							<wbsNm>가8-1</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>8</upperTreeNo>
+							<class/>
+							<upperWbsSn>8</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127550</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>4</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>T</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>23</treeNo>
+							<treeNm>가2\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가1</upperWbsNm>
+							<wbsNm>가2</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>12</upperTreeNo>
+							<class/>
+							<upperWbsSn>12</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>23</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>2</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>N</subPartYn>
+							<treeNo>31</treeNo>
+							<treeNm>가3\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>2</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가1</upperWbsNm>
+							<wbsNm>가3</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>12</upperTreeNo>
+							<class/>
+							<upperWbsSn>12</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>31</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>2</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.3</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>N</subPartYn>
+							<treeNo>14</treeNo>
+							<treeNm>가4\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>3</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가1</upperWbsNm>
+							<wbsNm>가4</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>12</upperTreeNo>
+							<class/>
+							<upperWbsSn>12</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>14</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>2</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.3.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>N</subPartYn>
+							<treeNo>9</treeNo>
+							<treeNm>가9\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가4</upperWbsNm>
+							<wbsNm>가9</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm>WP</wpYnNm>
+							<wpVO/>
+							<upperTreeNo>14</upperTreeNo>
+							<class/>
+							<upperWbsSn>14</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>9</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>3</wbsLevel>
+							<wpYn>Y</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.3.2</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>N</subPartYn>
+							<treeNo>10</treeNo>
+							<treeNm>가10\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>2</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가4</upperWbsNm>
+							<wbsNm>가10</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm>WP</wpYnNm>
+							<wpVO/>
+							<upperTreeNo>14</upperTreeNo>
+							<class/>
+							<upperWbsSn>14</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>10</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>3</wbsLevel>
+							<wpYn>Y</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.1.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>5</treeNo>
+							<treeNm>가5\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가2</upperWbsNm>
+							<wbsNm>가5</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>23</upperTreeNo>
+							<class/>
+							<upperWbsSn>23</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>5</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>3</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.1.2</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>6</treeNo>
+							<treeNm>가6\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>2</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가2</upperWbsNm>
+							<wbsNm>가6</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm>WP</wpYnNm>
+							<wpVO/>
+							<upperTreeNo>23</upperTreeNo>
+							<class/>
+							<upperWbsSn>23</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>6</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>3</wbsLevel>
+							<wpYn>Y</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>N</subPartYn>
+							<treeNo>7</treeNo>
+							<treeNm>가7\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가3</upperWbsNm>
+							<wbsNm>가7</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>31</upperTreeNo>
+							<class/>
+							<upperWbsSn>31</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>7</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>3</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>70650</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.2</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>8</treeNo>
+							<treeNm>가8\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>2</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가3</upperWbsNm>
+							<wbsNm>가8</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>31</upperTreeNo>
+							<class/>
+							<upperWbsSn>31</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>8</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>3</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.3</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>19</treeNo>
+							<treeNm>가 tt\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>3</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가3</upperWbsNm>
+							<wbsNm>가 tt</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>31</upperTreeNo>
+							<class/>
+							<upperWbsSn>31</upperWbsSn>
+							<wbsDc>한글</wbsDc>
+							<wbsSn>19</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>3</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.1.1.1.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>127540</treeNo>
+							<treeNm>가5-1-1\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가5-1</upperWbsNm>
+							<wbsNm>가5-1-1</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>127539</upperTreeNo>
+							<class/>
+							<upperWbsSn>127539</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127540</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>5</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.1.1.1.1.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>127541</treeNo>
+							<treeNm>가5-1-1-1\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가5-1-1</upperWbsNm>
+							<wbsNm>가5-1-1-1</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>127540</upperTreeNo>
+							<class/>
+							<upperWbsSn>127540</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127541</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>6</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.1.1.1.1.1.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>127545</treeNo>
+							<treeNm>가5-1-1-1-1\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가5-1-1-1</upperWbsNm>
+							<wbsNm>가5-1-1-1-1</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm/>
+							<wpVO/>
+							<upperTreeNo>127541</upperTreeNo>
+							<class/>
+							<upperWbsSn>127541</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127545</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>7</wbsLevel>
+							<wpYn>N</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.1.1.1.1.1.2</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>127546</treeNo>
+							<treeNm>가5-1-1-1-2\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>2</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가5-1-1-1</upperWbsNm>
+							<wbsNm>가5-1-1-1-2</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm>WP</wpYnNm>
+							<wpVO/>
+							<upperTreeNo>127541</upperTreeNo>
+							<class/>
+							<upperWbsSn>127541</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127546</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>7</wbsLevel>
+							<wpYn>Y</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+						<row>
+							<wbsCd>1.2.2.1.1</wbsCd>
+							<createTime/>
+							<selPartitnBsnsChkYn/>
+							<subPartYn>Y</subPartYn>
+							<treeNo>127551</treeNo>
+							<treeNm>가8-1-1\nA</treeNm>
+							<pbsRescueYnNm/>
+							<endDe/>
+							<sortOrdr>1</sortOrdr>
+							<pbsRescueYn>N</pbsRescueYn>
+							<updateUserNm/>
+							<partitnBsnsChkYn/>
+							<beginDe/>
+							<upperWbsNm>가8-1</upperWbsNm>
+							<wbsNm>가8-1-1</wbsNm>
+							<createUserId/>
+							<updateTime/>
+							<wpYnNm>WP</wpYnNm>
+							<wpVO/>
+							<upperTreeNo>127550</upperTreeNo>
+							<class/>
+							<upperWbsSn>127550</upperWbsSn>
+							<wbsDc/>
+							<wbsSn>127551</wbsSn>
+							<createUserNm/>
+							<updateUserId/>
+							<wbsLevel>5</wbsLevel>
+							<wpYn>Y</wpYn>
+							<bsnsRelateSn>127376</bsnsRelateSn>
+							<wghtval/>
+							<excDeptNm/>
+							<excDeptCd/>
+							<wbsGubun>W</wbsGubun>
+						</row>
+					</list>
+				</root>
+			</xf:instance>
+		</xf:model>
+		<xh:script page="wbsSample" src="wbsSample.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:772;width:1092;left:0;top:0;">
+		<ev:listener event="onload" handler="page.onLoad" hasReturn="false"/>
+		<ev:listener event="oninit" handler="page.onInit" hasReturn="false"/>
+		<xr:treeview id="trv1" style="height:585;width:341;left:30;top:90;" z-index="0"
+				tabindex="0" ref="" contextMenuId="ctm1" expandAll="true" selectionMode="multi"
+				showCheckBox="false" userAttr="({trvType:&quot;WBS&quot;,lblColors:[&quot;#b8d5f3&quot;,&quot;#d2b9d1&quot;],wbsTypeTagName:&quot;wbsGubun&quot;,wbsIconMap:{W:&quot;icon/wbs.gif&quot;,P:&quot;icon/wp.gif&quot;,T:&quot;icon/task.gif&quot;}})">
+			<xr:itemnodegroup>
+				<xr:itemnodeset instanceid="resInstance" nodeset="/root/list/row" label="treeNm"
+						parent="upperTreeNo" value="treeNo"/>
+			</xr:itemnodegroup>
+			<xr:iconfiles style="openedFolder:none;leafItem:none;selectedLeafItem:none;closedFolder:none;"/>
+		</xr:treeview>
+		<xr:button id="btn1" style="height:25;width:110;left:390;top:100;" z-index="1" class="btnSearch"
+				outerClass="btnSearchBorder">
+			<xr:text>드롭다운 활성화</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btn1" hasReturn="false"/>
+		</xr:button>
+		<xr:button id="btn2" style="height:25;width:110;left:390;top:150;" z-index="2" tabindex="0"
+				class="btnSearch" outerClass="btnSearchBorder">
+			<xr:text>드롭다운 비활성화</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btn2" hasReturn="false"/>
+		</xr:button>
+		<xr:treeview id="trvMenu" style="height:641;width:216;overflow:hidden;border-style:none;background-color:white;left:120;top:79;"
+				z-index="3" tabindex="0" expandAll="true" selectionMode="multi" showCheckBox="true"
+				userAttr="({trvType:&quot;MENU&quot;})">
+			<xr:itemnodegroup style="color:#315975;selectedBackgroundColor:#e8efd2;selectedColor:#557777;background-color:#ffffff;font-weight:bold;"
+					class="trv_lt_itemgrp">
+				<xr:itemnode expand="true" label="사업정보관리" value="bsim">
+					<xr:itemnode label="사업정보" value="bsimSbsiWrite.xrf"/>
+					<xr:itemnode label="분할사업기준정보" value="bsimPbsiList.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="분할사업관리" value="pbif">
+					<xr:itemnode label="분할사업정보" value="pbifPbsiWrite.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="WBS관리" value="wbsm">
+					<xr:itemnode label="사업정보" value="wbsmWbdsList.xrf"/>
+					<xr:itemnode label="WBS이력정보" value="wbsmWpdsRevision.xrf"/>
+					<xr:itemnode label="분할사업연결" value="wbsmWpdsRelation.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="예산" value="bdgt">
+					<xr:itemnode label="예산조회" value="bdgtBsifRead.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="인력" value="hmfs">
+					<xr:itemnode label="인력할당" value="hmfsAsmtList.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="일정" value="schl">
+					<xr:itemnode label="일정" value="schlSchdRead.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="진도" value="rtpg">
+					<xr:itemnode label="계획/실적" value="rtpgRtwtWrite.xrf"/>
+				</xr:itemnode>
+			</xr:itemnodegroup>
+			<xr:iconfiles style="leafItem:none;selectedLeafItem:none;"/>
+		</xr:treeview>
+		<xr:label id="lblTitle" style="height:51;width:200;left:101;top:20;" z-index="4"
+				tabindex="0" class="lbl_lttitle">
+			<xr:text>WBS 뷰</xr:text>
+		</xr:label>
+		<xr:label id="lblTitle_copy_1" style="height:51;width:200;left:540;top:20;" z-index="5"
+				tabindex="0" class="lbl_lttitle">
+			<xr:text>MENU 뷰</xr:text>
+		</xr:label>
+		<xr:label id="lblTitle_copy_2" style="height:51;width:200;left:792;top:20;" z-index="6"
+				tabindex="0" class="lbl_lttitle">
+			<xr:text>일반 뷰</xr:text>
+		</xr:label>
+		<xr:treeview id="trvMenu_copy_1" style="height:641;width:216;overflow:hidden;border-style:none;background-color:white;left:784;top:90;"
+				z-index="7" tabindex="0" expandAll="true" selectionMode="multi" showCheckBox="true"
+				userAttr="">
+			<xr:itemnodegroup style="color:#315975;selectedColor:#557777;selectedBackgroundColor:#e8efd2;background-color:#ffffff;font-weight:bold;"
+					class="trv_lt_itemgrp">
+				<xr:itemnode expand="true" label="사업정보관리" value="bsim">
+					<xr:itemnode label="사업정보" value="bsimSbsiWrite.xrf"/>
+					<xr:itemnode label="분할사업기준정보" value="bsimPbsiList.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="분할사업관리" value="pbif">
+					<xr:itemnode label="분할사업정보" value="pbifPbsiWrite.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="WBS관리" value="wbsm">
+					<xr:itemnode label="사업정보" value="wbsmWbdsList.xrf"/>
+					<xr:itemnode label="WBS이력정보" value="wbsmWpdsRevision.xrf"/>
+					<xr:itemnode label="분할사업연결" value="wbsmWpdsRelation.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="예산" value="bdgt">
+					<xr:itemnode label="예산조회" value="bdgtBsifRead.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="인력" value="hmfs">
+					<xr:itemnode label="인력할당" value="hmfsAsmtList.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="일정" value="schl">
+					<xr:itemnode label="일정" value="schlSchdRead.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="진도" value="rtpg">
+					<xr:itemnode label="계획/실적" value="rtpgRtwtWrite.xrf"/>
+				</xr:itemnode>
+				<xr:itemnode expand="true" label="위험/이슈" value="dais">
+					<xr:itemnode label="위험" value="daisDngrList.xrf"/>
+					<xr:itemnode label="이슈" value="daisIssuList.xrf"/>
+				</xr:itemnode>
+			</xr:itemnodegroup>
+			<xr:iconfiles style="leafItem:none;selectedLeafItem:none;"/>
+			<ev:listener event="onchange" handler="page.onChange_trvMenu_copy_1" hasReturn="false"/>
+			<ev:listener event="onclick" handler="page.onClick_trvMenu_copy_1" hasReturn="false"/>
+		</xr:treeview>
+		<xr:button id="btnNodeAdd" style="height:20;width:100;left:400;top:390;" z-index="8"
+				tabindex="0" class="btnSearch" outerClass="btnSearchBorder">
+			<xr:text>노드 추가</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnNodeAdd" hasReturn="false"/>
+		</xr:button>
+		<xr:textarea id="txt1" style="height:161;width:331;left:50;top:370;" z-index="9"/>
+		<xr:treeview id="trv2" style="height:522;width:211;left:560;top:79;" z-index="10"
+				selectionMode="multi" showCheckBox="true">
+			<xr:itemnodegroup>
+				<xr:itemnode label="Label1" value="value1"/>
+			</xr:itemnodegroup>
+			<xr:iconfiles/>
+		</xr:treeview>
+	</xh:body>
+</xh:html>

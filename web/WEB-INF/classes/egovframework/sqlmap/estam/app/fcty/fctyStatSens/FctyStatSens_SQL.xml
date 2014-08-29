@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FctyStatSens">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="fctyStatSensSerarchVO" type="estam.app.fcty.service.FctyStatSensDefaultVO"/>
+	
+	<resultMap id="fctyStatSens" class="estam.app.fcty.service.FctyStatSensVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="2"/>
+		<result property="fctyStatSensGbcd" column="FCTY_STAT_SENS_GBCD" columnIndex="3"/>
+		<result property="fctyStatSensTm" column="FCTY_STAT_SENS_TM" columnIndex="4"/>
+		<result property="fctyStatSensPga" column="FCTY_STAT_SENS_PGA" columnIndex="5"/> 
+	</resultMap>
+	
+	  
+    
+	<insert id="fctyStatSensDAO.insertFctyStatSens_S">
+		<![CDATA[
+			INSERT INTO FCTY_STAT_SENS 
+				(   FCTY_CD
+				  , GVMT_CD
+				  , FCTY_STAT_SENS_GBCD
+				  , FCTY_STAT_SENS_TM
+				  , FCTY_STAT_SENS_PGA )
+			VALUES ( #fctyCd#
+		           , #gvmtCd#
+				   , #fctyStatSensGbcd#
+				   , #fctyStatSensTm#
+				   , #fctyStatSensPga# )
+		]]>
+	</insert>
+	
+	<update id="fctyStatSensDAO.updateFctyStatSens_S">
+		<![CDATA[
+			UPDATE FCTY_STAT_SENS
+			SET FCTY_CD=#fctyCd#
+			    , GVMT_CD=#gvmtCd#
+				, FCTY_STAT_SENS_GBCD=#fctyStatSensGbcd#
+				, FCTY_STAT_SENS_TM=#fctyStatSensTm#
+				, FCTY_STAT_SENS_PGA=#fctyStatSensPga#
+						WHERE FCTY_CD=#fctyCd#
+						AND GVMT_CD=#gvmtCd#
+								AND FCTY_STAT_SENS_GBCD=#fctyStatSensGbcd#
+				]]>
+	</update>
+	
+	<delete id="fctyStatSensDAO.deleteFctyStatSens_S">
+		<![CDATA[
+			DELETE FROM FCTY_STAT_SENS 
+						WHERE FCTY_CD=#fctyCd#
+						  AND GVMT_CD=#gvmtCd#
+								AND FCTY_STAT_SENS_GBCD=#fctyStatSensGbcd#
+				]]>
+	</delete>
+	
+	<select id="fctyStatSensDAO.selectFctyStatSens_S" resultMap="fctyStatSens">
+		<![CDATA[
+			SELECT
+				  FCTY_CD
+				, GVMT_CD
+				, FCTY_STAT_SENS_GBCD
+				, FCTY_STAT_SENS_TM
+				, FCTY_STAT_SENS_PGA
+			FROM FCTY_STAT_SENS
+						WHERE FCTY_CD=#fctyCd#
+						  AND GVMT_CD=#gvmtCd#
+								AND FCTY_STAT_SENS_GBCD=#fctyStatSensGbcd#
+				]]>
+	</select>
+	
+	<select id="fctyStatSensDAO.selectFctyStatSensList_D" parameterClass="fctyStatSensSerarchVO" resultClass="egovMap">
+      <![CDATA[
+			SELECT
+								  AA.FCTY_CD
+								, AA.GVMT_CD
+								, AA.FCTY_STAT_SENS_GBCD
+								, AA.FCTY_STAT_SENS_TM
+								, AA.FCTY_STAT_SENS_PGA
+								, DD.FCTY_NM
+								, DD.FCTY_LON
+								, DD.FCTY_LAT
+								, DD.FCTY_USR_TEL
+								, DD.FCTY_KND_CD
+								, (
+								   SELECT COMM_DTL_NM
+								     FROM SYM_COMM_CD_DTL FF 
+								     WHERE FF.COMM_CD = 'ITEM_011'   
+								       AND FF.COMM_DTL_CD = DD.FCTY_KND_CD 
+								  ) AS FCTY_KND_NM
+						FROM FCTY_STAT_SENS AA ,
+						     (
+						      SELECT  BB.FCTY_CD
+						            , BB.GVMT_CD
+ 						            , BB.FCTY_NM
+						            , BB.FCTY_LON
+						            , BB.FCTY_LAT
+                        , BB.FCTY_KND_CD
+						            , (SELECT CC.MGR_SLF_USR_TEL 
+						                 FROM FCTY_MGR_USR CC
+						                 WHERE CC.FCTY_CD = BB.FCTY_CD
+						                 AND   CC.GVMT_CD = BB.GVMT_CD) AS FCTY_USR_TEL
+						            FROM FCTY_MGR BB
+						     ) DD
+				WHERE 1=1
+				 AND AA.FCTY_STAT_SENS_GBCD=#fctyStatSensGbcd#
+				 AND AA.FCTY_CD = DD.FCTY_CD
+				 AND AA.GVMT_CD = DD.GVMT_CD
+				 ORDER BY AA.FCTY_STAT_SENS_TM DESC 
+]]>
+	</select>	
+	<select id="fctyStatSensDAO.selectFctyStatSensListTotCnt_S" parameterClass="fctyStatSensSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM FCTY_STAT_SENS
+			WHERE 1=1
+			<isNotEmpty prepend="AND" property="fctyCd"  >
+				FCTY_CD = #fctyCd#
+			</isNotEmpty>
+			 <isNotEmpty prepend="AND" property="fctyCd"  >
+				GVMT_CD = #gvmtCd#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="fctyStatSensGbcd"  >
+				FCTY_STAT_SENS_GBCD = #fctyStatSensGbcd#
+			</isNotEmpty>
+	</select>
+
+</sqlMap>

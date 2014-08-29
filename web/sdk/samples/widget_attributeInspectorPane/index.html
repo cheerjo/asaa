@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10">
+  <!--The viewport meta tag is used to improve the presentation and behavior of the samples
+    on iOS devices-->
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <title>Attribute Inspector</title>
+
+  <link rel="stylesheet" href="http://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">
+  <style>
+    html, body {
+      height: 97%;
+      width: 98%;
+      margin: 1%;
+    }
+
+    #rightPane {
+      width: 250px;
+    }
+
+    .esriAttributeInspector .dijitTextBox {
+      width: 10em;
+    }
+
+    .esriAttributeInspector .atiLayerName {
+      display: none;
+    }
+
+    .esriAttributeInspector .atiLabel {
+      font-weight: bold;
+      color: #705B35;
+    }
+
+    .esriAttributeInspector .atiField {
+      background: #FFF6D9;
+    }
+
+    .esriAttributeInspector .atiButtons {
+      color: #705B35;
+    }
+  </style>
+
+  <script>var dojoConfig = { parseOnLoad:true };</script>
+  <script src="http://js.arcgis.com/3.7/"></script>
+  <script>
+    dojo.require("dijit.layout.BorderContainer");
+    dojo.require("dijit.layout.ContentPane");
+    dojo.require("dijit.layout.AccordionContainer");
+    dojo.require("esri.map");
+    dojo.require("esri.dijit.Legend");
+    dojo.require("esri.dijit.AttributeInspector-all");
+
+    var map, operationalLayer;
+
+    function init() {
+      //This sample requires a proxy page to handle communications with the ArcGIS Server services. You will need to
+      //replace the url below with the location of a proxy on your machine. See the 'Using the proxy page' help topic
+      //for details on setting up a proxy page.
+      esri.config.defaults.io.proxyUrl = "/proxy";
+      map = new esri.Map("map", {
+        basemap:"topo",
+        center :[-118.407, 34.452],
+        zoom   :13
+      });
+
+      operationalLayer = new esri.layers.FeatureLayer("http://sampleserver5.arcgisonline.com/ArcGIS/rest/services/Energy/Geology/FeatureServer/9", {
+        mode     :esri.layers.FeatureLayer.MODE_ONDEMAND,
+        outFields:["station_id", "lithology_type", "metamorphic_facies", "geomodifications"]
+      });
+
+      operationalLayer.setSelectionSymbol(new esri.symbol.SimpleFillSymbol());
+
+      dojo.connect(map, 'onLayersAddResult', function (results) {
+        //add the legend
+        var legend = new esri.dijit.Legend({
+          map       :map,
+          layerInfos:[
+            {layer:operationalLayer, title:""}
+          ]
+        }, "legendDiv");
+        legend.startup();
+
+        var layerInfos = [
+          {
+            'featureLayer'    :operationalLayer,
+            'showAttachments' :false,
+            'isEditable'      :true,
+            'showDeleteButton':false,
+            'fieldInfos'      :[
+              {'fieldName':'station_id', 'tooltip':'The station id.', 'label':'Station:', 'isEditable':false},
+              {'fieldName':'lithology_type', 'tooltip':'The lithology type of the rock unit', 'label':'Lithology', 'isEditable':false},
+              {'fieldName':'metamorphic_facies', 'label':'Facies:', 'isEditable':false},
+              {'fieldName':'geomodifications', 'label':'Geomodifications', 'isEditable':true}
+            ]
+          }
+        ];
+
+        var attInspector = new esri.dijit.AttributeInspector({
+          layerInfos:layerInfos
+        }, "attributesDiv");
+      });
+
+      var selectQuery = new esri.tasks.Query();
+
+      dojo.connect(map, "onClick", function (evt) {
+        dojo.byId('details').innerHTML = '';
+        selectQuery.geometry = evt.mapPoint;
+        operationalLayer.selectFeatures(selectQuery, esri.layers.FeatureLayer.SELECTION_NEW, null);
+      });
+
+      map.addLayers([operationalLayer]);
+    }
+
+    dojo.ready(init);
+  </script>
+</head>
+<body class="claro">
+<!--[if IE 7]>
+<style>
+  html, body {
+    margin: 0;
+  }
+</style>
+<![endif]-->
+<div id="content"
+     data-dojo-type="dijit.layout.BorderContainer"
+     data-dojo-props="design:'headline', gutters:true"
+     style="width: 100%; height: 100%; margin: 0;">
+
+  <div id="rightPane"
+       data-dojo-type="dijit.layout.ContentPane"
+       data-dojo-props="region:'right'">
+
+    <div data-dojo-type="dijit.layout.AccordionContainer">
+      <div data-dojo-type="dijit.layout.ContentPane"
+           data-dojo-props="title:'Details', selected:true">
+        <span id="details">Click a geology outcrop to view details.</span>
+
+        <div id="attributesDiv"></div>
+      </div>
+      <div data-dojo-type="dijit.layout.ContentPane" id="legendPane"
+           data-dojo-props="title:'Legend'">
+        <div id="legendDiv"></div>
+      </div>
+    </div>
+  </div>
+  <div id="map"
+       data-dojo-type="dijit.layout.ContentPane"
+       data-dojo-props="region:'center'"
+       style="overflow:hidden;">
+  </div>
+</div>
+</body>
+</html>

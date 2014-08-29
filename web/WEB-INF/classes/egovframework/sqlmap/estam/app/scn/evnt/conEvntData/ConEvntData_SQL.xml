@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ConEvntData">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="conEvntDataSerarchVO" type="estam.app.scn.evnt.service.ConEvntDataDefaultVO"/>
+	
+	<resultMap id="conEvntData" class="estam.app.scn.evnt.service.ConEvntDataVO">
+		<result property="ehqkReqId" column="EHQK_REQ_ID" columnIndex="1"/>
+		<result property="ehqkTranGbcd" column="EHQK_TRAN_GBCD" columnIndex="2"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="3"/>
+		<result property="ehqkFlsv" column="EHQK_FLSV" columnIndex="4"/>
+		<result property="ehqkFlnm" column="EHQK_FLNM" columnIndex="5"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="6"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="7"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="8"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="9"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="3"/>
+	</resultMap>
+	
+	<insert id="conEvntDataDAO.insertConEvntData_S">
+		<![CDATA[
+			INSERT INTO CON_EVNT_DATA 
+				( EHQK_REQ_ID
+				  , EHQK_TRAN_GBCD
+				  , FCTY_CD
+				  , EHQK_FLSV
+				  , EHQK_FLNM
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #ehqkReqId#
+				  , #ehqkTranGbcd#
+				  , #fctyCd#
+				  , #ehqkFlsv#
+				  , #ehqkFlnm#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="conEvntDataDAO.updateConEvntData_S">
+		<![CDATA[
+			UPDATE CON_EVNT_DATA
+			SET EHQK_REQ_ID=#ehqkReqId#
+				, EHQK_TRAN_GBCD=#ehqkTranGbcd#
+				, FCTY_CD=#fctyCd#
+				, EHQK_FLSV=#ehqkFlsv#
+				, EHQK_FLNM=#ehqkFlnm#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE EHQK_REQ_ID=#ehqkReqId#
+								AND EHQK_TRAN_GBCD=#ehqkTranGbcd#
+				]]>
+	</update>
+	
+	<delete id="conEvntDataDAO.deleteConEvntData_S">
+		<![CDATA[
+			DELETE FROM CON_EVNT_DATA 
+						WHERE EHQK_REQ_ID=#ehqkReqId#
+								AND EHQK_TRAN_GBCD=#ehqkTranGbcd#
+				]]>
+	</delete>
+	
+	<select id="conEvntDataDAO.selectConEvntData_S" resultMap="conEvntData">
+		<![CDATA[
+			SELECT
+				EHQK_REQ_ID
+				, EHQK_TRAN_GBCD
+				, FCTY_CD
+				, EHQK_FLSV
+				, EHQK_FLNM
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM CON_EVNT_DATA
+						WHERE EHQK_REQ_ID=#ehqkReqId#
+								AND EHQK_TRAN_GBCD=#ehqkTranGbcd#
+				]]>
+	</select>
+	
+	<select id="conEvntDataDAO.selectConEvntDataList_D" parameterClass="conEvntDataSerarchVO" resultMap="conEvntData">
+				SELECT
+								EHQK_REQ_ID
+								, EHQK_TRAN_GBCD
+								,GVMT_CD
+								, FCTY_CD
+								, EHQK_FLSV
+								, EHQK_FLNM
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM CON_EVNT_DATA
+				WHERE 1=1
+			<isNotEmpty prepend="AND" property="ehqkReqId" >
+			      EHQK_REQ_ID = #ehqkReqId#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="ehqkTranGbcd" >
+			      EHQK_TRAN_GBCD = #ehqkTranGbcd#
+			</isNotEmpty>					
+					ORDER BY 
+						EHQK_REQ_ID DESC
+							, EHQK_TRAN_GBCD DESC
+		
+	</select>	
+	<select id="conEvntDataDAO.selectConEvntDataListTotCnt_S" parameterClass="conEvntDataSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM CON_EVNT_DATA
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				EHQK_REQ_ID = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				EHQK_TRAN_GBCD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FctyMgrUsr">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="fctyMgrUsrSerarchVO" type="estam.app.fcty.service.FctyMgrUsrDefaultVO"/>
+	
+	<resultMap id="fctyMgrUsr" class="estam.app.fcty.service.FctyMgrUsrVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="mgrSlfUsrNm" column="MGR_SLF_USR_NM" columnIndex="2"/>
+		<result property="mgrSlfDept" column="MGR_SLF_DEPT" columnIndex="3"/>
+		<result property="mgrSlfUsrTel" column="MGR_SLF_USR_TEL" columnIndex="4"/>
+		<result property="istlUsrNm" column="ISTL_USR_NM" columnIndex="5"/>
+		<result property="istlDept" column="ISTL_DEPT" columnIndex="6"/>
+		<result property="istlUsrTel" column="ISTL_USR_TEL" columnIndex="7"/>
+		<result property="spprUsrNm" column="SPPR_USR_NM" columnIndex="8"/>
+		<result property="spprDept" column="SPPR_DEPT" columnIndex="9"/>
+		<result property="spprUsrTel" column="SPPR_USR_TEL" columnIndex="10"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="11"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="12"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="13"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="14"/>
+	</resultMap>
+	
+	<insert id="fctyMgrUsrDAO.insertFctyMgrUsr_S">
+		<![CDATA[
+			INSERT INTO FCTY_MGR_USR 
+				( FCTY_CD
+				  , MGR_SLF_USR_NM
+				  , MGR_SLF_DEPT
+				  , MGR_SLF_USR_TEL
+				  , ISTL_USR_NM
+				  , ISTL_DEPT
+				  , ISTL_USR_TEL
+				  , SPPR_USR_NM
+				  , SPPR_DEPT
+				  , SPPR_USR_TEL
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #mgrSlfUsrNm#
+				  , #mgrSlfDept#
+				  , #mgrSlfUsrTel#
+				  , #istlUsrNm#
+				  , #istlDept#
+				  , #istlUsrTel#
+				  , #spprUsrNm#
+				  , #spprDept#
+				  , #spprUsrTel#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="fctyMgrUsrDAO.updateFctyMgrUsr_S">
+		<![CDATA[
+			UPDATE FCTY_MGR_USR
+			SET FCTY_CD=#fctyCd#
+				, MGR_SLF_USR_NM=#mgrSlfUsrNm#
+				, MGR_SLF_DEPT=#mgrSlfDept#
+				, MGR_SLF_USR_TEL=#mgrSlfUsrTel#
+				, ISTL_USR_NM=#istlUsrNm#
+				, ISTL_DEPT=#istlDept#
+				, ISTL_USR_TEL=#istlUsrTel#
+				, SPPR_USR_NM=#spprUsrNm#
+				, SPPR_DEPT=#spprDept#
+				, SPPR_USR_TEL=#spprUsrTel#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</update>
+	
+	<delete id="fctyMgrUsrDAO.deleteFctyMgrUsr_S">
+		<![CDATA[
+			DELETE FROM FCTY_MGR_USR 
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</delete>
+	
+	<select id="fctyMgrUsrDAO.selectFctyMgrUsr_S" resultMap="fctyMgrUsr">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, MGR_SLF_USR_NM
+				, MGR_SLF_DEPT
+				, MGR_SLF_USR_TEL
+				, ISTL_USR_NM
+				, ISTL_DEPT
+				, ISTL_USR_TEL
+				, SPPR_USR_NM
+				, SPPR_DEPT
+				, SPPR_USR_TEL
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM FCTY_MGR_USR
+						WHERE FCTY_CD=#fctyCd#
+				]]>
+	</select>
+	
+	<select id="fctyMgrUsrDAO.selectFctyMgrUsrList_D" parameterClass="fctyMgrUsrSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FCTY_CD
+								, MGR_SLF_USR_NM
+								, MGR_SLF_DEPT
+								, MGR_SLF_USR_TEL
+								, ISTL_USR_NM
+								, ISTL_DEPT
+								, ISTL_USR_TEL
+								, SPPR_USR_NM
+								, SPPR_DEPT
+								, SPPR_USR_TEL
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM FCTY_MGR_USR
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FCTY_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					MGR_SLF_USR_NM LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FCTY_CD DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="fctyMgrUsrDAO.selectFctyMgrUsrListTotCnt_S" parameterClass="fctyMgrUsrSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM FCTY_MGR_USR
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				MGR_SLF_USR_NM LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

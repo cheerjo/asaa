@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<!-- 
+	수정일                 수정자                          수정내용
+  =========     =======    =================================================
+  2011.8.26   	서준식     	 	SSO 로그인을 위한 쿼리 추가
+  2011.09.27    서준식              컬럼 변경 SUB_DN 을  CRTFC_DN_VALUE 로 변경
+  2011.09.28    서준식              컬럼 변경 entrprsmber_id 을  ENTRPRS_MBER_ID 로 변경
+-->
+<sqlMap namespace="EstamLogin">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="loginVO" type="egovframework.com.cmm.LoginVO"/>
+
+	<!-- 로그인 처리를 위한 resultMap -->
+	<resultMap id="login" class="egovframework.com.cmm.LoginVO"> 
+		<result property="userId" column="USER_ID" columnIndex="1"/>
+		<result property="privGrpNo" column="PRIV_GRP_NO" columnIndex="2"/>
+		<result property="orgYn" column="ORG_YN" columnIndex="3"/>
+		<result property="orgNm" column="ORG_NM" columnIndex="4"/>
+		<result property="userNm" column="USER_NM" columnIndex="5"/>
+		<result property="usrPswd" column="USR_PSWD" columnIndex="6"/>
+		<result property="usrEmail" column="USR_EMAIL" columnIndex="7"/>
+		<result property="telNo" column="TEL_NO" columnIndex="8"/>
+		<result property="mblNo" column="MBL_NO" columnIndex="9"/>
+		<result property="useObjt" column="USE_OBJT" columnIndex="10"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="11"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="12"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="13"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="14"/>
+		<result property="delDt" column="DEL_DT" columnIndex="15"/>
+	</resultMap> 
+	
+	<!-- 아이디 찾기를 위한 resultMap -->
+	<resultMap id="userId" class="egovframework.com.cmm.LoginVO">
+		<result property="userId" column="userId" columnIndex="1"/>
+	</resultMap>
+	
+	<!-- 비밀번호 처리를 위한 resultMap -->
+	<resultMap id="usrPswd" class="egovframework.com.cmm.LoginVO">
+		<result property="usrPswd" column="usrPswd" columnIndex="1"/>
+	</resultMap>
+	 
+	
+	<!-- 일반 로그인 -->
+	<select id="loginDAO.actionLogin" resultMap="login">
+		<!-- 일반회원 -->
+		<isEqual property="orgYn" compareValue="G">
+			<![CDATA[
+			SELECT USER_ID
+				,PRIV_GRP_NO
+				, 'G' AS ORG_YN
+				, ORG_NM
+				, USER_NM
+				, USR_PSWD
+				, USR_EMAIL
+				, TEL_NO
+				, MBL_NO
+				, USE_OBJT
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+				, DEL_DT 
+			  FROM SYM_USER
+			 WHERE USER_ID = #userId#
+			   AND USR_PSWD = #usrPswd#
+			   AND DEL_DT is null
+			]]>
+		</isEqual> 
+	</select>
+	  
+	<!-- 아이디 찾기 -->
+	<select id="loginDAO.searchId" resultMap="userId">
+		<!-- 일반회원 -->
+		<isEqual property="orgYn" compareValue="G">
+			<![CDATA[
+			SELECT USER_ID AS USER_ID
+			  FROM SYM_USER
+			 WHERE USER_NM = #userNm#
+			   AND USR_EMAIL = #usrEmail#
+			   AND DEL_DT is null
+			]]>
+		</isEqual> 
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="loginDAO.searchPassword" resultMap="usrPswd">
+		<!-- 일반회원 -->
+		<isEqual property="orgYn" compareValue="G">
+			<![CDATA[
+			SELECT USR_PSWD AS USR_PSWD
+			  FROM SYM_USER
+			 WHERE USER_ID = #userId#
+			   AND USER_NM = #userNm#
+			   AND USR_EMAIL = #usrEmail#
+			   AND DEL_DT is null
+			]]>
+		</isEqual> 
+	</select>
+	
+	<!-- 변경된 비밀번호를 저장 -->
+	<update id="loginDAO.updatePassword">
+		<!-- 일반회원 -->
+		<isEqual property="orgYn" compareValue="G">
+			<![CDATA[
+			UPDATE SYM_USER
+			   SET USR_PSWD = #usrPswd#
+			 WHERE USER_ID = #userId#
+			]]>
+		</isEqual> 
+	</update>
+</sqlMap>

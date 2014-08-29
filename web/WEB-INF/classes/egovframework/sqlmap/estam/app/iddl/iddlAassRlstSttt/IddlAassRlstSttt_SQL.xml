@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="IddlAassRlstSttt">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	
+	<typeAlias  alias="iddlAassRlstSerarchVO" type="estam.app.iddl.service.IddlAassRlstDefaultVO"/>
+	<typeAlias  alias="iddlEhqkOcurInfoVO" type="estam.app.iddl.service.IddlEhqkOcurInfoVO"/>
+	<typeAlias  alias="fctyListInspVO" type="estam.app.iddl.service.FctyListInspVO"/>
+	<typeAlias  alias="iddlAassRlstStatsVO" type="estam.app.iddl.service.IddlAassRlstStatsVO"/>
+	
+	<resultMap id="iddlEhqkOcurInfo" class="estam.app.iddl.service.IddlEhqkOcurInfoVO">
+		<result property="ehqkReqId" column="EHQK_REQ_ID" columnIndex="1"/>
+		<result property="ehqkOrgTm" column="EHQK_ORG_TM" columnIndex="2"/>
+		<result property="ehqkScal" column="EHQK_SCAL" columnIndex="3"/>
+		<result property="ehqkOrgArea" column="EHQK_ORG_AREA" columnIndex="4"/>
+    </resultMap>
+    
+    <resultMap id="fctyListInsp" class="estam.app.iddl.service.FctyListInspVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="fctyNm" column="FCTY_NM" columnIndex="2"/>
+		<result property="commDtlNm" column="COMM_DTL_NM" columnIndex="3"/>
+    </resultMap>
+    
+    <resultMap id="iddlAassRlstStats" class="estam.app.iddl.service.IddlAassRlstStatsVO">
+		<result property="lrgGb" column="LRG_GB" columnIndex="1"/>
+		<result property="midGb" column="MID_GB" columnIndex="2"/>
+		<result property="oksRate" column="OKS_RATE" columnIndex="3"/>
+		<result property="oksCnt" column="OKS_CNT" columnIndex="4"/>
+		<result property="chkRate" column="CHK_RATE" columnIndex="5"/>
+		<result property="chkCnt" column="CHK_CNT" columnIndex="6"/>
+		<result property="totCnt" column="TOT_CNT" columnIndex="7"/>
+    </resultMap>
+    
+    <!-- 지진발생정보 목록 홍익제 수정 20131226-->
+    <select id="iddlAassRlstStttDAO.selectIddlEhqkOcurInfo" parameterClass="iddlEhqkOcurInfoVO" resultClass="egovMap">
+		SELECT A.EHQK_REQ_ID                EHQK_REQ_ID
+		     , A.EHQK_ORG_TM                EHQK_ORG_TM
+		     , A.EHQK_SCAL                  EHQK_SCAL
+		     , A.EHQK_ORG_AREA              EHQK_ORG_AREA
+		     , NVL(C.EHQK_OTN,'N')          EHQK__OTN
+		     , SUBSTR(A.EHQK_ORG_TM,1,8)    EHQK_STTM
+		     , A.EHQK_TRAN_GBCD             EHQK_TRAN_GBCD
+		     , c.FCTY_CD                    FCTY_CD
+		     , c.GVMT_CD                    GVMT_CD
+		     , C.IDDL_AASS_NO               IDDL_AASS_NO
+		     , C.IDDL_AASS_DT               IDDL_AASS_DT
+		  FROM EHQK_OCUR_INFO A, 
+		           (SELECT FCTY_CD, GVMT_CD, EHQK_REQ_ID, IDDL_AASS_NO, IDDL_AASS_DT, EHQK_OTN, EHQK_TRAN_GBCD FROM IDDL_AASS_INFO 
+		       WHERE 1=1
+				<isNotEmpty prepend="AND" property="fctyCd" >
+				       FCTY_CD = #fctyCd#
+				</isNotEmpty>
+				<isNotEmpty prepend="AND" property="gvmtCd" >
+				       GVMT_CD = #gvmtCd#
+				</isNotEmpty>  
+		           ) C
+		 WHERE 1=1 
+		   AND A.EHQK_REQ_ID = C.EHQK_REQ_ID
+           AND A.EHQK_TRAN_GBCD = C.EHQK_TRAN_GBCD
+		<isNotEmpty prepend="AND" property="fctyAreaCd" >
+		        <!-- AreaCode의 형태는 11, 22와 같은 형식으로 전달되며, 이를 맞추기 위해 substr함수를 사용 -->
+		        SUBSTR(B.FCTY_AREA_CD, 1, 2) = #fctyAreaCd#  
+		</isNotEmpty>
+		<!-- 검색조건 -->
+		<isNotEmpty prepend="AND" property="searchKeyword" >
+		       ( C.IDDL_AASS_DT LIKE '%' || #searchKeyword# || '%'
+		         OR A.EHQK_SCAL LIKE '%' || #searchKeyword# || '%' 
+		         OR A.EHQK_ORG_AREA LIKE '%' || #searchKeyword# || '%' 
+		         OR A.EHQK_ORG_TM LIKE '%' || #searchKeyword# || '%')
+		</isNotEmpty>
+		<isNotEmpty property="searchCondition" >
+		       ORDER BY $searchCondition$
+		</isNotEmpty> 
+		<isEmpty property="searchCondition" >
+		       ORDER BY EHQK_ORG_TM DESC
+		</isEmpty>		   
+		    <!--    
+		SELECT A.EHQK_REQ_ID    			EHQK_REQ_ID
+		     , A.EHQK_ORG_TM    			EHQK_ORG_TM
+		     , A.EHQK_SCAL      			EHQK_SCAL
+		     , A.EHQK_ORG_AREA  			EHQK_ORG_AREA
+		     , NVL(C.EHQK_OTN,'N')       	EHQK__OTN
+		     , SUBSTR(A.EHQK_ORG_TM,1,8)    EHQK_STTM
+		     , A.EHQK_TRAN_GBCD    			EHQK_TRAN_GBCD
+		     , A.FCTY_CD    				FCTY_CD
+		     , A.GVMT_CD    				GVMT_CD
+		     , C.IDDL_AASS_NO				IDDL_AASS_NO
+		     , C.IDDL_AASS_DT			  	IDDL_AASS_DT
+		  FROM EHQK_OCUR_INFO A
+		     , FCTY_MGR B
+		     , IDDL_AASS_INFO C
+		 WHERE A.FCTY_CD = B.FCTY_CD (+)
+		   AND A.GVMT_CD = B.GVMT_CD (+)
+		   AND A.GVMT_CD = C.GVMT_CD (+)
+		   
+		<isNotEmpty prepend="AND" property="fctyCd" >
+		       A.FCTY_CD = #fctyCd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="gvmtCd" >
+		       A.GVMT_CD = #gvmtCd#
+		</isNotEmpty>     
+		-->
+	</select>
+	 
+	
+	<!-- 지진발생정보 목록 홍익제 수정 20131223  
+		 iddl_aass_rslt테이블에 결과 없으면 목록에 나오지 않게 수정함 20131226
+	-->
+    <select id="iddlAassRlstStttDAO.selectIddlEhqkOcurInfo2" parameterClass="iddlEhqkOcurInfoVO" resultClass="egovMap">
+	    SELECT * FROM (
+            SELECT   EOI.EHQK_REQ_ID, EOI.EHQK_TRAN_GBCD, EOI.EHQK_SCAL,
+                     EOI.EHQK_ORG_AREA, EOI.EHQK_ORG_TM,
+                     MAX (IAI.IDDL_AASS_DT) IDDL_AASS_DT,
+                     MAX (IAI.IDDL_AASS_NO) IDDL_AASS_NO
+                FROM EHQK_OCUR_INFO EOI INNER JOIN IDDL_AASS_INFO IAI
+                  ON IAI.EHQK_REQ_ID = EOI.EHQK_REQ_ID
+                 AND IAI.EHQK_TRAN_GBCD = EOI.EHQK_TRAN_GBCD
+               INNER JOIN IDDL_AASS_RLST IAR
+                  ON IAI.FCTY_CD = IAR.FCTY_CD
+                 AND IAI.GVMT_CD = IAR.GVMT_CD
+                 AND IAI.IDDL_AASS_NO = IAR.IDDL_AASS_NO
+            GROUP BY EOI.EHQK_REQ_ID, EOI.EHQK_TRAN_GBCD, EOI.EHQK_SCAL,
+                     EOI.EHQK_ORG_AREA, EOI.EHQK_ORG_TM        
+        
+		) A
+		WHERE 1=1
+		<!--
+		SELECT 
+        	  EHQK_REQ_ID,
+			  EHQK_TRAN_GBCD,
+			  EHQK_SCAL ,
+			  EHQK_ORG_AREA ,
+			  EHQK_ORG_TM,
+              IDDL_AASS_NO,
+              IDDL_AASS_DT2,
+              DECODE((select max(IDDL_AASS_NO) from IDDL_AASS_RlST where A.IDDL_AASS_NO = IDDL_AASS_NO), NULL, '', IDDL_AASS_DT2) as IDDL_AASS_DT
+        FROM (
+			SELECT 
+			  EHQK_REQ_ID,
+			  EHQK_TRAN_GBCD,
+			  EHQK_SCAL ,
+			  EHQK_ORG_AREA ,
+			  EHQK_ORG_TM,
+			  (
+			    SELECT MAX(IDDL_AASS_DT)
+			    FROM IDDL_AASS_INFO
+			    WHERE EHQK_REQ_ID = A.EHQK_REQ_ID
+			      AND EHQK_TRAN_GBCD = A.EHQK_TRAN_GBCD) AS IDDL_AASS_DT2,
+			  (
+			    SELECT MAX(IDDL_AASS_NO)
+			    FROM IDDL_AASS_INFO
+			    WHERE EHQK_REQ_ID = A.EHQK_REQ_ID
+			      AND EHQK_TRAN_GBCD = A.EHQK_TRAN_GBCD) AS IDDL_AASS_NO                  
+			FROM EHQK_OCUR_INFO A
+		) A
+		WHERE 1=1 
+		-->
+		<!-- 검색조건 -->
+		<isNotEmpty prepend="AND" property="searchKeyword" >
+		       ( IDDL_AASS_DT LIKE '%' || #searchKeyword# || '%'
+		         OR EHQK_SCAL LIKE '%' || #searchKeyword# || '%' 
+		         OR EHQK_ORG_AREA LIKE '%' || #searchKeyword# || '%' 
+		         OR EHQK_ORG_TM LIKE '%' || #searchKeyword# || '%')
+		</isNotEmpty>
+		<isNotEmpty property="searchCondition" >
+		       ORDER BY $searchCondition$
+		</isNotEmpty> 
+		<isEmpty property="searchCondition" >
+		       ORDER BY EHQK_ORG_TM DESC
+		</isEmpty>		   
+	</select>
+	
+    <!-- 지진발생분석정보 목록  -->
+    <select id="iddlAassRlstStttDAO.selectIddlEhqkOcurRptInfoList" parameterClass="IddlEhqkOcurInfoVO" resultClass="egovMap">   
+		SELECT 
+		    A.FCTY_CD, A.GVMT_CD, A.IDDL_AASS_NO, A.EHQK_STTM, A.EHQK_ORG_AREA, A.CHK_YN, A.EHQK_REQ_ID, A.IDDL_AASS_DT, A.EHQK_SCAL
+		  FROM (
+		    SELECT    
+		        RANK() OVER( PARTITION BY C.FCTY_CD, C.GVMT_CD, C.EHQK_REQ_ID, C.EHQK_TRAN_GBCD  ORDER BY C.IDDL_AASS_NO DESC ) AS RNK,
+		        C.FCTY_CD,
+		        C.GVMT_CD,
+		        C.EHQK_REQ_ID,
+		        C.EHQK_TRAN_GBCD, 
+		        C.IDDL_AASS_NO,
+		        C.IDDL_AASS_DT,
+		        A.EHQK_SCAL,
+		        A.EHQK_ORG_AREA,
+		        <!-- SUBSTR (A.EHQK_ORG_TM, 1, 8) EHQK_STTM, -->
+		        A.EHQK_ORG_TM EHQK_STTM,
+		        CASE WHEN R.SF_CHK_MAX_IDR_X_RSLT = 'OK'
+		                  AND R.SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+		                  AND R.SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+		                  AND R.SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+		                  AND R.SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+		                  AND R.SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+		                  AND R.SF_CHK_OVR_ACC_X_RSLT = 'OK'
+		                  AND R.SF_CHK_OVR_ACC_Y_RSLT = 'OK' 
+		             THEN '적합' ELSE '부적합' 
+		        END AS CHK_YN
+			  FROM CON_EVNT_DATA Z, EHQK_OCUR_INFO A, IDDL_AASS_INFO C, IDDL_AASS_RLST R
+		     WHERE 1=1 
+		       AND A.EHQK_REQ_ID = Z.EHQK_REQ_ID
+		       AND A.EHQK_TRAN_GBCD = Z.EHQK_TRAN_GBCD
+		       AND Z.FCTY_CD = C.FCTY_CD 
+		       AND Z.GVMT_CD  = C.GVMT_CD
+		       AND Z.EHQK_REQ_ID = C.EHQK_REQ_ID
+		       AND Z.EHQK_TRAN_GBCD = C.EHQK_TRAN_GBCD
+		       AND C.FCTY_CD = R.FCTY_CD
+		       AND C.IDDL_AASS_NO = R.IDDL_AASS_NO
+		       AND C.GVMT_CD = R.GVMT_CD
+		       AND C.EHQK_REQ_ID IS NOT NULL
+		       AND C.EHQK_TRAN_GBCD IS NOT NULL
+		<isNotEmpty prepend="AND" property="fctyCd" >
+		       Z.FCTY_CD = #fctyCd#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="gvmtCd" >
+		       Z.GVMT_CD = #gvmtCd#
+		</isNotEmpty>
+		     ORDER BY EHQK_ORG_TM DESC
+		) A
+		 WHERE 1=1
+		   AND RNK = 1	 
+	</select>
+	
+	<!-- 점검필요 시설물 목록  -->
+    <select id="iddlAassRlstStttDAO.selectFctyListInsp" parameterClass="fctyListInspVO" resultClass="egovMap">
+SELECT AA.FCTY_CD          FCTY_CD
+     , AA.FCTY_NM          FCTY_NM
+     , AA.GVMT_CD		   GVMT_CD
+     , BB.COMM_DTL_NM      COMM_DTL_NM
+  FROM (
+        SELECT B.FCTY_CD                    FCTY_CD
+             , B.GVMT_CD                    GVMT_CD
+             , B.IDDL_AASS_NO               IDDL_AASS_NO
+             , B.FCTY_NM                    FCTY_NM
+             , B.FCTY_KND_CD                FCTY_KND_CD
+          FROM (
+                SELECT FCTY_CD
+                     , GVMT_CD
+                     , MAX(IDDL_AASS_NO)  IDDL_AASS_NO
+                  FROM IDDL_AASS_RLST 
+                GROUP BY FCTY_CD, GVMT_CD
+               ) A
+             , (
+                SELECT C.FCTY_CD                    FCTY_CD
+                     , C.GVMT_CD                    GVMT_CD
+                     , C.IDDL_AASS_NO               IDDL_AASS_NO
+                     , C.SF_CHK_MAX_IDR_X_RSLT      SF_CHK_MAX_IDR_X_RSLT
+                     , C.SF_CHK_MAX_IDR_Y_RSLT      SF_CHK_MAX_IDR_Y_RSLT
+                     , C.SF_CHK_NAT_FRQ_MV_X_RSLT   SF_CHK_NAT_FRQ_MV_X_RSLT
+                     , C.SF_CHK_NAT_FRQ_MV_Y_RSLT   SF_CHK_NAT_FRQ_MV_Y_RSLT
+                     , C.SF_CHK_STR_FREE_NAT_FRQ_X  SF_CHK_STR_FREE_NAT_FRQ_X
+                     , C.SF_CHK_STR_FREE_NAT_FRQ_Y  SF_CHK_STR_FREE_NAT_FRQ_Y
+                     , C.SF_CHK_OVR_ACC_X_RSLT      SF_CHK_OVR_ACC_X_RSLT
+                     , C.SF_CHK_OVR_ACC_Y_RSLT      SF_CHK_OVR_ACC_Y_RSLT
+                     , D.FCTY_NM                    FCTY_NM
+                     , D.FCTY_KND_CD                FCTY_KND_CD
+                  FROM IDDL_AASS_RLST C
+                     , FCTY_MGR D
+                 WHERE C.FCTY_CD = D.FCTY_CD
+                   AND C.GVMT_CD = D.GVMT_CD            
+<isNotEmpty prepend="AND" property="fctyAreaCd" >
+		               <!-- D.FCTY_AREA_CD = #fctyAreaCd# xkwh-->
+		               SUBSTR(D.FCTY_AREA_CD, 1, 2) = #fctyAreaCd#
+</isNotEmpty>
+               ) B
+         WHERE A.FCTY_CD = B.FCTY_CD
+           AND A.GVMT_CD = B.GVMT_CD
+           AND A.IDDL_AASS_NO = B.IDDL_AASS_NO
+           AND (
+                B.SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+            OR  B.SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+            OR  B.SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+            OR  B.SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+            OR  B.SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+            OR  B.SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+            OR  B.SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+            OR  B.SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+               ) 
+       ) AA
+     , (
+        SELECT COMM_DTL_CD
+             , COMM_DTL_NM
+          FROM SYM_COMM_CD_DTL
+         WHERE COMM_CD = 'ITEM_011'
+       ) BB
+ WHERE AA.FCTY_KND_CD = BB.COMM_DTL_CD			 
+	</select>
+	
+	<!-- 정검 통계  -->
+    <select id="iddlAassRlstStttDAO.selectIddlAassRlstStats" parameterClass="iddlAassRlstStatsVO" resultClass="egovMap">
+WITH IDDL_AASS_RLST_VIEW AS (
+SELECT B.FCTY_CD                    FCTY_CD
+     , B.GVMT_CD                    GVMT_CD
+     , B.IDDL_AASS_NO               IDDL_AASS_NO
+     , B.SF_CHK_MAX_IDR_X_RSLT      SF_CHK_MAX_IDR_X_RSLT
+     , B.SF_CHK_MAX_IDR_Y_RSLT      SF_CHK_MAX_IDR_Y_RSLT
+     , B.SF_CHK_NAT_FRQ_MV_X_RSLT   SF_CHK_NAT_FRQ_MV_X_RSLT
+     , B.SF_CHK_NAT_FRQ_MV_Y_RSLT   SF_CHK_NAT_FRQ_MV_Y_RSLT
+     , B.SF_CHK_STR_FREE_NAT_FRQ_X  SF_CHK_STR_FREE_NAT_FRQ_X
+     , B.SF_CHK_STR_FREE_NAT_FRQ_Y  SF_CHK_STR_FREE_NAT_FRQ_Y
+     , B.SF_CHK_OVR_ACC_X_RSLT      SF_CHK_OVR_ACC_X_RSLT
+     , B.SF_CHK_OVR_ACC_Y_RSLT      SF_CHK_OVR_ACC_Y_RSLT
+     , B.FCTY_CPLN_DT               FCTY_CPLN_DT
+     , NVL(B.FCTY_STR_TYCD, '-')    FCTY_STR_TYCD
+     , B.FCTY_FLOR_SCL              FCTY_FLOR_SCL
+  FROM (
+        SELECT FCTY_CD
+             , GVMT_CD
+             , MAX(IDDL_AASS_NO)  IDDL_AASS_NO
+          FROM IDDL_AASS_RLST 
+        GROUP BY FCTY_CD, GVMT_CD
+       ) A
+     , (
+        SELECT B.FCTY_CD                    FCTY_CD
+             , B.GVMT_CD                    GVMT_CD
+             , B.IDDL_AASS_NO               IDDL_AASS_NO
+             , B.SF_CHK_MAX_IDR_X_RSLT      SF_CHK_MAX_IDR_X_RSLT
+             , B.SF_CHK_MAX_IDR_Y_RSLT      SF_CHK_MAX_IDR_Y_RSLT
+             , B.SF_CHK_NAT_FRQ_MV_X_RSLT   SF_CHK_NAT_FRQ_MV_X_RSLT
+             , B.SF_CHK_NAT_FRQ_MV_Y_RSLT   SF_CHK_NAT_FRQ_MV_Y_RSLT
+             , B.SF_CHK_STR_FREE_NAT_FRQ_X  SF_CHK_STR_FREE_NAT_FRQ_X
+             , B.SF_CHK_STR_FREE_NAT_FRQ_Y  SF_CHK_STR_FREE_NAT_FRQ_Y
+             , B.SF_CHK_OVR_ACC_X_RSLT      SF_CHK_OVR_ACC_X_RSLT
+             , B.SF_CHK_OVR_ACC_Y_RSLT      SF_CHK_OVR_ACC_Y_RSLT
+             , E.FCTY_CPLN_DT               FCTY_CPLN_DT
+             , E.FCTY_STR_TYCD              FCTY_STR_TYCD
+             , E.FCTY_FLOR_SCL              FCTY_FLOR_SCL
+          FROM IDDL_AASS_RLST B
+             , FCTY_MGR D
+             , FCTY_ADD_INFO E
+             , IDDL_AASS_INFO F
+             , EHQK_OCUR_INFO Z
+         WHERE B.FCTY_CD = D.FCTY_CD (+)
+           AND B.GVMT_CD = D.GVMT_CD (+)
+           AND B.FCTY_CD = E.FCTY_CD (+)
+           AND B.GVMT_CD = E.GVMT_CD (+)
+<isNotEmpty prepend="AND" property="fctyAreaCd" >
+               <!-- D.FCTY_AREA_CD = #fctyAreaCd# xkwh-->
+               SUBSTR(D.FCTY_AREA_CD, 1, 2) = #fctyAreaCd#
+</isNotEmpty>
+		   AND F.FCTY_CD = B.FCTY_CD
+		   AND F.GVMT_CD = B.GVMT_CD
+		   AND F.EHQK_REQ_ID = Z.EHQK_REQ_ID
+		   AND F.EHQK_TRAN_GBCD = Z.EHQK_TRAN_GBCD
+<isNotEmpty prepend="AND" property="ehqkOrgTm" >
+               Z.EHQK_ORG_TM = #ehqkOrgTm# AND F.IDDL_AASS_DT = #iddlAassDt#
+</isNotEmpty>
+       ) B
+ WHERE A.FCTY_CD = B.FCTY_CD
+   AND A.GVMT_CD = B.GVMT_CD
+   AND A.IDDL_AASS_NO = B.IDDL_AASS_NO
+)
+/* 전체 */
+SELECT '전체'                                                                                 LRG_GB
+     , '전체'                                                                                 MID_GB                              
+     , ROUND(((TT.OKS_CNT * 100) / CASE WHEN TT.TOT_CNT = 0 THEN 1 ELSE TT.TOT_CNT END), 2)   OKS_RATE
+     , TT.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((TT.CHK_CNT * 100) / CASE WHEN TT.TOT_CNT = 0 THEN 1 ELSE TT.TOT_CNT END), 2)   CHK_RATE
+     , TT.CHK_CNT                                                                             CHK_CNT
+     , TT.TOT_CNT                                                                             TOT_CNT     
+  FROM (
+        SELECT (     
+                SELECT COUNT(*) 
+                  FROM (
+                        SELECT FCTY_CD
+                             , GVMT_CD
+                             , MAX(IDDL_AASS_NO)  IDDL_AASS_NO
+                          FROM IDDL_AASS_RLST 
+                        GROUP BY FCTY_CD, GVMT_CD
+                       ) A
+                     , (
+                        SELECT C.FCTY_CD                    FCTY_CD
+                             , C.GVMT_CD                    GVMT_CD
+                             , C.IDDL_AASS_NO               IDDL_AASS_NO
+                             , D.FCTY_NM                    FCTY_NM
+                          FROM IDDL_AASS_RLST C
+                             , FCTY_MGR D
+                             , IDDL_AASS_INFO F
+                             , EHQK_OCUR_INFO Z
+                         WHERE C.FCTY_CD = D.FCTY_CD
+                           AND C.GVMT_CD = D.GVMT_CD
+<isNotEmpty prepend="AND" property="fctyAreaCd" >
+			               <!-- D.FCTY_AREA_CD = #fctyAreaCd# xkwh-->
+			               SUBSTR(D.FCTY_AREA_CD, 1, 2) = #fctyAreaCd#
+</isNotEmpty>
+                           AND F.FCTY_CD = C.FCTY_CD
+                           AND F.GVMT_CD = C.GVMT_CD
+                           AND F.EHQK_REQ_ID = Z.EHQK_REQ_ID
+                           AND F.EHQK_TRAN_GBCD = Z.EHQK_TRAN_GBCD
+<isNotEmpty prepend="AND" property="ehqkOrgTm" >
+			               Z.EHQK_ORG_TM = #ehqkOrgTm# AND F.IDDL_AASS_DT = #iddlAassDt#
+</isNotEmpty>
+
+
+                       ) B
+                 WHERE A.FCTY_CD = B.FCTY_CD
+                   AND A.GVMT_CD = B.GVMT_CD
+                   AND A.IDDL_AASS_NO = B.IDDL_AASS_NO
+               ) TOT_CNT
+             , (
+                SELECT COUNT(*) 
+                  FROM (
+                        SELECT FCTY_CD
+                             , GVMT_CD
+                             , MAX(IDDL_AASS_NO)  IDDL_AASS_NO
+                          FROM IDDL_AASS_RLST 
+                        GROUP BY FCTY_CD, GVMT_CD
+                       ) A
+                     , (
+                        SELECT C.FCTY_CD                    FCTY_CD
+                             , C.GVMT_CD                    GVMT_CD
+                             , C.IDDL_AASS_NO               IDDL_AASS_NO
+                             , C.SF_CHK_MAX_IDR_X_RSLT      SF_CHK_MAX_IDR_X_RSLT
+                             , C.SF_CHK_MAX_IDR_Y_RSLT      SF_CHK_MAX_IDR_Y_RSLT
+                             , C.SF_CHK_NAT_FRQ_MV_X_RSLT   SF_CHK_NAT_FRQ_MV_X_RSLT
+                             , C.SF_CHK_NAT_FRQ_MV_Y_RSLT   SF_CHK_NAT_FRQ_MV_Y_RSLT
+                             , C.SF_CHK_STR_FREE_NAT_FRQ_X  SF_CHK_STR_FREE_NAT_FRQ_X
+                             , C.SF_CHK_STR_FREE_NAT_FRQ_Y  SF_CHK_STR_FREE_NAT_FRQ_Y
+                             , C.SF_CHK_OVR_ACC_X_RSLT      SF_CHK_OVR_ACC_X_RSLT
+                             , C.SF_CHK_OVR_ACC_Y_RSLT      SF_CHK_OVR_ACC_Y_RSLT
+                             , D.FCTY_NM                    FCTY_NM
+                          FROM IDDL_AASS_RLST C
+                             , FCTY_MGR D
+							 , IDDL_AASS_INFO F
+                             , EHQK_OCUR_INFO Z
+                         WHERE C.FCTY_CD = D.FCTY_CD
+                           AND C.GVMT_CD = D.GVMT_CD
+<isNotEmpty prepend="AND" property="fctyAreaCd" >
+				               <!-- D.FCTY_AREA_CD = #fctyAreaCd# xkwh-->
+				               SUBSTR(D.FCTY_AREA_CD, 1, 2) = #fctyAreaCd#
+</isNotEmpty>
+                           AND F.FCTY_CD = C.FCTY_CD
+                           AND F.GVMT_CD = C.GVMT_CD
+                           AND F.EHQK_REQ_ID = Z.EHQK_REQ_ID
+                           AND F.EHQK_TRAN_GBCD = Z.EHQK_TRAN_GBCD
+<isNotEmpty prepend="AND" property="ehqkOrgTm" >
+			               Z.EHQK_ORG_TM = #ehqkOrgTm# AND F.IDDL_AASS_DT = #iddlAassDt#
+</isNotEmpty>
+                       ) B
+                 WHERE A.FCTY_CD = B.FCTY_CD
+                   AND A.GVMT_CD = B.GVMT_CD
+                   AND A.IDDL_AASS_NO = B.IDDL_AASS_NO
+                   AND B.SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND B.SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND B.SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND B.SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND B.SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND B.SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND B.SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND B.SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) OKS_CNT
+             , (
+                SELECT COUNT(*) 
+                  FROM (
+                        SELECT FCTY_CD
+                             , GVMT_CD
+                             , MAX(IDDL_AASS_NO)  IDDL_AASS_NO
+                          FROM IDDL_AASS_RLST 
+                        GROUP BY FCTY_CD, GVMT_CD
+                       ) A
+                     , (
+                        SELECT C.FCTY_CD                    FCTY_CD
+                             , C.GVMT_CD                    GVMT_CD
+                             , C.IDDL_AASS_NO               IDDL_AASS_NO
+                             , C.SF_CHK_MAX_IDR_X_RSLT      SF_CHK_MAX_IDR_X_RSLT
+                             , C.SF_CHK_MAX_IDR_Y_RSLT      SF_CHK_MAX_IDR_Y_RSLT
+                             , C.SF_CHK_NAT_FRQ_MV_X_RSLT   SF_CHK_NAT_FRQ_MV_X_RSLT
+                             , C.SF_CHK_NAT_FRQ_MV_Y_RSLT   SF_CHK_NAT_FRQ_MV_Y_RSLT
+                             , C.SF_CHK_STR_FREE_NAT_FRQ_X  SF_CHK_STR_FREE_NAT_FRQ_X
+                             , C.SF_CHK_STR_FREE_NAT_FRQ_Y  SF_CHK_STR_FREE_NAT_FRQ_Y
+                             , C.SF_CHK_OVR_ACC_X_RSLT      SF_CHK_OVR_ACC_X_RSLT
+                             , C.SF_CHK_OVR_ACC_Y_RSLT      SF_CHK_OVR_ACC_Y_RSLT
+                             , D.FCTY_NM                    FCTY_NM
+                          FROM IDDL_AASS_RLST C
+                             , FCTY_MGR D
+                             , IDDL_AASS_INFO F
+                             , EHQK_OCUR_INFO Z
+                         WHERE C.FCTY_CD = D.FCTY_CD
+                           AND C.GVMT_CD = D.GVMT_CD
+<isNotEmpty prepend="AND" property="fctyAreaCd" >
+		               <!-- D.FCTY_AREA_CD = #fctyAreaCd# xkwh-->
+		               SUBSTR(D.FCTY_AREA_CD, 1, 2) = #fctyAreaCd#
+</isNotEmpty>
+                           AND F.FCTY_CD = C.FCTY_CD
+                           AND F.GVMT_CD = C.GVMT_CD
+                           AND F.EHQK_REQ_ID = Z.EHQK_REQ_ID
+                           AND F.EHQK_TRAN_GBCD = Z.EHQK_TRAN_GBCD
+<isNotEmpty prepend="AND" property="ehqkOrgTm" >
+			               Z.EHQK_ORG_TM = #ehqkOrgTm# AND F.IDDL_AASS_DT = #iddlAassDt#
+</isNotEmpty>
+
+                       ) B
+                 WHERE A.FCTY_CD = B.FCTY_CD
+                   AND A.GVMT_CD = B.GVMT_CD
+                   AND A.IDDL_AASS_NO = B.IDDL_AASS_NO
+                   AND (
+                        B.SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  B.SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  B.SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  B.SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  B.SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  B.SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  B.SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  B.SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) CHK_CNT
+          FROM DUAL
+       ) TT
+UNION ALL
+/* 구조형식 */
+SELECT '구조형식'                                                                             LRG_GB
+     , NVL(BS.COMM_DTL_NM, 'unknown')                                                         MID_GB                              
+     , NVL(ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2),0)   OKS_RATE
+     , NVL(AA.OKS_CNT,0)                                                                             OKS_CNT
+     , NVL(ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2),0)   CHK_RATE
+     , NVL(AA.CHK_CNT,0)                                                                             CHK_CNT
+     , NVL(AA.TOT_CNT,0)                                                                            TOT_CNT   
+  FROM (
+        SELECT A.FCTY_STR_TYCD             FCTY_STR_TYCD
+             , A.TOT_CNT                   TOT_CNT
+             , NVL(B.OKS_CNT, 0)           OKS_CNT
+             , NVL(C.CHK_CNT, 0)           CHK_CNT
+          FROM (
+                SELECT FCTY_STR_TYCD
+                     , COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                GROUP BY FCTY_STR_TYCD
+               ) A
+             , (
+                SELECT FCTY_STR_TYCD
+                     , COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+                GROUP BY FCTY_STR_TYCD
+               ) B
+             , (
+                SELECT FCTY_STR_TYCD
+                     , COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE  SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                GROUP BY FCTY_STR_TYCD
+               ) C
+         WHERE A.FCTY_STR_TYCD = B.FCTY_STR_TYCD (+)
+           AND A.FCTY_STR_TYCD = C.FCTY_STR_TYCD (+)
+       ) AA
+     , (
+        SELECT COMM_DTL_CD
+             , COMM_DTL_NM
+          FROM SYM_COMM_CD_DTL
+         WHERE COMM_CD = 'ITEM_023'
+       ) BS
+ WHERE BS.COMM_DTL_CD = AA.FCTY_STR_TYCD(+)
+ <!-- AA.FCTY_STR_TYCD = BS.COMM_DTL_CD -->
+UNION ALL
+/* 지상층수 */
+/* 1~5층 */
+SELECT '지상층수'                                                                             LRG_GB
+     , '1~5층'                                                                                MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE FCTY_FLOR_SCL IN ('1', '2', '3', '4', '5')
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE FCTY_FLOR_SCL IN ('1', '2', '3', '4', '5')
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE FCTY_FLOR_SCL IN ('1', '2', '3', '4', '5') 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA  
+UNION ALL
+/* 6~10층 */
+SELECT '지상층수'                                                                             LRG_GB
+     , '6~10층'                                                                               MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE FCTY_FLOR_SCL IN ('6', '7', '8', '9', '10')
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE FCTY_FLOR_SCL IN ('6', '7', '8', '9', '10')
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE FCTY_FLOR_SCL IN ('6', '7', '8', '9', '10') 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA     
+UNION ALL
+/* 11~15층 */
+SELECT '지상층수'                                                                             LRG_GB
+     , '11~15층'                                                                              MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE FCTY_FLOR_SCL IN ('11', '12', '13', '14', '15')
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE FCTY_FLOR_SCL IN ('11', '12', '13', '14', '15')
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE FCTY_FLOR_SCL IN ('11', '12', '13', '14', '15') 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA     
+UNION ALL
+/* 16~25층 */
+SELECT '지상층수'                                                                             LRG_GB
+     , '16~25층'                                                                              MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(FCTY_FLOR_SCL) > 15 
+                   AND TO_NUMBER(FCTY_FLOR_SCL) <![CDATA[<]]> 26
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(FCTY_FLOR_SCL) > 15 
+                   AND TO_NUMBER(FCTY_FLOR_SCL) <![CDATA[<]]> 26
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(FCTY_FLOR_SCL) > 15 
+                   AND TO_NUMBER(FCTY_FLOR_SCL) <![CDATA[<]]> 26 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA     
+UNION ALL
+/* 26~35층 */
+SELECT '지상층수'                                                                             LRG_GB
+     , '26~35층'                                                                              MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(FCTY_FLOR_SCL) > 25 
+                   AND TO_NUMBER(FCTY_FLOR_SCL) <![CDATA[<]]> 36
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(FCTY_FLOR_SCL) > 25 
+                   AND TO_NUMBER(FCTY_FLOR_SCL) <![CDATA[<]]> 36
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(FCTY_FLOR_SCL) > 25 
+                   AND TO_NUMBER(FCTY_FLOR_SCL) <![CDATA[<]]> 36 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA     
+UNION ALL
+/* 35층 이상 */
+SELECT '지상층수'                                                                             LRG_GB
+     , '35층 이상'                                                                            MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(FCTY_FLOR_SCL) > 35 
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(FCTY_FLOR_SCL) > 35 
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(FCTY_FLOR_SCL) > 35 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA     
+UNION ALL
+/* 준공  */
+/* 1988년 이전 */
+SELECT '준공(내진보강)연도'                                                                   LRG_GB
+     , '1988년 이전'                                                                          MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 1988
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 1988
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 1988 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA  
+UNION ALL
+/* 1988~2000년 */
+SELECT '준공(내진보강)연도'                                                                   LRG_GB
+     , '1988~2000년'                                                                          MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) > 1987
+                   AND TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 2001
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) > 1987
+                   AND TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 2001
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) > 1987
+                   AND TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 2001 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA  
+UNION ALL
+/* 2001~2010년 */
+SELECT '준공(내진보강)연도'                                                                   LRG_GB
+     , '2001~2010년'                                                                          MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) > 2000
+                   AND TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 2011
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) > 2000
+                   AND TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 2011
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) > 2000
+                   AND TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 2011 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA  
+UNION ALL
+/* 2011~2020년 */
+SELECT '준공(내진보강)연도'                                                                   LRG_GB
+     , '2011~2020년'                                                                          MID_GB                              
+     , ROUND(((AA.OKS_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   OKS_RATE
+     , AA.OKS_CNT                                                                             OKS_CNT
+     , ROUND(((AA.CHK_CNT * 100) / CASE WHEN AA.TOT_CNT = 0 THEN 1 ELSE AA.TOT_CNT END), 2)   CHK_RATE
+     , AA.CHK_CNT                                                                             CHK_CNT
+     , AA.TOT_CNT                                                                             TOT_CNT   
+  FROM (
+        SELECT A.TOT_CNT                   TOT_CNT
+             , B.OKS_CNT                   OKS_CNT
+             , C.CHK_CNT                   CHK_CNT
+          FROM (
+                SELECT COUNT(*)            TOT_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) > 2010
+                   AND TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 2021
+               ) A
+             , (
+                SELECT COUNT(*)            OKS_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) > 2010
+                   AND TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 2021
+                   AND SF_CHK_MAX_IDR_X_RSLT = 'OK'
+                   AND SF_CHK_MAX_IDR_Y_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_X_RSLT = 'OK'
+                   AND SF_CHK_NAT_FRQ_MV_Y_RSLT = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_X = 'OK'
+                   AND SF_CHK_STR_FREE_NAT_FRQ_Y = 'OK'
+                   AND SF_CHK_OVR_ACC_X_RSLT = 'OK'
+                   AND SF_CHK_OVR_ACC_Y_RSLT = 'OK'
+               ) B
+             , (
+                SELECT COUNT(*)            CHK_CNT
+                  FROM IDDL_AASS_RLST_VIEW
+                 WHERE TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) > 2010
+                   AND TO_NUMBER(SUBSTR(FCTY_CPLN_DT, 1, 4)) <![CDATA[<]]> 2021 
+                   AND (
+                        SF_CHK_MAX_IDR_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_MAX_IDR_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_NAT_FRQ_MV_Y_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_X <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_STR_FREE_NAT_FRQ_Y <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_X_RSLT <![CDATA[<>]]> 'OK'
+                    OR  SF_CHK_OVR_ACC_Y_RSLT <![CDATA[<>]]> 'OK'
+                       )
+               ) C         
+       ) AA  		 
+	</select>
+
+</sqlMap>

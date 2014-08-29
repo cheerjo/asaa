@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EhqkScn">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="ehqkScnSerarchVO" type="estam.app.fcty.service.EhqkScnDefaultVO"/>
+	
+	<resultMap id="ehqkScn" class="estam.app.fcty.service.EhqkScnVO">
+		<result property="ehqkScnId" column="EHQK_SCN_ID" columnIndex="1"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="2"/>
+		<result property="ehqkScnNo" column="EHQK_SCN_NO" columnIndex="3"/>
+		<result property="ehqkScnCmpy" column="EHQK_SCN_CMPY" columnIndex="4"/>
+		<result property="ehqkScnMdl" column="EHQK_SCN_MDL" columnIndex="5"/>
+		<result property="ehqkScnKndCd" column="EHQK_SCN_KND_CD" columnIndex="6"/>
+		<result property="ehqkScnMeasCd" column="EHQK_SCN_MEAS_CD" columnIndex="7"/>
+		<result property="ehqkScnPstn" column="EHQK_SCN_PSTN" columnIndex="8"/>
+		<result property="ehqkScnChlVal" column="EHQK_SCN_CHL_VAL" columnIndex="9"/>
+		<result property="ehqkScnLon" column="EHQK_SCN_LON" columnIndex="10"/>
+		<result property="ehqkScnLat" column="EHQK_SCN_LAT" columnIndex="11"/>
+		<result property="ehqkScnZRes" column="EHQK_SCN_Z_RES" columnIndex="12"/>
+		<result property="ehqkScnNRes" column="EHQK_SCN_N_RES" columnIndex="13"/>
+		<result property="ehqkScnERes" column="EHQK_SCN_E_RES" columnIndex="14"/>
+		<result property="ehqkScnYn" column="EHQK_SCN_YN" columnIndex="15"/>
+		<result property="ehqkScnMaxVal" column="EHQK_SCN_MAX_VAL" columnIndex="16"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="17"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="18"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="19"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="20"/>
+		<result property="rccId" column="RCC_ID" columnIndex="21"/>
+	</resultMap>
+	
+	<insert id="ehqkScnDAO.insertEhqkScn_S">
+		<![CDATA[
+			INSERT INTO EHQK_SCN 
+				( EHQK_SCN_ID
+				  , FCTY_CD
+				  , EHQK_SCN_NO
+				  , EHQK_SCN_CMPY
+				  , EHQK_SCN_MDL
+				  , EHQK_SCN_KND_CD
+				  , EHQK_SCN_MEAS_CD
+				  , EHQK_SCN_PSTN
+				  , EHQK_SCN_CHL_VAL
+				  , EHQK_SCN_LON
+				  , EHQK_SCN_LAT
+				  , EHQK_SCN_Z_RES
+				  , EHQK_SCN_N_RES
+				  , EHQK_SCN_E_RES
+				  , EHQK_SCN_YN
+				  , EHQK_SCN_MAX_VAL
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT
+				  , RCC_ID )
+			VALUES ( #ehqkScnId#
+				  , #fctyCd#
+				  , #ehqkScnNo#
+				  , #ehqkScnCmpy#
+				  , #ehqkScnMdl#
+				  , #ehqkScnKndCd#
+				  , #ehqkScnMeasCd#
+				  , #ehqkScnPstn#
+				  , #ehqkScnChlVal#
+				  , #ehqkScnLon#
+				  , #ehqkScnLat#
+				  , #ehqkScnZRes#
+				  , #ehqkScnNRes#
+				  , #ehqkScnERes#
+				  , #ehqkScnYn#
+				  , #ehqkScnMaxVal#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt#
+				  , #rccId# )
+		]]>
+	</insert>
+	
+	<update id="ehqkScnDAO.updateEhqkScn_S">
+		<![CDATA[
+			UPDATE EHQK_SCN
+			SET EHQK_SCN_ID=#ehqkScnId#
+				, FCTY_CD=#fctyCd#
+				, EHQK_SCN_NO=#ehqkScnNo#
+				, EHQK_SCN_CMPY=#ehqkScnCmpy#
+				, EHQK_SCN_MDL=#ehqkScnMdl#
+				, EHQK_SCN_KND_CD=#ehqkScnKndCd#
+				, EHQK_SCN_MEAS_CD=#ehqkScnMeasCd#
+				, EHQK_SCN_PSTN=#ehqkScnPstn#
+				, EHQK_SCN_CHL_VAL=#ehqkScnChlVal#
+				, EHQK_SCN_LON=#ehqkScnLon#
+				, EHQK_SCN_LAT=#ehqkScnLat#
+				, EHQK_SCN_Z_RES=#ehqkScnZRes#
+				, EHQK_SCN_N_RES=#ehqkScnNRes#
+				, EHQK_SCN_E_RES=#ehqkScnERes#
+				, EHQK_SCN_YN=#ehqkScnYn#
+				, EHQK_SCN_MAX_VAL=#ehqkScnMaxVal#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+				, RCC_ID=#rccId#
+						WHERE EHQK_SCN_ID=#ehqkScnId#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</update>
+	
+	<delete id="ehqkScnDAO.deleteEhqkScn_S">
+		<![CDATA[
+			DELETE FROM EHQK_SCN 
+						WHERE EHQK_SCN_ID=#ehqkScnId#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</delete>
+	
+	<select id="ehqkScnDAO.selectEhqkScn_S" resultMap="ehqkScn">
+		<![CDATA[
+			SELECT
+				EHQK_SCN_ID
+				, FCTY_CD
+				, EHQK_SCN_NO
+				, EHQK_SCN_CMPY
+				, EHQK_SCN_MDL
+				, EHQK_SCN_KND_CD
+				, EHQK_SCN_MEAS_CD
+				, EHQK_SCN_PSTN
+				, EHQK_SCN_CHL_VAL
+				, EHQK_SCN_LON
+				, EHQK_SCN_LAT
+				, EHQK_SCN_Z_RES
+				, EHQK_SCN_N_RES
+				, EHQK_SCN_E_RES
+				, EHQK_SCN_YN
+				, EHQK_SCN_MAX_VAL
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+				, RCC_ID
+			FROM EHQK_SCN
+						WHERE EHQK_SCN_ID=#ehqkScnId#
+								AND FCTY_CD=#fctyCd#
+				]]>
+	</select>
+	
+	<select id="ehqkScnDAO.selectEhqkScnList_D" parameterClass="ehqkScnSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								EHQK_SCN_ID
+								, FCTY_CD
+								, EHQK_SCN_NO
+								, EHQK_SCN_CMPY
+								, EHQK_SCN_MDL
+								, EHQK_SCN_KND_CD
+								, EHQK_SCN_MEAS_CD
+								, EHQK_SCN_PSTN
+								, EHQK_SCN_CHL_VAL
+								, EHQK_SCN_LON
+								, EHQK_SCN_LAT
+								, EHQK_SCN_Z_RES
+								, EHQK_SCN_N_RES
+								, EHQK_SCN_E_RES
+								, EHQK_SCN_YN
+								, EHQK_SCN_MAX_VAL
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+								, RCC_ID
+						FROM EHQK_SCN
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					EHQK_SCN_ID = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					FCTY_CD LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						EHQK_SCN_ID DESC
+							, FCTY_CD DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="ehqkScnDAO.selectEhqkScnListTotCnt_S" parameterClass="ehqkScnSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM EHQK_SCN
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				EHQK_SCN_ID = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				FCTY_CD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

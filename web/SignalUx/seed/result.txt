@@ -1,0 +1,28 @@
+result_max_idr_X : 0.00002906
+result_max_idr_Y : 0.00002410
+result_over_acc_X : -99.72834999
+result_over_acc_Y : -99.75611971
+result_nat_freq_move_X : 0.00000000
+result_nat_freq_move_Y : 0.00000000
+result_str_free_nat_freq_X : 7.82967033
+result_str_free_nat_freq_Y : 10.50824176
+safe_check_max_idr_X : OK
+safe_check_max_idr_Y : OK
+safe_check_nat_freq_move_X : OK
+safe_check_nat_freq_move_Y : OK
+safe_check_str_free_nat_freq_X : OK
+safe_check_str_free_nat_freq_Y : OK
+safe_check_over_acc_X : OK
+safe_check_over_acc_Y : OK
+data_free_max_disp_X : 0.00247572
+data_free_max_disp_Y : 0.00283752
+data_top_rel_max_speed_X : 0.04629907
+data_top_rel_max_speed_Y : 0.04185129
+data_top_rel_max_disp_X : 0.00871902
+data_top_rel_max_disp_Y : 0.00722928
+data_free_acc : 0.58609577, 0.52618149, 0.29277226
+data_str_bot_acc : 4.84518418, 0.03557200, 0.05268379
+data_str_mid_acc : 0.21316684, 0.17647675, -1.00000000
+data_str_top_acc : 0.12488664, 0.10245237, -1.00000000
+data_str_freq : 0.69580078, 0.93383789
+data_free_freq : 8.88671875

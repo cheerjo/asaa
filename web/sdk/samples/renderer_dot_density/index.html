@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Map and Layer</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">
+    <style>
+      html, body, #map {
+        height: 100%;
+        margin: 0;
+      }
+      #info {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 10px;
+        background-color: #CC8800;
+        font: 14px Segoe UI;
+        width: 200px;
+        text-align: center;
+        border-radius: 0 0 0 10px;
+      }
+    </style>
+    <script src="http://js.arcgis.com/3.7/"></script>
+    <script>
+      var map;
+      require([
+        "esri/map", "esri/geometry/Extent", "esri/layers/FeatureLayer", "esri/InfoTemplate",
+        "esri/renderers/DotDensityRenderer", "dojo/_base/Color", "esri/renderers/ScaleDependentRenderer", "dojo/dom", "dojo/domReady!"
+      ], function(Map, Extent, FeatureLayer, InfoTemplate, DotDensityRenderer, Color, ScaleDependentRenderer, dom) {
+        map = new Map("map", {
+          extent: new Extent({"xmin":-2460944,"ymin":-1389910,"xmax":2297115,"ymax":1643787,"spatialReference":{"wkid":102003}}),
+          maxScale: 5000000,
+          minScale: 20000000
+        });
+        
+        var statesUrl = "http://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Cartographic_Boundary_Files_-_States_(20m)/FeatureServer/0";
+        var refLayer2 = new FeatureLayer(statesUrl);
+        refLayer2.on("load", function(){
+          refLayer2.renderer.symbol.outline.setWidth(3);
+          refLayer2.renderer.symbol.outline.setColor(new Color("#787878"));
+        refLayer2.renderer.symbol.setColor(new Color("#FFFFFF"));
+        });
+        map.addLayer(refLayer2);
+        
+        var refLayer = new FeatureLayer(statesUrl);
+        refLayer.on("load", function(){
+          refLayer.renderer.symbol.outline.setWidth(1.5);
+          refLayer.renderer.symbol.outline.setColor(new Color("#B5ACAE"));
+          refLayer.renderer.symbol.setColor(new Color("#FFFFFF"));
+        });
+        map.addLayer(refLayer);
+        
+        var layer = new FeatureLayer("http://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/USA_County_Crops_2007/FeatureServer/0", {
+          outFields: ["STATE", "COUNTY", "M163_07"],
+          infoTemplate: new InfoTemplate("${COUNTY}, ${STATE}", "<div style='font: 18px Segoe UI'>Corn Planted: ${M163_07:NumberFormat} Acres</div>")
+        });
+        layer.setDefinitionExpression("M163_07>10000");
+        
+        var renderer = new ScaleDependentRenderer({
+          rendererInfos: [{
+            renderer: new DotDensityRenderer({
+              fields: [{
+                name: "M163_07",
+                color: new Color("#CC8800")
+              }],
+              dotValue: 3200,
+              dotSize: 1
+            }),
+          maxScale: 17000000,
+          minScale: 20000001
+          }, {
+            renderer: new DotDensityRenderer({
+              fields: [{
+                name: "M163_07",
+                color: new Color("#CC8800")
+              }],
+              dotValue: 1600,
+              dotSize: 1
+            }),
+          maxScale: 8500000,
+          minScale: 17000000
+          }, {
+            renderer: new DotDensityRenderer({
+              fields: [{
+                name: "M163_07",
+                color: new Color("#CC8800")
+              }],
+              dotValue: 800,
+              dotSize: 1
+            }),
+          maxScale: 5000000,
+          minScale: 8500000
+          }]
+        });
+        layer.setRenderer(renderer);
+        map.addLayer(layer);
+        map.on("extent-change", function(){
+          var currentScale = renderer.getRendererInfoByScale(map.getScale());
+          dom.byId("dot-value").innerHTML = currentScale.renderer.dotValue;
+        });
+      });
+    </script>
+  </head>
+  <body bgcolor="#F7EDE0">
+    <div id="map"></div>
+    <div id="info"><div style="font-size: 36px;">Corn Planted in the US, 2007</div><p>1 Dot = <span id="dot-value"></span> Acres</p></div>
+  </body>
+</html> 

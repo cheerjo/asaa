@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html
+		xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>stat</xh:title>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="skip" name="author"/>
+		<xh:meta content="13. 6. 11 오후 3:31" name="date"/>
+		<xh:meta content="2.0.0.201304021017" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xr:submission id="getData" action="data/stat.js" async="false" method="post" req-charset="utf-8"
+			    req-protocol="urlencoded" req-type="" res-charset="utf-8" res-protocol="json"
+			    res-type="" waitcursor="true">
+			  <xr:response-ref add="false" instanceid="instance" ref="/root/items1"/>
+			  <xr:response-ref add="false" instanceid="instance" ref="/root/items2"/>
+			  <xr:response-ref add="false" instanceid="instance" ref="/root/items3"/>
+			  <xr:response-ref add="false" instanceid="instance" ref="/root/items4"/>
+			</xr:submission>
+			<xf:jsoninstance id="instance">
+  			<![CDATA[{
+					root : {
+						EXRIAERRMSG : "",
+						items1 : [
+							{
+								ml : "",
+								total : "",
+								felteq : "",
+								year : ""
+							}
+						],
+						items2 : [
+							{
+								loc : "",
+								data : "",
+								num : ""
+							}
+						],
+						items3 : [
+							{
+								locs : "",
+								data : "",
+								num : ""
+							}
+						],
+						items4 : [
+							{
+								locs : "",
+								data : ""
+							}
+						]
+					}
+				}]]>
+</xf:jsoninstance>
+		</xf:model>
+		<xh:script page="stat" src="stat.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:1352;width:1442;left:0;top:0;">
+		<ev:listener event="oninit" handler="page.onInit" hasReturn="false"/>
+		<xr:gridex id="grx1" style="height:381;width:331;left:0;top:860;" z-index="0" instanceid="instance"
+			  nodeset="/root/items1">
+			<xr:cfg/>
+			<xr:gridheader>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:headcol id="ghc12" style="width:77;" colspan="1" rowspan="1">
+			    		<xr:text>year</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghc1" style="width:76;">
+			    		<xr:text>ml</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghc4" style="width:76;" colspan="1" rowspan="1">
+			    		<xr:text>total</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghc5" style="width:76;" colspan="1" rowspan="1">
+			    		<xr:text>felteq</xr:text>
+			    	</xr:headcol>
+			    </xr:colsrow>
+			  </xr:cols>
+			</xr:gridheader>
+			<xr:gridbody>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:bodycol id="gbc12" style="width:77;" instanceid="instance" ref="year"
+			    		  colid="ghc12" type="Text"/>
+			    	<xr:bodycol id="gbc1" style="width:76;" instanceid="instance" ref="ml" colid="ghc1"
+			    		  type="Text"/>
+			    	<xr:bodycol id="gbc4" style="width:76;" instanceid="instance" ref="total"
+			    		  colid="ghc4" type="Text"/>
+			    	<xr:bodycol id="gbc5" style="width:76;" instanceid="instance" ref="felteq"
+			    		  colid="ghc5" type="Text"/>
+			    </xr:colsrow>
+			  </xr:cols>
+			  <xr:rows/>
+			</xr:gridbody>
+			<xr:gridtoolbar/>
+			<xr:panel/>
+		</xr:gridex>
+		<xr:gridex id="grx2" style="height:377;width:202;left:910;top:862;" z-index="1"
+			  instanceid="instance" nodeset="/root/items4">
+			<xr:cfg/>
+			<xr:gridheader>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:headcol id="ghc2" style="width:97;">
+			    		<xr:text>locs</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghc8" style="width:97;" colspan="1" rowspan="1">
+			    		<xr:text>data</xr:text>
+			    	</xr:headcol>
+			    </xr:colsrow>
+			  </xr:cols>
+			</xr:gridheader>
+			<xr:gridbody>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:bodycol id="gbc2" style="width:97;" instanceid="instance" ref="locs" colid="ghc2"
+			    		  type="Text"/>
+			    	<xr:bodycol id="gbc8" style="width:97;" instanceid="instance" ref="data" colid="ghc8"
+			    		  type="Text"/>
+			    </xr:colsrow>
+			  </xr:cols>
+			  <xr:rows/>
+			</xr:gridbody>
+			<xr:gridtoolbar/>
+			<xr:panel/>
+		</xr:gridex>
+		<xr:gridex id="grx3" style="height:381;width:281;left:340;top:860;" z-index="2"
+			  instanceid="instance" nodeset="/root/items2">
+			<xr:cfg/>
+			<xr:gridheader>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:headcol id="ghc3" style="width:86;">
+			    		<xr:text>loc</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghc6" style="width:86;" colspan="1" rowspan="1">
+			    		<xr:text>data</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghc7" style="width:86;" colspan="1" rowspan="1">
+			    		<xr:text>num</xr:text>
+			    	</xr:headcol>
+			    </xr:colsrow>
+			  </xr:cols>
+			</xr:gridheader>
+			<xr:gridbody>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:bodycol id="gbc3" style="width:86;" instanceid="instance" ref="loc" colid="ghc3"
+			    		  type="Text"/>
+			    	<xr:bodycol id="gbc6" style="width:86;" instanceid="instance" ref="data" colid="ghc6"
+			    		  type="Text"/>
+			    	<xr:bodycol id="gbc7" style="width:86;" instanceid="instance" ref="num" colid="ghc7"
+			    		  type="Text"/>
+			    </xr:colsrow>
+			  </xr:cols>
+			  <xr:rows/>
+			</xr:gridbody>
+			<xr:gridtoolbar/>
+			<xr:panel/>
+		</xr:gridex>
+		<xr:gridex id="grx4" style="height:381;width:271;left:630;top:860;" z-index="3"
+			  instanceid="instance" nodeset="/root/items3">
+			<xr:cfg/>
+			<xr:gridheader>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:headcol id="ghc9" style="width:89;">
+			    		<xr:text>locs</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghc10" style="width:89;" colspan="1" rowspan="1">
+			    		<xr:text>data</xr:text>
+			    	</xr:headcol>
+			    	<xr:headcol id="ghc11" style="width:88;" colspan="1" rowspan="1">
+			    		<xr:text>num</xr:text>
+			    	</xr:headcol>
+			    </xr:colsrow>
+			  </xr:cols>
+			</xr:gridheader>
+			<xr:gridbody>
+			  <xr:cols>
+			    <xr:colsrow style="height:20;">
+			    	<xr:bodycol id="gbc9" style="width:89;" instanceid="instance" ref="locs" colid="ghc9"
+			    		  type="Text"/>
+			    	<xr:bodycol id="gbc10" style="width:89;" instanceid="instance" ref="data"
+			    		  colid="ghc10" type="Text"/>
+			    	<xr:bodycol id="gbc11" style="width:88;" instanceid="instance" ref="num" colid="ghc11"
+			    		  type="Text"/>
+			    </xr:colsrow>
+			  </xr:cols>
+			  <xr:rows/>
+			</xr:gridbody>
+			<xr:gridtoolbar/>
+			<xr:panel/>
+		</xr:gridex>
+		<xr:subpage id="sbp1" style="height:801;width:1101;left:10;top:10;" z-index="4"/>
+		<xr:button id="btn1" style="height:31;width:202;left:910;top:820;" z-index="5">
+			<xr:text>차트생성</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btn1" hasReturn="false"/>
+		</xr:button>
+	</xh:body>
+</xh:html>

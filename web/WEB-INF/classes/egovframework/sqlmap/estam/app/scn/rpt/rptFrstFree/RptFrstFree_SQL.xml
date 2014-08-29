@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptFrstFree">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptFrstFreeSerarchVO" type="estam.app.scn.rpt.service.RptFrstFreeDefaultVO"/>
+	
+	<resultMap id="rptFrstFree" class="estam.app.scn.rpt.service.RptFrstFreeVO">
+		<result property="freScnId" column="FRE_SCN_ID" columnIndex="1"/>
+		<result property="iptDt" column="IPT_DT" columnIndex="2"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="3"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="4"/>
+		<result property="freeQst1Yn" column="FREE_QST1_YN" columnIndex="5"/>
+		<result property="freeQst21yn" column="FREE_QST2_1YN" columnIndex="6"/>
+		<result property="freeQst22yn" column="FREE_QST2_2YN" columnIndex="7"/>
+		<result property="freeQst31yn" column="FREE_QST3_1YN" columnIndex="8"/>
+		<result property="freeQst32yn" column="FREE_QST3_2YN" columnIndex="9"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="10"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="11"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="12"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="13"/>
+	</resultMap>
+	
+	<insert id="rptFrstFreeDAO.insertRptFrstFree_S">
+		<![CDATA[
+			INSERT INTO RPT_FRST_FREE 
+				( FRE_SCN_ID
+				  , IPT_DT
+				  , CON_DA_GBCD
+				  , FCTY_CD
+				  , FREE_QST1_YN
+				  , FREE_QST2_1YN
+				  , FREE_QST2_2YN
+				  , FREE_QST3_1YN
+				  , FREE_QST3_2YN
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #freScnId#
+				  , #iptDt#
+				  , #conDaGbcd#
+				  , #fctyCd#
+				  , #freeQst1Yn#
+				  , #freeQst21yn#
+				  , #freeQst22yn#
+				  , #freeQst31yn#
+				  , #freeQst32yn#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptFrstFreeDAO.updateRptFrstFree_S">
+		<![CDATA[
+			UPDATE RPT_FRST_FREE
+			SET FRE_SCN_ID=#freScnId#
+				, IPT_DT=#iptDt#
+				, CON_DA_GBCD=#conDaGbcd#
+				, FCTY_CD=#fctyCd#
+				, FREE_QST1_YN=#freeQst1Yn#
+				, FREE_QST2_1YN=#freeQst21yn#
+				, FREE_QST2_2YN=#freeQst22yn#
+				, FREE_QST3_1YN=#freeQst31yn#
+				, FREE_QST3_2YN=#freeQst32yn#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FRE_SCN_ID=#freScnId#
+								AND IPT_DT=#iptDt#
+				]]>
+	</update>
+	
+	<delete id="rptFrstFreeDAO.deleteRptFrstFree_S">
+		<![CDATA[
+			DELETE FROM RPT_FRST_FREE 
+						WHERE FRE_SCN_ID=#freScnId#
+								AND IPT_DT=#iptDt#
+				]]>
+	</delete>
+	
+	<select id="rptFrstFreeDAO.selectRptFrstFree_S" resultMap="rptFrstFree">
+		<![CDATA[
+			SELECT
+				FRE_SCN_ID
+				, IPT_DT
+				, CON_DA_GBCD
+				, FCTY_CD
+				, FREE_QST1_YN
+				, FREE_QST2_1YN
+				, FREE_QST2_2YN
+				, FREE_QST3_1YN
+				, FREE_QST3_2YN
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_FRST_FREE
+			WHERE  IPT_DT= (SELECT MAX(IPT_DT) 
+						         FROM CON_OBS_META
+						        WHERE 1=1 
+							      AND CON_DA_GBCD=#conDaGbcd#
+							      AND GVMT_CD=#gvmtCd#
+							      AND FCTY_CD = #fctyCd#)
+		      AND CON_DA_GBCD=#conDaGbcd#
+		      AND GVMT_CD=#gvmtCd#
+			  AND FCTY_CD=#fctyCd#
+				]]>
+	</select>
+	
+	<select id="rptFrstFreeDAO.selectRptFrstFreeList_D" parameterClass="rptFrstFreeSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FRE_SCN_ID
+								, IPT_DT
+								, CON_DA_GBCD
+								, FCTY_CD
+								, FREE_QST1_YN
+								, FREE_QST2_1YN
+								, FREE_QST2_2YN
+								, FREE_QST3_1YN
+								, FREE_QST3_2YN
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_FRST_FREE
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FRE_SCN_ID = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					IPT_DT LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FRE_SCN_ID DESC
+							, IPT_DT DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="rptFrstFreeDAO.selectRptFrstFreeListTotCnt_S" parameterClass="rptFrstFreeSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_FRST_FREE
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FRE_SCN_ID = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				IPT_DT LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

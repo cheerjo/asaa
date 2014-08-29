@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exria-multilingual-data version="1.0.0.200910271100"
+	xmlns="http://eXria.org/language" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://eXria.org/language language.xsd ">
+	<domain-structure>
+		<UI>
+			<test />
+		</UI>
+		<NLS />
+	</domain-structure>
+	<ui-messages>
+		<language id="ko_KR">
+			<message key="UI.Sample.eXria">엑스리아</message>
+		</language>
+	</ui-messages>
+	<script-messages>
+		<language id="ko_KR">
+			<message key="NLS.Sample.helloWorld">안녕? 세상.</message>
+		</language>
+	</script-messages>
+</exria-multilingual-data>
+

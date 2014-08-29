@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptMgrEhqkScn">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptMgrEhqkScnSerarchVO" type="estam.app.scn.rpt.service.RptMgrEhqkScnDefaultVO"/>
+	
+	<resultMap id="rptMgrEhqkScn" class="estam.app.scn.rpt.service.RptMgrEhqkScnVO">
+		<result property="iptDt" column="IPT_DT" columnIndex="1"/>
+		<result property="ehqkScnId" column="EHQK_SCN_ID" columnIndex="2"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="3"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="4"/>
+		<result property="ehqkScnCmpy" column="EHQK_SCN_CMPY" columnIndex="5"/>
+		<result property="ehqkScnMdl" column="EHQK_SCN_MDL" columnIndex="6"/>
+		<result property="ehqkScnSrlNo" column="EHQK_SCN_SRL_NO" columnIndex="7"/>
+		<result property="ehqkScnKndCd" column="EHQK_SCN_KND_CD" columnIndex="8"/>
+		<result property="ehqkScnGbnCd" column="EHQK_SCN_GBN_CD" columnIndex="9"/>
+		<result property="ehqkScnPstn" column="EHQK_SCN_PSTN" columnIndex="10"/>
+		<result property="ehqkScnChlVal" column="EHQK_SCN_CHL_VAL" columnIndex="11"/>
+		<result property="ehqkScnLon" column="EHQK_SCN_LON" columnIndex="12"/>
+		<result property="ehqkScnLat" column="EHQK_SCN_LAT" columnIndex="13"/>
+		<result property="ehqkScnZRes" column="EHQK_SCN_Z_RES" columnIndex="14"/>
+		<result property="ehqkScnNRes" column="EHQK_SCN_N_RES" columnIndex="15"/>
+		<result property="ehqkScnERes" column="EHQK_SCN_E_RES" columnIndex="16"/>
+		<result property="rccZSeni" column="RCC_Z_SENI" columnIndex="17"/>
+		<result property="rccNSeni" column="RCC_N_SENI" columnIndex="18"/>
+		<result property="rccESeni" column="RCC_E_SENI" columnIndex="19"/>
+		<result property="conRccId" column="CON_RCC_ID" columnIndex="20"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="21"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="22"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="23"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="24"/>
+	</resultMap>
+	
+	<insert id="rptMgrEhqkScnDAO.insertRptMgrEhqkScn_S">
+		<![CDATA[
+			INSERT INTO RPT_MGR_EHQK_SCN 
+				( IPT_DT
+				  , EHQK_SCN_ID
+				  , FCTY_CD
+				  , CON_DA_GBCD
+				  , EHQK_SCN_CMPY
+				  , EHQK_SCN_MDL
+				  , EHQK_SCN_SRL_NO
+				  , EHQK_SCN_KND_CD
+				  , EHQK_SCN_GBN_CD
+				  , EHQK_SCN_PSTN
+				  , EHQK_SCN_CHL_VAL
+				  , EHQK_SCN_LON
+				  , EHQK_SCN_LAT
+				  , EHQK_SCN_Z_RES
+				  , EHQK_SCN_N_RES
+				  , EHQK_SCN_E_RES
+				  , RCC_Z_SENI
+				  , RCC_N_SENI
+				  , RCC_E_SENI
+				  , CON_RCC_ID
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #iptDt#
+				  , #ehqkScnId#
+				  , #fctyCd#
+				  , #conDaGbcd#
+				  , #ehqkScnCmpy#
+				  , #ehqkScnMdl#
+				  , #ehqkScnSrlNo#
+				  , #ehqkScnKndCd#
+				  , #ehqkScnGbnCd#
+				  , #ehqkScnPstn#
+				  , #ehqkScnChlVal#
+				  , #ehqkScnLon#
+				  , #ehqkScnLat#
+				  , #ehqkScnZRes#
+				  , #ehqkScnNRes#
+				  , #ehqkScnERes#
+				  , #rccZSeni#
+				  , #rccNSeni#
+				  , #rccESeni#
+				  , #conRccId#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptMgrEhqkScnDAO.updateRptMgrEhqkScn_S">
+		<![CDATA[
+			UPDATE RPT_MGR_EHQK_SCN
+			SET IPT_DT=#iptDt#
+				, EHQK_SCN_ID=#ehqkScnId#
+				, FCTY_CD=#fctyCd#
+				, CON_DA_GBCD=#conDaGbcd#
+				, EHQK_SCN_CMPY=#ehqkScnCmpy#
+				, EHQK_SCN_MDL=#ehqkScnMdl#
+				, EHQK_SCN_SRL_NO=#ehqkScnSrlNo#
+				, EHQK_SCN_KND_CD=#ehqkScnKndCd#
+				, EHQK_SCN_GBN_CD=#ehqkScnGbnCd#
+				, EHQK_SCN_PSTN=#ehqkScnPstn#
+				, EHQK_SCN_CHL_VAL=#ehqkScnChlVal#
+				, EHQK_SCN_LON=#ehqkScnLon#
+				, EHQK_SCN_LAT=#ehqkScnLat#
+				, EHQK_SCN_Z_RES=#ehqkScnZRes#
+				, EHQK_SCN_N_RES=#ehqkScnNRes#
+				, EHQK_SCN_E_RES=#ehqkScnERes#
+				, RCC_Z_SENI=#rccZSeni#
+				, RCC_N_SENI=#rccNSeni#
+				, RCC_E_SENI=#rccESeni#
+				, CON_RCC_ID=#conRccId#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE IPT_DT=#iptDt#
+								AND EHQK_SCN_ID=#ehqkScnId#
+				]]>
+	</update>
+	
+	<delete id="rptMgrEhqkScnDAO.deleteRptMgrEhqkScn_S">
+		<![CDATA[
+			DELETE FROM RPT_MGR_EHQK_SCN 
+						WHERE IPT_DT=#iptDt#
+								AND EHQK_SCN_ID=#ehqkScnId#
+				]]>
+	</delete>
+	
+	<select id="rptMgrEhqkScnDAO.selectRptMgrEhqkScn_S" resultMap="rptMgrEhqkScn">
+		<![CDATA[
+			SELECT
+				IPT_DT
+				, EHQK_SCN_ID
+				, FCTY_CD
+				, CON_DA_GBCD
+				, EHQK_SCN_CMPY
+				, EHQK_SCN_MDL
+				, EHQK_SCN_SRL_NO
+				, EHQK_SCN_KND_CD
+				, EHQK_SCN_GBN_CD
+				, EHQK_SCN_PSTN
+				, EHQK_SCN_CHL_VAL
+				, EHQK_SCN_LON
+				, EHQK_SCN_LAT
+				, EHQK_SCN_Z_RES
+				, EHQK_SCN_N_RES
+				, EHQK_SCN_E_RES
+				, RCC_Z_SENI
+				, RCC_N_SENI
+				, RCC_E_SENI
+				, CON_RCC_ID
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_MGR_EHQK_SCN
+						WHERE IPT_DT=#iptDt#
+								AND EHQK_SCN_ID=#ehqkScnId#
+				]]>
+	</select>
+	
+	<select id="rptMgrEhqkScnDAO.selectRptMgrEhqkScnList_D" parameterClass="rptMgrEhqkScnSerarchVO" resultClass="egovMap"> 
+			<![CDATA[
+				SELECT
+								 IPT_DT
+								, EHQK_SCN_ID
+								, FCTY_CD
+								, CON_DA_GBCD
+								, EHQK_SCN_CMPY
+								, EHQK_SCN_MDL
+								, EHQK_SCN_SRL_NO
+								, EHQK_SCN_KND_CD
+								, EHQK_SCN_GBN_CD
+								, EHQK_SCN_PSTN
+								, EHQK_SCN_CHL_VAL
+								, EHQK_SCN_LON
+								, EHQK_SCN_LAT
+								, EHQK_SCN_Z_RES
+								, EHQK_SCN_N_RES
+								, EHQK_SCN_E_RES
+								, RCC_Z_SENI
+								, RCC_N_SENI
+								, RCC_E_SENI
+								, CON_RCC_ID
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_MGR_EHQK_SCN
+				WHERE 1=1
+				  AND IPT_DT = #iptDt#
+			      AND FCTY_CD=#fctyCd#
+			      AND CON_DA_GBCD=#conDaGbcd# 
+			      ORDER BY EHQK_SCN_ID ASC
+		]]>
+	</select>	
+	<select id="rptMgrEhqkScnDAO.selectRptMgrEhqkScnListTotCnt_S" parameterClass="rptMgrEhqkScnSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_MGR_EHQK_SCN
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				IPT_DT = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				EHQK_SCN_ID LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

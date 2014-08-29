@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>MenuMgr</xh:title>
+		<xh:link href="../../../style/sample/style.css" media="all" rel="stylesheet" type="text/css"/>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="cyberlhs" name="author"/>
+		<xh:meta content="13. 6. 28 오전 11:26" name="date"/>
+		<xh:meta content="2.0.0.201304021017" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xr:submission id="smsSymMenuList" action="/sym/symMenu/SymMenuListEx.do" async="false"
+			    method="post" req-charset="utf-8" req-protocol="urlencoded" req-type="" res-charset="utf-8"
+			    res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymMenuVO"/>
+			  <xr:request-ref instanceid="requestData" ref="/root/searchVO"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/resSymMenuList"/>
+			</xr:submission>
+			<xr:submission id="smsSymMenuDel" action="/sym/symMenu/deleteSymMenuEx.do" async="false"
+			    method="post" req-charset="utf-8" req-protocol="urlencoded" req-type="" res-charset="utf-8"
+			    res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymMenuVO"/>
+			</xr:submission>
+			<xr:submission id="smsSymMenuSave" action="/sym/symMenu/saveSymMenuEx.do" async="false"
+			    method="post" req-charset="utf-8" req-protocol="urlencoded" req-type="" res-charset="utf-8"
+			    res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="reqMethod" ref="/root/method"/>
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymMenuVO"/>
+			  <xr:response-ref add="false" instanceid="resMessage" ref="/root/message"/>
+			</xr:submission>
+			<xr:submission id="smsSymMenuRead" action="/sym/symMenu/selectSymMenuEx.do" async="false"
+			    method="post" req-charset="utf-8" req-protocol="urlencoded" req-type="" res-charset="utf-8"
+			    res-protocol="json" res-type="" waitcursor="true">
+			  <xr:request-ref instanceid="requestData" ref="/root/reqSymMenuVO"/>
+			  <xr:response-ref add="false" instanceid="responseData" ref="/root/resSymMenuVO"/>
+			</xr:submission>
+			<xr:dataset id="dstResSymMenuList" instanceSync="true" sourceType="instance" useoriginval="true">
+			  <xr:connectioninfo>responseData</xr:connectioninfo>
+			  <xr:query><![CDATA[/root/resSymMenuList/row]]></xr:query>
+			  <xr:autocrud>
+			    <xr:table name="dstResSymMenuListTable" prefix="T@51">
+			    	<xr:primarykeys/>
+			    	<xr:updatecolumns>
+			    		<xr:column name="menuCd" sourceName="menuCd"/>
+			    		<xr:column name="upMenuCd" sourceName="upMenuCd"/>
+			    		<xr:column name="useYn" sourceName="useYn"/>
+			    		<xr:column name="inptUsrId" sourceName="inptUsrId"/>
+			    		<xr:column name="linkUrl" sourceName="linkUrl"/>
+			    		<xr:column name="inptDt" sourceName="inptDt"/>
+			    		<xr:column name="siteGbcd" sourceName="siteGbcd"/>
+			    		<xr:column name="reMark" sourceName="reMark"/>
+			    		<xr:column name="menuDesc" sourceName="menuDesc"/>
+			    		<xr:column name="menuNm" sourceName="menuNm"/>
+			    		<xr:column name="updtUsrId" sourceName="updtUsrId"/>
+			    		<xr:column name="updtDt" sourceName="updtDt"/>
+			    		<xr:column name="upMenuNm" sourceName="upMenuNm"/>
+			    		<xr:column name="dplyNo" sourceName="dplyNo"/>
+			    	</xr:updatecolumns>
+			    </xr:table>
+			  </xr:autocrud>
+			  <xr:columns>
+			    <xr:column sourceName="menuCd"/>
+			    <xr:column sourceName="upMenuCd"/>
+			    <xr:column sourceName="useYn"/>
+			    <xr:column sourceName="inptUsrId"/>
+			    <xr:column sourceName="linkUrl"/>
+			    <xr:column sourceName="inptDt"/>
+			    <xr:column sourceName="siteGbcd"/>
+			    <xr:column sourceName="reMark"/>
+			    <xr:column sourceName="menuDesc"/>
+			    <xr:column sourceName="menuNm"/>
+			    <xr:column sourceName="updtUsrId"/>
+			    <xr:column sourceName="updtDt"/>
+			    <xr:column sourceName="upMenuNm"/>
+			    <xr:column sourceName="dplyNo"/>
+			  </xr:columns>
+			</xr:dataset>
+			<xr:dataset id="dstResSymMenuVO" instanceSync="true" sourceType="instance" useoriginval="true">
+			  <xr:connectioninfo>responseData</xr:connectioninfo>
+			  <xr:query><![CDATA[]]></xr:query>
+			  <xr:autocrud>
+			    <xr:table name="dstResSymMenuVOTable1" prefix="T@48">
+			    	<xr:primarykeys/>
+			    	<xr:updatecolumns/>
+			    </xr:table>
+			  </xr:autocrud>
+			  <xr:columns/>
+			</xr:dataset>
+			<xr:dataset id="dstReqSymMenuVO" instanceSync="true" sourceType="instance" useoriginval="true">
+			  <xr:query><![CDATA[]]></xr:query>
+			  <xr:autocrud>
+			    <xr:table name="dstReqSymMenuVOTable" prefix="T@31">
+			    	<xr:primarykeys/>
+			    	<xr:updatecolumns/>
+			    </xr:table>
+			  </xr:autocrud>
+			  <xr:columns/>
+			</xr:dataset>
+			<xf:jsoninstance id="instance">
+  			<![CDATA[{root : {EXRIAERRMSG : ""}}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="requestData">
+  			<![CDATA[{
+					root : {
+						reqSymMenuVO : {
+							menuCd : "",
+							menuNm : "",
+							upMenuCd : "",
+							upMenuNm : "",
+							useYn : "",
+							inptUsrId : "",
+							dplyNo : "",
+							linkUrl : "",
+							inptDt : "",
+							siteGbcd : "",
+							reMark : "",
+							menuDesc : "",
+							updtUsrId : "",
+							updtDt : ""
+						},
+						searchVO : {
+							searchCondition : "",
+							pageIndex : "",
+							lastIndex : "",
+							firstIndex : "",
+							searchUseYn : "",
+							pageSize : "",
+							searchKeyword : "",
+							recordCountPerPage : "",
+							pageUnit : "",
+							schMenuNm : ""
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="responseData">
+  			<![CDATA[{
+					root : {
+						resSymMenuList : {
+							row : [
+								{
+									menuCd : "",
+									upMenuCd : "",
+									useYn : "",
+									inptUsrId : "",
+									linkUrl : "",
+									inptDt : "",
+									siteGbcd : "",
+									reMark : "",
+									menuDesc : "",
+									menuNm : "",
+									updtUsrId : "",
+									updtDt : "",
+									upMenuNm : "",
+									dplyNo : ""
+								}
+							]
+						},
+						resSymMenuVO : {
+							row : [
+								{
+									menuCd : "",
+									upMenuCd : "",
+									useYn : "",
+									inptUsrId : "",
+									linkUrl : "",
+									inptDt : "",
+									siteGbcd : "",
+									reMark : "",
+									menuDesc : "",
+									menuNm : "",
+									updtUsrId : "",
+									updtDt : "",
+									upMenuNm : ""
+								}
+							]
+						},
+						paginationInfo : {
+							row : [
+								{
+									totalRecordCount : "",
+									pageSize : "",
+									recordCountPerPage : "",
+									currentPageNo : ""
+								}
+							]
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="resMessage">
+  			<![CDATA[{
+					root : {
+						message : {
+							procMsg : ""
+						}
+					}
+				}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="reqMethod">
+  			<![CDATA[{
+					root : {
+						method : ""
+					}
+				}]]>
+</xf:jsoninstance>
+		</xf:model>
+		<xh:script src="../../../js/stdCmn.js" type="text/javascript"/>
+		<xh:script src="../../../js/stdUtil.js" type="text/javascript"/>
+		<xh:script page="MenuMgr" src="MenuMgr.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:735;width:1620;left:0;top:0;">
+		<ev:listener event="onload" handler="page.onLoad" hasReturn="false"/>
+		<xr:label id="lblSubTitle01" style="height:36;text-align:left;width:1601;left:10;border-width:0;top:440;"
+			  z-index="0" tabindex="0" class="lbl_subtitle" outerClass="lbl_subtitle_outer">
+			<xr:text>기본정보</xr:text>
+		</xr:label>
+		<xr:group id="grp1" style="border-bottom-width:1;height:169;width:1601;overflow:visible;border-right-width:1;border-color:#A5BACC;left:10;border-width:0;border-left-width:1;top:479;"
+			  z-index="1" tabindex="0">
+			<xr:label id="lblLine1" style="height:1;width:1611;left:0;top:0;" z-index="0" tabindex="0"
+			    outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl65" style="height:28;width:110;border-style:solid;left:0;top:1;"
+			    z-index="1" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>메뉴코드</xr:text>
+			</xr:label>
+			<xr:input id="ipbMenuCd" style="height:20;width:101;left:120;top:5;" instanceid="requestData"
+			    ref="/root/reqSymMenuVO/menuCd" z-index="2" class="ipt_form" outerClass="ipt_form_outer"
+			    readonly="false" type="text"/>
+			<xr:label id="lbl58" style="height:28;width:110;border-style:solid;left:280;top:1;"
+			    z-index="3" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>상위메뉴코드</xr:text>
+			</xr:label>
+			<xr:label id="lblLine2" style="height:1;width:1611;left:0;top:28;" z-index="4"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl59" style="height:28;width:110;border-style:solid;left:0;top:29;"
+			    z-index="5" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>메 뉴 명</xr:text>
+			</xr:label>
+			<xr:label id="lblLine3" style="height:1;width:1611;left:0;top:56;" z-index="6"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl72" style="height:28;width:110;border-style:solid;left:0;top:57;"
+			    z-index="7" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>linkUrl</xr:text>
+			</xr:label>
+			<xr:label id="lblLine4" style="height:1;width:1611;left:0;top:112;" z-index="8"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl78" style="height:28;width:110;border-style:solid;left:0;top:113;"
+			    z-index="9" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>비      고</xr:text>
+			</xr:label>
+			<xr:radiobutton id="rdbUseYn" style="height:20;width:150;font-size:9;left:400;border-width:0;top:145;"
+			    z-index="10" instanceid="requestData" ref="/root/reqSymMenuVO/useYn" class="rdb_form"
+			    outerClass="rdb_form_outer" displayMode="horizontal">
+			  <xr:itemgroup style="width:75;">
+			    <xr:item label="사용" selected="true" value="Y"/>
+			    <xr:item label="미사용" selected="false" value="N"/>
+			  </xr:itemgroup>
+			</xr:radiobutton>
+			<xr:label id="lblLine5" style="height:1;width:1611;left:0;top:140;" z-index="11"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl84" style="height:28;width:110;border-style:solid;left:0;top:141;"
+			    z-index="12" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>표시순서</xr:text>
+			</xr:label>
+			<xr:label id="lbl86" style="height:28;width:110;border-style:solid;left:280;top:141;"
+			    z-index="13" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>사용여부</xr:text>
+			</xr:label>
+			<xr:label id="lblLine6" style="height:1;width:1611;left:0;top:168;" z-index="14"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:input id="ipbUpMenuCd" style="height:20;width:100;left:400;top:5;" instanceid="requestData"
+			    ref="/root/reqSymMenuVO/upMenuCd" z-index="15" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="false" type="text"/>
+			<xr:input id="ipbMenuNm" style="height:20;width:472;left:119;top:33;" instanceid="requestData"
+			    ref="/root/reqSymMenuVO/menuNm" z-index="16" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="false" type="text"/>
+			<xr:input id="ipbLinkUrl" style="height:20;width:1472;left:119;top:61;" instanceid="requestData"
+			    ref="/root/reqSymMenuVO/linkUrl" z-index="17" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="false" type="text"/>
+			<xr:input id="ipbReMark" style="height:20;width:1472;left:119;top:117;" instanceid="requestData"
+			    ref="/root/reqSymMenuVO/reMark" z-index="18" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="false" type="text"/>
+			<xr:input id="ipbDplyNo" style="height:20;width:101;left:120;top:145;" instanceid="requestData"
+			    ref="/root/reqSymMenuVO/dplyNo" z-index="19" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="false" type="text"/>
+			<xr:label id="lblLine3_copy_1" style="height:1;width:1611;left:0;top:84;" z-index="20"
+			    tabindex="0" outerClass="lbl_formvalbox_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lbl87" style="height:28;width:110;border-style:solid;left:0;top:85;"
+			    z-index="21" tabindex="0" class="lbl_formattr" outerClass="lbl_formattr_outer">
+			  <xr:text>메뉴설명</xr:text>
+			</xr:label>
+			<xr:input id="ipbMenuDesc" style="height:20;width:1472;left:119;top:89;" instanceid="requestData"
+			    ref="/root/reqSymMenuVO/menuDesc" z-index="22" tabindex="0" class="ipt_form"
+			    outerClass="ipt_form_outer" readonly="false" type="text"/>
+		</xr:group>
+		<xr:group id="grp3" style="height:421;width:1601;left:10;top:10;" z-index="2" tabindex="0">
+			<xr:label id="lblSerchArea1" style="height:35;width:1581;left:10;top:10;" z-index="0"
+			    tabindex="0" outerClass="lbl_srcharea_outer">
+			  <xr:text></xr:text>
+			</xr:label>
+			<xr:label id="lblOrgnClsfCd_copy_1" style="height:20;width:60;left:20;border-width:0;top:18;"
+			    z-index="1" tabindex="0" class="lbl_srch" outerClass="lbl_srch_outer">
+			  <xr:text>메뉴명</xr:text>
+			</xr:label>
+			<xr:input id="ipbSchMenuNm" style="height:20;width:261;left:90;top:18;" instanceid="requestData"
+			    ref="/root/searchVO/searchKeyword" z-index="2" class="ipt_srch" type="text"/>
+			<xr:button id="btnSrch" style="height:24;width:77;left:360;top:15;" z-index="3"
+			    tabindex="0" class="btn_srch" outerClass="btn_srch_outer">
+			  <xr:text>조회</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_btnSrch" hasReturn="false"/>
+			</xr:button>
+			<xr:gridex id="grxSymMenu" style="height:366;width:1581;left:10;top:45;" z-index="4"
+			    datasetid="dstResSymMenuList">
+			  <xr:cfg editing="2" idColumn="ghc1" multiSelect="true" sorted="false" sorting="false"/>
+			  <xr:gridheader>
+			    <xr:cols>
+			    	<xr:colsrow style="height:20;">
+			    		<xr:headcol id="ghc1" style="text-align:center;width:50;" class="ghc">
+			    			<xr:text>No</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghcMenuCd" style="text-align:center;width:98;" colspan="1"
+			    			  rowspan="1" class="ghc">
+			    			<xr:text>메뉴코드</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghcUpMenuCd" style="text-align:center;width:90;" colspan="1"
+			    			  rowspan="1" class="ghc">
+			    			<xr:text>상위메뉴코드</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghcMenuNm" style="text-align:center;width:214;" colspan="1"
+			    			  rowspan="1" class="ghc">
+			    			<xr:text>메뉴명</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghcMenuDesc" style="text-align:center;width:396;" colspan="1"
+			    			  rowspan="1" class="ghc">
+			    			<xr:text>linkUrl</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghc6" style="text-align:center;width:551;" colspan="1" rowspan="1"
+			    			  class="ghc">
+			    			<xr:text>메뉴설명</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghcDplyNo" style="text-align:center;width:84;" colspan="1"
+			    			  rowspan="1" class="ghc">
+			    			<xr:text>표시순서</xr:text>
+			    		</xr:headcol>
+			    		<xr:headcol id="ghcUseYn" style="text-align:center;width:78;" colspan="1"
+			    			  rowspan="1" class="ghc">
+			    			<xr:text>사용여부</xr:text>
+			    		</xr:headcol>
+			    	</xr:colsrow>
+			    </xr:cols>
+			  </xr:gridheader>
+			  <xr:gridbody>
+			    <xr:cols>
+			    	<xr:colsrow style="height:20;">
+			    		<xr:bodycol id="gbcNo" style="text-align:center;width:50;" colid="ghc1" type="Text"/>
+			    		<xr:bodycol id="gbcMenuCd" style="width:98;" ref="" datasetcol="menuCd" datasetid="dstResSymMenuList"
+			    			  colid="ghcMenuCd" type="Text"/>
+			    		<xr:bodycol id="gbcUpMenuCd" style="width:90;" ref="" datasetcol="upMenuCd"
+			    			  datasetid="dstResSymMenuList" colid="ghcUpMenuCd" type="Text"/>
+			    		<xr:bodycol id="gbcMenuNm" style="width:214;" ref="" datasetcol="menuNm"
+			    			  datasetid="dstResSymMenuList" colid="ghcMenuNm" type="Text"/>
+			    		<xr:bodycol id="gbcLinkUrl" style="width:396;" ref="" datasetcol="linkUrl"
+			    			  datasetid="dstResSymMenuList" colid="ghcMenuDesc" type="Text"/>
+			    		<xr:bodycol id="gbcMenuDesc" style="width:551;" ref="" datasetcol="menuDesc"
+			    			  datasetid="dstResSymMenuList" colid="ghc6" type="Text"/>
+			    		<xr:bodycol id="gbcDplyNo" style="width:84;" ref="" datasetcol="dplyNo" datasetid="dstResSymMenuList"
+			    			  colid="ghcDplyNo" type="Text"/>
+			    		<xr:bodycol id="gbcUseYn" style="width:78;" datasetcol="useYn" datasetid="dstResSymMenuList"
+			    			  colid="ghcUseYn" type="Text"/>
+			    	</xr:colsrow>
+			    </xr:cols>
+			    <xr:rows/>
+			  </xr:gridbody>
+			  <ev:listener event="onGridexDblClick" handler="page.onGridexDblClick_grxSymMenu"
+			    	hasReturn="false"/>
+			  <xr:gridtoolbar/>
+			  <xr:panel/>
+			</xr:gridex>
+		</xr:group>
+		<xr:button id="btnInit" style="height:20;width:54;left:1413;top:448;" z-index="3"
+			  class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>초기화</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnInit" hasReturn="false"/>
+		</xr:button>
+		<xr:button id="btnSave" style="height:20;width:54;left:1480;top:448;" z-index="4"
+			  class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>저장</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnSave" hasReturn="false"/>
+		</xr:button>
+		<xr:button id="btnDelete" style="height:20;width:54;left:1545;top:448;" z-index="5"
+			  tabindex="0" class="btn_inn02s" outerClass="btn_inn_outer">
+			<xr:text>삭제</xr:text>
+			<ev:listener event="onclick" handler="page.onClick_btnDelete" hasReturn="false"/>
+		</xr:button>
+	</xh:body>
+</xh:html>

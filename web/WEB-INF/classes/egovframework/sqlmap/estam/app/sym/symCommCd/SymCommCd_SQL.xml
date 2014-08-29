@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SymCommCd">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="symCommCdSerarchVO" type="estam.app.sym.cmm.service.SymCommCdDefaultVO"/>
+	
+	<resultMap id="symCommCd" class="estam.app.sym.cmm.service.SymCommCdVO">
+		<result property="commCd" column="COMM_CD" columnIndex="1"/>
+		<result property="commNm" column="COMM_NM" columnIndex="2"/>
+		<result property="commInfo" column="COMM_INFO" columnIndex="3"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="4"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="5"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="6"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="7"/>
+	</resultMap>
+	
+	<insert id="symCommCdDAO.insertSymCommCd_S">
+		<![CDATA[
+			INSERT INTO SYM_COMM_CD 
+				( COMM_CD
+				  , COMM_NM
+				  , COMM_INFO
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #commCd#
+				  , #commNm#
+				  , #commInfo#
+				  , #inptUsrId#
+				  , SYSDATE
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="symCommCdDAO.updateSymCommCd_S">
+		<![CDATA[
+			UPDATE SYM_COMM_CD
+			SET   COMM_NM=#commNm#
+				, COMM_INFO=#commInfo#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT= SYSDATE
+						WHERE COMM_CD=#commCd#
+				]]>
+	</update>
+	
+	<delete id="symCommCdDAO.deleteSymCommCd_S">
+		<![CDATA[
+			DELETE FROM SYM_COMM_CD 
+						WHERE COMM_CD=#commCd#
+				]]>
+	</delete>
+	
+	<select id="symCommCdDAO.selectSymCommCd_S" resultMap="symCommCd">
+		<![CDATA[
+			SELECT
+				COMM_CD
+				, COMM_NM
+				, COMM_INFO
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM SYM_COMM_CD
+						WHERE COMM_CD=#commCd#
+				]]>
+	</select>
+	
+	<select id="symCommCdDAO.selectSymCommCdList_D" parameterClass="symCommCdSerarchVO" resultClass="egovMap">
+<!-- SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM ( -->
+				SELECT
+								COMM_CD
+								, COMM_NM
+								, COMM_INFO
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM SYM_COMM_CD
+				WHERE 1=1 
+				<isNotEmpty prepend="AND" property="searchKeyword" >
+				COMM_NM LIKE '%' || #searchKeyword# || '%' 
+				</isNotEmpty>
+				
+					ORDER BY COMM_CD DESC
+		
+<!-- 		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]> -->
+	</select>	
+	<select id="symCommCdDAO.selectSymCommCdListTotCnt_S" parameterClass="symCommCdSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM SYM_COMM_CD
+			WHERE 1=1 
+			<isNotEmpty prepend="AND" property="searchKeyword" >
+				COMM_NM LIKE '%' || #searchKeyword# || '%' 
+			</isNotEmpty>
+	</select>
+
+</sqlMap>

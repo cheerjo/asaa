@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RptStabRatg">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="rptStabRatgSerarchVO" type="estam.app.scn.rpt.service.RptStabRatgDefaultVO"/>
+	 
+	<resultMap id="rptStabRatg" class="estam.app.scn.rpt.service.RptStabRatgVO">
+		<result property="iptDt" column="IPT_DT" columnIndex="1"/>
+		<result property="ehqkEvntCd" column="EHQK_EVNT_CD" columnIndex="2"/>
+		<result property="ehqkEvntId" column="EHQK_EVNT_ID" columnIndex="3"/>
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="4"/>
+		<result property="fctyCd" column="FCTY_CD" columnIndex="5"/>
+		<result property="conDaGbcd" column="CON_DA_GBCD" columnIndex="6"/>
+		<result property="idrRngMj" column="IDR_RNG_MJ" columnIndex="7"/>
+		<result property="idrRngShot" column="IDR_RNG_SHOT" columnIndex="8"/>
+		<result property="strFrqMj" column="STR_FRQ_MJ" columnIndex="9"/>
+		<result property="strFrqShot" column="STR_FRQ_SHOT" columnIndex="10"/>
+		<result property="grdRsnnPsbyMj" column="GRD_RSNN_PSBY_MJ" columnIndex="11"/>
+		<result property="grdRsnnPsbyShot" column="GRD_RSNN_PSBY_SHOT" columnIndex="12"/>
+		<result property="maxScnMj" column="MAX_SCN_MJ" columnIndex="13"/>
+		<result property="maxScnShot" column="MAX_SCN_SHOT" columnIndex="14"/>
+		<result property="sfTot" column="SF_TOT" columnIndex="15"/>
+		<result property="sfUsrDept" column="SF_USR_DEPT" columnIndex="16"/>
+		<result property="sfUsrDuty" column="SF_USR_DUTY" columnIndex="17"/>
+		<result property="sfUsrNm" column="SF_USR_NM" columnIndex="18"/>
+		<result property="sfUsrTel" column="SF_USR_TEL" columnIndex="19"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="20"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="21"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="22"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="23"/>
+	</resultMap>
+	
+	<insert id="rptStabRatgDAO.insertRptStabRatg_S">
+		<![CDATA[
+			INSERT INTO RPT_STAB_RATG 
+				( IPT_DT
+				  , EHQK_EVNT_CD
+				  , EHQK_EVNT_ID
+				  , GVMT_CD
+				  , FCTY_CD
+				  , CON_DA_GBCD
+				  , IDR_RNG_MJ
+				  , IDR_RNG_SHOT
+				  , STR_FRQ_MJ
+				  , STR_FRQ_SHOT
+				  , GRD_RSNN_PSBY_MJ
+				  , GRD_RSNN_PSBY_SHOT
+				  , MAX_SCN_MJ
+				  , MAX_SCN_SHOT
+				  , SF_TOT
+				  , SF_USR_DEPT
+				  , SF_USR_DUTY
+				  , SF_USR_NM
+				  , SF_USR_TEL
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #iptDt#
+				  , #ehqkEvntCd#
+				  , #ehqkEvntId#
+				  , #gvmtCd#
+				  , #fctyCd#
+				  , #conDaGbcd#
+				  , #idrRngMj#
+				  , #idrRngShot#
+				  , #strFrqMj#
+				  , #strFrqShot#
+				  , #grdRsnnPsbyMj#
+				  , #grdRsnnPsbyShot#
+				  , #maxScnMj#
+				  , #maxScnShot#
+				  , #sfTot#
+				  , #sfUsrDept#
+				  , #sfUsrDuty#
+				  , #sfUsrNm#
+				  , #sfUsrTel#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="rptStabRatgDAO.updateRptStabRatg_S">
+		<![CDATA[
+			UPDATE RPT_STAB_RATG
+			SET IPT_DT=#iptDt#
+				, EHQK_EVNT_CD=#ehqkEvntCd#
+				, EHQK_EVNT_ID=#ehqkEvntId#
+				, GVMT_CD=#gvmtCd#
+				, FCTY_CD=#fctyCd#
+				, CON_DA_GBCD=#conDaGbcd#
+				, IDR_RNG_MJ=#idrRngMj#
+				, IDR_RNG_SHOT=#idrRngShot#
+				, STR_FRQ_MJ=#strFrqMj#
+				, STR_FRQ_SHOT=#strFrqShot#
+				, GRD_RSNN_PSBY_MJ=#grdRsnnPsbyMj#
+				, GRD_RSNN_PSBY_SHOT=#grdRsnnPsbyShot#
+				, MAX_SCN_MJ=#maxScnMj#
+				, MAX_SCN_SHOT=#maxScnShot#
+				, SF_TOT=#sfTot#
+				, SF_USR_DEPT=#sfUsrDept#
+				, SF_USR_DUTY=#sfUsrDuty#
+				, SF_USR_NM=#sfUsrNm#
+				, SF_USR_TEL=#sfUsrTel#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE IPT_DT=#iptDt#
+								AND EHQK_EVNT_CD=#ehqkEvntCd#
+								AND EHQK_EVNT_ID=#ehqkEvntId#
+				]]>
+	</update>
+	
+	<delete id="rptStabRatgDAO.deleteRptStabRatg_S">
+		<![CDATA[
+			DELETE FROM RPT_STAB_RATG 
+						WHERE IPT_DT=#iptDt#
+								AND EHQK_EVNT_CD=#ehqkEvntCd#
+								AND EHQK_EVNT_ID=#ehqkEvntId#
+				]]>
+	</delete>
+	
+	<select id="rptStabRatgDAO.selectRptStabRatg_S" resultMap="rptStabRatg">
+		<![CDATA[
+			SELECT
+				IPT_DT
+				, EHQK_EVNT_CD
+				, EHQK_EVNT_ID
+				, GVMT_CD
+				, FCTY_CD
+				, CON_DA_GBCD
+				, IDR_RNG_MJ
+				, IDR_RNG_SHOT
+				, STR_FRQ_MJ
+				, STR_FRQ_SHOT
+				, GRD_RSNN_PSBY_MJ
+				, GRD_RSNN_PSBY_SHOT
+				, MAX_SCN_MJ
+				, MAX_SCN_SHOT
+				, SF_TOT
+				, SF_USR_DEPT
+				, SF_USR_DUTY
+				, SF_USR_NM
+				, SF_USR_TEL
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM RPT_STAB_RATG
+						WHERE IPT_DT=#iptDt#
+								AND EHQK_EVNT_CD=#ehqkEvntCd#
+								AND EHQK_EVNT_ID=#ehqkEvntId#
+				]]>
+	</select>
+	
+	<select id="rptStabRatgDAO.selectRptStabRatgList_D" parameterClass="rptStabRatgSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								IPT_DT
+								, EHQK_EVNT_CD
+								, EHQK_EVNT_ID
+								, GVMT_CD
+								, FCTY_CD
+								, CON_DA_GBCD
+								, IDR_RNG_MJ
+								, IDR_RNG_SHOT
+								, STR_FRQ_MJ
+								, STR_FRQ_SHOT
+								, GRD_RSNN_PSBY_MJ
+								, GRD_RSNN_PSBY_SHOT
+								, MAX_SCN_MJ
+								, MAX_SCN_SHOT
+								, SF_TOT
+								, SF_USR_DEPT
+								, SF_USR_DUTY
+								, SF_USR_NM
+								, SF_USR_TEL
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM RPT_STAB_RATG
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					IPT_DT = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					EHQK_EVNT_CD LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						IPT_DT DESC
+							, EHQK_EVNT_CD DESC
+							, EHQK_EVNT_ID DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="rptStabRatgDAO.selectRptStabRatgListTotCnt_S" parameterClass="rptStabRatgSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM RPT_STAB_RATG
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				IPT_DT = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				EHQK_EVNT_CD LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

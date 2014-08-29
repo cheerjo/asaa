@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SptIptnRsltFl">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="sptIptnRsltFlSerarchVO" type="estam.app.spt.service.SptIptnRsltFlDefaultVO"/>
+	<typeAlias  alias="sptIptnRsltFlVO" type="estam.app.spt.service.SptIptnRsltFlVO"/>
+	
+	<resultMap id="sptIptnRsltFl" class="estam.app.spt.service.SptIptnRsltFlVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="sptIptnDt" column="SPT_IPTN_DT" columnIndex="2"/>
+		<result property="sptIptnSeq" column="SPT_IPTN_SEQ" columnIndex="3"/>
+		<result property="sptIptnFsSz" column="SPT_IPTN_FS_SZ" columnIndex="4"/>
+		<result property="sptIptnFlnm" column="SPT_IPTN_FLNM" columnIndex="5"/>
+		<result property="sptIptnFlsv" column="SPT_IPTN_FLSV" columnIndex="6"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="7"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="8"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="9"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="10"/>
+	</resultMap>
+    <resultMap id="sptIptnRsltFlView" class="estam.app.spt.service.SptIptnRsltFlVO">
+        <result property="sptIptnReqtDt" column="SPT_IPTN_REQT_DT" columnIndex="1"/>
+        <result property="sptIptnDt" column="SPT_IPTN_DT" columnIndex="2"/>
+        <result property="sptIptnRsltDt" column="SPT_IPTN_RSLT_DT" columnIndex="3"/>
+        <result property="sptIptnRsltYn" column="SPT_IPTN_RSLT_YN" columnIndex="4"/>
+        <result property="sptIptnFlnm" column="SPT_IPTN_FLNM" columnIndex="6"/>
+    </resultMap>	
+
+	<insert id="sptIptnRsltFlDAO.insertSptIptnRsltFl_S">
+		<![CDATA[
+			INSERT INTO SPT_IPTN_RSLT_FL 
+				( FCTY_CD
+				  , SPT_IPTN_DT
+				  , SPT_IPTN_SEQ
+				  , SPT_IPTN_FS_SZ
+				  , SPT_IPTN_FLNM
+				  , SPT_IPTN_FLSV
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #sptIptnDt#
+				  , #sptIptnSeq#
+				  , #sptIptnFsSz#
+				  , #sptIptnFlnm#
+				  , #sptIptnFlsv#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="sptIptnRsltFlDAO.updateSptIptnRsltFl_S">
+		<![CDATA[
+			UPDATE SPT_IPTN_RSLT_FL
+			SET FCTY_CD=#fctyCd#
+				, SPT_IPTN_DT=#sptIptnDt#
+				, SPT_IPTN_SEQ=#sptIptnSeq#
+				, SPT_IPTN_FS_SZ=#sptIptnFsSz#
+				, SPT_IPTN_FLNM=#sptIptnFlnm#
+				, SPT_IPTN_FLSV=#sptIptnFlsv#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+			]]>
+	</update>
+	
+	<delete id="sptIptnRsltFlDAO.deleteSptIptnRsltFl_S">
+		<![CDATA[
+			DELETE FROM SPT_IPTN_RSLT_FL 
+			]]>
+	</delete>
+	
+	<select id="sptIptnRsltFlDAO.selectSptIptnRsltFl_S" resultMap="sptIptnRsltFl">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, SPT_IPTN_DT
+				, SPT_IPTN_SEQ
+				, SPT_IPTN_FS_SZ
+				, SPT_IPTN_FLNM
+				, SPT_IPTN_FLSV
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM SPT_IPTN_RSLT_FL
+			]]>
+	</select>
+	
+	<select id="sptIptnRsltFlDAO.selectSptIptnRsltFlList_D" parameterClass="sptIptnRsltFlVO" resultMap="sptIptnRsltFlView">
+			SELECT SPT_IPTN_REQT_DT,
+			       SPT.SPT_IPTN_DT,
+			       SPT_IPTN_RSLT_DT,
+			       SPT_IPTN_RSLT_YN,
+			       SPT_IPTN_FLSV,
+			       SPT_IPTN_FLNM
+			FROM   SPT_IPTN_RSLT SPT,
+			       SPT_IPTN_RSLT_FL FL
+			WHERE  1=1
+			AND    SPT.FCTY_CD = FL.FCTY_CD
+			AND    SPT.GVMT_CD = FL.GVMT_CD
+			AND    SPT.SPT_IPTN_DT = FL.SPT_IPTN_DT
+			AND    SPT.FCTY_CD = #fctyCd#
+			AND    SPT.GVMT_CD = #gvmtCd#
+			AND    SPT.SPT_IPTN_DT = #sptIptnDt#			
+	</select>	
+	<select id="sptIptnRsltFlDAO.selectSptIptnRsltFlListTotCnt_S" parameterClass="sptIptnRsltFlSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM SPT_IPTN_RSLT_FL
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				SPT_IPTN_DT LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>

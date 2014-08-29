@@ -1,0 +1,298 @@
+.grxBold{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	font-weight: bold;
+}
+.grxPoint{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	color:#f00000;
+}
+.grxLink{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	color:#0087d4;
+}
+.grxCenter{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	text-align:center;
+}
+.grxCenterBold{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	text-align:center;
+	font-weight: bold;
+}
+.grxCenterLink{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	text-align:center;
+	color:#0087D4;
+}
+.grxCenterPoint{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	text-align:center;
+	color:#F00000;
+}
+.grxRight{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	text-align: right;
+}
+.grxRightBold{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	text-align:right;
+	font-weight:bold;
+}
+.grxRightPoint{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	text-align:right;
+	color:#F00000;
+}
+.grxRightLink{
+	font-family:"Gulimche";
+	font-size:12px;
+	padding-left:3px;
+	padding-right:3px;
+	padding-top:2px;
+	text-align:right;
+	color:#0087D4;
+}
+.grxHeaderBold{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#ffffff;
+	font-weight: bold;
+}
+.grxHeaderBoldHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#000000;
+	font-weight: bold;
+}
+.grxHeaderPoint{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#F00000;	
+}
+.grxHeaderPointHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#F00000;
+}
+.grxHeaderCenter{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#ffffff;
+	text-align: center;
+}
+.grxHeaderCenterHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#000000;
+	text-align: center;
+}
+.grxHeaderCenterBold{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#ffffff;
+	text-align: center;
+	font-weight: bold;
+}
+.grxHeaderCenterBoldHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#000000;
+	text-align: center;
+	font-weight: bold;
+}
+.grxHeaderCenterPoint{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#F00000;	
+	text-align: center;
+}
+.grxHeaderCenterPointHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#F00000;
+	text-align: center;
+}
+.grxHeaderRight{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#ffffff;
+	text-align: right;
+}
+.grxHeaderRightHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#000000;
+	text-align: right;
+}
+.grxHeaderRightBold{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#ffffff;
+	text-align: right;
+	font-weight: bold;
+}
+.grxHeaderRightBoldHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#000000;
+	text-align: right;
+	font-weight: bold;
+}
+.grxHeaderRightPoint{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#F00000;	
+	text-align: right;
+}
+.grxHeaderRightPointHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#F00000;
+	text-align: right;
+}
+.grxHeaderReq{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#FFF7A2;
+}
+.grxHeaderReqHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#897D13;
+}
+.grxHeaderBoldReq{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#FFF7A2;
+	font-weight: bold;
+}
+.grxHeaderBoldReqHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#897D13;
+	font-weight: bold;
+}
+.grxHeaderCenterReq{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#FFF7A2;
+	text-align: center
+}
+.grxHeaderCenterReqHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#897D13;
+	text-align: center
+}
+.grxHeaderCenterBoldReq{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#BCEDA9;
+	text-align: center;
+	font-weight: bold;
+}
+.grxHeaderCenterBoldReqHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#FFFDE4;
+	text-align: center;
+	font-weight: bold;
+}
+.grxHeaderRightReq{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#FFF7A2;
+	text-align: right
+}
+.grxHeaderRightReqHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#897D13;
+	text-align: right
+}
+.grxHeaderRightBoldReq{
+	background:url("../style/images/gridHeaderModern.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#FFF7A2;
+	text-align: right;
+	font-weight: bold;
+}
+.grxHeaderRightBoldReqHover{
+	background:url("../style/images/gridHeaderModernHover.gif") repeat-x;
+	border-right: 1px solid #D5E3FF;
+	border-bottom: 1px solid #D5E3FF;
+	color:#897D13;
+	text-align: right;
+	font-weight: bold;
+}
+.grxBorder{
+	border-width:0; 
+	border-style:none;
+}

@@ -1,0 +1,14 @@
+<xf:model xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ht="http://www.w3.org/TR/html5" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xr="http://www.exria.org/exria" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:wf="http://www.w3.org/TR/web-forms-2" defaultinstance="instance" xmlns:xl="http://www.w3.org/1999/xlink"><xf:jsoninstance id="instance">{root : {EXRIAERRMSG : ""}}</xf:jsoninstance>
+<xf:jsoninstance id="insRes">{
+					root : {
+						row : [
+							{
+								totalRecordCount : "",
+								pageSize : "",
+								recordCountPerPage : "",
+								currentPageNo : ""
+							}
+						]
+					}
+				}</xf:jsoninstance>
+</xf:model>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html
+		xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xf="http://www.w3.org/2002/xforms"
+		xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xr="http://www.exria.org/exria">
+	<xh:head>
+		<xh:title>pageNavigation</xh:title>
+		<xh:meta content="text/html+xml; charset=utf-8" http-equiv="content-type"/>
+		<xh:meta content="no-cache" http-equiv="cache-control"/>
+		<xh:meta content="no-cache" http-equiv="pragma"/>
+		<xh:meta content="eXriaSuite v1.0" name="generator"/>
+		<xh:meta content="eXria.1.0" name="version"/>
+		<xh:meta content="eXria, eXriaForm, eXriaSuite, eXriaStudio, Ajax, xrf" name="keywords"/>
+		<xh:meta content="Administrator" name="author"/>
+		<xh:meta content="10. 10. 7 오전 11:44" name="date"/>
+		<xh:meta content="2.0.0.201009061429" name="xrf-version"/>
+		<xf:model defaultinstance="instance">
+			<xf:jsoninstance id="instance">
+  			<![CDATA[{root : {EXRIAERRMSG : ""}}]]>
+</xf:jsoninstance>
+			<xf:jsoninstance id="insRes">
+  			<![CDATA[{
+					root : {
+						row : [
+							{
+								totalRecordCount : "",
+								pageSize : "",
+								recordCountPerPage : "",
+								currentPageNo : ""
+							}
+						]
+					}
+				}]]>
+</xf:jsoninstance>
+		</xf:model>
+		<xh:script page="pageNavigation" src="pageNavigation.js" type="text/javascript"/>
+	</xh:head>
+	<xh:body style="height:31;width:346;left:0;top:0;">
+		<ev:listener event="onload" handler="page.onLoad" hasReturn="false"/>
+		<xr:group id="grpPrevs" style="height:26;width:34;left:8;border-width:0;top:4;"
+			  z-index="0" tabindex="0">
+			<xr:img id="imgBtnPrev" style="height:15;width:15;border-style:none;left:19;border-width:0;top:5;"
+			    z-index="0" tabindex="0" src="/style/image/icon_prev.gif">
+			  <ev:listener event="onclick" handler="page.onClick_imgBtnPrev" hasReturn="false"/>
+			</xr:img>
+			<xr:img id="imgBtnPrevEnd" style="height:15;width:15;border-style:none;left:0;border-width:0;top:5;"
+			    z-index="1" tabindex="0" src="/style/image/icon_prev10.gif">
+			  <ev:listener event="onclick" handler="page.onClick_imgBtnPrevEnd" hasReturn="false"/>
+			</xr:img>
+		</xr:group>
+		<xr:group id="grpNexts" style="height:26;width:34;border-style:none;left:301;border-width:0;top:3;"
+			  z-index="1" tabindex="0">
+			<xr:img id="imgBtnNext" style="height:15;width:15;border-style:none;left:0;border-width:0;top:5;"
+			    z-index="0" tabindex="0" src="/style/image/icon_next.gif">
+			  <ev:listener event="onclick" handler="page.onClick_imgBtnNext" hasReturn="false"/>
+			</xr:img>
+			<xr:img id="imgBtnNextEnd" style="height:15;width:15;border-style:none;left:18;border-width:0;top:5;"
+			    z-index="1" tabindex="0" src="/style/image/icon_next10.gif">
+			  <ev:listener event="onclick" handler="page.onClick_imgBtnNextEnd" hasReturn="false"/>
+			</xr:img>
+		</xr:group>
+		<xr:group id="grpNumbres" style="height:26;width:243;border-style:none;left:50;border-width:0;top:3;"
+			  z-index="2" tabindex="0">
+			<xr:label id="lblPageNum1" style="height:18;width:18;left:0;top:5;" z-index="0"
+			    tabindex="0">
+			  <xr:text>1</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum1" hasReturn="false"/>
+			</xr:label>
+			<xr:label id="lblPageNum2" style="height:18;width:18;left:25;top:5;" z-index="1"
+			    tabindex="0">
+			  <xr:text>2</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum2" hasReturn="false"/>
+			</xr:label>
+			<xr:label id="lblPageNum3" style="height:18;width:18;left:50;top:5;" z-index="2"
+			    tabindex="0">
+			  <xr:text>3</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum3" hasReturn="false"/>
+			</xr:label>
+			<xr:label id="lblPageNum4" style="height:18;width:18;left:75;top:5;" z-index="3"
+			    tabindex="0" visible="true">
+			  <xr:text>4</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum4" hasReturn="false"/>
+			</xr:label>
+			<xr:label id="lblPageNum5" style="height:18;width:18;left:100;top:5;" z-index="4"
+			    tabindex="0" visible="true">
+			  <xr:text>5</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum5" hasReturn="false"/>
+			</xr:label>
+			<xr:label id="lblPageNum6" style="height:18;width:18;left:125;top:5;" z-index="5"
+			    tabindex="0" visible="true">
+			  <xr:text>6</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum6" hasReturn="false"/>
+			</xr:label>
+			<xr:label id="lblPageNum7" style="height:18;width:18;left:150;top:5;" z-index="6"
+			    tabindex="0" visible="true">
+			  <xr:text>7</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum7" hasReturn="false"/>
+			</xr:label>
+			<xr:label id="lblPageNum8" style="height:18;width:18;left:175;top:5;" z-index="7"
+			    tabindex="0" visible="true">
+			  <xr:text>8</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum8" hasReturn="false"/>
+			</xr:label>
+			<xr:label id="lblPageNum9" style="height:18;width:18;left:200;top:5;" z-index="8"
+			    tabindex="0" visible="true">
+			  <xr:text>9</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum9" hasReturn="false"/>
+			</xr:label>
+			<xr:label id="lblPageNum10" style="height:18;width:18;left:225;top:5;" z-index="9"
+			    tabindex="0" visible="true">
+			  <xr:text>10</xr:text>
+			  <ev:listener event="onclick" handler="page.onClick_lblPageNum10" hasReturn="false"/>
+			</xr:label>
+		</xr:group>
+		<xr:output id="optPageTCNoSearch" style="height:27;text-align:center;width:341;left:1;top:3;"
+			  z-index="3" tabindex="0" formatType="string">
+			<xr:value>검색결과가 없습니다. 재조회 하시기 바랍니다.</xr:value>
+		</xr:output>
+	</xh:body>
+</xh:html>

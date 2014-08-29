@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="IddlAassWvfl">
+	
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="iddlAassWvflSerarchVO" type="estam.app.iddl.service.IddlAassWvflDefaultVO"/>
+	
+	<resultMap id="iddlAassWvfl" class="estam.app.iddl.service.IddlAassWvflVO">
+		<result property="fctyCd" column="FCTY_CD" columnIndex="1"/>
+		<result property="iddlAassNo" column="IDDL_AASS_NO" columnIndex="2"/>
+		<result property="iddlAassScnFlcd" column="IDDL_AASS_SCN_FLCD" columnIndex="3"/>
+		<result property="iddlAassScnFlsv" column="IDDL_AASS_SCN_FLSV" columnIndex="4"/>
+		<result property="iddlAassScnFlnm" column="IDDL_AASS_SCN_FLNM" columnIndex="5"/>
+		<result property="inptUsrId" column="INPT_USR_ID" columnIndex="6"/>
+		<result property="inptDt" column="INPT_DT" columnIndex="7"/>
+		<result property="updtUsrId" column="UPDT_USR_ID" columnIndex="8"/>
+		<result property="updtDt" column="UPDT_DT" columnIndex="9"/>
+		
+		<result property="gvmtCd" column="GVMT_CD" columnIndex="10"/>
+	</resultMap>
+	
+	<insert id="iddlAassWvflDAO.insertIddlAassWvfl_S">
+		<![CDATA[
+			INSERT INTO IDDL_AASS_WVFL 
+				( FCTY_CD
+				  , GVMT_CD
+				  , IDDL_AASS_NO
+				  , IDDL_AASS_SCN_FLCD
+				  , IDDL_AASS_SCN_FLSV
+				  , IDDL_AASS_SCN_FLNM
+				  , INPT_USR_ID
+				  , INPT_DT
+				  , UPDT_USR_ID
+				  , UPDT_DT )
+			VALUES ( #fctyCd#
+				  , #gvmtCd#
+				  , #iddlAassNo#
+				  , #iddlAassScnFlcd#
+				  , #iddlAassScnFlsv#
+				  , #iddlAassScnFlnm#
+				  , #inptUsrId#
+				  , #inptDt#
+				  , #updtUsrId#
+				  , #updtDt# )
+		]]>
+	</insert>
+	
+	<update id="iddlAassWvflDAO.updateIddlAassWvfl_S">
+		<![CDATA[
+			UPDATE IDDL_AASS_WVFL
+			SET FCTY_CD=#fctyCd#
+				, IDDL_AASS_NO=#iddlAassNo#
+				, IDDL_AASS_SCN_FLCD=#iddlAassScnFlcd#
+				, IDDL_AASS_SCN_FLSV=#iddlAassScnFlsv#
+				, IDDL_AASS_SCN_FLNM=#iddlAassScnFlnm#
+				, INPT_USR_ID=#inptUsrId#
+				, INPT_DT=#inptDt#
+				, UPDT_USR_ID=#updtUsrId#
+				, UPDT_DT=#updtDt#
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+								AND IDDL_AASS_SCN_FLCD=#iddlAassScnFlcd#
+				]]>
+	</update>
+	
+	<delete id="iddlAassWvflDAO.deleteIddlAassWvfl_S">
+		<![CDATA[
+			DELETE FROM IDDL_AASS_WVFL 
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+								AND IDDL_AASS_SCN_FLCD=#iddlAassScnFlcd#
+				]]>
+	</delete>
+	
+	<select id="iddlAassWvflDAO.selectIddlAassWvfl_S" resultMap="iddlAassWvfl">
+		<![CDATA[
+			SELECT
+				FCTY_CD
+				, IDDL_AASS_NO
+				, IDDL_AASS_SCN_FLCD
+				, IDDL_AASS_SCN_FLSV
+				, IDDL_AASS_SCN_FLNM
+				, INPT_USR_ID
+				, INPT_DT
+				, UPDT_USR_ID
+				, UPDT_DT
+			FROM IDDL_AASS_WVFL
+						WHERE FCTY_CD=#fctyCd#
+								AND IDDL_AASS_NO=#iddlAassNo#
+								AND IDDL_AASS_SCN_FLCD=#iddlAassScnFlcd#
+				]]>
+	</select>
+	
+	<select id="iddlAassWvflDAO.selectIddlAassWvflList_D" parameterClass="iddlAassWvflSerarchVO" resultClass="egovMap">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+								FCTY_CD
+								, IDDL_AASS_NO
+								, IDDL_AASS_SCN_FLCD
+								, IDDL_AASS_SCN_FLSV
+								, IDDL_AASS_SCN_FLNM
+								, INPT_USR_ID
+								, INPT_DT
+								, UPDT_USR_ID
+								, UPDT_DT
+						FROM IDDL_AASS_WVFL
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					FCTY_CD = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					IDDL_AASS_NO LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+						FCTY_CD DESC
+							, IDDL_AASS_NO DESC
+							, IDDL_AASS_SCN_FLCD DESC
+		
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+	</select>	
+	<select id="iddlAassWvflDAO.selectIddlAassWvflListTotCnt_S" parameterClass="iddlAassWvflSerarchVO" resultClass="int">
+			SELECT COUNT(*) totcnt
+			FROM IDDL_AASS_WVFL
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				FCTY_CD = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				IDDL_AASS_NO LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+	 
+	<select id="iddlAassWvflDAO.selectWaveEventFrmInfo_D" parameterClass="iddlAassWvflSerarchVO" resultClass="egovMap">
+ 		<![CDATA[
+			SELECT
+				FCTY_CD
+				, IDDL_AASS_NO
+				, IDDL_AASS_SCN_FLCD
+				, IDDL_AASS_SCN_FLSV
+				, IDDL_AASS_SCN_FLNM 
+			FROM IDDL_AASS_WVFL
+						WHERE FCTY_CD=#fctyCd# 
+						  AND IDDL_AASS_SCN_FLCD=#iddlAassScnFlcd#
+				]]>
+	</select>	
+
+</sqlMap>
